@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Deng | 不搭</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://www.dengfuping.com/"/>
+  <updated>2017-01-13T15:59:06.632Z</updated>
+  <id>http://www.dengfuping.com/</id>
+  
+  <author>
+    <name>Deng | 不搭</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>操作系统原理作业(一)：利用Linux多线程机制和积分中值定理计算π的值</title>
+    <link href="http://www.dengfuping.com/2017/01/13/operating-system-homework-1/"/>
+    <id>http://www.dengfuping.com/2017/01/13/operating-system-homework-1/</id>
+    <published>2017-01-13T15:32:47.000Z</published>
+    <updated>2017-01-13T15:59:06.632Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="作业题目"><a href="#作业题目" class="headerlink" title="作业题目"></a>作业题目</h2><p>Write a program to figure out π with pthread. The formula is here as follows</p>
+<p><img src="http://p1.bpimg.com/567571/9f2c9da32b98fa85.png" alt=""></p>
+<a id="more"></a>
+<p>You should choose the appropriate N and the number the threads and evaluate how do these two factors affect the performance. Try it in the multi-CPUs or multi-cores system if possible and compare the time consumed in the single CPU with one core system. Remember to add the option of -lpthread in gcc.</p>
+<p>Programming guide:<br>Beginning Linux Programming 4e (Chapter 12: POSIX Threads)</p>
+<h2 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h2><p>把线程的执行任务分成若干段，每个线程执行一段，最后将每一段得到的结果相加即可得到π的近似值。</p>
+<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><h3 id="线程的操作和函数有："><a href="#线程的操作和函数有：" class="headerlink" title="线程的操作和函数有："></a>线程的操作和函数有：</h3><p>（1）线程句柄： pthread_t。下面创建了4个指向线程的句柄：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> numThreads = <span class="number">4</span>;</div><div class="line"><span class="keyword">pthread_t</span> hThread[numThreads];</div></pre></td></tr></table></figure>
+<p>（2）创建线程：pthread_create()：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numThreads; i++)</div><div class="line">&#123;</div><div class="line">    <span class="comment">//创建线程并且将thread函数传入</span></div><div class="line">    hThread[i] = pthread_create(&amp;hThread[i], <span class="literal">NULL</span>, thread, &amp;i);    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="同步和互斥"><a href="#同步和互斥" class="headerlink" title="同步和互斥"></a>同步和互斥</h3><p>由于同一进程的线程之间大部分的数据都是共享的，在涉及到对共享数据进行读写操作时，就必须使用同步机制，否则就会造成线程们哄抢共享的数据,造成数据混乱甚至是丢失。在此，我们通过给线程加锁（互斥锁）来解决这一问题。</p>
+<p>（1）互斥锁句柄：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">pthread_mutex_t</span> mut;</div></pre></td></tr></table></figure></p>
+<p>（2）加锁和解锁：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pthread_mutex_lock(&amp;mut);     <span class="comment">//给线程加锁</span></div><div class="line">pthread_mutex_unlock(&amp;mut);   <span class="comment">//给线程解锁</span></div></pre></td></tr></table></figure>
+<p>（3）初始化互斥锁：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pthread_mutex_init(&amp;mut, <span class="literal">NULL</span>);   <span class="comment">//初始化互斥锁</span></div></pre></td></tr></table></figure>
+<h2 id="代码测试"><a href="#代码测试" class="headerlink" title="代码测试"></a>代码测试</h2><ul>
+<li>运行时链接-lpthread库，结果如下（设置计算的次数N=100000）：</li>
+</ul>
+<p><img src="http://p1.bpimg.com/567571/9032a0d07640d2b4.png" alt=""></p>
+<ul>
+<li>经过分析发现，子线程在主线程完成的时候都还来不及执行，故所得π值为0。解决方法是在创建线程的时候等待1秒，以保证子线程能够得到执行。修改后的代码和运行结果如下：</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; numThreads; i++)</div><div class="line">&#123;</div><div class="line">    <span class="comment">//创建线程并且将thread函数传入</span></div><div class="line">    hThread[i] = pthread_create(&amp;hThread[i], <span class="literal">NULL</span>, thread, &amp;i);    </div><div class="line">    <span class="comment">//让主线程等待1秒，确保子线程能够得到执行</span></div><div class="line">    sleep(<span class="number">1</span>);  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://p1.bpimg.com/567571/6204082eeb18aa56.png" alt=""></p>
+<ul>
+<li>将线程数减为2，运行结果如下：</li>
+</ul>
+<p><img src="http://p1.bpimg.com/567571/00ab91044ae5afcf.png" alt=""></p>
+<ul>
+<li>当线程数为1（单线程）时，运行结果如下：</li>
+</ul>
+<p><img src="http://p1.bpimg.com/567571/81f76033dca3172b.png" alt=""></p>
+<h2 id="完整源代码"><a href="#完整源代码" class="headerlink" title="完整源代码"></a>完整源代码</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pthread.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;time.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">static</span> <span class="keyword">long</span> N = <span class="number">100000</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> numThreads = <span class="number">4</span>;</div><div class="line"><span class="keyword">double</span> step;</div><div class="line"><span class="keyword">double</span> sum = <span class="number">0.0</span>;</div><div class="line"><span class="keyword">pthread_mutex_t</span> mut;</div><div class="line"></div><div class="line"><span class="comment">//依据计算Pi值的积分中值定理实现公式计算</span></div><div class="line"><span class="function"><span class="keyword">void</span> *<span class="title">thread</span><span class="params">(<span class="keyword">void</span> *pArg)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">double</span> x;</div><div class="line">    <span class="keyword">int</span> temp = *((<span class="keyword">int</span> *)pArg);</div><div class="line">    <span class="keyword">int</span> start = temp * (N / <span class="number">4</span>);</div><div class="line">    <span class="keyword">int</span> end = start + N / <span class="number">4</span>;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%d %d %d\n"</span>, temp, start, end);</div><div class="line">    </div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = start; i &lt; end; i++) </div><div class="line">    &#123;</div><div class="line">        pthread_mutex_lock(&amp;mut);   <span class="comment">//给线程加锁</span></div><div class="line">        x = (i + <span class="number">0.5</span>) * step;</div><div class="line">        sum = sum + <span class="number">4.0</span> / (<span class="number">1.0</span> + x * x);</div><div class="line">        pthread_mutex_unlock(&amp;mut);  <span class="comment">//给线程解锁</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">clock_t</span> t1 = clock();</div><div class="line">    <span class="keyword">pthread_t</span> hThread[numThreads];</div><div class="line">    pthread_mutex_init(&amp;mut, <span class="literal">NULL</span>); <span class="comment">//初始化互斥锁</span></div><div class="line">    step = <span class="number">1.0</span> / (<span class="keyword">double</span>)N;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; numThreads; i++)</div><div class="line">    &#123;</div><div class="line">        <span class="comment">//创建线程并且将thread函数传入</span></div><div class="line">        hThread[i] = pthread_create(&amp;hThread[i], <span class="literal">NULL</span>, thread, &amp;i);</div><div class="line">        <span class="comment">//让主线程等待1秒，确保子线程能够得到执行</span></div><div class="line">        sleep(<span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">double</span> pi = step * sum;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"Pi = %12.9f\n"</span>, pi);</div><div class="line">    <span class="keyword">clock_t</span> t2 = clock();</div><div class="line">    <span class="keyword">double</span> duration = (<span class="keyword">double</span>)(t2 - t1) / CLOCKS_PER_SEC;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"The whole computing time is %f seconds\n"</span>, duration);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;作业题目&quot;&gt;&lt;a href=&quot;#作业题目&quot; class=&quot;headerlink&quot; title=&quot;作业题目&quot;&gt;&lt;/a&gt;作业题目&lt;/h2&gt;&lt;p&gt;Write a program to figure out π with pthread. The formula is here as follows&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://p1.bpimg.com/567571/9f2c9da32b98fa85.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="操作系统原理" scheme="http://www.dengfuping.com/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/"/>
+    
+    
+      <category term="操作系统原理，xv6，多线程" scheme="http://www.dengfuping.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%EF%BC%8Cxv6%EF%BC%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OpenGL入门学习（二）</title>
+    <link href="http://www.dengfuping.com/2016/10/26/opengl-learning-2/"/>
+    <id>http://www.dengfuping.com/2016/10/26/opengl-learning-2/</id>
+    <published>2016-10-26T03:19:15.000Z</published>
+    <updated>2016-10-26T04:52:38.128Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="第一个OpenGL程序"><a href="#第一个OpenGL程序" class="headerlink" title="第一个OpenGL程序"></a>第一个OpenGL程序</h2><p>一个简单的OpenGL程序如下：（注意，如果需要编译并运行，需要正确安装GlUT，安装方法请参考 <a href="">OpenGL环境搭建</a>）.</p>
+<a id="more"></a>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GL/glut.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">myDisplay</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">&#123;</div><div class="line"></div><div class="line">     glClear(GL_COLOR_BUFFER_BIT);</div><div class="line">     glRectf(<span class="number">-0.5</span>f, <span class="number">-0.5</span>f, <span class="number">0.5f</span>, <span class="number">0.5f</span>);</div><div class="line">     glFlush();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></div><div class="line">&#123;</div><div class="line">     glutInit(&amp;argc, argv);</div><div class="line">     glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);</div><div class="line">     glutInitWindowPosition(<span class="number">100</span>, <span class="number">100</span>);</div><div class="line">     glutInitWindowSize(<span class="number">400</span>, <span class="number">400</span>);</div><div class="line">     glutCreateWindow(<span class="string">"第一个OpenGL程序"</span>);</div><div class="line">     glutDisplayFunc(&amp;myDisplay);</div><div class="line">     glutMainLoop();</div><div class="line"></div><div class="line">     <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h2><p><img src="http://p1.bqimg.com/567571/aa7cb6bd8e0a2912.png" alt=""></p>
+<h2 id="程序说明"><a href="#程序说明" class="headerlink" title="程序说明"></a>程序说明</h2><p>该程序的作用是在一个黑色的窗口中央画一个白色的矩形。<br>首先，需要包含头文件#include <gl glut.h="">，这是GLUT的头文件。<br>本来OpenGL程序一般还要包含<gl gl.h="">和<gl glu.h="">，但GLUT的头文件中已经自动将这两个文件包含了，不必再次包含。</gl></gl></gl></p>
+<h3 id="main-函数说明"><a href="#main-函数说明" class="headerlink" title="main()函数说明"></a>main()函数说明</h3><ul>
+<li>int main(int argc, char *argv[])，这个是带命令行参数的main函数，各位应该见过吧？没见过的同志们请多翻翻书，等弄明白了再往下看。</li>
+<li>注意main函数中的各语句，除了最后的return之外，其余全部以glut开头。这种以glut开头的函数都是GLUT工具包所提供的函数，下面对用到的几个函数进行介绍。<ol>
+<li>glutInit，对GLUT进行初始化，这个函数必须在其它的GLUT使用之前调用一次。其格式比较死板，一般照抄这句glutInit(&amp;argc, argv)就可以了。</li>
+<li>glutInitDisplayMode，设置显示方式，其中GLUT_RGB表示使用RGB颜色，与之对应的还有GLUT_INDEX（表示使用索引颜色）。GLUT_SINGLE表示使用单缓冲，与之对应的还有GLUT_DOUBLE（使用双缓冲）。更多信息，请自己Google。当然以后的教程也会有一些讲解。</li>
+<li>glutInitWindowPosition，这个简单，设置窗口在屏幕中的位置。</li>
+<li>glutInitWindowSize，这个也简单，设置窗口的大小。</li>
+<li>glutCreateWindow，根据前面设置的信息创建窗口。参数将被作为窗口的标题。注意：窗口被创建后，并不立即显示到屏幕上。需要调用glutMainLoop才能看到窗口。</li>
+<li>glutDisplayFunc，设置一个函数，当需要进行画图时，这个函数就会被调用。（这个说法不够准确，但准确的说法可能初学者不太好理解，暂时这样说吧）。</li>
+<li>glutMainLoop，进行一个消息循环。（这个可能初学者也不太明白，现在只需要知道这个函数可以显示窗口，并且等待窗口关闭后才会返回，这就足够了。）</li>
+</ol>
+</li>
+</ul>
+<h3 id="glutDisplayFunc-和myDisplay-函数说明"><a href="#glutDisplayFunc-和myDisplay-函数说明" class="headerlink" title="glutDisplayFunc()和myDisplay()函数说明"></a>glutDisplayFunc()和myDisplay()函数说明</h3><ul>
+<li>在glutDisplayFunc函数中，我们设置了“当需要画图时，请调用myDisplay函数”。于是myDisplay函数就用来画图。观察myDisplay中的三个函数调用，发现它们都以gl开头。这种以gl开头的函数都是OpenGL的标准函数，下面对用到的函数进行介绍。<ol>
+<li>glClear，清除。GL_COLOR_BUFFER_BIT表示清除颜色，glClear函数还可以清除其它的东西，但这里不作介绍。</li>
+<li>glRectf，画一个矩形。四个参数分别表示了位于对角线上的两个点的横、纵坐标。</li>
+<li>glFlush，保证前面的OpenGL命令立即执行（而不是让它们在缓冲区中等待）。其作用跟fflush(stdout)类似。</li>
+</ol>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;第一个OpenGL程序&quot;&gt;&lt;a href=&quot;#第一个OpenGL程序&quot; class=&quot;headerlink&quot; title=&quot;第一个OpenGL程序&quot;&gt;&lt;/a&gt;第一个OpenGL程序&lt;/h2&gt;&lt;p&gt;一个简单的OpenGL程序如下：（注意，如果需要编译并运行，需要正确安装GlUT，安装方法请参考 &lt;a href=&quot;&quot;&gt;OpenGL环境搭建&lt;/a&gt;）.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="OpenGL" scheme="http://www.dengfuping.com/categories/OpenGL/"/>
+    
+    
+      <category term="OpenGL" scheme="http://www.dengfuping.com/tags/OpenGL/"/>
+    
+      <category term="GLUT" scheme="http://www.dengfuping.com/tags/GLUT/"/>
+    
+      <category term="FreeGlut" scheme="http://www.dengfuping.com/tags/FreeGlut/"/>
+    
+      <category term="计算机图形" scheme="http://www.dengfuping.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>图像处理第2次大作业</title>
+    <link href="http://www.dengfuping.com/2016/10/16/image-processing-assignment-2/"/>
+    <id>http://www.dengfuping.com/2016/10/16/image-processing-assignment-2/</id>
+    <published>2016-10-15T16:19:51.000Z</published>
+    <updated>2016-10-22T08:30:40.632Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://p1.bpimg.com/567571/39a50e63c48a0019.jpg" alt=""></p>
+<p>这是图像处理最近的一次大作业，主要的 topic 是图像处理问题中常见的边缘检测问题 (Edge Detection)。涉及到了常用的边缘检测算子 Prewitt、Sobel、Canny、Laplacian 以及最近几年新出现的 FDoG。作业中相关算法主要是借助 OpenCV 和 Matlab 进行实现，有兴趣的同学可以参考以下我提交的大作业。<br><a id="more"></a></p>
+<h2 id="Assignment-2-1"><a href="#Assignment-2-1" class="headerlink" title="Assignment #2-1"></a>Assignment #2-1</h2><p><a href="http://www.dengfuping.name/pages/study/display/image-processing/Assignment2-1.pdf" target="_blank" rel="external">点击下载</a></p>
+<h2 id="Assignment-2-2"><a href="#Assignment-2-2" class="headerlink" title="Assignment #2-2"></a>Assignment #2-2</h2><p><a href="http://www.dengfuping.name/pages/study/display/image-processing/Assignment2-2.pdf" target="_blank" rel="external">点击下载</a></p>
+<h2 id="Assignment-2-3"><a href="#Assignment-2-3" class="headerlink" title="Assignment #2-3"></a>Assignment #2-3</h2><p><a href="http://www.dengfuping.name/pages/study/display/image-processing/Assignment2-3.pdf" target="_blank" rel="external">点击下载</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://p1.bpimg.com/567571/39a50e63c48a0019.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;这是图像处理最近的一次大作业，主要的 topic 是图像处理问题中常见的边缘检测问题 (Edge Detection)。涉及到了常用的边缘检测算子 Prewitt、Sobel、Canny、Laplacian 以及最近几年新出现的 FDoG。作业中相关算法主要是借助 OpenCV 和 Matlab 进行实现，有兴趣的同学可以参考以下我提交的大作业。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="大学学习" scheme="http://www.dengfuping.com/categories/%E5%A4%A7%E5%AD%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="图像处理，OpenCV" scheme="http://www.dengfuping.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%EF%BC%8COpenCV/"/>
+    
+      <category term="egde detecting" scheme="http://www.dengfuping.com/tags/egde-detecting/"/>
+    
+      <category term="边缘检测" scheme="http://www.dengfuping.com/tags/%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>xampp 常见问题及其解决方式</title>
+    <link href="http://www.dengfuping.com/2016/10/15/xampp-configuration-and-attention/"/>
+    <id>http://www.dengfuping.com/2016/10/15/xampp-configuration-and-attention/</id>
+    <published>2016-10-15T12:48:27.000Z</published>
+    <updated>2016-10-15T16:15:14.651Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近在可视化的一个小实验中需要使用 xampp 这个建站集成的软件包。在帮同学解决问题的过程中，想到自己去年刚刚接触这个的时候也是各种小问题不断。今天正好趁此机会，将常见的问题及其解决方式一并总结如下。<br><a id="more"></a></p>
+<h2 id="xampp-安装及需要了解的常识"><a href="#xampp-安装及需要了解的常识" class="headerlink" title="xampp 安装及需要了解的常识"></a>xampp 安装及需要了解的常识</h2><p>虽然安装时会提示你将杀毒软件关闭，否则可能安装失败。但实际测试的效果是，关不关都没什么区别。</p>
+<p>另外，需要注意的是，如果你的电脑已经安装有以下组件，要么先删除再安装，，要么在安装 xampp 是将你已经安装过的组件取消勾选，以免发生冲突。这里，我们采取的是全部安装。</p>
+<p><img src="http://p1.bpimg.com/567571/d9a3de3a3d2f9a85.png" alt=""></p>
+<p>默认端口号</p>
+<ul>
+<li>Apache: 80 和 443</li>
+<li>MySQL： 3306</li>
+<li>Tomcat： 8080</li>
+</ul>
+<p>MySQL 默认用户名为 root ，密码为空</p>
+<h2 id="端口占用问题"><a href="#端口占用问题" class="headerlink" title="端口占用问题"></a>端口占用问题</h2><p>一般网上的教程都是建议将端口号改成未被占用的端口号。此处，我建议采取将占用端口的进程关闭的解决方案。一来是方便以后的开发，二来改端口号需要改动配置文件的多处地方，比较麻烦。</p>
+<p>那如何查看端口被哪个进程占用呢？我们可以在命令行下输入 <code>netstat -ano</code> 来进行查看。结果发现 Apache需要使用的 443 端口被占用。</p>
+<p><img src="http://i1.piimg.com/567571/813e79cd24b5d0fc.png" alt=""></p>
+<p>当然，也可以不采取这种方式就可以达到查看进程信息的目的。在 xampp 的控制面板的右上角有一 netstat 的按钮，其实就告诉我们它就已经集成了查看进程信息的功能。</p>
+<p><img src="http://i1.piimg.com/567571/c58bb8f75c0554af.png" alt=""></p>
+<p><img src="http://i1.piimg.com/567571/698a95aae068605f.png" alt=""></p>
+<p>找到与端口号相对应的进程编号 PID。右键任务栏-&gt;任务管理器，进入任务管理器界面。在“详细信息”一栏中找到对应的 PID 进程编号，选中以后直接选择“结束任务”即可。</p>
+<p>重新启动 Apache，发现启动成功。</p>
+<p><img src="http://p1.bpimg.com/567571/93fdae831d8b7c1f.png" alt=""></p>
+<p>其他类似端口号被占用的问题都可以用同样的方法解决。</p>
+<h2 id="Apache-相关问题"><a href="#Apache-相关问题" class="headerlink" title="Apache 相关问题"></a>Apache 相关问题</h2><p>当我们新建 Web 项目（尤其是涉及到后台开发）的时候，我们需要将项目保存到 xampp 目录下的 htdocs 文件夹中，其中， htdocs 是 xampp 中 Apache 的服务器根目录。但这样既麻烦又不方便管理项目，那有没有办法不放在这个目录中呢？答案是有的。 </p>
+<p>在 xamp 控制面板点击 MySQL 对应的 Config 按钮选中并进入 httpd.conf 配置文件，将原有的服务器根目录改为你自己喜欢的目录。为了项目的方便管理，此处我将我的一个 PhpProjects 目录映射为 apache 的服务器根目录。</p>
+<p><img src="http://p1.bqimg.com/567571/76d9e0560a90082f.png" alt=""></p>
+<h3 id="MySQL-相关问题"><a href="#MySQL-相关问题" class="headerlink" title="MySQL 相关问题"></a>MySQL 相关问题</h3><h3 id="修改数据库密码"><a href="#修改数据库密码" class="headerlink" title="修改数据库密码"></a>修改数据库密码</h3><p>如前面所讲到的，安装的 MySQL 数据库密码默认为空，那如何修改数据库密码呢？其实很简单，只需要一条命令即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysqladmin -u root -p password admin</div><div class="line">Enter password: (在此处输入你原有的密码，原先密码为空，因此我们直接回车即可，之后会提示你输入你的新密码)</div></pre></td></tr></table></figure>
+<h3 id="修改数据库密码后-phpMyAdmin-无法打开"><a href="#修改数据库密码后-phpMyAdmin-无法打开" class="headerlink" title="修改数据库密码后 phpMyAdmin 无法打开"></a>修改数据库密码后 phpMyAdmin 无法打开</h3><p>找到 phpMyAdmin 的安装目录，打开 config.inc.php 文件，将 password 改为你的新密码即可通过 <a href="http://localhost/phpMyAdmin" target="_blank" rel="external">http://localhost/phpMyAdmin</a> 进行访问。</p>
+<h3 id="MySQL-数据库中中文乱码问题"><a href="#MySQL-数据库中中文乱码问题" class="headerlink" title="MySQL 数据库中中文乱码问题"></a>MySQL 数据库中中文乱码问题</h3><p>同样的，在 xamp 控制面板点击 MySQL 对应的 Config 按钮选中并进入 my.ini （这是 MySQL 的配置文件）文件，将 UTF 8 Settings 中的设置全部解除注释（默认是非 UTF-8 编码），如下图所示，保存以后即不会再出现乱码。</p>
+<p><img src="http://p1.bpimg.com/567571/82339639e5e64322.png" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近在可视化的一个小实验中需要使用 xampp 这个建站集成的软件包。在帮同学解决问题的过程中，想到自己去年刚刚接触这个的时候也是各种小问题不断。今天正好趁此机会，将常见的问题及其解决方式一并总结如下。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="环境搭建" scheme="http://www.dengfuping.com/categories/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+    
+    
+      <category term="xampp" scheme="http://www.dengfuping.com/tags/xampp/"/>
+    
+      <category term="apache" scheme="http://www.dengfuping.com/tags/apache/"/>
+    
+      <category term="tomcat" scheme="http://www.dengfuping.com/tags/tomcat/"/>
+    
+      <category term="mysql" scheme="http://www.dengfuping.com/tags/mysql/"/>
+    
+      <category term="环境搭建" scheme="http://www.dengfuping.com/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用VTK调用Marching Cubes和Volume Rendering</title>
+    <link href="http://www.dengfuping.com/2016/10/14/VTK-MarchingCubes-VolumeRendering/"/>
+    <id>http://www.dengfuping.com/2016/10/14/VTK-MarchingCubes-VolumeRendering/</id>
+    <published>2016-10-14T14:54:01.000Z</published>
+    <updated>2016-10-15T12:45:45.822Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://i1.piimg.com/567571/3f17b3c63b0588f6.png" alt=""></p>
+<p>前一段时间在可视化的实验课上，我第一次接触了VTK (The Visualization Toolkit)这一开源项目。在本篇文章中，将给出如何通过VTK来调用 Marching Cubes 和 Volume Rendering的方法。要说明的一点是，以下内容是基于 Ubuntu 16.04 的平台上运行的，其中VTK的版本为最新的7.0.0。至于 Ubuntu 下 VTK的编译安装将不属于本文的讨论范围，有兴趣的同学可以参考网上的相关教程进行环境搭建。<br><a id="more"></a></p>
+<h2 id="调用-Marching-Cubes"><a href="#调用-Marching-Cubes" class="headerlink" title="调用 Marching Cubes"></a>调用 Marching Cubes</h2><h3 id="Marching-Cubes-cxx-文件："><a href="#Marching-Cubes-cxx-文件：" class="headerlink" title="Marching Cubes.cxx 文件："></a>Marching Cubes.cxx 文件：</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div></pre></td><td class="code"><pre><div class="line">#include &lt;vtkVersion.h&gt;</div><div class="line">#include &lt;vtkSmartPointer.h&gt;</div><div class="line">#include &lt;vtkMarchingCubes.h&gt;</div><div class="line">#include &lt;vtkVoxelModeller.h&gt;</div><div class="line">#include &lt;vtkSphereSource.h&gt;</div><div class="line">#include &lt;vtkImageData.h&gt;</div><div class="line">#include &lt;vtkDICOMImageReader.h&gt;</div><div class="line"></div><div class="line">#include &lt;vtkActor.h&gt;</div><div class="line">#include &lt;vtkPolyDataMapper.h&gt;</div><div class="line">#include &lt;vtkRenderWindowInteractor.h&gt;</div><div class="line">#include &lt;vtkRenderWindow.h&gt;</div><div class="line">#include &lt;vtkRenderer.h&gt;</div><div class="line"></div><div class="line">int main(int argc, char *argv[]) &#123;</div><div class="line">    vtkSmartPointer &lt;vtkImageData&gt; volume =</div><div class="line">            vtkSmartPointer&lt;vtkImageData&gt;::New();</div><div class="line">    double isoValue;</div><div class="line">    if (argc &lt; 3) &#123;</div><div class="line">        vtkSmartPointer &lt;vtkSphereSource&gt; sphereSource =</div><div class="line">                vtkSmartPointer&lt;vtkSphereSource&gt;::New();</div><div class="line">        sphereSource-&gt;SetPhiResolution(20);</div><div class="line">        sphereSource-&gt;SetThetaResolution(20);</div><div class="line">        sphereSource-&gt;Update();</div><div class="line"></div><div class="line">        double bounds[6];</div><div class="line">        sphereSource-&gt;GetOutput()-&gt;GetBounds(bounds);</div><div class="line">        for (unsigned int i = 0; i &lt; 6; i += 2) &#123;</div><div class="line">            double range = bounds[i + 1] - bounds[i];</div><div class="line">            bounds[i] = bounds[i] - .1 * range;</div><div class="line">            bounds[i + 1] = bounds[i + 1] + .1 * range;</div><div class="line">        &#125;</div><div class="line">        vtkSmartPointer &lt;vtkVoxelModeller&gt; voxelModeller =</div><div class="line">                vtkSmartPointer&lt;vtkVoxelModeller&gt;::New();</div><div class="line">        voxelModeller-&gt;SetSampleDimensions(50, 50, 50);</div><div class="line">        voxelModeller-&gt;SetModelBounds(bounds);</div><div class="line">        voxelModeller-&gt;SetScalarTypeToFloat();</div><div class="line">        voxelModeller-&gt;SetMaximumDistance(.1);</div><div class="line"></div><div class="line">        voxelModeller-&gt;SetInputConnection(sphereSource-&gt;GetOutputPort());</div><div class="line">        voxelModeller-&gt;Update();</div><div class="line">        isoValue = 0.5;</div><div class="line">        volume-&gt;DeepCopy(voxelModeller-&gt;GetOutput());</div><div class="line">    &#125; else &#123;</div><div class="line">        vtkSmartPointer &lt;vtkDICOMImageReader&gt; reader =</div><div class="line">                vtkSmartPointer&lt;vtkDICOMImageReader&gt;::New();</div><div class="line">        reader-&gt;SetDirectoryName(argv[1]);</div><div class="line">        reader-&gt;Update();</div><div class="line">        volume-&gt;DeepCopy(reader-&gt;GetOutput());</div><div class="line">        isoValue = atof(argv[2]);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    vtkSmartPointer &lt;vtkMarchingCubes&gt; surface =</div><div class="line">            vtkSmartPointer&lt;vtkMarchingCubes&gt;::New();</div><div class="line"></div><div class="line">#if VTK_MAJOR_VERSION &lt;= 5</div><div class="line">    surface-&gt;SetInput(volume);</div><div class="line">#else</div><div class="line">    surface-&gt;SetInputData(volume);</div><div class="line">#endif</div><div class="line">    surface-&gt;ComputeNormalsOn();</div><div class="line">    surface-&gt;SetValue(0, isoValue);</div><div class="line"></div><div class="line">    vtkSmartPointer &lt;vtkRenderer&gt; renderer =</div><div class="line">            vtkSmartPointer&lt;vtkRenderer&gt;::New();</div><div class="line">    renderer-&gt;SetBackground(.1, .2, .3);</div><div class="line"></div><div class="line">    vtkSmartPointer &lt;vtkRenderWindow&gt; renderWindow =</div><div class="line">            vtkSmartPointer&lt;vtkRenderWindow&gt;::New();</div><div class="line">    renderWindow-&gt;AddRenderer(renderer);</div><div class="line">    vtkSmartPointer &lt;vtkRenderWindowInteractor&gt; interactor =</div><div class="line">            vtkSmartPointer&lt;vtkRenderWindowInteractor&gt;::New();</div><div class="line">    interactor-&gt;SetRenderWindow(renderWindow);</div><div class="line"></div><div class="line">    vtkSmartPointer &lt;vtkPolyDataMapper&gt; mapper =</div><div class="line">            vtkSmartPointer&lt;vtkPolyDataMapper&gt;::New();</div><div class="line">    mapper-&gt;SetInputConnection(surface-&gt;GetOutputPort());</div><div class="line">    mapper-&gt;ScalarVisibilityOff();</div><div class="line"></div><div class="line">    vtkSmartPointer &lt;vtkActor&gt; actor =</div><div class="line">            vtkSmartPointer&lt;vtkActor&gt;::New();</div><div class="line">    actor-&gt;SetMapper(mapper);</div><div class="line"></div><div class="line">    renderer-&gt;AddActor(actor);</div><div class="line"></div><div class="line">    renderWindow-&gt;Render();</div><div class="line">    interactor-&gt;Start();</div><div class="line">    return EXIT_SUCCESS;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="CMakeLists-txt文件："><a href="#CMakeLists-txt文件：" class="headerlink" title="CMakeLists.txt文件："></a>CMakeLists.txt文件：</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">2.8</span>)</div><div class="line"></div><div class="line"><span class="keyword">PROJECT</span>(MarchingCubes)</div><div class="line"></div><div class="line"><span class="keyword">find_package</span>(VTK REQUIRED)</div><div class="line"><span class="keyword">include</span>(<span class="variable">$&#123;VTK_USE_FILE&#125;</span>)</div><div class="line"></div><div class="line"><span class="keyword">add_executable</span>(MarchingCubes MACOSX_BUNDLE MarchingCubes)</div><div class="line"></div><div class="line"><span class="keyword">if</span>(VTK_LIBRARIES)</div><div class="line">    <span class="keyword">target_link_libraries</span>(MarchingCubes <span class="variable">$&#123;VTK_LIBRARIES&#125;</span>)</div><div class="line"><span class="keyword">else</span>()</div><div class="line">    <span class="keyword">target_link_libraries</span>(MarchingCubes vtkHybrid vtkWidgets)</div><div class="line"><span class="keyword">endif</span>()</div></pre></td></tr></table></figure>
+<p>这是已经写好的完整项目 <a href="https://github.com/lorensen/VTKWikiExamplesTarballs/raw/master/MarchingCubes.tar" target="_blank" rel="external">MarchingCubes</a>。下载以后进行解压，并且：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> MarchingCubes/build</div><div class="line">$ cmake ..</div></pre></td></tr></table></figure>
+<p>生成项目并且运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ make</div><div class="line">$ ./MarchingCubes</div></pre></td></tr></table></figure>
+<p>运行结果为：</p>
+<p><img src="http://i1.piimg.com/567571/87a3b5aae10ca9f1.png" alt=""></p>
+<p>如果使用外部 Marching Cubes Data Sets数据集中的 <a href="https://placid.nlm.nih.gov/community/21" target="_blank" rel="external">MarchingMan</a> 数据文件，则将其解压至 build 文件夹中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ./MarchingCubes Marching\ Man 1000</div></pre></td></tr></table></figure>
+<p>此处是在运行时传入两个参数：一个是数据文件所在目录 Marching Man，另一个是 ISO 感光度的值1000。并且，需要注意的是，由于解压后的数据文件夹为 Marching Man ，中间含有空格，因此须用反斜杠 \ 进行转义。当然，你也可以将其重命名为 MarchingMan ，这样在运行传参的时候就不需要对空格进行转义了，即可写为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ./MarchingCubes MarchingMan 1000</div></pre></td></tr></table></figure>
+<p>最后的运行结果为：</p>
+<p><img src="http://p1.bpimg.com/567571/164ff93929c1684a.png" alt=""></p>
+<p>如果使用 Mummies 中的 Male 数据，则</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ./MarchingCubes Mummies/Male 100</div></pre></td></tr></table></figure>
+<p><img src="http://p1.bqimg.com/567571/ce8a6cd196245bf5.png" alt=""></p>
+<p>如果使用 Mummies 中的 Female 数据，则</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ./MarchingCubes Mummies/Female 1000</div></pre></td></tr></table></figure>
+<p><img src="http://p1.bqimg.com/567571/afd3d0c66ceaddfa.png" alt=""></p>
+<p>如果使用 PlasticSkull 中的数据，则</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ./MarchingCubes PlasticSkull 1000</div></pre></td></tr></table></figure>
+<p><img src="http://p1.bqimg.com/567571/27dc0858828f87c2.png" alt=""></p>
+<h2 id="调用-Volume-Rendering"><a href="#调用-Volume-Rendering" class="headerlink" title="调用 Volume Rendering"></a>调用 Volume Rendering</h2><p>由于在 VTK 中 Volume Rendering 的调用方式有多种，这里我们选取其中的 SmartVolumeMapper 进行讲解。</p>
+<h3 id="MinIntensityRendering-cxx"><a href="#MinIntensityRendering-cxx" class="headerlink" title="MinIntensityRendering.cxx"></a>MinIntensityRendering.cxx</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkSmartPointer.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkCamera.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkFiniteDifferenceGradientEstimator.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkImageClip.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkPiecewiseFunction.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkRenderWindow.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkRenderWindowInteractor.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkRenderer.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkStructuredPoints.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkStructuredPointsReader.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkVolume.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkVolumeProperty.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkFixedPointVolumeRayCastMapper.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkColorTransferFunction.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (argc &lt; <span class="number">2</span>) &#123;</div><div class="line">        <span class="built_in">std</span>::<span class="built_in">cerr</span> &lt;&lt; <span class="string">"Required arguments: vtkFile"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</div><div class="line">        <span class="keyword">return</span> EXIT_FAILURE;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> filename = argv[<span class="number">1</span>]; <span class="comment">//  "/Data/ironProt.vtk";</span></div><div class="line"></div><div class="line">    <span class="comment">// Create the renderers, render window, and interactor</span></div><div class="line">    vtkSmartPointer &lt;vtkRenderWindow&gt; renWin =</div><div class="line">            vtkSmartPointer&lt;vtkRenderWindow&gt;::New();</div><div class="line">    vtkSmartPointer &lt;vtkRenderWindowInteractor&gt; iren =</div><div class="line">            vtkSmartPointer&lt;vtkRenderWindowInteractor&gt;::New();</div><div class="line">    iren-&gt;SetRenderWindow(renWin);</div><div class="line">    vtkSmartPointer &lt;vtkRenderer&gt; ren =</div><div class="line">            vtkSmartPointer&lt;vtkRenderer&gt;::New();</div><div class="line">    renWin-&gt;AddRenderer(ren);</div><div class="line"></div><div class="line">    <span class="comment">// Read the data from a vtk file</span></div><div class="line">    vtkSmartPointer &lt;vtkStructuredPointsReader&gt; reader =</div><div class="line">            vtkSmartPointer&lt;vtkStructuredPointsReader&gt;::New();</div><div class="line">    reader-&gt;SetFileName(filename.c_str());</div><div class="line">    reader-&gt;Update();</div><div class="line"></div><div class="line">    <span class="comment">// Create a transfer function mapping scalar value to opacity</span></div><div class="line">    vtkSmartPointer &lt;vtkPiecewiseFunction&gt; oTFun =</div><div class="line">            vtkSmartPointer&lt;vtkPiecewiseFunction&gt;::New();</div><div class="line">    oTFun-&gt;AddSegment(<span class="number">0</span>, <span class="number">1.0</span>, <span class="number">256</span>, <span class="number">0.1</span>);</div><div class="line"></div><div class="line">    vtkSmartPointer &lt;vtkColorTransferFunction&gt; cTFun =</div><div class="line">            vtkSmartPointer&lt;vtkColorTransferFunction&gt;::New();</div><div class="line">    cTFun-&gt;AddRGBPoint(<span class="number">0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>);</div><div class="line">    cTFun-&gt;AddRGBPoint(<span class="number">255</span>, <span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>);</div><div class="line"></div><div class="line">    <span class="comment">// Need to crop to actually see minimum intensity</span></div><div class="line">    vtkSmartPointer &lt;vtkImageClip&gt; clip =</div><div class="line">            vtkSmartPointer&lt;vtkImageClip&gt;::New();</div><div class="line">    clip-&gt;SetInputConnection(reader-&gt;GetOutputPort());</div><div class="line">    clip-&gt;SetOutputWholeExtent(<span class="number">0</span>, <span class="number">66</span>, <span class="number">0</span>, <span class="number">66</span>, <span class="number">30</span>, <span class="number">37</span>);</div><div class="line">    clip-&gt;ClipDataOn();</div><div class="line"></div><div class="line">    vtkSmartPointer &lt;vtkVolumeProperty&gt; property =</div><div class="line">            vtkSmartPointer&lt;vtkVolumeProperty&gt;::New();</div><div class="line">    property-&gt;SetScalarOpacity(oTFun);</div><div class="line">    property-&gt;SetColor(cTFun);</div><div class="line">    property-&gt;SetInterpolationTypeToLinear();</div><div class="line"></div><div class="line">    vtkSmartPointer &lt;vtkFixedPointVolumeRayCastMapper&gt; mapper =</div><div class="line">            vtkSmartPointer&lt;vtkFixedPointVolumeRayCastMapper&gt;::New();</div><div class="line">    mapper-&gt;SetBlendModeToMinimumIntensity();</div><div class="line">    mapper-&gt;SetInputConnection(clip-&gt;GetOutputPort());</div><div class="line"></div><div class="line">    vtkSmartPointer &lt;vtkVolume&gt; volume =</div><div class="line">            vtkSmartPointer&lt;vtkVolume&gt;::New();</div><div class="line">    volume-&gt;SetMapper(mapper);</div><div class="line">    volume-&gt;SetProperty(property);</div><div class="line"></div><div class="line">    ren-&gt;AddViewProp(volume);</div><div class="line">    renWin-&gt;Render();</div><div class="line">    iren-&gt;Start();</div><div class="line"></div><div class="line">    <span class="keyword">return</span> EXIT_SUCCESS;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="CMakeLists-txt"><a href="#CMakeLists-txt" class="headerlink" title="CMakeLists.txt"></a>CMakeLists.txt</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">2.8</span>)</div><div class="line"> </div><div class="line"><span class="keyword">PROJECT</span>(MinIntensityRendering)</div><div class="line"> </div><div class="line"><span class="keyword">find_package</span>(VTK REQUIRED)</div><div class="line"><span class="keyword">include</span>(<span class="variable">$&#123;VTK_USE_FILE&#125;</span>)</div><div class="line"> </div><div class="line"><span class="keyword">add_executable</span>(MinIntensityRendering MACOSX_BUNDLE MinIntensityRendering)</div><div class="line"> </div><div class="line"><span class="keyword">if</span>(VTK_LIBRARIES)</div><div class="line">	<span class="keyword">target_link_libraries</span>(MinIntensityRendering <span class="variable">$&#123;VTK_LIBRARIES&#125;</span>)</div><div class="line"><span class="keyword">else</span>()</div><div class="line">	<span class="keyword">target_link_libraries</span>(MinIntensityRendering vtkHybrid vtkWidgets)</div><div class="line"><span class="keyword">endif</span>()</div></pre></td></tr></table></figure>
+<p>在这里，同样提供已经写好的 <a href="https://raw.githubusercontent.com/lorensen/VTKWikiExamplesTarballs/master/MinIntensityRendering.tar" target="_blank" rel="external">MinIntensityRendering</a> 项目工程文件和运行所需要的 VTK 文件 <a href="https://midas3.kitware.com/midas/item/206383" target="_blank" rel="external">ironProt.vtk</a> 。下载解压，将 ironProt.vtk 放入 build 文件夹中，然后</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> M<span class="keyword">in</span>IntensityRendering/build</div><div class="line">$ cmake ..</div><div class="line">$ make</div><div class="line">$ ./M<span class="keyword">in</span>IntensityRendering ironProt.vtk</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="http://p1.bpimg.com/567571/2c34f33003a74203.png" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://i1.piimg.com/567571/3f17b3c63b0588f6.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;前一段时间在可视化的实验课上，我第一次接触了VTK (The Visualization Toolkit)这一开源项目。在本篇文章中，将给出如何通过VTK来调用 Marching Cubes 和 Volume Rendering的方法。要说明的一点是，以下内容是基于 Ubuntu 16.04 的平台上运行的，其中VTK的版本为最新的7.0.0。至于 Ubuntu 下 VTK的编译安装将不属于本文的讨论范围，有兴趣的同学可以参考网上的相关教程进行环境搭建。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="VTK" scheme="http://www.dengfuping.com/categories/VTK/"/>
+    
+    
+      <category term="VTK" scheme="http://www.dengfuping.com/tags/VTK/"/>
+    
+      <category term="可视化" scheme="http://www.dengfuping.com/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+    
+      <category term="Marching Cubes" scheme="http://www.dengfuping.com/tags/Marching-Cubes/"/>
+    
+      <category term="Volume Rendering" scheme="http://www.dengfuping.com/tags/Volume-Rendering/"/>
+    
+  </entry>
+  
+</feed>
