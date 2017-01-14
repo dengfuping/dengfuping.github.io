@@ -86,28 +86,12 @@
 
 
 
-<meta name="description" content="实验步骤添加alarm系统调用使用grep命令筛选出出现uptime字样的文件和文件中所在行号，以便仿照uptime系统调用实现alarm系统调用：
-
-在syscall.c中添加系统调用函数的外部声明，共有两处地方需要添加：
-
-
-在syscall.h中添加系统调用号：
-在sysproc.c中添加系统调用函数sys_alarm()的实现：
-在user.h中添加用户态函数的定义：
-在usys.S中添加">
+<meta name="description" content="实验步骤添加alarm系统调用使用grep命令筛选出出现uptime字样的文件和文件中所在行号，以便仿照uptime系统调用实现alarm系统调用：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="操作系统原理作业（五）：xv6 CPU alarm">
 <meta property="og:url" content="http://www.dengfuping.com/2017/01/14/operating-system-homework-5/index.html">
 <meta property="og:site_name" content="Deng | 不搭">
-<meta property="og:description" content="实验步骤添加alarm系统调用使用grep命令筛选出出现uptime字样的文件和文件中所在行号，以便仿照uptime系统调用实现alarm系统调用：
-
-在syscall.c中添加系统调用函数的外部声明，共有两处地方需要添加：
-
-
-在syscall.h中添加系统调用号：
-在sysproc.c中添加系统调用函数sys_alarm()的实现：
-在user.h中添加用户态函数的定义：
-在usys.S中添加">
+<meta property="og:description" content="实验步骤添加alarm系统调用使用grep命令筛选出出现uptime字样的文件和文件中所在行号，以便仿照uptime系统调用实现alarm系统调用：">
 <meta property="og:image" content="http://i1.piimg.com/567571/b449eb3650ec4c8c.png">
 <meta property="og:image" content="http://p1.bqimg.com/567571/eda2df5a78f77959.png">
 <meta property="og:image" content="http://p1.bqimg.com/567571/135d3a90b9996530.png">
@@ -115,18 +99,15 @@
 <meta property="og:image" content="http://p1.bqimg.com/567571/a43d46dfb8420e8d.png">
 <meta property="og:image" content="http://p1.bqimg.com/567571/5046f03de31588b6.png">
 <meta property="og:image" content="http://p1.bqimg.com/567571/80960fe721a22aa1.png">
-<meta property="og:updated_time" content="2017-01-14T09:00:52.824Z">
+<meta property="og:image" content="http://p1.bqimg.com/567571/7d42436daf478335.png">
+<meta property="og:image" content="http://p1.bqimg.com/567571/4ae5aea7adfda51e.png">
+<meta property="og:image" content="http://p1.bqimg.com/567571/3a02394c1382a3d7.png">
+<meta property="og:image" content="http://p1.bqimg.com/567571/19c29f3ddddb7149.png">
+<meta property="og:image" content="http://p1.bqimg.com/567571/42e8413eb6f94c0f.png">
+<meta property="og:updated_time" content="2017-01-14T09:11:50.953Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统原理作业（五）：xv6 CPU alarm">
-<meta name="twitter:description" content="实验步骤添加alarm系统调用使用grep命令筛选出出现uptime字样的文件和文件中所在行号，以便仿照uptime系统调用实现alarm系统调用：
-
-在syscall.c中添加系统调用函数的外部声明，共有两处地方需要添加：
-
-
-在syscall.h中添加系统调用号：
-在sysproc.c中添加系统调用函数sys_alarm()的实现：
-在user.h中添加用户态函数的定义：
-在usys.S中添加">
+<meta name="twitter:description" content="实验步骤添加alarm系统调用使用grep命令筛选出出现uptime字样的文件和文件中所在行号，以便仿照uptime系统调用实现alarm系统调用：">
 <meta name="twitter:image" content="http://i1.piimg.com/567571/b449eb3650ec4c8c.png">
 
 
@@ -414,15 +395,18 @@ var _hmt = _hmt || [];
       
 
       
-        <h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><h3 id="添加alarm系统调用"><a href="#添加alarm系统调用" class="headerlink" title="添加alarm系统调用"></a>添加alarm系统调用</h3><p>使用grep命令筛选出出现uptime字样的文件和文件中所在行号，以便仿照uptime系统调用实现alarm系统调用：</p>
-<p><img src="http://i1.piimg.com/567571/b449eb3650ec4c8c.png" alt=""></p>
-<p>在syscall.c中添加系统调用函数的外部声明，共有两处地方需要添加：</p>
-<p><img src="http://p1.bqimg.com/567571/eda2df5a78f77959.png" alt=""></p>
+        <h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><h3 id="添加alarm系统调用"><a href="#添加alarm系统调用" class="headerlink" title="添加alarm系统调用"></a>添加alarm系统调用</h3><p>使用grep命令筛选出出现uptime字样的文件和文件中所在行号，以便仿照uptime系统调用实现alarm系统调用：<br><img src="http://i1.piimg.com/567571/b449eb3650ec4c8c.png" alt=""><br><a id="more"></a></p>
+<p>在syscall.c中添加系统调用函数的外部声明，共有两处地方需要添加：<br><img src="http://p1.bqimg.com/567571/eda2df5a78f77959.png" alt=""></p>
 <p><img src="http://p1.bqimg.com/567571/135d3a90b9996530.png" alt=""></p>
 <p>在syscall.h中添加系统调用号：<br><img src="http://p1.bqimg.com/567571/0a6babf17226d707.png" alt=""></p>
 <p>在sysproc.c中添加系统调用函数sys_alarm()的实现：<br><img src="http://p1.bqimg.com/567571/a43d46dfb8420e8d.png" alt=""></p>
 <p>在user.h中添加用户态函数的定义：<br><img src="http://p1.bqimg.com/567571/5046f03de31588b6.png" alt=""></p>
 <p>在usys.S中添加用户态函数的实现：<br><img src="http://p1.bqimg.com/567571/80960fe721a22aa1.png" alt=""></p>
+<h3 id="创建用户程序alarmtest-c"><a href="#创建用户程序alarmtest-c" class="headerlink" title="创建用户程序alarmtest.c"></a>创建用户程序alarmtest.c</h3><p>由于我们还需要在用户空间来对内核提供的系统命令进行调用，新建用户程序alarmtest.c文件，写入以下代码：<br><img src="http://p1.bqimg.com/567571/7d42436daf478335.png" alt=""></p>
+<h3 id="修改Makefile文件"><a href="#修改Makefile文件" class="headerlink" title="修改Makefile文件"></a>修改Makefile文件</h3><p>在Makefile文件UPROGS处添加_alarmtest：<br><img src="http://p1.bqimg.com/567571/4ae5aea7adfda51e.png" alt=""></p>
+<h3 id="修改proc-h文件"><a href="#修改proc-h文件" class="headerlink" title="修改proc.h文件"></a>修改proc.h文件</h3><p>在proc.h文件的proc结构体中，添加以下三个属性：<br><img src="http://p1.bqimg.com/567571/3a02394c1382a3d7.png" alt=""></p>
+<h3 id="修改trap-c文件"><a href="#修改trap-c文件" class="headerlink" title="修改trap.c文件"></a>修改trap.c文件</h3><p>在trap.c文件中的“case T_IRQ0 + IRQ_TIMER”位置处添加以下代码：<br><img src="http://p1.bqimg.com/567571/19c29f3ddddb7149.png" alt=""></p>
+<h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p><img src="http://p1.bqimg.com/567571/42e8413eb6f94c0f.png" alt=""></p>
 
       
     </div>
@@ -655,7 +639,7 @@ var _hmt = _hmt || [];
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#实验步骤"><span class="nav-number">1.</span> <span class="nav-text">实验步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加alarm系统调用"><span class="nav-number">1.1.</span> <span class="nav-text">添加alarm系统调用</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#实验步骤"><span class="nav-number">1.</span> <span class="nav-text">实验步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加alarm系统调用"><span class="nav-number">1.1.</span> <span class="nav-text">添加alarm系统调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建用户程序alarmtest-c"><span class="nav-number">1.2.</span> <span class="nav-text">创建用户程序alarmtest.c</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改Makefile文件"><span class="nav-number">1.3.</span> <span class="nav-text">修改Makefile文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改proc-h文件"><span class="nav-number">1.4.</span> <span class="nav-text">修改proc.h文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改trap-c文件"><span class="nav-number">1.5.</span> <span class="nav-text">修改trap.c文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验结果"><span class="nav-number">2.</span> <span class="nav-text">实验结果</span></a></li></ol></div>
             
           </div>
         </section>
