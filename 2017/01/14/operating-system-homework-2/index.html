@@ -96,7 +96,7 @@
 <meta property="og:image" content="http://i1.piimg.com/567571/2b03083d7bd0141d.png">
 <meta property="og:image" content="http://i1.piimg.com/567571/8ff6892c524ed107.png">
 <meta property="og:image" content="http://i1.piimg.com/567571/12b5e5e7b3ad4e67.png">
-<meta property="og:updated_time" content="2017-01-14T03:43:08.870Z">
+<meta property="og:updated_time" content="2017-01-14T03:51:24.541Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统原理作业（二）：xv6 shell编程作业之实现shell的基础命令">
 <meta name="twitter:description" content="作业题目要求在原有代码的基础上，实现shell的三类基础命令，它们包括：">
@@ -325,6 +325,25 @@ var _hmt = _hmt || [];
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/操作系统原理/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统原理</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -371,13 +390,13 @@ var _hmt = _hmt || [];
         <h2 id="作业题目"><a href="#作业题目" class="headerlink" title="作业题目"></a>作业题目</h2><p>要求在原有代码的基础上，实现shell的三类基础命令，它们包括：<br><a id="more"></a></p>
 <ol>
 <li>简单命令（可执行的程序命令，如ls等）</li>
-<li><p>I/O重定向命令，如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">echo</span> <span class="string">"6.828 is cool"</span> &gt; x.txt</div><div class="line">$ cat &lt; x.txt</div></pre></td></tr></table></figure>
-</li>
-<li><p>管道命令（pipe）,如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ls | sort | uniq | wc</div></pre></td></tr></table></figure>
-</li>
+<li>I/O重定向命令，如：</li>
 </ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">echo</span> <span class="string">"6.828 is cool"</span> &gt; x.txt</div><div class="line">$ cat &lt; x.txt</div></pre></td></tr></table></figure>
+<ol>
+<li>管道命令（pipe）,如：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ls | sort | uniq | wc</div></pre></td></tr></table></figure>
 <h2 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h2><p>原有代码中定义了输入命令的基础结构体，即 struct cmd。这个结构体就一个成员type，用于记录输入命令的类型： ‘ ‘ 表示简单可执行命令 ‘|’ 表示管道命令, ‘&lt;’ 和’&gt;’ 表示I/O重定向命令。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> cmd &#123;</div><div class="line">    <span class="keyword">int</span> type;    <span class="comment">// ' ' (exec), | (pipe), '&lt;' or '&gt;' for redirection</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 <p>每一个类型分别继承cmd基础结构体，派生出对应的三类结构体：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> execcmd &#123;</div><div class="line">    <span class="keyword">int</span> type;              <span class="comment">// ' '</span></div><div class="line">    <span class="keyword">char</span> *argv[MAXARGS];   <span class="comment">// arguments to the command to be exec-ed</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">struct</span> redircmd &#123;</div><div class="line">    <span class="keyword">int</span> type;          <span class="comment">// &lt; or &gt;</span></div><div class="line">    <span class="keyword">struct</span> cmd *cmd;   <span class="comment">// the command to be run (e.g., an execcmd)</span></div><div class="line">    <span class="keyword">char</span> *file;        <span class="comment">// the input/output file</span></div><div class="line">    <span class="keyword">int</span> mode;          <span class="comment">// the mode to open the file with</span></div><div class="line">    <span class="keyword">int</span> fd;            <span class="comment">// the file descriptor number to use for the file</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">struct</span> pipecmd &#123;</div><div class="line">    <span class="keyword">int</span> type;          <span class="comment">// |</span></div><div class="line">    <span class="keyword">struct</span> cmd *left;  <span class="comment">// left side of pipe</span></div><div class="line">    <span class="keyword">struct</span> cmd *right; <span class="comment">// right side of pipe</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 <p>经过分析，设计了以下的运行流程，其中，管道命令的解析和运行是通过递归函数实现的。<br><img src="http://p1.bqimg.com/567571/10acf80cf500c5b2.png" alt=""></p>
@@ -447,13 +466,17 @@ var _hmt = _hmt || [];
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/13/operating-system-homework-1/" rel="next" title="操作系统原理作业(一)：利用Linux多线程机制和积分中值定理计算π的值">
-                <i class="fa fa-chevron-left"></i> 操作系统原理作业(一)：利用Linux多线程机制和积分中值定理计算π的值
+              <a href="/2017/01/13/operating-system-homework-1/" rel="next" title="操作系统原理作业（一）：利用Linux多线程机制和积分中值定理计算π的值">
+                <i class="fa fa-chevron-left"></i> 操作系统原理作业（一）：利用Linux多线程机制和积分中值定理计算π的值
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/14/operating-system-homework-3/" rel="prev" title="操作系统原理作业（三）：IPC编程问题">
+                操作系统原理作业（三）：IPC编程问题 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -528,7 +551,7 @@ var _hmt = _hmt || [];
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -545,7 +568,7 @@ var _hmt = _hmt || [];
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
