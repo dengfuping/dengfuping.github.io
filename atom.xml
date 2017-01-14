@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dengfuping.com/"/>
-  <updated>2017-01-13T17:16:57.921Z</updated>
+  <updated>2017-01-14T03:09:00.364Z</updated>
   <id>http://www.dengfuping.com/</id>
   
   <author>
@@ -16,11 +16,51 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>操作系统原理作业(二)：xv6 shell编程作业之实现shell的基础命令</title>
+    <link href="http://www.dengfuping.com/2017/01/14/operating-system-homework-2/"/>
+    <id>http://www.dengfuping.com/2017/01/14/operating-system-homework-2/</id>
+    <published>2017-01-14T02:54:49.000Z</published>
+    <updated>2017-01-14T03:09:00.364Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="作业题目"><a href="#作业题目" class="headerlink" title="作业题目"></a>作业题目</h2><p>要求在原有代码的基础上，实现shell的三类基础命令，它们包括：</p>
+<ol>
+<li><p>简单命令（可执行的程序命令，如ls等）</p>
+</li>
+<li><p>I/O重定向命令，如：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">echo</span> <span class="string">"6.828 is cool"</span> &gt; x.txt</div><div class="line">$ cat &lt; x.txt</div></pre></td></tr></table></figure>
+</li>
+<li><p>管道命令（pipe）,如：</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ls | sort | uniq | wc</div></pre></td></tr></table></figure>
+<h2 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h2><pre><code>原有代码中定义了输入命令的基础结构体，即 struct cmd。这个结构体就一个成员type，用于记录输入命令的类型： &apos; &apos; 表示简单可执行命令 &apos;|&apos; 表示管道命令, &apos;&lt;&apos; 和&apos;&gt;&apos; 表示I/O重定向命令。
+</code></pre><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> cmd &#123;</div><div class="line">    <span class="keyword">int</span> type;    <span class="comment">// ' ' (exec), | (pipe), '&lt;' or '&gt;' for redirection</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<pre><code>每一个类型分别继承cmd基础结构体，派生出对应的三类结构体：
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;作业题目&quot;&gt;&lt;a href=&quot;#作业题目&quot; class=&quot;headerlink&quot; title=&quot;作业题目&quot;&gt;&lt;/a&gt;作业题目&lt;/h2&gt;&lt;p&gt;要求在原有代码的基础上，实现shell的三类基础命令，它们包括：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;简单命令（可执行的程序命令
+    
+    </summary>
+    
+    
+      <category term="操作系统原理" scheme="http://www.dengfuping.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/"/>
+    
+      <category term="xv6" scheme="http://www.dengfuping.com/tags/xv6/"/>
+    
+      <category term="shell 编程" scheme="http://www.dengfuping.com/tags/shell-%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
     <title>操作系统原理作业(一)：利用Linux多线程机制和积分中值定理计算π的值</title>
     <link href="http://www.dengfuping.com/2017/01/13/operating-system-homework-1/"/>
     <id>http://www.dengfuping.com/2017/01/13/operating-system-homework-1/</id>
     <published>2017-01-13T15:32:47.000Z</published>
-    <updated>2017-01-13T17:16:57.921Z</updated>
+    <updated>2017-01-14T03:01:10.971Z</updated>
     
     <content type="html"><![CDATA[<h2 id="作业题目"><a href="#作业题目" class="headerlink" title="作业题目"></a>作业题目</h2><p>Write a program to figure out π with pthread. The formula is here as follows</p>
 <p><img src="http://p1.bpimg.com/567571/9f2c9da32b98fa85.png" alt=""></p>
@@ -63,7 +103,11 @@
       <category term="操作系统原理" scheme="http://www.dengfuping.com/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/"/>
     
     
-      <category term="操作系统原理，xv6，多线程" scheme="http://www.dengfuping.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%EF%BC%8Cxv6%EF%BC%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+      <category term="操作系统原理" scheme="http://www.dengfuping.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/"/>
+    
+      <category term="xv6" scheme="http://www.dengfuping.com/tags/xv6/"/>
+    
+      <category term="多线程" scheme="http://www.dengfuping.com/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
     
   </entry>
   
@@ -217,7 +261,7 @@
     <link href="http://www.dengfuping.com/2016/10/14/VTK-MarchingCubes-VolumeRendering/"/>
     <id>http://www.dengfuping.com/2016/10/14/VTK-MarchingCubes-VolumeRendering/</id>
     <published>2016-10-14T14:54:01.000Z</published>
-    <updated>2016-10-15T12:45:45.822Z</updated>
+    <updated>2017-01-14T02:56:25.503Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://i1.piimg.com/567571/3f17b3c63b0588f6.png" alt=""></p>
 <p>前一段时间在可视化的实验课上，我第一次接触了VTK (The Visualization Toolkit)这一开源项目。在本篇文章中，将给出如何通过VTK来调用 Marching Cubes 和 Volume Rendering的方法。要说明的一点是，以下内容是基于 Ubuntu 16.04 的平台上运行的，其中VTK的版本为最新的7.0.0。至于 Ubuntu 下 VTK的编译安装将不属于本文的讨论范围，有兴趣的同学可以参考网上的相关教程进行环境搭建。<br><a id="more"></a></p>
