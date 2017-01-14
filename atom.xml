@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dengfuping.com/"/>
-  <updated>2017-01-14T03:09:00.364Z</updated>
+  <updated>2017-01-14T03:13:24.666Z</updated>
   <id>http://www.dengfuping.com/</id>
   
   <author>
@@ -20,29 +20,28 @@
     <link href="http://www.dengfuping.com/2017/01/14/operating-system-homework-2/"/>
     <id>http://www.dengfuping.com/2017/01/14/operating-system-homework-2/</id>
     <published>2017-01-14T02:54:49.000Z</published>
-    <updated>2017-01-14T03:09:00.364Z</updated>
+    <updated>2017-01-14T03:13:24.666Z</updated>
     
     <content type="html"><![CDATA[<h2 id="作业题目"><a href="#作业题目" class="headerlink" title="作业题目"></a>作业题目</h2><p>要求在原有代码的基础上，实现shell的三类基础命令，它们包括：</p>
 <ol>
-<li><p>简单命令（可执行的程序命令，如ls等）</p>
-</li>
+<li>简单命令（可执行的程序命令，如ls等）</li>
 <li><p>I/O重定向命令，如：</p>
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">echo</span> <span class="string">"6.828 is cool"</span> &gt; x.txt</div><div class="line">$ cat &lt; x.txt</div></pre></td></tr></table></figure>
 </li>
 <li><p>管道命令（pipe）,如：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ls | sort | uniq | wc</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ls | sort | uniq | wc</div></pre></td></tr></table></figure>
-<h2 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h2><pre><code>原有代码中定义了输入命令的基础结构体，即 struct cmd。这个结构体就一个成员type，用于记录输入命令的类型： &apos; &apos; 表示简单可执行命令 &apos;|&apos; 表示管道命令, &apos;&lt;&apos; 和&apos;&gt;&apos; 表示I/O重定向命令。
-</code></pre><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> cmd &#123;</div><div class="line">    <span class="keyword">int</span> type;    <span class="comment">// ' ' (exec), | (pipe), '&lt;' or '&gt;' for redirection</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<pre><code>每一个类型分别继承cmd基础结构体，派生出对应的三类结构体：
-</code></pre>]]></content>
+<h2 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h2><p>原有代码中定义了输入命令的基础结构体，即 struct cmd。这个结构体就一个成员type，用于记录输入命令的类型： ‘ ‘ 表示简单可执行命令 ‘|’ 表示管道命令, ‘&lt;’ 和’&gt;’ 表示I/O重定向命令。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> cmd &#123;</div><div class="line">    <span class="keyword">int</span> type;    <span class="comment">// ' ' (exec), | (pipe), '&lt;' or '&gt;' for redirection</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>每一个类型分别继承cmd基础结构体，派生出对应的三类结构体：</p>
+]]></content>
     
     <summary type="html">
     
       &lt;h2 id=&quot;作业题目&quot;&gt;&lt;a href=&quot;#作业题目&quot; class=&quot;headerlink&quot; title=&quot;作业题目&quot;&gt;&lt;/a&gt;作业题目&lt;/h2&gt;&lt;p&gt;要求在原有代码的基础上，实现shell的三类基础命令，它们包括：&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;简单命令（可执行的程序命令
+&lt;li&gt;简单命令（可执行的程序命令，如l
     
     </summary>
     
