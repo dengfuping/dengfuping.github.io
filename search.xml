@@ -6,7 +6,7 @@
     <entry>
       <title><![CDATA[操作系统原理作业（二）：xv6 shell编程作业之实现shell的基础命令]]></title>
       <url>http://www.dengfuping.com/2017/01/14/operating-system-homework-2/</url>
-      <content type="html"><![CDATA[<h2 id="作业题目"><a href="#作业题目" class="headerlink" title="作业题目"></a>作业题目</h2><p>要求在原有代码的基础上，实现shell的三类基础命令，它们包括：</p>
+      <content type="html"><![CDATA[<h2 id="作业题目"><a href="#作业题目" class="headerlink" title="作业题目"></a>作业题目</h2><p>要求在原有代码的基础上，实现shell的三类基础命令，它们包括：<br><a id="more"></a></p>
 <ol>
 <li>简单命令（可执行的程序命令，如ls等）</li>
 <li><p>I/O重定向命令，如：</p>

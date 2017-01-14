@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dengfuping.com/"/>
-  <updated>2017-01-14T03:39:59.835Z</updated>
+  <updated>2017-01-14T03:43:08.870Z</updated>
   <id>http://www.dengfuping.com/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="http://www.dengfuping.com/2017/01/14/operating-system-homework-2/"/>
     <id>http://www.dengfuping.com/2017/01/14/operating-system-homework-2/</id>
     <published>2017-01-14T02:54:49.000Z</published>
-    <updated>2017-01-14T03:39:59.835Z</updated>
+    <updated>2017-01-14T03:43:08.870Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="作业题目"><a href="#作业题目" class="headerlink" title="作业题目"></a>作业题目</h2><p>要求在原有代码的基础上，实现shell的三类基础命令，它们包括：</p>
+    <content type="html"><![CDATA[<h2 id="作业题目"><a href="#作业题目" class="headerlink" title="作业题目"></a>作业题目</h2><p>要求在原有代码的基础上，实现shell的三类基础命令，它们包括：<br><a id="more"></a></p>
 <ol>
 <li>简单命令（可执行的程序命令，如ls等）</li>
 <li><p>I/O重定向命令，如：</p>
@@ -49,9 +49,7 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;作业题目&quot;&gt;&lt;a href=&quot;#作业题目&quot; class=&quot;headerlink&quot; title=&quot;作业题目&quot;&gt;&lt;/a&gt;作业题目&lt;/h2&gt;&lt;p&gt;要求在原有代码的基础上，实现shell的三类基础命令，它们包括：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;简单命令（可执行的程序命令，如l
+      &lt;h2 id=&quot;作业题目&quot;&gt;&lt;a href=&quot;#作业题目&quot; class=&quot;headerlink&quot; title=&quot;作业题目&quot;&gt;&lt;/a&gt;作业题目&lt;/h2&gt;&lt;p&gt;要求在原有代码的基础上，实现shell的三类基础命令，它们包括：&lt;br&gt;
     
     </summary>
     
