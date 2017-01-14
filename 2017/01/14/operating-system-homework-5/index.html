@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="操作系统原理,xv6,system call,系统调用,CPU alarm," />
 
 
 
@@ -86,12 +86,48 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Deng | 不搭">
-<meta property="og:url" content="http://www.dengfuping.com/tags/shell-编程/index.html">
+<meta name="description" content="实验步骤添加alarm系统调用使用grep命令筛选出出现uptime字样的文件和文件中所在行号，以便仿照uptime系统调用实现alarm系统调用：
+
+在syscall.c中添加系统调用函数的外部声明，共有两处地方需要添加：
+
+
+在syscall.h中添加系统调用号：
+在sysproc.c中添加系统调用函数sys_alarm()的实现：
+在user.h中添加用户态函数的定义：
+在usys.S中添加">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统原理作业（五）：xv6 CPU alarm">
+<meta property="og:url" content="http://www.dengfuping.com/2017/01/14/operating-system-homework-5/index.html">
 <meta property="og:site_name" content="Deng | 不搭">
+<meta property="og:description" content="实验步骤添加alarm系统调用使用grep命令筛选出出现uptime字样的文件和文件中所在行号，以便仿照uptime系统调用实现alarm系统调用：
+
+在syscall.c中添加系统调用函数的外部声明，共有两处地方需要添加：
+
+
+在syscall.h中添加系统调用号：
+在sysproc.c中添加系统调用函数sys_alarm()的实现：
+在user.h中添加用户态函数的定义：
+在usys.S中添加">
+<meta property="og:image" content="http://i1.piimg.com/567571/b449eb3650ec4c8c.png">
+<meta property="og:image" content="http://p1.bqimg.com/567571/eda2df5a78f77959.png">
+<meta property="og:image" content="http://p1.bqimg.com/567571/135d3a90b9996530.png">
+<meta property="og:image" content="http://p1.bqimg.com/567571/0a6babf17226d707.png">
+<meta property="og:image" content="http://p1.bqimg.com/567571/a43d46dfb8420e8d.png">
+<meta property="og:image" content="http://p1.bqimg.com/567571/5046f03de31588b6.png">
+<meta property="og:image" content="http://p1.bqimg.com/567571/80960fe721a22aa1.png">
+<meta property="og:updated_time" content="2017-01-14T09:00:52.824Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Deng | 不搭">
+<meta name="twitter:title" content="操作系统原理作业（五）：xv6 CPU alarm">
+<meta name="twitter:description" content="实验步骤添加alarm系统调用使用grep命令筛选出出现uptime字样的文件和文件中所在行号，以便仿照uptime系统调用实现alarm系统调用：
+
+在syscall.c中添加系统调用函数的外部声明，共有两处地方需要添加：
+
+
+在syscall.h中添加系统调用号：
+在sysproc.c中添加系统调用函数sys_alarm()的实现：
+在user.h中添加用户态函数的定义：
+在usys.S中添加">
+<meta name="twitter:image" content="http://i1.piimg.com/567571/b449eb3650ec4c8c.png">
 
 
 <script>
@@ -123,9 +159,9 @@ var _hmt = _hmt || [];
 
 
 
-  <link rel="canonical" href="http://www.dengfuping.com/tags/shell-编程/"/>
+  <link rel="canonical" href="http://www.dengfuping.com/2017/01/14/operating-system-homework-5/"/>
 
-  <title> 标签: shell 编程 | Deng | 不搭 </title>
+  <title> 操作系统原理作业（五）：xv6 CPU alarm | Deng | 不搭 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -156,7 +192,7 @@ var _hmt = _hmt || [];
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -277,53 +313,217 @@ var _hmt = _hmt || [];
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        shell 编程
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                操作系统原理作业（五）：xv6 CPU alarm
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-14T16:53:19+08:00" content="2017-01-14">
+              2017-01-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/操作系统原理/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统原理</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/01/14/operating-system-homework-5/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/14/operating-system-homework-5/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/14/operating-system-homework-5/" class="leancloud_visitors" data-flag-title="操作系统原理作业（五）：xv6 CPU alarm">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><h3 id="添加alarm系统调用"><a href="#添加alarm系统调用" class="headerlink" title="添加alarm系统调用"></a>添加alarm系统调用</h3><p>使用grep命令筛选出出现uptime字样的文件和文件中所在行号，以便仿照uptime系统调用实现alarm系统调用：</p>
+<p><img src="http://i1.piimg.com/567571/b449eb3650ec4c8c.png" alt=""></p>
+<p>在syscall.c中添加系统调用函数的外部声明，共有两处地方需要添加：</p>
+<p><img src="http://p1.bqimg.com/567571/eda2df5a78f77959.png" alt=""></p>
+<p><img src="http://p1.bqimg.com/567571/135d3a90b9996530.png" alt=""></p>
+<p>在syscall.h中添加系统调用号：<br><img src="http://p1.bqimg.com/567571/0a6babf17226d707.png" alt=""></p>
+<p>在sysproc.c中添加系统调用函数sys_alarm()的实现：<br><img src="http://p1.bqimg.com/567571/a43d46dfb8420e8d.png" alt=""></p>
+<p>在user.h中添加用户态函数的定义：<br><img src="http://p1.bqimg.com/567571/5046f03de31588b6.png" alt=""></p>
+<p>在usys.S中添加用户态函数的实现：<br><img src="http://p1.bqimg.com/567571/80960fe721a22aa1.png" alt=""></p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2017/01/14/operating-system-homework-2/" itemprop="url">
-              
-                <span itemprop="name">操作系统原理作业（二）：xv6 shell编程作业之实现shell的基础命令</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="Deng | 不搭 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay-reward-image.jpg" alt="Deng | 不搭 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-01-14T10:54:49+08:00"
-              content="2017-01-14" >
-          01-14
-        </time>
-      </div>
 
-    </header>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/操作系统原理/" rel="tag">#操作系统原理</a>
+          
+            <a href="/tags/xv6/" rel="tag">#xv6</a>
+          
+            <a href="/tags/system-call/" rel="tag">#system call</a>
+          
+            <a href="/tags/系统调用/" rel="tag">#系统调用</a>
+          
+            <a href="/tags/CPU-alarm/" rel="tag">#CPU alarm</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/14/operating-system-homework-4/" rel="next" title="操作系统原理作业（四）：xv6 system calls">
+                <i class="fa fa-chevron-left"></i> 操作系统原理作业（四）：xv6 system calls
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
           
 
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/01/14/operating-system-homework-5/"
+           data-title="操作系统原理作业（五）：xv6 CPU alarm" data-url="http://www.dengfuping.com/2017/01/14/operating-system-homework-5/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -343,8 +543,17 @@ var _hmt = _hmt || [];
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -355,7 +564,7 @@ var _hmt = _hmt || [];
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -372,7 +581,7 @@ var _hmt = _hmt || [];
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -439,6 +648,17 @@ var _hmt = _hmt || [];
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#实验步骤"><span class="nav-number">1.</span> <span class="nav-text">实验步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加alarm系统调用"><span class="nav-number">1.1.</span> <span class="nav-text">添加alarm系统调用</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -556,6 +776,10 @@ var _hmt = _hmt || [];
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
