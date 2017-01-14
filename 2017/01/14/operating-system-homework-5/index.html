@@ -104,7 +104,7 @@
 <meta property="og:image" content="http://p1.bqimg.com/567571/3a02394c1382a3d7.png">
 <meta property="og:image" content="http://p1.bqimg.com/567571/19c29f3ddddb7149.png">
 <meta property="og:image" content="http://p1.bqimg.com/567571/42e8413eb6f94c0f.png">
-<meta property="og:updated_time" content="2017-01-14T09:11:50.953Z">
+<meta property="og:updated_time" content="2017-01-14T09:24:53.964Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统原理作业（五）：xv6 CPU alarm">
 <meta name="twitter:description" content="实验步骤添加alarm系统调用使用grep命令筛选出出现uptime字样的文件和文件中所在行号，以便仿照uptime系统调用实现alarm系统调用：">
@@ -395,8 +395,7 @@ var _hmt = _hmt || [];
       
 
       
-        <h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><h3 id="添加alarm系统调用"><a href="#添加alarm系统调用" class="headerlink" title="添加alarm系统调用"></a>添加alarm系统调用</h3><p>使用grep命令筛选出出现uptime字样的文件和文件中所在行号，以便仿照uptime系统调用实现alarm系统调用：<br><img src="http://i1.piimg.com/567571/b449eb3650ec4c8c.png" alt=""><br><a id="more"></a></p>
-<p>在syscall.c中添加系统调用函数的外部声明，共有两处地方需要添加：<br><img src="http://p1.bqimg.com/567571/eda2df5a78f77959.png" alt=""></p>
+        <h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><h3 id="添加alarm系统调用"><a href="#添加alarm系统调用" class="headerlink" title="添加alarm系统调用"></a>添加alarm系统调用</h3><p>使用grep命令筛选出出现uptime字样的文件和文件中所在行号，以便仿照uptime系统调用实现alarm系统调用：<br><img src="http://i1.piimg.com/567571/b449eb3650ec4c8c.png" alt=""><br><a id="more"></a><br>在syscall.c中添加系统调用函数的外部声明，共有两处地方需要添加：<br><img src="http://p1.bqimg.com/567571/eda2df5a78f77959.png" alt=""></p>
 <p><img src="http://p1.bqimg.com/567571/135d3a90b9996530.png" alt=""></p>
 <p>在syscall.h中添加系统调用号：<br><img src="http://p1.bqimg.com/567571/0a6babf17226d707.png" alt=""></p>
 <p>在sysproc.c中添加系统调用函数sys_alarm()的实现：<br><img src="http://p1.bqimg.com/567571/a43d46dfb8420e8d.png" alt=""></p>
@@ -475,6 +474,10 @@ var _hmt = _hmt || [];
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2017/01/14/operating-system-homework-6/" rel="prev" title="操作系统原理作业（六）：xv6 lazy page allocation">
+                操作系统原理作业（六）：xv6 lazy page allocation <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -548,7 +551,7 @@ var _hmt = _hmt || [];
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -565,7 +568,7 @@ var _hmt = _hmt || [];
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

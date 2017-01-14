@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="操作系统原理,xv6,lazy page allocation," />
 
 
 
@@ -86,12 +86,23 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Deng | 不搭">
-<meta property="og:url" content="http://www.dengfuping.com/tags/图像处理，OpenCV/index.html">
+<meta name="description" content="Eliminate allocation from sbrk()修改sys_sbrk()函数对系统调用sbrk的实际实现sys_sbrk进行修改，只将进程的内存空间大小增加n而不进行实际的分配，即把调用growproc()函数的部分注释掉并增加内存大小。修改后的sys_sbrk()函数如下：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统原理作业（六）：xv6 lazy page allocation">
+<meta property="og:url" content="http://www.dengfuping.com/2017/01/14/operating-system-homework-6/index.html">
 <meta property="og:site_name" content="Deng | 不搭">
+<meta property="og:description" content="Eliminate allocation from sbrk()修改sys_sbrk()函数对系统调用sbrk的实际实现sys_sbrk进行修改，只将进程的内存空间大小增加n而不进行实际的分配，即把调用growproc()函数的部分注释掉并增加内存大小。修改后的sys_sbrk()函数如下：">
+<meta property="og:image" content="http://p1.bpimg.com/567571/cab4cebf8cb60fdd.png">
+<meta property="og:image" content="http://p1.bpimg.com/567571/3dfb755048cfa8c9.png">
+<meta property="og:image" content="http://i1.piimg.com/567571/82ceee72c19f689b.png">
+<meta property="og:image" content="http://i1.piimg.com/567571/b1c2ef193728d56d.png">
+<meta property="og:image" content="http://i1.piimg.com/567571/0624084e31be7576.png">
+<meta property="og:image" content="http://i1.piimg.com/567571/e81661df030b9b0d.png">
+<meta property="og:updated_time" content="2017-01-14T09:31:14.013Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Deng | 不搭">
+<meta name="twitter:title" content="操作系统原理作业（六）：xv6 lazy page allocation">
+<meta name="twitter:description" content="Eliminate allocation from sbrk()修改sys_sbrk()函数对系统调用sbrk的实际实现sys_sbrk进行修改，只将进程的内存空间大小增加n而不进行实际的分配，即把调用growproc()函数的部分注释掉并增加内存大小。修改后的sys_sbrk()函数如下：">
+<meta name="twitter:image" content="http://p1.bpimg.com/567571/cab4cebf8cb60fdd.png">
 
 
 <script>
@@ -123,9 +134,9 @@ var _hmt = _hmt || [];
 
 
 
-  <link rel="canonical" href="http://www.dengfuping.com/tags/图像处理，OpenCV/"/>
+  <link rel="canonical" href="http://www.dengfuping.com/2017/01/14/operating-system-homework-6/"/>
 
-  <title> 标签: 图像处理，OpenCV | Deng | 不搭 </title>
+  <title> 操作系统原理作业（六）：xv6 lazy page allocation | Deng | 不搭 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -156,7 +167,7 @@ var _hmt = _hmt || [];
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -277,53 +288,212 @@ var _hmt = _hmt || [];
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        图像处理，OpenCV
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                操作系统原理作业（六）：xv6 lazy page allocation
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-14T17:16:45+08:00" content="2017-01-14">
+              2017-01-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/操作系统原理/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统原理</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/01/14/operating-system-homework-6/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/14/operating-system-homework-6/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/14/operating-system-homework-6/" class="leancloud_visitors" data-flag-title="操作系统原理作业（六）：xv6 lazy page allocation">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h2 id="Eliminate-allocation-from-sbrk"><a href="#Eliminate-allocation-from-sbrk" class="headerlink" title="Eliminate allocation from sbrk()"></a>Eliminate allocation from sbrk()</h2><h3 id="修改sys-sbrk-函数"><a href="#修改sys-sbrk-函数" class="headerlink" title="修改sys_sbrk()函数"></a>修改sys_sbrk()函数</h3><p>对系统调用sbrk的实际实现sys_sbrk进行修改，只将进程的内存空间大小增加n而不进行实际的分配，即把调用growproc()函数的部分注释掉并增加内存大小。修改后的sys_sbrk()函数如下：<br><a id="more"></a><br><img src="http://p1.bpimg.com/567571/cab4cebf8cb60fdd.png" alt=""></p>
+<p>其中，返回的地址是新分配的地址空间的开头，在此处就是原来地址空间的末尾。我们增加了proc-&gt;sz，但实际却并未增加进程大小。</p>
+<h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><p>启动xv6后输入echo hi命令，得到如下错误提示：<br><img src="http://p1.bpimg.com/567571/3dfb755048cfa8c9.png" alt=""></p>
+<p>原因是当程序试图操作该内存区域的时候，发现该内存区域不是当前进程所有的，因为在sys_sbrk中根本没分配。</p>
+<h2 id="Lazy-allocation"><a href="#Lazy-allocation" class="headerlink" title="Lazy allocation"></a>Lazy allocation</h2><h3 id="去除static关键字"><a href="#去除static关键字" class="headerlink" title="去除static关键字"></a>去除static关键字</h3><p>由于我们需要在trap.c中调用vm.c中的int mappages()函数，所以要去除原本的static关键字。<br><img src="http://i1.piimg.com/567571/82ceee72c19f689b.png" alt=""></p>
+<h3 id="声明int-mappages-函数"><a href="#声明int-mappages-函数" class="headerlink" title="声明int mappages()函数"></a>声明int mappages()函数</h3><p>在trap.c中在调用之前使用extern关键字声明int mappages()函数。<br><img src="http://i1.piimg.com/567571/b1c2ef193728d56d.png" alt=""></p>
+<h3 id="修改trap-c中void-trap-函数"><a href="#修改trap-c中void-trap-函数" class="headerlink" title="修改trap.c中void trap()函数"></a>修改trap.c中void trap()函数</h3><p>在trap.c中的void trap(struct trapframe *tf)的defaut部分添加以下代码，放置的位置为if模块后。<br><img src="http://i1.piimg.com/567571/0624084e31be7576.png" alt=""></p>
+<h2 id="运行结果-1"><a href="#运行结果-1" class="headerlink" title="运行结果"></a>运行结果</h2><p>重新启动xv6后输入echo hi命令，输出结果如下：<br><img src="http://i1.piimg.com/567571/e81661df030b9b0d.png" alt=""></p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/10/16/image-processing-assignment-2/" itemprop="url">
-              
-                <span itemprop="name">图像处理第2次大作业</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="Deng | 不搭 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay-reward-image.jpg" alt="Deng | 不搭 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-10-16T00:19:51+08:00"
-              content="2016-10-16" >
-          10-16
-        </time>
-      </div>
 
-    </header>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/操作系统原理/" rel="tag">#操作系统原理</a>
+          
+            <a href="/tags/xv6/" rel="tag">#xv6</a>
+          
+            <a href="/tags/lazy-page-allocation/" rel="tag">#lazy page allocation</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/14/operating-system-homework-5/" rel="next" title="操作系统原理作业（五）：xv6 CPU alarm">
+                <i class="fa fa-chevron-left"></i> 操作系统原理作业（五）：xv6 CPU alarm
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
           
 
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/01/14/operating-system-homework-6/"
+           data-title="操作系统原理作业（六）：xv6 lazy page allocation" data-url="http://www.dengfuping.com/2017/01/14/operating-system-homework-6/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -343,8 +513,17 @@ var _hmt = _hmt || [];
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -355,7 +534,7 @@ var _hmt = _hmt || [];
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -372,7 +551,7 @@ var _hmt = _hmt || [];
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -439,6 +618,17 @@ var _hmt = _hmt || [];
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Eliminate-allocation-from-sbrk"><span class="nav-number">1.</span> <span class="nav-text">Eliminate allocation from sbrk()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修改sys-sbrk-函数"><span class="nav-number">1.1.</span> <span class="nav-text">修改sys_sbrk()函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行结果"><span class="nav-number">1.2.</span> <span class="nav-text">运行结果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lazy-allocation"><span class="nav-number">2.</span> <span class="nav-text">Lazy allocation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#去除static关键字"><span class="nav-number">2.1.</span> <span class="nav-text">去除static关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#声明int-mappages-函数"><span class="nav-number">2.2.</span> <span class="nav-text">声明int mappages()函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改trap-c中void-trap-函数"><span class="nav-number">2.3.</span> <span class="nav-text">修改trap.c中void trap()函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行结果-1"><span class="nav-number">3.</span> <span class="nav-text">运行结果</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -556,6 +746,10 @@ var _hmt = _hmt || [];
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 

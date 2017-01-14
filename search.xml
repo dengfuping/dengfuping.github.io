@@ -4,10 +4,23 @@
   
     
     <entry>
+      <title><![CDATA[操作系统原理作业（六）：xv6 lazy page allocation]]></title>
+      <url>http://www.dengfuping.com/2017/01/14/operating-system-homework-6/</url>
+      <content type="html"><![CDATA[<h2 id="Eliminate-allocation-from-sbrk"><a href="#Eliminate-allocation-from-sbrk" class="headerlink" title="Eliminate allocation from sbrk()"></a>Eliminate allocation from sbrk()</h2><h3 id="修改sys-sbrk-函数"><a href="#修改sys-sbrk-函数" class="headerlink" title="修改sys_sbrk()函数"></a>修改sys_sbrk()函数</h3><p>对系统调用sbrk的实际实现sys_sbrk进行修改，只将进程的内存空间大小增加n而不进行实际的分配，即把调用growproc()函数的部分注释掉并增加内存大小。修改后的sys_sbrk()函数如下：<br><a id="more"></a><br><img src="http://p1.bpimg.com/567571/cab4cebf8cb60fdd.png" alt=""></p>
+<p>其中，返回的地址是新分配的地址空间的开头，在此处就是原来地址空间的末尾。我们增加了proc-&gt;sz，但实际却并未增加进程大小。</p>
+<h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><p>启动xv6后输入echo hi命令，得到如下错误提示：<br><img src="http://p1.bpimg.com/567571/3dfb755048cfa8c9.png" alt=""></p>
+<p>原因是当程序试图操作该内存区域的时候，发现该内存区域不是当前进程所有的，因为在sys_sbrk中根本没分配。</p>
+<h2 id="Lazy-allocation"><a href="#Lazy-allocation" class="headerlink" title="Lazy allocation"></a>Lazy allocation</h2><h3 id="去除static关键字"><a href="#去除static关键字" class="headerlink" title="去除static关键字"></a>去除static关键字</h3><p>由于我们需要在trap.c中调用vm.c中的int mappages()函数，所以要去除原本的static关键字。<br><img src="http://i1.piimg.com/567571/82ceee72c19f689b.png" alt=""></p>
+<h3 id="声明int-mappages-函数"><a href="#声明int-mappages-函数" class="headerlink" title="声明int mappages()函数"></a>声明int mappages()函数</h3><p>在trap.c中在调用之前使用extern关键字声明int mappages()函数。<br><img src="http://i1.piimg.com/567571/b1c2ef193728d56d.png" alt=""></p>
+<h3 id="修改trap-c中void-trap-函数"><a href="#修改trap-c中void-trap-函数" class="headerlink" title="修改trap.c中void trap()函数"></a>修改trap.c中void trap()函数</h3><p>在trap.c中的void trap(struct trapframe *tf)的defaut部分添加以下代码，放置的位置为if模块后。<br><img src="http://i1.piimg.com/567571/0624084e31be7576.png" alt=""></p>
+<h2 id="运行结果-1"><a href="#运行结果-1" class="headerlink" title="运行结果"></a>运行结果</h2><p>重新启动xv6后输入echo hi命令，输出结果如下：<br><img src="http://i1.piimg.com/567571/e81661df030b9b0d.png" alt=""></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[操作系统原理作业（五）：xv6 CPU alarm]]></title>
       <url>http://www.dengfuping.com/2017/01/14/operating-system-homework-5/</url>
-      <content type="html"><![CDATA[<h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><h3 id="添加alarm系统调用"><a href="#添加alarm系统调用" class="headerlink" title="添加alarm系统调用"></a>添加alarm系统调用</h3><p>使用grep命令筛选出出现uptime字样的文件和文件中所在行号，以便仿照uptime系统调用实现alarm系统调用：<br><img src="http://i1.piimg.com/567571/b449eb3650ec4c8c.png" alt=""><br><a id="more"></a></p>
-<p>在syscall.c中添加系统调用函数的外部声明，共有两处地方需要添加：<br><img src="http://p1.bqimg.com/567571/eda2df5a78f77959.png" alt=""></p>
+      <content type="html"><![CDATA[<h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><h3 id="添加alarm系统调用"><a href="#添加alarm系统调用" class="headerlink" title="添加alarm系统调用"></a>添加alarm系统调用</h3><p>使用grep命令筛选出出现uptime字样的文件和文件中所在行号，以便仿照uptime系统调用实现alarm系统调用：<br><img src="http://i1.piimg.com/567571/b449eb3650ec4c8c.png" alt=""><br><a id="more"></a><br>在syscall.c中添加系统调用函数的外部声明，共有两处地方需要添加：<br><img src="http://p1.bqimg.com/567571/eda2df5a78f77959.png" alt=""></p>
 <p><img src="http://p1.bqimg.com/567571/135d3a90b9996530.png" alt=""></p>
 <p>在syscall.h中添加系统调用号：<br><img src="http://p1.bqimg.com/567571/0a6babf17226d707.png" alt=""></p>
 <p>在sysproc.c中添加系统调用函数sys_alarm()的实现：<br><img src="http://p1.bqimg.com/567571/a43d46dfb8420e8d.png" alt=""></p>
