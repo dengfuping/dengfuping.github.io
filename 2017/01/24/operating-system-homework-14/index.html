@@ -86,16 +86,16 @@
 
 
 
-<meta name="description" content="1、下列选项中,操作系统提供给应用程序的接口是（A）。A.系统调用    B.中断    C.库函数    D.原语解答：系统调用是操作系统提供给编程人员的唯一接口。–《计算机操作系统教程》">
+<meta name="description" content="1、下列选项中,操作系统提供给应用程序的接口是（A）。A.系统调用        B.中断        C.库函数            D.原语解答：系统调用是操作系统提供给编程人员的唯一接口。–《计算机操作系统教程》">
 <meta property="og:type" content="article">
 <meta property="og:title" content="操作系统原理作业（十四）：ex05.multichoice作业">
 <meta property="og:url" content="http://www.dengfuping.com/2017/01/24/operating-system-homework-14/index.html">
 <meta property="og:site_name" content="Deng | 不搭">
-<meta property="og:description" content="1、下列选项中,操作系统提供给应用程序的接口是（A）。A.系统调用    B.中断    C.库函数    D.原语解答：系统调用是操作系统提供给编程人员的唯一接口。–《计算机操作系统教程》">
-<meta property="og:updated_time" content="2017-01-24T16:23:54.136Z">
+<meta property="og:description" content="1、下列选项中,操作系统提供给应用程序的接口是（A）。A.系统调用        B.中断        C.库函数            D.原语解答：系统调用是操作系统提供给编程人员的唯一接口。–《计算机操作系统教程》">
+<meta property="og:updated_time" content="2017-01-24T16:32:43.342Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统原理作业（十四）：ex05.multichoice作业">
-<meta name="twitter:description" content="1、下列选项中,操作系统提供给应用程序的接口是（A）。A.系统调用    B.中断    C.库函数    D.原语解答：系统调用是操作系统提供给编程人员的唯一接口。–《计算机操作系统教程》">
+<meta name="twitter:description" content="1、下列选项中,操作系统提供给应用程序的接口是（A）。A.系统调用        B.中断        C.库函数            D.原语解答：系统调用是操作系统提供给编程人员的唯一接口。–《计算机操作系统教程》">
 
 
 <script>
@@ -382,8 +382,8 @@ var _hmt = _hmt || [];
       
 
       
-        <p>1、下列选项中,操作系统提供给应用程序的接口是（A）。<br>A.系统调用    B.中断    C.库函数    D.原语<br><strong>解答：</strong>系统调用是操作系统提供给编程人员的唯一接口。–《计算机操作系统教程》<a id="more"></a></p>
-<p>2、下列选项中,导致创建新进程的操作是（C）。<br>I 用户登录成功    II 设备分配    III 启动程序执行<br>A.仅 I 和 II    B.仅 II 和 III    C.仅 I 和 III    D.I 、 II 和 III<br><strong>解答：</strong>用户登录成功后，操作系统将启动与用户有关的初始程序，此时需要创建新的进程。启动程序执行时毫无疑问会启动新进程。但设备分配是针对现有进程，不会创建新进程。</p>
+        <p>1、下列选项中,操作系统提供给应用程序的接口是（A）。<br>A.系统调用        B.中断        C.库函数            D.原语<br><strong>解答：</strong>系统调用是操作系统提供给编程人员的唯一接口。–《计算机操作系统教程》<a id="more"></a></p>
+<p>2、下列选项中,导致创建新进程的操作是（C）。<br>I 用户登录成功    II 设备分配        III 启动程序执行<br>A.仅 I 和 II        B.仅 II 和 III        C.仅 I 和 III        D.I 、 II 和 III<br><strong>解答：</strong>用户登录成功后，操作系统将启动与用户有关的初始程序，此时需要创建新的进程。启动程序执行时毫无疑问会启动新进程。但设备分配是针对现有进程，不会创建新进程。</p>
 <p>3、设与某资源关联的信号量初值为 3,当前值为 1。若 M 表示该资源的可用个数,N 表示等待该资源的进程数,则 M 、 N 分别是（B）。<br>A.0、 1    B.1、 0    C.1、 2    D.2、 0<br><strong>解答：</strong>由于信号量的当前取值为1，自然说明可用资源个数为1。由于当前还有可用资源数，等待资源的进程数只能是0，否则就不可能还有可用资源</p>
 <p>4、下列选项中,降低进程优先级的合理时机是（A）。<br>A. 进程的时间片用完<br>B. 进程刚完成 I/ O,进入就绪列队<br>C. 进程长期处于就绪列队中<br>D. 进程从就绪态转为运行态<br><strong>解答：</strong>进程时间片用完可以降低其优先级，完成I/O的进程应该提升其优先级，处于就绪队列等待调度的进程一般不会改变其优先级。</p>
 <p>5、进程 P0 和 P1 的共享变量定义及其初值为<br>boolean flag[2];<br>int turn = 0;<br>flag[0] = FALSE; flag[1] = FALSE;<br>若进程 P0 和 P1 访问临界资源的类 C 伪代码实现如下:<br>void P0() // 进程 P0<br>{<br>　　while(TRUE)<br>　　{<br>　　flag[0]=TRUE; turn=1;<br>　　while(flag[1]&amp;&amp;(turn==1)) ;<br>　　临界区;<br>　　flag[0]=FALSE;<br>　　}<br>}</p>
