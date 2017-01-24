@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="图像处理,OpenCV,egde detecting,边缘检测," />
+  <meta name="keywords" content="操作系统原理,xv6,Barriers," />
 
 
 
@@ -86,18 +86,19 @@
 
 
 
-<meta name="description" content="这是图像处理最近的一次大作业，主要的 topic 是图像处理问题中常见的边缘检测问题 (Edge Detection)。涉及到了常用的边缘检测算子 Prewitt、Sobel、Canny、Laplacian 以及最近几年新出现的 FDoG。作业中相关算法主要是借助 OpenCV 和 Matlab 进行实现，有兴趣的同学可以参考以下我提交的大作业。">
+<meta name="description" content="实验要求使用环境变量（condition variables）来实现barrier，以在多线程的并行计算中达到同步的目的。其中barrier相当于一堵“墙”，先到达barrier的线程需要等待后到达barrier的线程。对于源代码中的一组线程来说，只有其它线程都到达了这堵“墙”，系统才会允许其中的线程继续运行。可以说，这堵“墙”起到了拦截的作用，以便达到让所有的线程实现同步运行的目的。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="图像处理第2次大作业">
-<meta property="og:url" content="http://www.dengfuping.com/2016/10/16/image-processing-assignment-2/index.html">
+<meta property="og:title" content="操作系统原理作业（九）：Barriers">
+<meta property="og:url" content="http://www.dengfuping.com/2017/01/24/operating-system-homework-9/index.html">
 <meta property="og:site_name" content="Deng | 不搭">
-<meta property="og:description" content="这是图像处理最近的一次大作业，主要的 topic 是图像处理问题中常见的边缘检测问题 (Edge Detection)。涉及到了常用的边缘检测算子 Prewitt、Sobel、Canny、Laplacian 以及最近几年新出现的 FDoG。作业中相关算法主要是借助 OpenCV 和 Matlab 进行实现，有兴趣的同学可以参考以下我提交的大作业。">
-<meta property="og:image" content="http://p1.bpimg.com/567571/39a50e63c48a0019.jpg">
-<meta property="og:updated_time" content="2017-01-14T09:15:42.932Z">
+<meta property="og:description" content="实验要求使用环境变量（condition variables）来实现barrier，以在多线程的并行计算中达到同步的目的。其中barrier相当于一堵“墙”，先到达barrier的线程需要等待后到达barrier的线程。对于源代码中的一组线程来说，只有其它线程都到达了这堵“墙”，系统才会允许其中的线程继续运行。可以说，这堵“墙”起到了拦截的作用，以便达到让所有的线程实现同步运行的目的。">
+<meta property="og:image" content="http://p1.bqimg.com/567571/2fcc9be79e34e946.png">
+<meta property="og:image" content="http://i1.piimg.com/567571/42077968a9fa91eb.png">
+<meta property="og:updated_time" content="2017-01-24T11:46:43.312Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="图像处理第2次大作业">
-<meta name="twitter:description" content="这是图像处理最近的一次大作业，主要的 topic 是图像处理问题中常见的边缘检测问题 (Edge Detection)。涉及到了常用的边缘检测算子 Prewitt、Sobel、Canny、Laplacian 以及最近几年新出现的 FDoG。作业中相关算法主要是借助 OpenCV 和 Matlab 进行实现，有兴趣的同学可以参考以下我提交的大作业。">
-<meta name="twitter:image" content="http://p1.bpimg.com/567571/39a50e63c48a0019.jpg">
+<meta name="twitter:title" content="操作系统原理作业（九）：Barriers">
+<meta name="twitter:description" content="实验要求使用环境变量（condition variables）来实现barrier，以在多线程的并行计算中达到同步的目的。其中barrier相当于一堵“墙”，先到达barrier的线程需要等待后到达barrier的线程。对于源代码中的一组线程来说，只有其它线程都到达了这堵“墙”，系统才会允许其中的线程继续运行。可以说，这堵“墙”起到了拦截的作用，以便达到让所有的线程实现同步运行的目的。">
+<meta name="twitter:image" content="http://p1.bqimg.com/567571/2fcc9be79e34e946.png">
 
 
 <script>
@@ -129,9 +130,9 @@ var _hmt = _hmt || [];
 
 
 
-  <link rel="canonical" href="http://www.dengfuping.com/2016/10/16/image-processing-assignment-2/"/>
+  <link rel="canonical" href="http://www.dengfuping.com/2017/01/24/operating-system-homework-9/"/>
 
-  <title> 图像处理第2次大作业 | Deng | 不搭 </title>
+  <title> 操作系统原理作业（九）：Barriers | Deng | 不搭 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -304,7 +305,7 @@ var _hmt = _hmt || [];
             
             
               
-                图像处理第2次大作业
+                操作系统原理作业（九）：Barriers
               
             
           </h1>
@@ -316,8 +317,8 @@ var _hmt = _hmt || [];
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-16T00:19:51+08:00" content="2016-10-16">
-              2016-10-16
+            <time itemprop="dateCreated" datetime="2017-01-24T19:40:04+08:00" content="2017-01-24">
+              2017-01-24
             </time>
           </span>
 
@@ -330,8 +331,8 @@ var _hmt = _hmt || [];
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/大学学习/" itemprop="url" rel="index">
-                    <span itemprop="name">大学学习</span>
+                  <a href="/categories/操作系统原理/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统原理</span>
                   </a>
                 </span>
 
@@ -346,8 +347,8 @@ var _hmt = _hmt || [];
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/10/16/image-processing-assignment-2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/16/image-processing-assignment-2/" itemprop="commentsCount"></span>
+                <a href="/2017/01/24/operating-system-homework-9/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/24/operating-system-homework-9/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -357,7 +358,7 @@ var _hmt = _hmt || [];
 
           
           
-             <span id="/2016/10/16/image-processing-assignment-2/" class="leancloud_visitors" data-flag-title="图像处理第2次大作业">
+             <span id="/2017/01/24/operating-system-homework-9/" class="leancloud_visitors" data-flag-title="操作系统原理作业（九）：Barriers">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -384,11 +385,10 @@ var _hmt = _hmt || [];
       
 
       
-        <p><img src="http://p1.bpimg.com/567571/39a50e63c48a0019.jpg" alt=""></p>
-<p>这是图像处理最近的一次大作业，主要的 topic 是图像处理问题中常见的边缘检测问题 (Edge Detection)。涉及到了常用的边缘检测算子 Prewitt、Sobel、Canny、Laplacian 以及最近几年新出现的 FDoG。作业中相关算法主要是借助 OpenCV 和 Matlab 进行实现，有兴趣的同学可以参考以下我提交的大作业。<br><a id="more"></a></p>
-<h2 id="Assignment-2-1"><a href="#Assignment-2-1" class="headerlink" title="Assignment #2-1"></a>Assignment #2-1</h2><p><a href="http://www.dengfuping.name/pages/study/display/image-processing/Assignment2-1.pdf" target="_blank" rel="external">点击下载</a></p>
-<h2 id="Assignment-2-2"><a href="#Assignment-2-2" class="headerlink" title="Assignment #2-2"></a>Assignment #2-2</h2><p><a href="http://www.dengfuping.name/pages/study/display/image-processing/Assignment2-2.pdf" target="_blank" rel="external">点击下载</a></p>
-<h2 id="Assignment-2-3"><a href="#Assignment-2-3" class="headerlink" title="Assignment #2-3"></a>Assignment #2-3</h2><p><a href="http://www.dengfuping.name/pages/study/display/image-processing/Assignment2-3.pdf" target="_blank" rel="external">点击下载</a></p>
+        <h2 id="实验要求"><a href="#实验要求" class="headerlink" title="实验要求"></a>实验要求</h2><p>使用环境变量（condition variables）来实现barrier，以在多线程的并行计算中达到同步的目的。其中barrier相当于一堵“墙”，先到达barrier的线程需要等待后到达barrier的线程。对于源代码中的一组线程来说，只有其它线程都到达了这堵“墙”，系统才会允许其中的线程继续运行。可以说，这堵“墙”起到了拦截的作用，以便达到让所有的线程实现同步运行的目的。<a id="more"></a></p>
+<h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><p>下载barrier.c源文件，并在Linux环境下进行编译运行，出现“Assertion failed”错误：<br><img src="http://p1.bqimg.com/567571/2fcc9be79e34e946.png" alt=""></p>
+<p>修改barrier.c中的barrier()函数如下：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">barrier</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">  <span class="comment">//对临界区进行加锁，barrier_mutex是开头定义的信号量</span></div><div class="line">  pthread_mutex_lock(&amp;bstate.barrier_mutex);</div><div class="line">  <span class="comment">//将到达barrier的线程数加1       </span></div><div class="line">  bstate.nthread++; </div><div class="line">  <span class="comment">//当所有的线程都到达barrier时</span></div><div class="line">  <span class="keyword">if</span> (bstate.nthread == nthread) &#123;</div><div class="line">      <span class="comment">//针对barrier_cond这个环境变量广播，表示激活所有线程以继续执行</span></div><div class="line">      pthread_cond_broadcast(&amp;bstate.barrier_cond);</div><div class="line">      bstate.nthread = <span class="number">0</span>;</div><div class="line">      bstate.round++;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">//否则进入sleep状态，并释放互斥锁</span></div><div class="line">  <span class="keyword">else</span> &#123;</div><div class="line">      pthread_cond_wait(&amp;bstate.barrier_cond, &amp;bstate.barrier_mutex);</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  pthread_mutex_unlock(&amp;bstate.barrier_mutex);</div><div class="line"></div><div class="line">  <span class="keyword">return</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>再次运行barrier.c，运行成功：<br><img src="http://i1.piimg.com/567571/42077968a9fa91eb.png" alt=""></p>
 
       
     </div>
@@ -432,13 +432,11 @@ var _hmt = _hmt || [];
       
         <div class="post-tags">
           
-            <a href="/tags/图像处理/" rel="tag">#图像处理</a>
+            <a href="/tags/操作系统原理/" rel="tag">#操作系统原理</a>
           
-            <a href="/tags/OpenCV/" rel="tag">#OpenCV</a>
+            <a href="/tags/xv6/" rel="tag">#xv6</a>
           
-            <a href="/tags/egde-detecting/" rel="tag">#egde detecting</a>
-          
-            <a href="/tags/边缘检测/" rel="tag">#边缘检测</a>
+            <a href="/tags/Barriers/" rel="tag">#Barriers</a>
           
         </div>
       
@@ -447,16 +445,16 @@ var _hmt = _hmt || [];
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/15/xampp-configuration-and-attention/" rel="next" title="xampp 常见问题及其解决方式">
-                <i class="fa fa-chevron-left"></i> xampp 常见问题及其解决方式
+              <a href="/2017/01/24/operating-system-homework-8/" rel="next" title="操作系统原理作业（八）：bigger files for xv6">
+                <i class="fa fa-chevron-left"></i> 操作系统原理作业（八）：bigger files for xv6
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/10/26/opengl-learning-2/" rel="prev" title="OpenGL入门学习（二）">
-                OpenGL入门学习（二） <i class="fa fa-chevron-right"></i>
+              <a href="/2017/01/24/operating-system-homework-10/" rel="prev" title="操作系统原理作业（十）：ex01.pv作业">
+                操作系统原理作业（十）：ex01.pv作业 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -486,8 +484,8 @@ var _hmt = _hmt || [];
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/10/16/image-processing-assignment-2/"
-           data-title="图像处理第2次大作业" data-url="http://www.dengfuping.com/2016/10/16/image-processing-assignment-2/">
+      <div class="ds-thread" data-thread-key="2017/01/24/operating-system-homework-9/"
+           data-title="操作系统原理作业（九）：Barriers" data-url="http://www.dengfuping.com/2017/01/24/operating-system-homework-9/">
       </div>
     
   </div>
@@ -623,7 +621,7 @@ var _hmt = _hmt || [];
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Assignment-2-1"><span class="nav-number">1.</span> <span class="nav-text">Assignment #2-1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Assignment-2-2"><span class="nav-number">2.</span> <span class="nav-text">Assignment #2-2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Assignment-2-3"><span class="nav-number">3.</span> <span class="nav-text">Assignment #2-3</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#实验要求"><span class="nav-number">1.</span> <span class="nav-text">实验要求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验步骤"><span class="nav-number">2.</span> <span class="nav-text">实验步骤</span></a></li></ol></div>
             
           </div>
         </section>
