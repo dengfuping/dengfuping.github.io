@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dengfuping.com/"/>
-  <updated>2017-01-24T13:05:19.235Z</updated>
+  <updated>2017-01-24T13:26:50.470Z</updated>
   <id>http://www.dengfuping.com/</id>
   
   <author>
@@ -20,45 +20,24 @@
     <link href="http://www.dengfuping.com/2017/01/24/operating-system-homework-11/"/>
     <id>http://www.dengfuping.com/2017/01/24/operating-system-homework-11/</id>
     <published>2017-01-24T12:32:56.000Z</published>
-    <updated>2017-01-24T13:05:19.235Z</updated>
+    <updated>2017-01-24T13:26:50.470Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h2><p>1、有三个批处理作业，第一个作业10:00到达，需要执行2小时；第二个作业在10:10到达，需要执行1小时；第三个作业在10:25 到达，需要执行25 分钟。分别采用先来先服务，短作业优先和最高响应比优先三种调度算法，各自的平均周转时间是多少？<br><strong>解答：</strong><br>（1）先来先服务<br>| 作业             | 等待时间/分钟   | 执行时间/分钟   | 周转时间/分钟     |<br>| :————-: |:————-: | :————-:| :————-: |<br>| 作业1            | 0              |  120          |  120             |<br>| 作业2            | 110            |    60         |  170             |<br>| 作业3            | 155            |     25        |  180             |</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Tables</th>
-<th style="text-align:center">Are</th>
-<th style="text-align:center">Cool</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">col 3 is</td>
-<td style="text-align:center">right-aligned</td>
-<td style="text-align:center">$1600</td>
-</tr>
-<tr>
-<td style="text-align:center">col 2 is</td>
-<td style="text-align:center">centered</td>
-<td style="text-align:center">$12</td>
-</tr>
-<tr>
-<td style="text-align:center">zebra stripes</td>
-<td style="text-align:center">are neat</td>
-<td style="text-align:center">$1</td>
-</tr>
-</tbody>
-</table>
-<p>作业     asha    nbsd<br>说的话    画江湖    jh</p>
-<h2 id="题目2"><a href="#题目2" class="headerlink" title="题目2"></a>题目2</h2><p><strong>解答：</strong></p>
-<h2 id="题目3"><a href="#题目3" class="headerlink" title="题目3"></a>题目3</h2><p><strong>解答：</strong></p>
-<h2 id="题目4"><a href="#题目4" class="headerlink" title="题目4"></a>题目4</h2><p><strong>解答：</strong></p>
-<h2 id="题目5"><a href="#题目5" class="headerlink" title="题目5"></a>题目5</h2><p><strong>解答：</strong></p>
+    <content type="html"><![CDATA[<h2 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h2><p>1、有三个批处理作业，第一个作业10:00到达，需要执行2小时；第二个作业在10:10到达，需要执行1小时；第三个作业在10:25 到达，需要执行25 分钟。分别采用先来先服务，短作业优先和最高响应比优先三种调度算法，各自的平均周转时间是多少？<a id="more"></a><br><strong>解答：</strong><br>（1）先来先服务<br><img src="http://p1.bpimg.com/567571/cc1ad2a2cceb4f60.png" alt=""><br>平均周转时间为：(120+175+180)/3 = 156.7分钟</p>
+<p>（2）短作业优先<br><img src="http://p1.bqimg.com/567571/f14bccc912bd8e48.png" alt=""><br>平均周转时间为：(120+195+120)/3 = 145分钟</p>
+<p>（3）最高响应比优先<br><img src="http://i1.piimg.com/567571/ac35b7ae9eed8d05.png" alt=""><br>平均周转时间为：(120+195+120)/3 = 145分钟</p>
+<h2 id="题目2"><a href="#题目2" class="headerlink" title="题目2"></a>题目2</h2><p>2、在一单道批处理系统中，一组作业的提交时刻和运行时间如下表所示。试计算一下三种作业调度算法的平均周转时间T和平均带权周转时间W。<br>（1）先来先服务； （2）短作业优先； （3）高响应比优先<br><img src="http://p1.bpimg.com/567571/ad60973315ff7457.png" alt=""><br><strong>解答：</strong><br>（1）先来先服务：运行顺序为1,2,3,4<br><img src="http://p1.bqimg.com/567571/e823e066952a06a0.png" alt=""><br>平均周转时间：<br>T = ((9.0-8.0) + (9.5-8.5) + (9.7-9.0) + (9.8-9.1))/4 = 0.85<br>平均带权周转时间：<br>W = ((9.0-8.0)/1.0 + (9.5-8.5)/0.5 + (9.7-9.0)/0.2 + (9.8-9.1)/0.1)/4 = 3.375</p>
+<p>（2）短作业优先：运行顺序为1,3,4,2<br><img src="http://i1.piimg.com/567571/ecdb2a21da3d2fdb.png" alt=""><br>平均周转时间：<br>T = ((9.0-8.0) + (9.8-8.5) + (9.2-9.0) + (9.3-9.1))/4 = 0.675<br>平均带权周转时间：<br>W = ((9.0-8.0)/1.0 + (9.8-8.5)/0.5 + (9.2-9.0)/0.2 + (9.3-9.1)/0.1)/4 = 1.65</p>
+<p>（3）高响应比优先：运行顺序为1,2,4,3<br><img src="http://p1.bqimg.com/567571/d3b1224ddf613499.png" alt=""><br>平均周转时间：<br>T = ((9.0-8.0) + (9.5-8.5) + (9.8-9.0) + (9.6-9.1))/4 = 0.825<br>平均带权周转时间：<br>W = ((9.0-8.0)/1.0 + (9.5-8.5)/0.5 + (9.8-9.0)/0.2 + (9.6-9.1)/0.1)/4 = 3</p>
+<h2 id="题目3"><a href="#题目3" class="headerlink" title="题目3"></a>题目3</h2><p>3、设系统中有3种类型的资源（A,B,C）和5个进程（P1,P2,P3,P4,P5），A资源的数量为17，B资源的数量为5，C资源的数量为20。在T0时刻系统状态表如下表所示。<br><img src="http://p1.bqimg.com/567571/cbee1a0f06535042.png" alt=""><br>系统采用银行家算法试试死锁避免策略。<br>（1）T0 时刻是否为安全状态？若是，请给出安全序列。<br>（2）在 T0 时刻若进程 P2 请求资源（0,3,4），是否能实施资源分配？为什么？<br>（3）在（2）的基础上，若进程P4请求资源（2,0,1），是否能实施资源分配？为什么？<br>（4）在（3）的基础上，若进程P1请求资源（0,2,0），是否能实施资源分配？为什么？<br><strong>解答：</strong><br>（1）是安全状态。安全序列为P4、P5、P3、P2、P1。<br>（2）不能，因为A、B、C的资源剩余量为（2,3,3），其中C资源不能满足需求。P2会阻塞。<br>（3）能，若分配给P4，还存在安全序列P4、P5、P3、P2、P1。<br>（4）不能，如果分配给P1，剩余（0,1,2）资源不能满足任一进程，将成为死锁。</p>
+<h2 id="题目4"><a href="#题目4" class="headerlink" title="题目4"></a>题目4</h2><p>4、某系统有R1,R2,R3共3类资源，在T0时刻P1,P2,P3和P4这4个进程对资源的占用和需求情况见下表，此刻系统可用资源向量为（2,1,2）。<br><img src="http://p1.bpimg.com/567571/5578ad519070c176.png" alt=""><br>问题:<br>（1）将系统中各种资源总量和此刻各进程对各资源的需求数目用向量或矩阵表示出来。<br>（2）如果此时P1,P2均发出资源请求向量Request(1,0,1),为了保持系统的安全性应该如何分配资源？说明你所采用策略的原因。<br>（3）如果（2）中两个请求立刻得到满足后，系统此刻是否处于死锁状态？<br><strong>解答：</strong><br><img src="http://i1.piimg.com/567571/1106b2c26c6073f8.png" alt=""></p>
+<p>（2）应该分配给P2。因为如果分配给P1，则系统剩余（1,1,1）讲不能满足任意一个进程，为不安全状态，而分配给P2为安全状态，存在安全序列为P2、P1、P3、P4</p>
+<p>（3）是。因为任何进程的需求都不能得到满足，也不能结束释放资源。</p>
+<h2 id="题目5"><a href="#题目5" class="headerlink" title="题目5"></a>题目5</h2><p>5、设有3个进程P、Q、R，它们共享10个同类资源，P、Q、R进程的资源最大需求量依次为4、7和8。现假定它们对资源的请示序列如下表所示：<br><img src="http://p1.bpimg.com/567571/47736185d420d365.png" alt=""><br>为了避免死锁，系统分配资源时采用银行家算法。如果申请资源得不到满足，进程就转入阻塞态。根据上述信息，试描述各步骤结束时，申请资源的进程是得到满足，还是转入阻塞状态，为什么？（起始状态：各进程均不拥有资源，无进程处于阻塞态）<br><strong>解答：</strong><br>（1）满足P进程申请。分配后为安全状态。<br>（2）满足Q进程申请。分配后为安全状态，存在安全序列P,Q,R。<br>（3）满足R进程申请。分配后为安全状态，存在安全序列P,Q,R。<br>（4）阻塞Q进程，若分配给Q资源，则剩余资源不能满足任意一进程完成任务，会出现死锁。<br>（5）阻塞R进程，理由同上。<br>（6）满足P进程申请。分配后为安全状态，P可以完成任务，释放资源，存在安全序列Q,R。</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;题目1&quot;&gt;&lt;a href=&quot;#题目1&quot; class=&quot;headerlink&quot; title=&quot;题目1&quot;&gt;&lt;/a&gt;题目1&lt;/h2&gt;&lt;p&gt;1、有三个批处理作业，第一个作业10:00到达，需要执行2小时；第二个作业在10:10到达，需要执行1小时；第三个作业在10:25 
+      &lt;h2 id=&quot;题目1&quot;&gt;&lt;a href=&quot;#题目1&quot; class=&quot;headerlink&quot; title=&quot;题目1&quot;&gt;&lt;/a&gt;题目1&lt;/h2&gt;&lt;p&gt;1、有三个批处理作业，第一个作业10:00到达，需要执行2小时；第二个作业在10:10到达，需要执行1小时；第三个作业在10:25 到达，需要执行25 分钟。分别采用先来先服务，短作业优先和最高响应比优先三种调度算法，各自的平均周转时间是多少？
     
     </summary>
     
