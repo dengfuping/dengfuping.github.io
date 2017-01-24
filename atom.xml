@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dengfuping.com/"/>
-  <updated>2017-01-14T09:31:14.013Z</updated>
+  <updated>2017-01-24T11:36:17.790Z</updated>
   <id>http://www.dengfuping.com/</id>
   
   <author>
@@ -14,6 +14,41 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>操作系统原理作业（七）：bigger files for xv6</title>
+    <link href="http://www.dengfuping.com/2017/01/24/operating-system-homework-8/"/>
+    <id>http://www.dengfuping.com/2017/01/24/operating-system-homework-8/</id>
+    <published>2017-01-24T11:26:05.000Z</published>
+    <updated>2017-01-24T11:36:17.790Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><p>修改Makefile文件：将CPUS的值设为1，,并添加如下语句。目的是加快xv6创建大文件时的qemu的运行速度：<br><a id="more"></a><br><img src="http://p1.bqimg.com/567571/ef39f193fcc39b12.png" alt=""></p>
+<p>修改param.h文件，将文件系统的最大数据块数设置为20000：<br><img src="http://p1.bpimg.com/567571/dce5d3e509538fe3.png" alt=""></p>
+<p>下载big.c文件放入xv6的目录下，并在Makefile文件中的UPROGS列表中增加对big命令的引用：<br><img src="http://i1.piimg.com/567571/f06e9fbf7f72ded6.png" alt=""></p>
+<p>启动xv6，输入big命令，显示“wrote 140 sectors”，说明所有的准备工作已完成：<br><img src="http://i1.piimg.com/567571/c7be50364293978d.png" alt=""></p>
+<p>修改fs.c中的bmap()函数如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">static</span> uint</span></div><div class="line"><span class="title">bmap</span><span class="params">(<span class="keyword">struct</span> inode *ip, uint bn)</span></div><div class="line">&#123;</div><div class="line">  uint addr, *a, *indirect, *double_indirect,indirect_idx, double_indirect_idx;</div><div class="line">  <span class="keyword">struct</span> buf *bp, *bp2;</div><div class="line"></div><div class="line">  <span class="keyword">if</span>(bn &lt; NDIRECT)&#123;</div><div class="line">    <span class="keyword">if</span>((addr = ip-&gt;addrs[bn]) == <span class="number">0</span>)</div><div class="line">      ip-&gt;addrs[bn] = addr =balloc(ip-&gt;dev);</div><div class="line">    <span class="keyword">return</span> addr;</div><div class="line">  &#125;</div><div class="line">  bn -= NDIRECT;</div><div class="line">  <span class="keyword">if</span>(bn &lt; NINDIRECT)&#123;</div><div class="line">    <span class="comment">// Load indirect block, allocating ifnecessary.</span></div><div class="line">    <span class="keyword">if</span>((addr = ip-&gt;addrs[NDIRECT]) == <span class="number">0</span>)</div><div class="line">      ip-&gt;addrs[NDIRECT] = addr =balloc(ip-&gt;dev);</div><div class="line"></div><div class="line">    bp = bread(ip-&gt;dev, addr);</div><div class="line">    a = (uint*)bp-&gt;data;</div><div class="line"></div><div class="line">    <span class="keyword">if</span>((addr = a[bn]) == <span class="number">0</span>)&#123;</div><div class="line">      a[bn] = addr = balloc(ip-&gt;dev);</div><div class="line">      log_write(bp);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    brelse(bp);</div><div class="line">    <span class="keyword">return</span> addr;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  bn -= NINDIRECT;</div><div class="line">  <span class="keyword">if</span> (bn &lt; NINDIRECT*NINDIRECT) &#123;</div><div class="line">    <span class="comment">// Load first indirect block, allocating ifnecessary.</span></div><div class="line">    <span class="keyword">if</span>((addr = ip-&gt;addrs[NDIRECT + <span class="number">1</span>]) == <span class="number">0</span>)</div><div class="line">      ip-&gt;addrs[NDIRECT + <span class="number">1</span>] = addr =balloc(ip-&gt;dev);</div><div class="line">    bp = bread(ip-&gt;dev, addr);</div><div class="line"></div><div class="line">    indirect = (uint *) bp-&gt;data;</div><div class="line">    indirect_idx = bn / NINDIRECT;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> ((addr = indirect[indirect_idx]) == <span class="number">0</span>) &#123;</div><div class="line">      addr = indirect[indirect_idx] =balloc(ip-&gt;dev);</div><div class="line">      log_write(bp);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    bp2 = bread(ip-&gt;dev, addr);</div><div class="line">    double_indirect = (uint *) bp2-&gt;data;</div><div class="line">    double_indirect_idx = bn % NINDIRECT;</div><div class="line"></div><div class="line">    <span class="keyword">if</span>((addr = double_indirect[double_indirect_idx]) == <span class="number">0</span>) &#123;</div><div class="line">      addr =double_indirect[double_indirect_idx] = balloc(ip-&gt;dev);</div><div class="line">      log_write(bp2);</div><div class="line">    &#125;</div><div class="line">    brelse(bp2);</div><div class="line">    brelse(bp);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> addr;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  panic(<span class="string">"bmap: out of range"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>打开fs.h文件，将NDIRECT的值改为11，对应的架构数据块地址的索引由加1变为加2，最后将MAXFILE修改成如下值：<br><img src="http://p1.bqimg.com/567571/55f507096f88ec58.png" alt=""></p>
+<p>保存后重新启动xv6，输入big命令，得到如下运行结果说明实验成功：<br><img src="http://p1.bqimg.com/567571/ca4dc9f8bd60a027.png" alt=""></p>
+<p>其中，16523 = 128*128（doubly-indirectblocks） + 11(singly-indirect blocks) + 128(directblocks)</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;实验步骤&quot;&gt;&lt;a href=&quot;#实验步骤&quot; class=&quot;headerlink&quot; title=&quot;实验步骤&quot;&gt;&lt;/a&gt;实验步骤&lt;/h2&gt;&lt;p&gt;修改Makefile文件：将CPUS的值设为1，,并添加如下语句。目的是加快xv6创建大文件时的qemu的运行速度：&lt;br&gt;
+    
+    </summary>
+    
+      <category term="操作系统原理" scheme="http://www.dengfuping.com/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/"/>
+    
+    
+      <category term="操作系统原理" scheme="http://www.dengfuping.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/"/>
+    
+      <category term="xv6" scheme="http://www.dengfuping.com/tags/xv6/"/>
+    
+      <category term="bigger files" scheme="http://www.dengfuping.com/tags/bigger-files/"/>
+    
+  </entry>
   
   <entry>
     <title>操作系统原理作业（六）：xv6 lazy page allocation</title>

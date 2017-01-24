@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="操作系统原理,xv6,bigger files," />
 
 
 
@@ -86,12 +86,23 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Deng | 不搭">
-<meta property="og:url" content="http://www.dengfuping.com/tags/tomcat/index.html">
+<meta name="description" content="实验步骤修改Makefile文件：将CPUS的值设为1，,并添加如下语句。目的是加快xv6创建大文件时的qemu的运行速度：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统原理作业（七）：bigger files for xv6">
+<meta property="og:url" content="http://www.dengfuping.com/2017/01/24/operating-system-homework-8/index.html">
 <meta property="og:site_name" content="Deng | 不搭">
+<meta property="og:description" content="实验步骤修改Makefile文件：将CPUS的值设为1，,并添加如下语句。目的是加快xv6创建大文件时的qemu的运行速度：">
+<meta property="og:image" content="http://p1.bqimg.com/567571/ef39f193fcc39b12.png">
+<meta property="og:image" content="http://p1.bpimg.com/567571/dce5d3e509538fe3.png">
+<meta property="og:image" content="http://i1.piimg.com/567571/f06e9fbf7f72ded6.png">
+<meta property="og:image" content="http://i1.piimg.com/567571/c7be50364293978d.png">
+<meta property="og:image" content="http://p1.bqimg.com/567571/55f507096f88ec58.png">
+<meta property="og:image" content="http://p1.bqimg.com/567571/ca4dc9f8bd60a027.png">
+<meta property="og:updated_time" content="2017-01-24T11:36:17.790Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Deng | 不搭">
+<meta name="twitter:title" content="操作系统原理作业（七）：bigger files for xv6">
+<meta name="twitter:description" content="实验步骤修改Makefile文件：将CPUS的值设为1，,并添加如下语句。目的是加快xv6创建大文件时的qemu的运行速度：">
+<meta name="twitter:image" content="http://p1.bqimg.com/567571/ef39f193fcc39b12.png">
 
 
 <script>
@@ -123,9 +134,9 @@ var _hmt = _hmt || [];
 
 
 
-  <link rel="canonical" href="http://www.dengfuping.com/tags/tomcat/"/>
+  <link rel="canonical" href="http://www.dengfuping.com/2017/01/24/operating-system-homework-8/"/>
 
-  <title> 标签: tomcat | Deng | 不搭 </title>
+  <title> 操作系统原理作业（七）：bigger files for xv6 | Deng | 不搭 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -156,7 +167,7 @@ var _hmt = _hmt || [];
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -277,53 +288,213 @@ var _hmt = _hmt || [];
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        tomcat
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                操作系统原理作业（七）：bigger files for xv6
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-24T19:26:05+08:00" content="2017-01-24">
+              2017-01-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/操作系统原理/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统原理</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/01/24/operating-system-homework-8/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/24/operating-system-homework-8/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/24/operating-system-homework-8/" class="leancloud_visitors" data-flag-title="操作系统原理作业（七）：bigger files for xv6">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><p>修改Makefile文件：将CPUS的值设为1，,并添加如下语句。目的是加快xv6创建大文件时的qemu的运行速度：<br><a id="more"></a><br><img src="http://p1.bqimg.com/567571/ef39f193fcc39b12.png" alt=""></p>
+<p>修改param.h文件，将文件系统的最大数据块数设置为20000：<br><img src="http://p1.bpimg.com/567571/dce5d3e509538fe3.png" alt=""></p>
+<p>下载big.c文件放入xv6的目录下，并在Makefile文件中的UPROGS列表中增加对big命令的引用：<br><img src="http://i1.piimg.com/567571/f06e9fbf7f72ded6.png" alt=""></p>
+<p>启动xv6，输入big命令，显示“wrote 140 sectors”，说明所有的准备工作已完成：<br><img src="http://i1.piimg.com/567571/c7be50364293978d.png" alt=""></p>
+<p>修改fs.c中的bmap()函数如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">static</span> uint</span></div><div class="line"><span class="title">bmap</span><span class="params">(<span class="keyword">struct</span> inode *ip, uint bn)</span></div><div class="line">&#123;</div><div class="line">  uint addr, *a, *indirect, *double_indirect,indirect_idx, double_indirect_idx;</div><div class="line">  <span class="keyword">struct</span> buf *bp, *bp2;</div><div class="line"></div><div class="line">  <span class="keyword">if</span>(bn &lt; NDIRECT)&#123;</div><div class="line">    <span class="keyword">if</span>((addr = ip-&gt;addrs[bn]) == <span class="number">0</span>)</div><div class="line">      ip-&gt;addrs[bn] = addr =balloc(ip-&gt;dev);</div><div class="line">    <span class="keyword">return</span> addr;</div><div class="line">  &#125;</div><div class="line">  bn -= NDIRECT;</div><div class="line">  <span class="keyword">if</span>(bn &lt; NINDIRECT)&#123;</div><div class="line">    <span class="comment">// Load indirect block, allocating ifnecessary.</span></div><div class="line">    <span class="keyword">if</span>((addr = ip-&gt;addrs[NDIRECT]) == <span class="number">0</span>)</div><div class="line">      ip-&gt;addrs[NDIRECT] = addr =balloc(ip-&gt;dev);</div><div class="line"></div><div class="line">    bp = bread(ip-&gt;dev, addr);</div><div class="line">    a = (uint*)bp-&gt;data;</div><div class="line"></div><div class="line">    <span class="keyword">if</span>((addr = a[bn]) == <span class="number">0</span>)&#123;</div><div class="line">      a[bn] = addr = balloc(ip-&gt;dev);</div><div class="line">      log_write(bp);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    brelse(bp);</div><div class="line">    <span class="keyword">return</span> addr;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  bn -= NINDIRECT;</div><div class="line">  <span class="keyword">if</span> (bn &lt; NINDIRECT*NINDIRECT) &#123;</div><div class="line">    <span class="comment">// Load first indirect block, allocating ifnecessary.</span></div><div class="line">    <span class="keyword">if</span>((addr = ip-&gt;addrs[NDIRECT + <span class="number">1</span>]) == <span class="number">0</span>)</div><div class="line">      ip-&gt;addrs[NDIRECT + <span class="number">1</span>] = addr =balloc(ip-&gt;dev);</div><div class="line">    bp = bread(ip-&gt;dev, addr);</div><div class="line"></div><div class="line">    indirect = (uint *) bp-&gt;data;</div><div class="line">    indirect_idx = bn / NINDIRECT;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> ((addr = indirect[indirect_idx]) == <span class="number">0</span>) &#123;</div><div class="line">      addr = indirect[indirect_idx] =balloc(ip-&gt;dev);</div><div class="line">      log_write(bp);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    bp2 = bread(ip-&gt;dev, addr);</div><div class="line">    double_indirect = (uint *) bp2-&gt;data;</div><div class="line">    double_indirect_idx = bn % NINDIRECT;</div><div class="line"></div><div class="line">    <span class="keyword">if</span>((addr = double_indirect[double_indirect_idx]) == <span class="number">0</span>) &#123;</div><div class="line">      addr =double_indirect[double_indirect_idx] = balloc(ip-&gt;dev);</div><div class="line">      log_write(bp2);</div><div class="line">    &#125;</div><div class="line">    brelse(bp2);</div><div class="line">    brelse(bp);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> addr;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  panic(<span class="string">"bmap: out of range"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>打开fs.h文件，将NDIRECT的值改为11，对应的架构数据块地址的索引由加1变为加2，最后将MAXFILE修改成如下值：<br><img src="http://p1.bqimg.com/567571/55f507096f88ec58.png" alt=""></p>
+<p>保存后重新启动xv6，输入big命令，得到如下运行结果说明实验成功：<br><img src="http://p1.bqimg.com/567571/ca4dc9f8bd60a027.png" alt=""></p>
+<p>其中，16523 = 128*128（doubly-indirectblocks） + 11(singly-indirect blocks) + 128(directblocks)</p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/10/15/xampp-configuration-and-attention/" itemprop="url">
-              
-                <span itemprop="name">xampp 常见问题及其解决方式</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="Deng | 不搭 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay-reward-image.jpg" alt="Deng | 不搭 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-10-15T20:48:27+08:00"
-              content="2016-10-15" >
-          10-15
-        </time>
-      </div>
 
-    </header>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/操作系统原理/" rel="tag">#操作系统原理</a>
+          
+            <a href="/tags/xv6/" rel="tag">#xv6</a>
+          
+            <a href="/tags/bigger-files/" rel="tag">#bigger files</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/14/operating-system-homework-6/" rel="next" title="操作系统原理作业（六）：xv6 lazy page allocation">
+                <i class="fa fa-chevron-left"></i> 操作系统原理作业（六）：xv6 lazy page allocation
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
           
 
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/01/24/operating-system-homework-8/"
+           data-title="操作系统原理作业（七）：bigger files for xv6" data-url="http://www.dengfuping.com/2017/01/24/operating-system-homework-8/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -343,8 +514,17 @@ var _hmt = _hmt || [];
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -439,6 +619,17 @@ var _hmt = _hmt || [];
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#实验步骤"><span class="nav-number">1.</span> <span class="nav-text">实验步骤</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -556,6 +747,10 @@ var _hmt = _hmt || [];
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
