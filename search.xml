@@ -4,9 +4,33 @@
   
     
     <entry>
+      <title><![CDATA[operating-system-homework-12]]></title>
+      <url>http://www.dengfuping.com/2017/01/24/operating-system-homework-12/</url>
+      <content type="html"><![CDATA[<h2 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h2><ol>
+<li>某个OS采用可变分区分配方法管理，用户主存512KB，自由区由可用空区表管理。若分配时采用分配自由区的低地址部分的方案，假设初始时全为空。对于下列申请顺序： 申请(300KB),  申请(100KB),  释放(300KB),  申请(150KB),申请(30KB),申请(40KB),申请(60KB),释放(30KB)。回答下列问题：<br>（1）采用首次适应（FF），自由空区中有哪些空块（给出地址和大小）？<br>（2）若采用最佳适应（BF），回答（1）中的问题。<br>（3）如果再申请100KB，针对（1）和（2）各有什么结果？<br><strong>解答：</strong><br>（1）如下图所示：<br><img src="http://p1.bqimg.com/567571/cbdd67f896833e85.png" alt=""></li>
+</ol>
+<p>（2）如下图所示：<br><img src="http://i1.piimg.com/567571/22dd24d534557283.png" alt=""></p>
+<p>（3）针对（1） 可分配在400K位置；针对（2） 无法分配。</p>
+<h2 id="题目2"><a href="#题目2" class="headerlink" title="题目2"></a>题目2</h2><ol>
+<li>考虑下面的页访问串：1,2,3,4,2,1,5,6,2,1,2,3,7,6,3,2,1,2,3,6 假定有4,5,6个页块，应用下面的页面替换算法，计算各会出现多少次缺页中断。注意，所给定的页块初始均为空，因此，首次访问一页时就会发生缺页中断。<br>（1）LRU  （2）FIFO  （3）Optimal<br><strong>解答：</strong><br>（1）LRU<br>对于4个页块：<br><img src="http://i1.piimg.com/567571/fd1d382c5c43d983.png" alt=""><br>可得共出现缺页中断10次；<br>步骤同上图可得5个页块共出现缺页中断8次，6个页块共出现缺页中断7次。</li>
+</ol>
+<p>（2）FIFO<br>对于4个页块：<br><img src="http://p1.bpimg.com/567571/4b94ef51c07e9059.png" alt=""><br>可得共出现缺页中断14次；<br>步骤同上图可得5个页块共出现缺页中断10次，6个页块共出现缺页中断10次。</p>
+<p>（3）Optimal<br>对于4个页块：<br><img src="http://i1.piimg.com/567571/d37a24a6660201ec.png" alt=""><br>可得共出现缺页中断8次；<br>步骤同上图可得5个页块共出现缺页中断8次，6个页块共出现缺页中断7次。</p>
+<h2 id="题目3"><a href="#题目3" class="headerlink" title="题目3"></a>题目3</h2><ol>
+<li>一台计算机有4个页块，装入时间、上次引用时间、它们的R（读）与M（修改）位如下表所示（时间：滴答），请问NRU、FIFO、LRU和第二次机会算法将替换那一页？<br><strong>解答：</strong></li>
+</ol>
+<h2 id="题目4"><a href="#题目4" class="headerlink" title="题目4"></a>题目4</h2><p><strong>解答：</strong></p>
+<h2 id="题目5"><a href="#题目5" class="headerlink" title="题目5"></a>题目5</h2><p><strong>解答：</strong></p>
+<h2 id="题目6"><a href="#题目6" class="headerlink" title="题目6"></a>题目6</h2><p><strong>解答：</strong></p>
+<h2 id="题目7"><a href="#题目7" class="headerlink" title="题目7"></a>题目7</h2><p><strong>解答：</strong></p>
+<h2 id="题目8"><a href="#题目8" class="headerlink" title="题目8"></a>题目8</h2><p><strong>解答：</strong></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[操作系统原理作业（十一）：ex02.process作业]]></title>
       <url>http://www.dengfuping.com/2017/01/24/operating-system-homework-11/</url>
-      <content type="html"><![CDATA[<h2 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h2><p>1、有三个批处理作业，第一个作业10:00到达，需要执行2小时；第二个作业在10:10到达，需要执行1小时；第三个作业在10:25 到达，需要执行25 分钟。分别采用先来先服务，短作业优先和最高响应比优先三种调度算法，各自的平均周转时间是多少？<a id="more"></a><br><strong>解答：</strong><br>（1）先来先服务<br><img src="http://p1.bpimg.com/567571/cc1ad2a2cceb4f60.png" alt=""><br>平均周转时间为：(120+175+180)/3 = 156.7分钟</p>
+      <content type="html"><![CDATA[<h2 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h2><p>1、有三个批处理作业，第一个作业10:00到达，需要执行2小时；第二个作业在10:10到达，需要执行1小时；第三个作业在10:25 到达，需要执行25 分钟。分别采用先来先服务，短作业优先和最高响应比优先三种调度算法，各自的平均周转时间是多少？<a id="more"></a><br><strong>解答：</strong><br>（1）先来先服务<br><img src="http://i1.piimg.com/567571/0cfb722b437eb77a.png" alt=""><br>平均周转时间为：(120+175+180)/3 = 156.7分钟</p>
 <p>（2）短作业优先<br><img src="http://p1.bqimg.com/567571/f14bccc912bd8e48.png" alt=""><br>平均周转时间为：(120+195+120)/3 = 145分钟</p>
 <p>（3）最高响应比优先<br><img src="http://i1.piimg.com/567571/ac35b7ae9eed8d05.png" alt=""><br>平均周转时间为：(120+195+120)/3 = 145分钟</p>
 <h2 id="题目2"><a href="#题目2" class="headerlink" title="题目2"></a>题目2</h2><p>2、在一单道批处理系统中，一组作业的提交时刻和运行时间如下表所示。试计算一下三种作业调度算法的平均周转时间T和平均带权周转时间W。<br>（1）先来先服务； （2）短作业优先； （3）高响应比优先<br><img src="http://p1.bpimg.com/567571/ad60973315ff7457.png" alt=""><br><strong>解答：</strong><br>（1）先来先服务：运行顺序为1,2,3,4<br><img src="http://p1.bqimg.com/567571/e823e066952a06a0.png" alt=""><br>平均周转时间：<br>T = ((9.0-8.0) + (9.5-8.5) + (9.7-9.0) + (9.8-9.1))/4 = 0.85<br>平均带权周转时间：<br>W = ((9.0-8.0)/1.0 + (9.5-8.5)/0.5 + (9.7-9.0)/0.2 + (9.8-9.1)/0.1)/4 = 3.375</p>
