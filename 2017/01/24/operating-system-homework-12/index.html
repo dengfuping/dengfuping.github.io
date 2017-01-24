@@ -102,7 +102,7 @@
 <meta property="og:image" content="http://i1.piimg.com/567571/acdd92b7d812c9d6.png">
 <meta property="og:image" content="http://p1.bpimg.com/567571/d731e808a3e170e1.png">
 <meta property="og:image" content="http://p1.bpimg.com/567571/b36ab669b5b5ff04.png">
-<meta property="og:updated_time" content="2017-01-24T14:54:46.378Z">
+<meta property="og:updated_time" content="2017-01-24T15:26:43.570Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统原理作业（十二）：ex03.memory作业">
 <meta name="twitter:description" content="题目11、某个OS采用可变分区分配方法管理，用户主存512KB，自由区由可用空区表管理。若分配时采用分配自由区的低地址部分的方案，假设初始时全为空。对于下列申请顺序： 申请(300KB),  申请(100KB),  释放(300KB),  申请(150KB),申请(30KB),申请(40KB),申请(60KB),释放(30KB)。回答下列问题：（1）采用首次适应（FF），自由空区中有哪些空块（给出">
@@ -405,7 +405,9 @@ var _hmt = _hmt || [];
 <h2 id="题目6"><a href="#题目6" class="headerlink" title="题目6"></a>题目6</h2><p>6、在一个段式存储管理系统中，其段表如表1所示。试求表2所示中的逻辑地址所对应的物理地址。<br><img src="http://i1.piimg.com/567571/6a43da1cefe2dfe7.png" alt=""><br><strong>解答：</strong><br>（1）由于第0段的内存始址为210，段长为500，故逻辑地址[0,430]是合法地址。逻辑地址[0,430] 对应的物理地址为210＋430＝640。<br>（2）由于第1段的内存始址为2350，段长为20，故逻辑地址[1,10]是合法地址。逻辑地址[1,10]对应 的物理地址为2350+10=2360。<br>（3）由于第段起始地址为100，段长为90，所给逻辑地址[2,500]非法。<br>（4）由于第3段的内存始址为1350，段长为590，故逻辑地址[3,400]是合法地址。逻辑地址[3,400] 对应的物理地址为1350＋400＝1750 。<br>（5）由于第4段的内存始址为1938，段长为95，所给逻辑地址[4,112]非法。<br>（6）由于系统中不存在第5段，所给逻辑地址[5,32]非法。</p>
 <h2 id="题目7"><a href="#题目7" class="headerlink" title="题目7"></a>题目7</h2><p>7、请求分页管理系统中,假设某进程的页表内容如下表所示:<br><img src="http://i1.piimg.com/567571/acdd92b7d812c9d6.png" alt=""><br>页面大小为 4KB,一次内存的访问时间是 100ns,一次快表(TLB)的访问时间是10ns,处理一次缺页的平均时间 10^8 ns(已含更新 TLB 和页表的时间),进程的驻留集大小固定为 2,采用最近最少使用置换算法(LRU)和局部淘汰策略。假设（1）TLB 初始为空;（2）地址转换时先访问 TLB,若 TLB 未命中,再访问页表(忽略访问页表之后的 TLB 更新时间);（3）有效位为 0 表示页面不在内存,产生缺页中断,缺页中断处理后,返回到产生缺页中断的指令处重新执行。设有虚地址访问序列2362H、1565H、25A5H,请问:<br>(1)依次访问上述三个虚地址,各需多少时间?给出计算过程。<br>(2)基于上述访问序列,虚地址 1565H 的物理地址是多少?请说明理由。<br><strong>解答：</strong><br>（1）根据页式管理工作原理，应先考虑页面大小，以便将页号和页内位移分解出来。页面大小为4KB，即212，则得到页内位移占虚地址12位，页号占剩余高位。可得三个虚地址的页号P如下：<br>2362H: P=2,访问快表10ns，因初始为空，访问页表100ns得到页框号，合成物理地址后访问主存100ns，共计10ns+100ns+100ns=210ns。<br>1565H：P=1，访问快表10ns，落空，访问页表100ns，落空，进行缺页中断处理108ns，合成物理地址后访问主存100ns，共计10ns+100ns+108ns+100ns≈108ns。<br>25A5H：P=2，访问快表，因第一次访问已将该页号放入块表，因此花费10ns便可合成物理地址，访主存100ns，共计10ns+100ns=110ns。</p>
 <p>（2）当访问虚地址1565H时，产生缺页中断，合法驻留集为2，必须从页表中淘汰一个页面，根据题目的置换算法，应淘汰0号页面，因此1565H的对应页框号为101H。由此可得1565H物理地址为101565H。</p>
-<h2 id="题目8"><a href="#题目8" class="headerlink" title="题目8"></a>题目8</h2><p>8、设某计算机的逻辑地址空间和物理地址空间均为 64KB,按字节编址。若某进程最多需要 6 页(Page)数据存储空间,页的大小为 1KB,操作系统采用固定分配局部置换策略为此进程分配 4 个页框(Page Frame)。在时刻 260 前的该进程访问情况如下表所示(访问位即使用位)。<br><img src="http://p1.bpimg.com/567571/d731e808a3e170e1.png" alt=""><br>当该进程执行到时刻 260 时,要访问逻辑地址为 17CAH 的数据。请回答下列问题:<br>(1) 该逻辑地址对应的页号是多少?<br>(2) 若采用先进先出(FIFO)置换算法,该逻辑地址对应的物理地址是多少?要求给出计算过程。<br>(3) 若采用时钟(CLOCK)置换算法,该逻辑地址对应的物理地址是多少?要求给出计算过程 (设搜索下一页的指针沿顺时针方向移动,且当前指向 2 号页框,示意图如下) 。<br><img src="http://p1.bpimg.com/567571/b36ab669b5b5ff04.png" alt=""><br><strong>解答：</strong><br>（1）17CAH=(0001 0111 1100 1010)2。页大小为1K，所以页内偏移地址为10位，于是前6位是页号，所以得到页号为：5。<br>（2）若采用FIFO算法，则被置换的页面所在页框为7，所以对应的物理地址为(0001 1111 1100 1010)2=1FCAH。<br>（3）若采用时钟算法，第一次循环时访问位都置为0，又当前指针指向2号页框，故第二次循环将置换2号页框对应的页，所以对应的物理地址为(0000 1011 1100 1010)2=0BCAH。</p>
+<h2 id="题目8"><a href="#题目8" class="headerlink" title="题目8"></a>题目8</h2><p>8、设某计算机的逻辑地址空间和物理地址空间均为 64KB,按字节编址。若某进程最多需要 6 页(Page)数据存储空间,页的大小为 1KB,操作系统采用固定分配局部置换策略为此进程分配 4 个页框(Page Frame)。在时刻 260 前的该进程访问情况如下表所示(访问位即使用位)。<br><img src="http://p1.bpimg.com/567571/d731e808a3e170e1.png" alt=""><br>当该进程执行到时刻 260 时,要访问逻辑地址为 17CAH 的数据。请回答下列问题:<br>(1) 该逻辑地址对应的页号是多少?<br>(2) 若采用先进先出(FIFO)置换算法,该逻辑地址对应的物理地址是多少?要求给出计算过程。<br>(3) 若采用时钟(CLOCK)置换算法,该逻辑地址对应的物理地址是多少?要求给出计算过程 (设搜索下一页的指针沿顺时针方向移动,且当前指向 2 号页框,示意图如下) 。<br><img src="http://p1.bpimg.com/567571/b36ab669b5b5ff04.png" alt=""><br><strong>解答：</strong><br>（1）17CAH=(0001 0111 1100 1010)2。页大小为1K，所以页内偏移地址为10位，于是前6位是页号，所以得到页号为：5。</p>
+<p>（2）若采用FIFO算法，则被置换的页面所在页框为7，所以对应的物理地址为(0001 1111 1100 1010)2=1FCAH。</p>
+<p>（3）若采用时钟算法，第一次循环时访问位都置为0，又当前指针指向2号页框，故第二次循环将置换2号页框对应的页，所以对应的物理地址为(0000 1011 1100 1010)2=0BCAH。</p>
 
       
     </div>
@@ -471,6 +473,10 @@ var _hmt = _hmt || [];
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/24/operating-system-homework-13/" rel="prev" title="操作系统原理作业（十三）：ex04.disk作业">
+                操作系统原理作业（十三）：ex04.disk作业 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -545,7 +551,7 @@ var _hmt = _hmt || [];
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -562,7 +568,7 @@ var _hmt = _hmt || [];
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-count">37</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

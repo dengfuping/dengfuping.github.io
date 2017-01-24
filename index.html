@@ -301,6 +301,140 @@ var _hmt = _hmt || [];
             
               
                 
+                <a class="post-title-link" href="/2017/01/24/operating-system-homework-13/" itemprop="url">
+                  操作系统原理作业（十三）：ex04.disk作业
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-24T23:01:30+08:00" content="2017-01-24">
+              2017-01-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/操作系统原理/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统原理</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/01/24/operating-system-homework-13/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/24/operating-system-homework-13/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/24/operating-system-homework-13/" class="leancloud_visitors" data-flag-title="操作系统原理作业（十三）：ex04.disk作业">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h2><p>1、若干个等待访问磁盘者依次要访问的柱面为 20,44,40,4,80,12,76，假设每移动一个柱面需要3ms时间，移动臂当前位于40号柱面，磁头正向磁道好增加的方向移动，请按 FCFS, SSTF, SCAN 算法分别计算为完成上述访问总共花费的寻找时间。<br><strong>解答：</strong><br>（1）FCFS算法：<br>移动臂的移动次序为：40 → 20 → 44 → 40 → 4 → 80 → 12 → 76<br>移动的柱面数 = 20 +24+4+36+76+68+64=292<br>共花费 3×292=876毫秒</p>
+<p>（2）SSTF算法：<br>移动臂的移动次序为：40 → 44 → 20 → 12 → 4 → 76 → 80<br>移动的柱面数 = 4+24+8+8+72+4=120<br>共花费 3×120=360毫秒</p>
+<p>（3）SCAN算法：<br>移动臂的移动次序为<br>40 → 44 → 76 → 80 → 20 → 12 → 4<br>移动的柱面数 = 4+32+4+60+8+8=116<br>共花费 3×116=348毫秒</p>
+<h2 id="题目2"><a href="#题目2" class="headerlink" title="题目2"></a>题目2</h2><p>2、假设计算机系统采用CSCAN(循环扫描)磁盘调度策略,使用2KB的内存空间记录16384个磁盘的空闲状态。<br>（1）请说明在上述条件如何进行磁盘块空闲状态的管理。<br>（2）设某单面磁盘的旋转速度为每分钟6000转，每个磁道有100个扇区，相临磁道间的平均移动的时间为1ms。若在某时刻，磁头位于100号磁道处，并沿着磁道号增大的方向移动，磁道号的请求队列为50，90，30，120对请求队列中的每个磁道需读取1个随机分布的扇区，则读完这个扇区点共需要多少时间？需要给出计算过程。<br>（3）如果将磁盘替换为随机访问的 Flash 半导体存储器(如U盘、SSD 等),是否有比 CSCAN 更高效的磁盘调度策略？若有,给出磁盘调度策略的名称并 说明理由；若无,说明理由。<br><img src="http://i1.piimg.com/567571/706304999d613347.png" alt=""><br><strong>解答：</strong><br>（1）2KB = 2<em>1024</em>8bit = 16384bit。因此可以使用位图法进行磁盘块空闲状态管理，每1bit表示一个磁盘块是否空闲。</p>
+<p>（2）每分钟6000转，转一圈的时间为0.01s，通过一个扇区的时间为0.0001s。 则平均旋转延迟时间为0.01/2 = 5ms, 平均平均读取时间为0.1ms。根据CSCAN算法，被访问的磁道号顺序为100，120，30， 50，90,因此，寻道用去的总时间为：（20 + 90 + 20 + 40）<em> 1ms = 170ms。总共要随机读取四个扇区，用去的时间为：（0.01</em>0.5 + 0.0001）* 4 = 0.0204s = 20.4ms 所以，读完这个扇区点共需要 170ms + 20.4ms = 190.4ms。</p>
+<p>（3）采用FCFS调度策略更高效。随机访问的FLASH半导体存储器的物理结构不需要考虑寻道时间和旋转时间延时，可直接按请求的先后顺序执行。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/01/24/operating-system-homework-12/" itemprop="url">
                   操作系统原理作业（十二）：ex03.memory作业
                 </a>
@@ -1459,137 +1593,6 @@ var _hmt = _hmt || [];
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/14/operating-system-homework-2/" itemprop="url">
-                  操作系统原理作业（二）：xv6 shell编程作业之实现shell的基础命令
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-14T10:54:49+08:00" content="2017-01-14">
-              2017-01-14
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/操作系统原理/" itemprop="url" rel="index">
-                    <span itemprop="name">操作系统原理</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/01/14/operating-system-homework-2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/14/operating-system-homework-2/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2017/01/14/operating-system-homework-2/" class="leancloud_visitors" data-flag-title="操作系统原理作业（二）：xv6 shell编程作业之实现shell的基础命令">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="作业题目"><a href="#作业题目" class="headerlink" title="作业题目"></a>作业题目</h2><p>要求在原有代码的基础上，实现shell的三类基础命令，它们包括：<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/14/operating-system-homework-2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1635,7 +1638,7 @@ var _hmt = _hmt || [];
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1652,7 +1655,7 @@ var _hmt = _hmt || [];
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-count">37</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

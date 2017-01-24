@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="操作系统原理,xv6,磁盘,disk," />
 
 
 
@@ -86,12 +86,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Deng | 不搭">
-<meta property="og:url" content="http://www.dengfuping.com/tags/mysql/index.html">
+<meta name="description" content="题目11、若干个等待访问磁盘者依次要访问的柱面为 20,44,40,4,80,12,76，假设每移动一个柱面需要3ms时间，移动臂当前位于40号柱面，磁头正向磁道好增加的方向移动，请按 FCFS, SSTF, SCAN 算法分别计算为完成上述访问总共花费的寻找时间。解答：（1）FCFS算法：移动臂的移动次序为：40 → 20 → 44 → 40 → 4 → 80 → 12 → 76移动的柱面数 =">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统原理作业（十三）：ex04.disk作业">
+<meta property="og:url" content="http://www.dengfuping.com/2017/01/24/operating-system-homework-13/index.html">
 <meta property="og:site_name" content="Deng | 不搭">
+<meta property="og:description" content="题目11、若干个等待访问磁盘者依次要访问的柱面为 20,44,40,4,80,12,76，假设每移动一个柱面需要3ms时间，移动臂当前位于40号柱面，磁头正向磁道好增加的方向移动，请按 FCFS, SSTF, SCAN 算法分别计算为完成上述访问总共花费的寻找时间。解答：（1）FCFS算法：移动臂的移动次序为：40 → 20 → 44 → 40 → 4 → 80 → 12 → 76移动的柱面数 =">
+<meta property="og:image" content="http://i1.piimg.com/567571/706304999d613347.png">
+<meta property="og:updated_time" content="2017-01-24T15:26:46.950Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Deng | 不搭">
+<meta name="twitter:title" content="操作系统原理作业（十三）：ex04.disk作业">
+<meta name="twitter:description" content="题目11、若干个等待访问磁盘者依次要访问的柱面为 20,44,40,4,80,12,76，假设每移动一个柱面需要3ms时间，移动臂当前位于40号柱面，磁头正向磁道好增加的方向移动，请按 FCFS, SSTF, SCAN 算法分别计算为完成上述访问总共花费的寻找时间。解答：（1）FCFS算法：移动臂的移动次序为：40 → 20 → 44 → 40 → 4 → 80 → 12 → 76移动的柱面数 =">
+<meta name="twitter:image" content="http://i1.piimg.com/567571/706304999d613347.png">
 
 
 <script>
@@ -123,9 +129,9 @@ var _hmt = _hmt || [];
 
 
 
-  <link rel="canonical" href="http://www.dengfuping.com/tags/mysql/"/>
+  <link rel="canonical" href="http://www.dengfuping.com/2017/01/24/operating-system-homework-13/"/>
 
-  <title> 标签: mysql | Deng | 不搭 </title>
+  <title> 操作系统原理作业（十三）：ex04.disk作业 | Deng | 不搭 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -156,7 +162,7 @@ var _hmt = _hmt || [];
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -277,53 +283,212 @@ var _hmt = _hmt || [];
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        mysql
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                操作系统原理作业（十三）：ex04.disk作业
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-24T23:01:30+08:00" content="2017-01-24">
+              2017-01-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/操作系统原理/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统原理</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/01/24/operating-system-homework-13/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/24/operating-system-homework-13/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/24/operating-system-homework-13/" class="leancloud_visitors" data-flag-title="操作系统原理作业（十三）：ex04.disk作业">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h2 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h2><p>1、若干个等待访问磁盘者依次要访问的柱面为 20,44,40,4,80,12,76，假设每移动一个柱面需要3ms时间，移动臂当前位于40号柱面，磁头正向磁道好增加的方向移动，请按 FCFS, SSTF, SCAN 算法分别计算为完成上述访问总共花费的寻找时间。<br><strong>解答：</strong><br>（1）FCFS算法：<br>移动臂的移动次序为：40 → 20 → 44 → 40 → 4 → 80 → 12 → 76<br>移动的柱面数 = 20 +24+4+36+76+68+64=292<br>共花费 3×292=876毫秒</p>
+<p>（2）SSTF算法：<br>移动臂的移动次序为：40 → 44 → 20 → 12 → 4 → 76 → 80<br>移动的柱面数 = 4+24+8+8+72+4=120<br>共花费 3×120=360毫秒</p>
+<p>（3）SCAN算法：<br>移动臂的移动次序为<br>40 → 44 → 76 → 80 → 20 → 12 → 4<br>移动的柱面数 = 4+32+4+60+8+8=116<br>共花费 3×116=348毫秒</p>
+<h2 id="题目2"><a href="#题目2" class="headerlink" title="题目2"></a>题目2</h2><p>2、假设计算机系统采用CSCAN(循环扫描)磁盘调度策略,使用2KB的内存空间记录16384个磁盘的空闲状态。<br>（1）请说明在上述条件如何进行磁盘块空闲状态的管理。<br>（2）设某单面磁盘的旋转速度为每分钟6000转，每个磁道有100个扇区，相临磁道间的平均移动的时间为1ms。若在某时刻，磁头位于100号磁道处，并沿着磁道号增大的方向移动，磁道号的请求队列为50，90，30，120对请求队列中的每个磁道需读取1个随机分布的扇区，则读完这个扇区点共需要多少时间？需要给出计算过程。<br>（3）如果将磁盘替换为随机访问的 Flash 半导体存储器(如U盘、SSD 等),是否有比 CSCAN 更高效的磁盘调度策略？若有,给出磁盘调度策略的名称并 说明理由；若无,说明理由。<br><img src="http://i1.piimg.com/567571/706304999d613347.png" alt=""><br><strong>解答：</strong><br>（1）2KB = 2<em>1024</em>8bit = 16384bit。因此可以使用位图法进行磁盘块空闲状态管理，每1bit表示一个磁盘块是否空闲。</p>
+<p>（2）每分钟6000转，转一圈的时间为0.01s，通过一个扇区的时间为0.0001s。 则平均旋转延迟时间为0.01/2 = 5ms, 平均平均读取时间为0.1ms。根据CSCAN算法，被访问的磁道号顺序为100，120，30， 50，90,因此，寻道用去的总时间为：（20 + 90 + 20 + 40）<em> 1ms = 170ms。总共要随机读取四个扇区，用去的时间为：（0.01</em>0.5 + 0.0001）* 4 = 0.0204s = 20.4ms 所以，读完这个扇区点共需要 170ms + 20.4ms = 190.4ms。</p>
+<p>（3）采用FCFS调度策略更高效。随机访问的FLASH半导体存储器的物理结构不需要考虑寻道时间和旋转时间延时，可直接按请求的先后顺序执行。</p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/10/15/xampp-configuration-and-attention/" itemprop="url">
-              
-                <span itemprop="name">xampp 常见问题及其解决方式</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="Deng | 不搭 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay-reward-image.jpg" alt="Deng | 不搭 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-10-15T20:48:27+08:00"
-              content="2016-10-15" >
-          10-15
-        </time>
-      </div>
 
-    </header>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/操作系统原理/" rel="tag">#操作系统原理</a>
+          
+            <a href="/tags/xv6/" rel="tag">#xv6</a>
+          
+            <a href="/tags/磁盘/" rel="tag">#磁盘</a>
+          
+            <a href="/tags/disk/" rel="tag">#disk</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/24/operating-system-homework-12/" rel="next" title="操作系统原理作业（十二）：ex03.memory作业">
+                <i class="fa fa-chevron-left"></i> 操作系统原理作业（十二）：ex03.memory作业
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
           
 
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/01/24/operating-system-homework-13/"
+           data-title="操作系统原理作业（十三）：ex04.disk作业" data-url="http://www.dengfuping.com/2017/01/24/operating-system-homework-13/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -343,8 +508,17 @@ var _hmt = _hmt || [];
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -439,6 +613,17 @@ var _hmt = _hmt || [];
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目1"><span class="nav-number">1.</span> <span class="nav-text">题目1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目2"><span class="nav-number">2.</span> <span class="nav-text">题目2</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -556,6 +741,10 @@ var _hmt = _hmt || [];
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
