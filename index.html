@@ -301,8 +301,142 @@ var _hmt = _hmt || [];
             
               
                 
+                <a class="post-title-link" href="/2017/01/25/image-processing-assignment-1-2/" itemprop="url">
+                  图像处理作业(1-2)：The math deduction to the form of "Laplacian of Gaussian(LoG)"
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-25T13:19:51+08:00" content="2017-01-25">
+              2017-01-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/图像处理/" itemprop="url" rel="index">
+                    <span itemprop="name">图像处理</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/01/25/image-processing-assignment-1-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/25/image-processing-assignment-1-2/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/25/image-processing-assignment-1-2/" class="leancloud_visitors" data-flag-title="图像处理作业(1-2)：The math deduction to the form of "Laplacian of Gaussian(LoG)"">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Laplacian-of-Gaussian-LoG"><a href="#Laplacian-of-Gaussian-LoG" class="headerlink" title="Laplacian of Gaussian(LoG)"></a>Laplacian of Gaussian(LoG)</h2><p>As Laplace operator may detect edges as well as noise (isolated, out-of-range), it may be desirable to smooth the image first by a convolution with a Gaussian kernel of width $\sigma$<br>$$G_{\sigma}(x,y) = \frac{1}{\sqrt{2\pi \sigma^2}}exp(-\frac{x^2+y^2}{2\sigma^2})$$</p>
+<p>\begin{equation}<br>    G_{\sigma}(x,y) = \frac{1}{\sqrt{2\pi \sigma^2}}exp(-\frac{x^2+y^2}{2\sigma^2})<br>\end{equation}</p>
+<p>In $N = 2$ to suppress the noise before using Laplace for edge detection:<br>$$\bigtriangleup[G<em>{\sigma}(x,y) * f(x,y)] = [\bigtriangleup G</em>{\sigma}(x,y)] <em> f(x,y) = LoG </em> f(x,y)$$</p>
+<p>The first equal sign is due to the fact that</p>
+<p>So we can obtain the Laplacian of Gaussian  $\bigtriangleup G_{\sigma}(x,y)$ first and then convolve it with the input image. To do so, first consider</p>
+<p>and</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/01/25/image-processing-assignment-1-1/" itemprop="url">
-                  图像处理作业（1-1）：The math deduction to the general form of ”Discrete Laplacian Operator”
+                  图像处理作业(1-1)：The math deduction to the general form of "Discrete Laplacian Operator"
                 </a>
               
             
@@ -356,7 +490,7 @@ var _hmt = _hmt || [];
 
           
           
-             <span id="/2017/01/25/image-processing-assignment-1-1/" class="leancloud_visitors" data-flag-title="图像处理作业（1-1）：The math deduction to the general form of ”Discrete Laplacian Operator”">
+             <span id="/2017/01/25/image-processing-assignment-1-1/" class="leancloud_visitors" data-flag-title="图像处理作业(1-1)：The math deduction to the general form of "Discrete Laplacian Operator"">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1464,137 +1598,6 @@ var _hmt = _hmt || [];
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/14/operating-system-homework-6/" itemprop="url">
-                  操作系统原理作业（六）：xv6 lazy page allocation
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-14T17:16:45+08:00" content="2017-01-14">
-              2017-01-14
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/操作系统原理/" itemprop="url" rel="index">
-                    <span itemprop="name">操作系统原理</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/01/14/operating-system-homework-6/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/14/operating-system-homework-6/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2017/01/14/operating-system-homework-6/" class="leancloud_visitors" data-flag-title="操作系统原理作业（六）：xv6 lazy page allocation">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="Eliminate-allocation-from-sbrk"><a href="#Eliminate-allocation-from-sbrk" class="headerlink" title="Eliminate allocation from sbrk()"></a>Eliminate allocation from sbrk()</h2><h3 id="修改sys-sbrk-函数"><a href="#修改sys-sbrk-函数" class="headerlink" title="修改sys_sbrk()函数"></a>修改sys_sbrk()函数</h3><p>对系统调用sbrk的实际实现sys_sbrk进行修改，只将进程的内存空间大小增加n而不进行实际的分配，即把调用growproc()函数的部分注释掉并增加内存大小。修改后的sys_sbrk()函数如下：<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/14/operating-system-homework-6/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1640,7 +1643,7 @@ var _hmt = _hmt || [];
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1657,7 +1660,7 @@ var _hmt = _hmt || [];
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-count">48</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

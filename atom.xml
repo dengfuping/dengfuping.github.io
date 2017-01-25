@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dengfuping.com/"/>
-  <updated>2017-01-25T05:14:44.474Z</updated>
+  <updated>2017-01-25T05:28:33.433Z</updated>
   <id>http://www.dengfuping.com/</id>
   
   <author>
@@ -16,11 +16,43 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>图像处理作业（1-1）：The math deduction to the general form of ”Discrete Laplacian Operator”</title>
+    <title>图像处理作业(1-2)：The math deduction to the form of &quot;Laplacian of Gaussian(LoG)&quot;</title>
+    <link href="http://www.dengfuping.com/2017/01/25/image-processing-assignment-1-2/"/>
+    <id>http://www.dengfuping.com/2017/01/25/image-processing-assignment-1-2/</id>
+    <published>2017-01-25T05:19:51.000Z</published>
+    <updated>2017-01-25T05:28:33.433Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Laplacian-of-Gaussian-LoG"><a href="#Laplacian-of-Gaussian-LoG" class="headerlink" title="Laplacian of Gaussian(LoG)"></a>Laplacian of Gaussian(LoG)</h2><p>As Laplace operator may detect edges as well as noise (isolated, out-of-range), it may be desirable to smooth the image first by a convolution with a Gaussian kernel of width $\sigma$<br>$$G_{\sigma}(x,y) = \frac{1}{\sqrt{2\pi \sigma^2}}exp(-\frac{x^2+y^2}{2\sigma^2})$$</p>
+<p>\begin{equation}<br>    G_{\sigma}(x,y) = \frac{1}{\sqrt{2\pi \sigma^2}}exp(-\frac{x^2+y^2}{2\sigma^2})<br>\end{equation}</p>
+<p>In $N = 2$ to suppress the noise before using Laplace for edge detection:<br>$$\bigtriangleup[G<em>{\sigma}(x,y) * f(x,y)] = [\bigtriangleup G</em>{\sigma}(x,y)] <em> f(x,y) = LoG </em> f(x,y)$$</p>
+<p>The first equal sign is due to the fact that</p>
+<p>So we can obtain the Laplacian of Gaussian  $\bigtriangleup G_{\sigma}(x,y)$ first and then convolve it with the input image. To do so, first consider</p>
+<p>and</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Laplacian-of-Gaussian-LoG&quot;&gt;&lt;a href=&quot;#Laplacian-of-Gaussian-LoG&quot; class=&quot;headerlink&quot; title=&quot;Laplacian of Gaussian(LoG)&quot;&gt;&lt;/a&gt;Laplacian 
+    
+    </summary>
+    
+      <category term="图像处理" scheme="http://www.dengfuping.com/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    
+    
+      <category term="图像处理" scheme="http://www.dengfuping.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    
+      <category term="Laplacian of Gaussian" scheme="http://www.dengfuping.com/tags/Laplacian-of-Gaussian/"/>
+    
+      <category term="LoG" scheme="http://www.dengfuping.com/tags/LoG/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>图像处理作业(1-1)：The math deduction to the general form of &quot;Discrete Laplacian Operator&quot;</title>
     <link href="http://www.dengfuping.com/2017/01/25/image-processing-assignment-1-1/"/>
     <id>http://www.dengfuping.com/2017/01/25/image-processing-assignment-1-1/</id>
     <published>2017-01-25T03:30:32.000Z</published>
-    <updated>2017-01-25T05:14:44.474Z</updated>
+    <updated>2017-01-25T05:21:01.837Z</updated>
     
     <content type="html"><![CDATA[<h2 id="The-Laplace-Operator"><a href="#The-Laplace-Operator" class="headerlink" title="The Laplace Operator"></a>The Laplace Operator</h2><p>The Laplace operator is a scalar operator defined as the dot product (inner product) of two gradient vector operators:<br><img src="http://i1.piimg.com/567571/32f934c177602a5b.png" alt=""></p>
 <p>In $N = 2$ dimensional space, we have:<br><img src="http://p1.bqimg.com/567571/fc233fcaef670639.png" alt=""></p>

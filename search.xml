@@ -4,7 +4,19 @@
   
     
     <entry>
-      <title><![CDATA[图像处理作业（1-1）：The math deduction to the general form of ”Discrete Laplacian Operator”]]></title>
+      <title><![CDATA[图像处理作业(1-2)：The math deduction to the form of "Laplacian of Gaussian(LoG)"]]></title>
+      <url>http://www.dengfuping.com/2017/01/25/image-processing-assignment-1-2/</url>
+      <content type="html"><![CDATA[<h2 id="Laplacian-of-Gaussian-LoG"><a href="#Laplacian-of-Gaussian-LoG" class="headerlink" title="Laplacian of Gaussian(LoG)"></a>Laplacian of Gaussian(LoG)</h2><p>As Laplace operator may detect edges as well as noise (isolated, out-of-range), it may be desirable to smooth the image first by a convolution with a Gaussian kernel of width $\sigma$<br>$$G_{\sigma}(x,y) = \frac{1}{\sqrt{2\pi \sigma^2}}exp(-\frac{x^2+y^2}{2\sigma^2})$$</p>
+<p>\begin{equation}<br>    G_{\sigma}(x,y) = \frac{1}{\sqrt{2\pi \sigma^2}}exp(-\frac{x^2+y^2}{2\sigma^2})<br>\end{equation}</p>
+<p>In $N = 2$ to suppress the noise before using Laplace for edge detection:<br>$$\bigtriangleup[G<em>{\sigma}(x,y) * f(x,y)] = [\bigtriangleup G</em>{\sigma}(x,y)] <em> f(x,y) = LoG </em> f(x,y)$$</p>
+<p>The first equal sign is due to the fact that</p>
+<p>So we can obtain the Laplacian of Gaussian  $\bigtriangleup G_{\sigma}(x,y)$ first and then convolve it with the input image. To do so, first consider</p>
+<p>and</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[图像处理作业(1-1)：The math deduction to the general form of "Discrete Laplacian Operator"]]></title>
       <url>http://www.dengfuping.com/2017/01/25/image-processing-assignment-1-1/</url>
       <content type="html"><![CDATA[<h2 id="The-Laplace-Operator"><a href="#The-Laplace-Operator" class="headerlink" title="The Laplace Operator"></a>The Laplace Operator</h2><p>The Laplace operator is a scalar operator defined as the dot product (inner product) of two gradient vector operators:<br><img src="http://i1.piimg.com/567571/32f934c177602a5b.png" alt=""></p>
 <p>In $N = 2$ dimensional space, we have:<br><img src="http://p1.bqimg.com/567571/fc233fcaef670639.png" alt=""></p>
