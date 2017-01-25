@@ -520,11 +520,11 @@
     
       <category term="xv6" scheme="http://www.dengfuping.com/tags/xv6/"/>
     
+      <category term="CPU alarm" scheme="http://www.dengfuping.com/tags/CPU-alarm/"/>
+    
       <category term="system call" scheme="http://www.dengfuping.com/tags/system-call/"/>
     
       <category term="系统调用" scheme="http://www.dengfuping.com/tags/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/"/>
-    
-      <category term="CPU alarm" scheme="http://www.dengfuping.com/tags/CPU-alarm/"/>
     
   </entry>
   
