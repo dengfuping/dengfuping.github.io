@@ -380,9 +380,12 @@ var _hmt = _hmt || [];
       
         
           
-            <h2 id="The-Laplace-Operator"><a href="#The-Laplace-Operator" class="headerlink" title="The Laplace Operator"></a>The Laplace Operator</h2><p>The Laplace operator is a scalar operator defined as the dot product (inner product) of two gradient vector operators:<br>$$\bigtriangleup = \bigtriangledown \cdot \bigtriangledown = \bigtriangledown ^ 2<br>%= [\frac{\partial}{\partial x<em>{1}}  ]<br>= \begin{bmatrix}<br>\frac{\partial}{\partial x</em>{1}}, \cdots, \frac{\partial}{\partial x<em>{N}}<br>\end{bmatrix}<br>\begin{bmatrix}<br>\frac{\partial}{\partial x</em>{1}} \ \vdots \ \frac{\partial}{\partial x<em>{N}}<br>\end{bmatrix}<br>= \sum </em>{n=1}^{N}\frac{\partial^2}{\partial {x_{n}}^2}<br>$$</p>
-<p>\begin{bmatrix}<br>\frac{\partial}{\partial x<em>{1}}, \cdots, \frac{\partial}{\partial x</em>{N}}<br>\end{bmatrix}<br>\begin{bmatrix}<br>\frac{\partial}{\partial x<em>{1}} \ \vdots \ \frac{\partial}{\partial x</em>{N}}<br>\end{bmatrix}</p>
-<p>$$T(n) = \Theta(n) + \sum_{i=0}^{n-1}{O({n}_{i}^2)}$$</p>
+            <h2 id="The-Laplace-Operator"><a href="#The-Laplace-Operator" class="headerlink" title="The Laplace Operator"></a>The Laplace Operator</h2><p>The Laplace operator is a scalar operator defined as the dot product (inner product) of two gradient vector operators:<br><img src="http://i1.piimg.com/567571/32f934c177602a5b.png" alt=""></p>
+<p>In $N = 2$ dimensional space, we have:<br><img src="http://p1.bqimg.com/567571/fc233fcaef670639.png" alt=""></p>
+<p>When applied to a 2-D function $f (x, y)$, this operator produces a scalar function:</p>
+<p>In discrete case, the second order differentiation becomes second order difference. In 1-D case, if the first order difference is defined as</p>
+<p>then the second order difference is</p>
+<p>Note that $\bigtriangleup f[n]$  is so defined that it is symmetric to the center element $f[n]$. The Laplace operation can be carried out by 1-D convolution with a kernel $[1,-2,1]$. In 2-D case, Laplace operator is the sum of two second order differences in both dimensions: </p>
 
           
         
