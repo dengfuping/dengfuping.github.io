@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dengfuping.com/"/>
-  <updated>2017-01-25T04:26:25.550Z</updated>
+  <updated>2017-01-25T04:29:38.476Z</updated>
   <id>http://www.dengfuping.com/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="http://www.dengfuping.com/2017/01/25/image-processing-assignment-1-1/"/>
     <id>http://www.dengfuping.com/2017/01/25/image-processing-assignment-1-1/</id>
     <published>2017-01-25T03:30:32.000Z</published>
-    <updated>2017-01-25T04:26:25.550Z</updated>
+    <updated>2017-01-25T04:29:38.476Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="The-Laplace-Operator"><a href="#The-Laplace-Operator" class="headerlink" title="The Laplace Operator"></a>The Laplace Operator</h2><p>The Laplace operator is a scalar operator defined as the dot product (inner product) of two gradient vector operators:<br>$$<br>\bigtriangleup = \bigtriangledown \cdot \bigtriangledown = \bigtriangledown ^ 2 %= [\frac{\partial}{\partial x<em>{1}}  ]= \begin{bmatrix} \frac{\partial}{\partial x</em>{1}}, \cdots, \frac{\partial}{\partial x<em>{N}}\end{bmatrix} \begin{bmatrix}\frac{\partial}{\partial x</em>{1}} \ \vdots \ \frac{\partial}{\partial x<em>{N}}\end{bmatrix}= \sum </em>{n=1}^{N}\frac{\partial^2}{\partial {x_{n}}^2}<br>$$</p>
+    <content type="html"><![CDATA[<h2 id="The-Laplace-Operator"><a href="#The-Laplace-Operator" class="headerlink" title="The Laplace Operator"></a>The Laplace Operator</h2><p>The Laplace operator is a scalar operator defined as the dot product (inner product) of two gradient vector operators:<br>$$<br>\bigtriangleup = \bigtriangledown \cdot \bigtriangledown =<br>$$</p>
 <p>$$T(n) = \Theta(n) + \sum_{i=0}^{n-1}{O({n}_{i}^2)}$$</p>
 ]]></content>
     
