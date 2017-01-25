@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dengfuping.com/"/>
-  <updated>2017-01-25T05:07:25.343Z</updated>
+  <updated>2017-01-25T05:14:44.474Z</updated>
   <id>http://www.dengfuping.com/</id>
   
   <author>
@@ -20,14 +20,16 @@
     <link href="http://www.dengfuping.com/2017/01/25/image-processing-assignment-1-1/"/>
     <id>http://www.dengfuping.com/2017/01/25/image-processing-assignment-1-1/</id>
     <published>2017-01-25T03:30:32.000Z</published>
-    <updated>2017-01-25T05:07:25.343Z</updated>
+    <updated>2017-01-25T05:14:44.474Z</updated>
     
     <content type="html"><![CDATA[<h2 id="The-Laplace-Operator"><a href="#The-Laplace-Operator" class="headerlink" title="The Laplace Operator"></a>The Laplace Operator</h2><p>The Laplace operator is a scalar operator defined as the dot product (inner product) of two gradient vector operators:<br><img src="http://i1.piimg.com/567571/32f934c177602a5b.png" alt=""></p>
 <p>In $N = 2$ dimensional space, we have:<br><img src="http://p1.bqimg.com/567571/fc233fcaef670639.png" alt=""></p>
-<p>When applied to a 2-D function $f (x, y)$, this operator produces a scalar function:</p>
-<p>In discrete case, the second order differentiation becomes second order difference. In 1-D case, if the first order difference is defined as</p>
-<p>then the second order difference is</p>
-<p>Note that $\bigtriangleup f[n]$  is so defined that it is symmetric to the center element $f[n]$. The Laplace operation can be carried out by 1-D convolution with a kernel $[1,-2,1]$. In 2-D case, Laplace operator is the sum of two second order differences in both dimensions: </p>
+<p>When applied to a 2-D function $f (x, y)$, this operator produces a scalar function:<br><img src="http://i1.piimg.com/567571/0a3207f3e5dd4d26.png" alt=""></p>
+<p>In discrete case, the second order differentiation becomes second order difference. In 1-D case, if the first order difference is defined as<br><img src="http://p1.bqimg.com/567571/677066fffa355662.png" alt=""></p>
+<p>then the second order difference is<br><img src="http://i1.piimg.com/567571/833e846992a78669.png" alt=""></p>
+<p>Note that $\bigtriangleup f[n]$  is so defined that it is symmetric to the center element $f[n]$. The Laplace operation can be carried out by 1-D convolution with a kernel $[1,-2,1]$. In 2-D case, Laplace operator is the sum of two second order differences in both dimensions:<br><img src="http://p1.bqimg.com/567571/b41b2e2b606515c3.png" alt=""></p>
+<p>This operation can be carried out by 2-D convolution kernel with size $3\times3$:<br><img src="http://p1.bqimg.com/567571/5a3cbd83fcaf5ec1.png" alt=""></p>
+<p>Other Laplace kernels with size $3\times3$ can be used:<br><img src="http://p1.bqimg.com/567571/e69749f5479f3351.png" alt=""></p>
 ]]></content>
     
     <summary type="html">
