@@ -4,6 +4,13 @@
   
     
     <entry>
+      <title><![CDATA[图像处理作业（1-1）：The math deduction to the general form of ”Discrete Laplacian Operator”]]></title>
+      <url>http://www.dengfuping.com/2017/01/25/image-processing-assignment-1-1/</url>
+      <content type="html"><![CDATA[<h2 id="The-Laplace-Operator"><a href="#The-Laplace-Operator" class="headerlink" title="The Laplace Operator"></a>The Laplace Operator</h2><p>The Laplace operator is a scalar operator defined as the dot product (inner product) of two gradient vector operators:<br>\begin{equation}<br>        \bigtriangleup = \bigtriangledown \cdot \bigtriangledown = \bigtriangledown ^ 2<br>        %= [\frac{\partial}{\partial x<em>{1}}  ]<br>        = \begin{bmatrix}<br>        \frac{\partial}{\partial x</em>{1}}, \cdots, \frac{\partial}{\partial x<em>{N}}<br>        \end{bmatrix}<br>        \begin{bmatrix}<br>        \frac{\partial}{\partial x</em>{1}} \ \vdots \ \frac{\partial}{\partial x<em>{N}}<br>        \end{bmatrix}<br>        = \sum </em>{n=1}^{N}\frac{\partial^2}{\partial {x_{n}}^2}<br>\end{equation}</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[操作系统原理作业（十四）：ex05.multichoice作业]]></title>
       <url>http://www.dengfuping.com/2017/01/24/operating-system-homework-14/</url>
       <content type="html"><![CDATA[<p>1、下列选项中,操作系统提供给应用程序的接口是（A）。<br>A.系统调用&emsp;&emsp;&emsp;&emsp;B.中断&emsp;&emsp;&emsp;&emsp;C.库函数&emsp;&emsp;&emsp;&emsp;D.原语<br><strong>解答：</strong>系统调用是操作系统提供给编程人员的唯一接口。–《计算机操作系统教程》<a id="more"></a></p>
@@ -128,7 +135,8 @@
     <entry>
       <title><![CDATA[操作系统原理作业（七）：Multithreaded Programming (Threads and Locking)]]></title>
       <url>http://www.dengfuping.com/2017/01/14/operating-system-homework-7/</url>
-      <content type="html"><![CDATA[<h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><p>编译ph.c源文件，并分别以单线程和双线程运行，结果如下：<br><img src="http://i1.piimg.com/567571/08d404e16e307aca.png" alt=""><br><a id="more"></a><br>发现双线程运行过程中会出现keys missing错误，并且运行时间也远大于单线程的运行时间。出现此问题的原因是多线程同时访问同一块内存并进行insert操作时未加锁，会发生冲突，因而会导致丢失keys。</p>
+      <content type="html"><![CDATA[<h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><p>编译ph.c源文件，并分别以单线程和双线程运行，结果如下：<br><img src="http://i1.piimg.com/567571/08d404e16e307aca.png" alt=""><a id="more"></a></p>
+<p>发现双线程运行过程中会出现keys missing错误，并且运行时间也远大于单线程的运行时间。出现此问题的原因是多线程同时访问同一块内存并进行insert操作时未加锁，会发生冲突，因而会导致丢失keys。</p>
 <p>在原有ph.c代码的基础上做如下改动：<br>（1）声明锁变量数组：<br><img src="http://p1.bpimg.com/567571/cc58c2387ef5945a.png" alt=""></p>
 <p>（2）在main()函数中初始化锁变量数组：<br><img src="http://p1.bpimg.com/567571/b6b0a3971fdd9d95.png" alt=""></p>
 <p>（3）当进行insert操作是加锁保护，修改put()函数如下：<br><img src="http://p1.bpimg.com/567571/cd5964045fc2623b.png" alt=""></p>

@@ -97,7 +97,7 @@
 <meta property="og:image" content="http://p1.bpimg.com/567571/b6b0a3971fdd9d95.png">
 <meta property="og:image" content="http://p1.bpimg.com/567571/cd5964045fc2623b.png">
 <meta property="og:image" content="http://p1.bpimg.com/567571/9963fc17cae7d38f.png">
-<meta property="og:updated_time" content="2017-01-25T03:08:50.679Z">
+<meta property="og:updated_time" content="2017-01-25T03:12:01.521Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统原理作业（七）：Multithreaded Programming (Threads and Locking)">
 <meta name="twitter:description" content="实验步骤编译ph.c源文件，并分别以单线程和双线程运行，结果如下：">
@@ -388,7 +388,8 @@ var _hmt = _hmt || [];
       
 
       
-        <h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><p>编译ph.c源文件，并分别以单线程和双线程运行，结果如下：<br><img src="http://i1.piimg.com/567571/08d404e16e307aca.png" alt=""><br><a id="more"></a><br>发现双线程运行过程中会出现keys missing错误，并且运行时间也远大于单线程的运行时间。出现此问题的原因是多线程同时访问同一块内存并进行insert操作时未加锁，会发生冲突，因而会导致丢失keys。</p>
+        <h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><p>编译ph.c源文件，并分别以单线程和双线程运行，结果如下：<br><img src="http://i1.piimg.com/567571/08d404e16e307aca.png" alt=""><a id="more"></a></p>
+<p>发现双线程运行过程中会出现keys missing错误，并且运行时间也远大于单线程的运行时间。出现此问题的原因是多线程同时访问同一块内存并进行insert操作时未加锁，会发生冲突，因而会导致丢失keys。</p>
 <p>在原有ph.c代码的基础上做如下改动：<br>（1）声明锁变量数组：<br><img src="http://p1.bpimg.com/567571/cc58c2387ef5945a.png" alt=""></p>
 <p>（2）在main()函数中初始化锁变量数组：<br><img src="http://p1.bpimg.com/567571/b6b0a3971fdd9d95.png" alt=""></p>
 <p>（3）当进行insert操作是加锁保护，修改put()函数如下：<br><img src="http://p1.bpimg.com/567571/cd5964045fc2623b.png" alt=""></p>
@@ -539,7 +540,7 @@ var _hmt = _hmt || [];
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -556,7 +557,7 @@ var _hmt = _hmt || [];
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-count">46</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

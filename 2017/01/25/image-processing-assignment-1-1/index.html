@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="图像处理,拉普拉斯算子,拉普拉斯公式,Laplacian Operator," />
 
 
 
@@ -86,12 +86,16 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Deng | 不搭">
-<meta property="og:url" content="http://www.dengfuping.com/tags/mysql/index.html">
+<meta name="description" content="The Laplace OperatorThe Laplace operator is a scalar operator defined as the dot product (inner product) of two gradient vector operators:\begin{equation}        \bigtriangleup = \bigtriangledown \cdo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图像处理作业（1-1）：The math deduction to the general form of ”Discrete Laplacian Operator”">
+<meta property="og:url" content="http://www.dengfuping.com/2017/01/25/image-processing-assignment-1-1/index.html">
 <meta property="og:site_name" content="Deng | 不搭">
+<meta property="og:description" content="The Laplace OperatorThe Laplace operator is a scalar operator defined as the dot product (inner product) of two gradient vector operators:\begin{equation}        \bigtriangleup = \bigtriangledown \cdo">
+<meta property="og:updated_time" content="2017-01-25T03:36:19.664Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Deng | 不搭">
+<meta name="twitter:title" content="图像处理作业（1-1）：The math deduction to the general form of ”Discrete Laplacian Operator”">
+<meta name="twitter:description" content="The Laplace OperatorThe Laplace operator is a scalar operator defined as the dot product (inner product) of two gradient vector operators:\begin{equation}        \bigtriangleup = \bigtriangledown \cdo">
 
 
 <script>
@@ -123,9 +127,9 @@ var _hmt = _hmt || [];
 
 
 
-  <link rel="canonical" href="http://www.dengfuping.com/tags/mysql/"/>
+  <link rel="canonical" href="http://www.dengfuping.com/2017/01/25/image-processing-assignment-1-1/"/>
 
-  <title> 标签: mysql | Deng | 不搭 </title>
+  <title> 图像处理作业（1-1）：The math deduction to the general form of ”Discrete Laplacian Operator” | Deng | 不搭 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -156,7 +160,7 @@ var _hmt = _hmt || [];
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -277,53 +281,207 @@ var _hmt = _hmt || [];
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        mysql
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                图像处理作业（1-1）：The math deduction to the general form of ”Discrete Laplacian Operator”
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-25T11:30:32+08:00" content="2017-01-25">
+              2017-01-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/图像处理/" itemprop="url" rel="index">
+                    <span itemprop="name">图像处理</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/01/25/image-processing-assignment-1-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/25/image-processing-assignment-1-1/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/25/image-processing-assignment-1-1/" class="leancloud_visitors" data-flag-title="图像处理作业（1-1）：The math deduction to the general form of ”Discrete Laplacian Operator”">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h2 id="The-Laplace-Operator"><a href="#The-Laplace-Operator" class="headerlink" title="The Laplace Operator"></a>The Laplace Operator</h2><p>The Laplace operator is a scalar operator defined as the dot product (inner product) of two gradient vector operators:<br>\begin{equation}<br>        \bigtriangleup = \bigtriangledown \cdot \bigtriangledown = \bigtriangledown ^ 2<br>        %= [\frac{\partial}{\partial x<em>{1}}  ]<br>        = \begin{bmatrix}<br>        \frac{\partial}{\partial x</em>{1}}, \cdots, \frac{\partial}{\partial x<em>{N}}<br>        \end{bmatrix}<br>        \begin{bmatrix}<br>        \frac{\partial}{\partial x</em>{1}} \ \vdots \ \frac{\partial}{\partial x<em>{N}}<br>        \end{bmatrix}<br>        = \sum </em>{n=1}^{N}\frac{\partial^2}{\partial {x_{n}}^2}<br>\end{equation}</p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/10/15/xampp-configuration-and-attention/" itemprop="url">
-              
-                <span itemprop="name">xampp 常见问题及其解决方式</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="Deng | 不搭 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay-reward-image.jpg" alt="Deng | 不搭 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-10-15T20:48:27+08:00"
-              content="2016-10-15" >
-          10-15
-        </time>
-      </div>
 
-    </header>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/图像处理/" rel="tag">#图像处理</a>
+          
+            <a href="/tags/拉普拉斯算子/" rel="tag">#拉普拉斯算子</a>
+          
+            <a href="/tags/拉普拉斯公式/" rel="tag">#拉普拉斯公式</a>
+          
+            <a href="/tags/Laplacian-Operator/" rel="tag">#Laplacian Operator</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/24/operating-system-homework-14/" rel="next" title="操作系统原理作业（十四）：ex05.multichoice作业">
+                <i class="fa fa-chevron-left"></i> 操作系统原理作业（十四）：ex05.multichoice作业
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
           
 
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/01/25/image-processing-assignment-1-1/"
+           data-title="图像处理作业（1-1）：The math deduction to the general form of ”Discrete Laplacian Operator”" data-url="http://www.dengfuping.com/2017/01/25/image-processing-assignment-1-1/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -343,8 +501,17 @@ var _hmt = _hmt || [];
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -439,6 +606,17 @@ var _hmt = _hmt || [];
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#The-Laplace-Operator"><span class="nav-number">1.</span> <span class="nav-text">The Laplace Operator</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -556,6 +734,10 @@ var _hmt = _hmt || [];
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
