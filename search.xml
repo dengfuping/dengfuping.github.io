@@ -126,6 +126,18 @@
     </entry>
     
     <entry>
+      <title><![CDATA[操作系统原理作业（七）：Multithreaded Programming (Threads and Locking)]]></title>
+      <url>http://www.dengfuping.com/2017/01/14/operating-system-homework-7/</url>
+      <content type="html"><![CDATA[<h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><p>编译ph.c源文件，并分别以单线程和双线程运行，结果如下：<br><img src="http://i1.piimg.com/567571/08d404e16e307aca.png" alt=""><br><a id="more"></a><br>发现双线程运行过程中会出现keys missing错误，并且运行时间也远大于单线程的运行时间。出现此问题的原因是多线程同时访问同一块内存并进行insert操作时未加锁，会发生冲突，因而会导致丢失keys。</p>
+<p>在原有ph.c代码的基础上做如下改动：<br>（1）声明锁变量数组：<br><img src="http://p1.bpimg.com/567571/cc58c2387ef5945a.png" alt=""></p>
+<p>（2）在main()函数中初始化锁变量数组：<br><img src="http://p1.bpimg.com/567571/b6b0a3971fdd9d95.png" alt=""></p>
+<p>（3）当进行insert操作是加锁保护，修改put()函数如下：<br><img src="http://p1.bpimg.com/567571/cd5964045fc2623b.png" alt=""></p>
+<p>再次编译ph.c，并分别以单线程和双线程运行，结果如下：<br><img src="http://p1.bpimg.com/567571/9963fc17cae7d38f.png" alt=""></p>
+<p>发现双线程与单线程速度相仿，且没有出现keys missing，说明运行结果正确。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[操作系统原理作业（六）：xv6 lazy page allocation]]></title>
       <url>http://www.dengfuping.com/2017/01/14/operating-system-homework-6/</url>
       <content type="html"><![CDATA[<h2 id="Eliminate-allocation-from-sbrk"><a href="#Eliminate-allocation-from-sbrk" class="headerlink" title="Eliminate allocation from sbrk()"></a>Eliminate allocation from sbrk()</h2><h3 id="修改sys-sbrk-函数"><a href="#修改sys-sbrk-函数" class="headerlink" title="修改sys_sbrk()函数"></a>修改sys_sbrk()函数</h3><p>对系统调用sbrk的实际实现sys_sbrk进行修改，只将进程的内存空间大小增加n而不进行实际的分配，即把调用growproc()函数的部分注释掉并增加内存大小。修改后的sys_sbrk()函数如下：<br><a id="more"></a><br><img src="http://p1.bpimg.com/567571/cab4cebf8cb60fdd.png" alt=""></p>

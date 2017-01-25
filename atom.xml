@@ -278,6 +278,42 @@
   </entry>
   
   <entry>
+    <title>操作系统原理作业（七）：Multithreaded Programming (Threads and Locking)</title>
+    <link href="http://www.dengfuping.com/2017/01/14/operating-system-homework-7/"/>
+    <id>http://www.dengfuping.com/2017/01/14/operating-system-homework-7/</id>
+    <published>2017-01-14T09:31:59.000Z</published>
+    <updated>2017-01-25T03:08:50.679Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><p>编译ph.c源文件，并分别以单线程和双线程运行，结果如下：<br><img src="http://i1.piimg.com/567571/08d404e16e307aca.png" alt=""><br><a id="more"></a><br>发现双线程运行过程中会出现keys missing错误，并且运行时间也远大于单线程的运行时间。出现此问题的原因是多线程同时访问同一块内存并进行insert操作时未加锁，会发生冲突，因而会导致丢失keys。</p>
+<p>在原有ph.c代码的基础上做如下改动：<br>（1）声明锁变量数组：<br><img src="http://p1.bpimg.com/567571/cc58c2387ef5945a.png" alt=""></p>
+<p>（2）在main()函数中初始化锁变量数组：<br><img src="http://p1.bpimg.com/567571/b6b0a3971fdd9d95.png" alt=""></p>
+<p>（3）当进行insert操作是加锁保护，修改put()函数如下：<br><img src="http://p1.bpimg.com/567571/cd5964045fc2623b.png" alt=""></p>
+<p>再次编译ph.c，并分别以单线程和双线程运行，结果如下：<br><img src="http://p1.bpimg.com/567571/9963fc17cae7d38f.png" alt=""></p>
+<p>发现双线程与单线程速度相仿，且没有出现keys missing，说明运行结果正确。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;实验步骤&quot;&gt;&lt;a href=&quot;#实验步骤&quot; class=&quot;headerlink&quot; title=&quot;实验步骤&quot;&gt;&lt;/a&gt;实验步骤&lt;/h2&gt;&lt;p&gt;编译ph.c源文件，并分别以单线程和双线程运行，结果如下：&lt;br&gt;&lt;img src=&quot;http://i1.piimg.com/567571/08d404e16e307aca.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="操作系统原理" scheme="http://www.dengfuping.com/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/"/>
+    
+    
+      <category term="操作系统原理" scheme="http://www.dengfuping.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/"/>
+    
+      <category term="Multithreaded Programming" scheme="http://www.dengfuping.com/tags/Multithreaded-Programming/"/>
+    
+      <category term="Threads and Locking" scheme="http://www.dengfuping.com/tags/Threads-and-Locking/"/>
+    
+      <category term="多线程编程" scheme="http://www.dengfuping.com/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="线程和锁" scheme="http://www.dengfuping.com/tags/%E7%BA%BF%E7%A8%8B%E5%92%8C%E9%94%81/"/>
+    
+  </entry>
+  
+  <entry>
     <title>操作系统原理作业（六）：xv6 lazy page allocation</title>
     <link href="http://www.dengfuping.com/2017/01/14/operating-system-homework-6/"/>
     <id>http://www.dengfuping.com/2017/01/14/operating-system-homework-6/</id>
