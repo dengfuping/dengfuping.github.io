@@ -379,15 +379,13 @@ var _hmt = _hmt || [];
 
       
         
-          
-            <h1 id="Prewitt-Operator"><a href="#Prewitt-Operator" class="headerlink" title="Prewitt Operator"></a>Prewitt Operator</h1><h2 id="Source-Code-Matlab"><a href="#Source-Code-Matlab" class="headerlink" title="Source Code (Matlab)"></a>Source Code (Matlab)</h2><figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">I2 = imread(<span class="string">'img1.jpg'</span>);</div><div class="line">I = rgb2gray(I2);</div><div class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>), imshow(I2);</div><div class="line">title(<span class="string">'Original'</span>);</div><div class="line">BW1 = edge(I, <span class="string">'prewitt'</span>);  </div><div class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>), imshow(BW3); </div><div class="line">title(<span class="string">'Prewitt'</span>);</div></pre></td></tr></table></figure>
-<h2 id="Running-Results"><a href="#Running-Results" class="headerlink" title="Running Results"></a>Running Results</h2><h3 id="Image-1"><a href="#Image-1" class="headerlink" title="Image 1"></a>Image 1</h3><p><img src="http://p1.bqimg.com/567571/728f82c98eab1b1c.png" alt=""></p>
-<h3 id="Image-2"><a href="#Image-2" class="headerlink" title="Image 2"></a>Image 2</h3><p><img src="http://p1.bpimg.com/567571/7377cd16b8da0332.png" alt=""></p>
-<h3 id="Image-3"><a href="#Image-3" class="headerlink" title="Image 3"></a>Image 3</h3><p><img src="http://i1.piimg.com/567571/c01246ee9232ef1c.png" alt=""></p>
-<h3 id="Image-4"><a href="#Image-4" class="headerlink" title="Image 4"></a>Image 4</h3><p><img src="http://p1.bpimg.com/567571/525d29994cddacfb.png" alt=""></p>
-<h3 id="Image-5"><a href="#Image-5" class="headerlink" title="Image 5"></a>Image 5</h3><p><img src="http://i1.piimg.com/567571/432e8143224ea386.png" alt=""></p>
-
-          
+          <h1 id="Prewitt-Operator"><a href="#Prewitt-Operator" class="headerlink" title="Prewitt Operator"></a>Prewitt Operator</h1><h2 id="Source-Code-Matlab"><a href="#Source-Code-Matlab" class="headerlink" title="Source Code (Matlab)"></a>Source Code (Matlab)</h2><figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">I2 = imread(<span class="string">'img1.jpg'</span>);</div><div class="line">I = rgb2gray(I2);</div><div class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>), imshow(I2);</div><div class="line">title(<span class="string">'Original'</span>);</div><div class="line">BW1 = edge(I, <span class="string">'prewitt'</span>);  </div><div class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>), imshow(BW3); </div><div class="line">title(<span class="string">'Prewitt'</span>);</div></pre></td></tr></table></figure>
+<h2 id="Running-Results"><a href="#Running-Results" class="headerlink" title="Running Results"></a>Running Results</h2><h3 id="Image-1"><a href="#Image-1" class="headerlink" title="Image 1"></a>Image 1</h3><p><img src="http://p1.bqimg.com/567571/728f82c98eab1b1c.png" alt="">
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/25/image-processing-assignment-2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -513,17 +511,12 @@ var _hmt = _hmt || [];
 
       
         
-          
-            <h2 id="Laplacian-of-Gaussian-LoG"><a href="#Laplacian-of-Gaussian-LoG" class="headerlink" title="Laplacian of Gaussian(LoG)"></a>Laplacian of Gaussian(LoG)</h2><p>As Laplace operator may detect edges as well as noise (isolated, out-of-range), it may be desirable to smooth the image first by a convolution with a Gaussian kernel of width $\sigma$<br><img src="http://i1.piimg.com/567571/4bca2943b11e1f54.png" alt=""></p>
-<p>In $N = 2$ to suppress the noise before using Laplace for edge detection<br><img src="http://p1.bqimg.com/567571/6f7bf8f192eab9f2.png" alt=""></p>
-<p>The first equal sign is due to the fact that<br><img src="http://i1.piimg.com/567571/d910371dc711719a.png" alt=""></p>
-<p>So we can obtain the Laplacian of Gaussian  $\bigtriangleup G_{\sigma}(x,y)$ first and then convolve it with the input image. To do so, first consider<br><img src="http://p1.bpimg.com/567571/76fd3ec51805db7a.png" alt=""></p>
-<p>and<br><img src="http://i1.piimg.com/567571/af039fab929de898.png" alt=""></p>
-<p>Note that for simplicity we omitted the normalizing coefficient  $1/\sqrt{2\pi \sigma^2}$. Similarly we can get<br><img src="http://p1.bpimg.com/567571/9cc3a6d7d7d25787.png" alt=""></p>
-<p>Now we have LoG as an operator or convolution kernel defined as<br><img src="http://p1.bqimg.com/567571/b4e995ab6d114087.png" alt=""></p>
-<p>There is an example of LoG operator of size $5\times5$ below:<br><img src="http://i1.piimg.com/567571/76f3abd7f2d760ec.png" alt=""></p>
-
-          
+          <h2 id="Laplacian-of-Gaussian-LoG"><a href="#Laplacian-of-Gaussian-LoG" class="headerlink" title="Laplacian of Gaussian(LoG)"></a>Laplacian of Gaussian(LoG)</h2><p>As Laplace operator may detect edges as well as noise (isolated, out-of-range), it may be desirable to smooth the image first by a convolution with a Gaussian kernel of width $\sigma$<br><img src="http://i1.piimg.com/567571/4bca2943b11e1f54.png" alt="">
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/25/image-processing-assignment-1-2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -649,17 +642,12 @@ var _hmt = _hmt || [];
 
       
         
-          
-            <h2 id="The-Laplace-Operator"><a href="#The-Laplace-Operator" class="headerlink" title="The Laplace Operator"></a>The Laplace Operator</h2><p>The Laplace operator is a scalar operator defined as the dot product (inner product) of two gradient vector operators:<br><img src="http://i1.piimg.com/567571/32f934c177602a5b.png" alt=""></p>
-<p>In $N = 2$ dimensional space, we have:<br><img src="http://p1.bqimg.com/567571/fc233fcaef670639.png" alt=""></p>
-<p>When applied to a 2-D function $f (x, y)$, this operator produces a scalar function:<br><img src="http://i1.piimg.com/567571/0a3207f3e5dd4d26.png" alt=""></p>
-<p>In discrete case, the second order differentiation becomes second order difference. In 1-D case, if the first order difference is defined as<br><img src="http://p1.bqimg.com/567571/677066fffa355662.png" alt=""></p>
-<p>then the second order difference is<br><img src="http://i1.piimg.com/567571/833e846992a78669.png" alt=""></p>
-<p>Note that $\bigtriangleup f[n]$  is so defined that it is symmetric to the center element $f[n]$. The Laplace operation can be carried out by 1-D convolution with a kernel $[1,-2,1]$. In 2-D case, Laplace operator is the sum of two second order differences in both dimensions:<br><img src="http://p1.bqimg.com/567571/b41b2e2b606515c3.png" alt=""></p>
-<p>This operation can be carried out by 2-D convolution kernel with size $3\times3$:<br><img src="http://p1.bqimg.com/567571/5a3cbd83fcaf5ec1.png" alt=""></p>
-<p>Other Laplace kernels with size $3\times3$ can be used:<br><img src="http://p1.bqimg.com/567571/e69749f5479f3351.png" alt=""></p>
-
-          
+          <h2 id="The-Laplace-Operator"><a href="#The-Laplace-Operator" class="headerlink" title="The Laplace Operator"></a>The Laplace Operator</h2><p>The Laplace operator is a scalar operator defined as the dot product (inner product) of two gradient vector operators:<br><img src="http://i1.piimg.com/567571/32f934c177602a5b.png" alt="">
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/25/image-processing-assignment-1-1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
