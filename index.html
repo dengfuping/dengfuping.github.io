@@ -380,7 +380,7 @@ var _hmt = _hmt || [];
       
         
           
-            <h2 id="The-Laplace-Operator"><a href="#The-Laplace-Operator" class="headerlink" title="The Laplace Operator"></a>The Laplace Operator</h2><p>The Laplace operator is a scalar operator defined as the dot product (inner product) of two gradient vector operators:<br>$$\bigtriangleup = \bigtriangledown \cdot \bigtriangledown = \bigtriangledown ^ 2<br>%= [\frac{\partial}{\partial x<em>{1}}  ]<br>= \begin{bmatrix}<br>\frac{\partial}{\partial x</em>{1}}, \cdots, \frac{\partial}{\partial x<em>{N}}<br>\end{bmatrix}<br>\begin{bmatrix}<br>\frac{\partial}{\partial x</em>{1}} \ \vdots \ \frac{\partial}{\partial x<em>{N}}<br>\end{bmatrix}<br>= \sum </em>{n=1}^{N}\frac{\partial^2}{\partial {x_{n}}^2}$$</p>
+            <h2 id="The-Laplace-Operator"><a href="#The-Laplace-Operator" class="headerlink" title="The Laplace Operator"></a>The Laplace Operator</h2><p>The Laplace operator is a scalar operator defined as the dot product (inner product) of two gradient vector operators:<br>$$<br>\begin{equation}<br>        \bigtriangleup = \bigtriangledown \cdot \bigtriangledown = \bigtriangledown ^ 2<br>        %= [\frac{\partial}{\partial x<em>{1}}  ]<br>        = \begin{bmatrix}<br>        \frac{\partial}{\partial x</em>{1}}, \cdots, \frac{\partial}{\partial x<em>{N}}<br>        \end{bmatrix}<br>        \begin{bmatrix}<br>        \frac{\partial}{\partial x</em>{1}} \ \vdots \ \frac{\partial}{\partial x<em>{N}}<br>        \end{bmatrix}<br>        = \sum </em>{n=1}^{N}\frac{\partial^2}{\partial {x_{n}}^2}<br>\end{equation}<br>$$</p>
 
           
         
@@ -1754,6 +1754,31 @@ var _hmt = _hmt || [];
 <span id="busuanzi_container_site_pv">
     &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;总访问量: <span id="busuanzi_value_site_pv"></span>
 </span>
+
+<!--配置MathJax环境-->
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+ tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+ TeX: { noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+ messageStyle: "none"
+ });
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Queue(function() {
+ var all = MathJax.Hub.getAllJax(), i;
+ for(i=0; i < all.length; i += 1) {
+ all[i].SourceElement().parentNode.className += ' has-jax';
+ }
+ });
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Queue(function() {
+ var all = MathJax.Hub.getAllJax(), i;
+ for(i=0; i < all.length; i += 1) {
+ all[i].SourceElement().parentNode.className += ' has-jax';
+ }
+ });
+</script>
 
         
 
