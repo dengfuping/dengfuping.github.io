@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dengfuping.com/"/>
-  <updated>2017-01-25T05:33:12.803Z</updated>
+  <updated>2017-01-25T05:38:35.760Z</updated>
   <id>http://www.dengfuping.com/</id>
   
   <author>
@@ -20,12 +20,14 @@
     <link href="http://www.dengfuping.com/2017/01/25/image-processing-assignment-1-2/"/>
     <id>http://www.dengfuping.com/2017/01/25/image-processing-assignment-1-2/</id>
     <published>2017-01-25T05:19:51.000Z</published>
-    <updated>2017-01-25T05:33:12.803Z</updated>
+    <updated>2017-01-25T05:38:35.760Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Laplacian-of-Gaussian-LoG"><a href="#Laplacian-of-Gaussian-LoG" class="headerlink" title="Laplacian of Gaussian(LoG)"></a>Laplacian of Gaussian(LoG)</h2><p>As Laplace operator may detect edges as well as noise (isolated, out-of-range), it may be desirable to smooth the image first by a convolution with a Gaussian kernel of width $\sigma$<br>$$G_{\sigma}(x,y) = \frac{1}{\sqrt{2\pi \sigma^2}}exp(-\frac{x^2+y^2}{2\sigma^2})$$</p>
 <p>In $N = 2$ to suppress the noise before using Laplace for edge detection<br>$$\bigtriangleup[G<em>{\sigma}(x,y) * f(x,y)] = [\bigtriangleup G</em>{\sigma}(x,y)] <em> f(x,y) = LoG </em> f(x,y)$$</p>
+<p>\begin{equation}<br>    \bigtriangleup[G<em>{\sigma}(x,y) * f(x,y)] = [\bigtriangleup G</em>{\sigma}(x,y)] <em> f(x,y) = LoG </em> f(x,y)<br>\end{equation}</p>
 <p>The first equal sign is due to the fact that<br>$$\frac{d}{dt}[h(t)<em>f(t)] = \frac{d}{dt}\int f(\tau)h(t-\tau)d\tau = \int f(\tau) \frac{d}{dt}h(t-\tau)d\tau = f(t) </em> \frac{d}{dt}h(t)$$</p>
 <p>So we can obtain the Laplacian of Gaussian  $\bigtriangleup G<em>{\sigma}(x,y)$ first and then convolve it with the input image. To do so, first consider<br>$$\frac{\partial}{\partial x}G</em>{\sigma}(x,y) = \frac{\partial}{\partial x} e^{-(x^2+y^2)/{2\sigma^2}} = -\frac{x}{\sigma^2} e^{-(x^2+y^2)/{2\sigma^2}}$$</p>
+<p>\begin{equation}<br>    \frac{d}{dt}[h(t)<em>f(t)] = \frac{d}{dt}\int f(\tau)h(t-\tau)d\tau = \int f(\tau) \frac{d}{dt}h(t-\tau)d\tau = f(t) </em> \frac{d}{dt}h(t)<br>\end{equation}</p>
 <p>and<br>$$\frac{\partial^2}{\partial^2 x}G_{\sigma}(x,y) = \frac{x^2}{\sigma^4} e^{-(x^2+y^2)/{2\sigma^2}} - \frac{1}{\sigma^2} e^{-(x^2+y^2)/{2\sigma^2}} = \frac{x^2-\sigma^2}{\sigma^4} e^{-(x^2+y^2)/{2\sigma^2}}$$</p>
 ]]></content>
     
