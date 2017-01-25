@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="图像处理,OpenCV,egde detecting,边缘检测," />
+  <meta name="keywords" content="图像处理,边缘检测,egde detecting,OpenCV,Matlab," />
 
 
 
@@ -86,18 +86,22 @@
 
 
 
-<meta name="description" content="这是图像处理最近的一次大作业，主要的 topic 是图像处理问题中常见的边缘检测问题 (Edge Detection)。涉及到了常用的边缘检测算子 Prewitt、Sobel、Canny、Laplacian 以及最近几年新出现的 FDoG。作业中相关算法主要是借助 OpenCV 和 Matlab 进行实现，有兴趣的同学可以参考以下我提交的大作业。">
+<meta name="description" content="Prewitt OperatorSource Code (Matlab)1234567I2 = imread(&apos;img1.jpg&apos;);I = rgb2gray(I2);subplot(1,2,1), imshow(I2);title(&apos;Original&apos;);BW1 = edge(I, &apos;prewitt&apos;);  subplot(1,2,2), imshow(BW3); title(&apos;Prewitt&apos;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="图像处理第2次大作业">
-<meta property="og:url" content="http://www.dengfuping.com/2016/10/16/image-processing-assignment-2/index.html">
+<meta property="og:title" content="图像处理作业(2)：Edge Detection Algorithms">
+<meta property="og:url" content="http://www.dengfuping.com/2017/01/25/image-processing-assignment-2/index.html">
 <meta property="og:site_name" content="Deng | 不搭">
-<meta property="og:description" content="这是图像处理最近的一次大作业，主要的 topic 是图像处理问题中常见的边缘检测问题 (Edge Detection)。涉及到了常用的边缘检测算子 Prewitt、Sobel、Canny、Laplacian 以及最近几年新出现的 FDoG。作业中相关算法主要是借助 OpenCV 和 Matlab 进行实现，有兴趣的同学可以参考以下我提交的大作业。">
-<meta property="og:image" content="http://p1.bpimg.com/567571/39a50e63c48a0019.jpg">
-<meta property="og:updated_time" content="2017-01-25T03:33:30.977Z">
+<meta property="og:description" content="Prewitt OperatorSource Code (Matlab)1234567I2 = imread(&apos;img1.jpg&apos;);I = rgb2gray(I2);subplot(1,2,1), imshow(I2);title(&apos;Original&apos;);BW1 = edge(I, &apos;prewitt&apos;);  subplot(1,2,2), imshow(BW3); title(&apos;Prewitt&apos;">
+<meta property="og:image" content="http://p1.bqimg.com/567571/728f82c98eab1b1c.png">
+<meta property="og:image" content="http://p1.bpimg.com/567571/7377cd16b8da0332.png">
+<meta property="og:image" content="http://i1.piimg.com/567571/c01246ee9232ef1c.png">
+<meta property="og:image" content="http://p1.bpimg.com/567571/525d29994cddacfb.png">
+<meta property="og:image" content="http://i1.piimg.com/567571/432e8143224ea386.png">
+<meta property="og:updated_time" content="2017-01-25T08:42:53.841Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="图像处理第2次大作业">
-<meta name="twitter:description" content="这是图像处理最近的一次大作业，主要的 topic 是图像处理问题中常见的边缘检测问题 (Edge Detection)。涉及到了常用的边缘检测算子 Prewitt、Sobel、Canny、Laplacian 以及最近几年新出现的 FDoG。作业中相关算法主要是借助 OpenCV 和 Matlab 进行实现，有兴趣的同学可以参考以下我提交的大作业。">
-<meta name="twitter:image" content="http://p1.bpimg.com/567571/39a50e63c48a0019.jpg">
+<meta name="twitter:title" content="图像处理作业(2)：Edge Detection Algorithms">
+<meta name="twitter:description" content="Prewitt OperatorSource Code (Matlab)1234567I2 = imread(&apos;img1.jpg&apos;);I = rgb2gray(I2);subplot(1,2,1), imshow(I2);title(&apos;Original&apos;);BW1 = edge(I, &apos;prewitt&apos;);  subplot(1,2,2), imshow(BW3); title(&apos;Prewitt&apos;">
+<meta name="twitter:image" content="http://p1.bqimg.com/567571/728f82c98eab1b1c.png">
 
 
 <script>
@@ -129,9 +133,9 @@ var _hmt = _hmt || [];
 
 
 
-  <link rel="canonical" href="http://www.dengfuping.com/2016/10/16/image-processing-assignment-2/"/>
+  <link rel="canonical" href="http://www.dengfuping.com/2017/01/25/image-processing-assignment-2/"/>
 
-  <title> 图像处理第2次大作业 | Deng | 不搭 </title>
+  <title> 图像处理作业(2)：Edge Detection Algorithms | Deng | 不搭 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -304,7 +308,7 @@ var _hmt = _hmt || [];
             
             
               
-                图像处理第2次大作业
+                图像处理作业(2)：Edge Detection Algorithms
               
             
           </h1>
@@ -316,8 +320,8 @@ var _hmt = _hmt || [];
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-16T00:19:51+08:00" content="2016-10-16">
-              2016-10-16
+            <time itemprop="dateCreated" datetime="2017-01-25T14:04:48+08:00" content="2017-01-25">
+              2017-01-25
             </time>
           </span>
 
@@ -346,8 +350,8 @@ var _hmt = _hmt || [];
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/10/16/image-processing-assignment-2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/16/image-processing-assignment-2/" itemprop="commentsCount"></span>
+                <a href="/2017/01/25/image-processing-assignment-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/25/image-processing-assignment-2/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -357,7 +361,7 @@ var _hmt = _hmt || [];
 
           
           
-             <span id="/2016/10/16/image-processing-assignment-2/" class="leancloud_visitors" data-flag-title="图像处理第2次大作业">
+             <span id="/2017/01/25/image-processing-assignment-2/" class="leancloud_visitors" data-flag-title="图像处理作业(2)：Edge Detection Algorithms">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -384,11 +388,12 @@ var _hmt = _hmt || [];
       
 
       
-        <p><img src="http://p1.bpimg.com/567571/39a50e63c48a0019.jpg" alt=""></p>
-<p>这是图像处理最近的一次大作业，主要的 topic 是图像处理问题中常见的边缘检测问题 (Edge Detection)。涉及到了常用的边缘检测算子 Prewitt、Sobel、Canny、Laplacian 以及最近几年新出现的 FDoG。作业中相关算法主要是借助 OpenCV 和 Matlab 进行实现，有兴趣的同学可以参考以下我提交的大作业。<br><a id="more"></a></p>
-<h2 id="Assignment-2-1"><a href="#Assignment-2-1" class="headerlink" title="Assignment #2-1"></a>Assignment #2-1</h2><p><a href="http://www.dengfuping.name/pages/study/display/image-processing/Assignment2-1.pdf" target="_blank" rel="external">点击下载</a></p>
-<h2 id="Assignment-2-2"><a href="#Assignment-2-2" class="headerlink" title="Assignment #2-2"></a>Assignment #2-2</h2><p><a href="http://www.dengfuping.name/pages/study/display/image-processing/Assignment2-2.pdf" target="_blank" rel="external">点击下载</a></p>
-<h2 id="Assignment-2-3"><a href="#Assignment-2-3" class="headerlink" title="Assignment #2-3"></a>Assignment #2-3</h2><p><a href="http://www.dengfuping.name/pages/study/display/image-processing/Assignment2-3.pdf" target="_blank" rel="external">点击下载</a></p>
+        <h1 id="Prewitt-Operator"><a href="#Prewitt-Operator" class="headerlink" title="Prewitt Operator"></a>Prewitt Operator</h1><h2 id="Source-Code-Matlab"><a href="#Source-Code-Matlab" class="headerlink" title="Source Code (Matlab)"></a>Source Code (Matlab)</h2><figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">I2 = imread(<span class="string">'img1.jpg'</span>);</div><div class="line">I = rgb2gray(I2);</div><div class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>), imshow(I2);</div><div class="line">title(<span class="string">'Original'</span>);</div><div class="line">BW1 = edge(I, <span class="string">'prewitt'</span>);  </div><div class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>), imshow(BW3); </div><div class="line">title(<span class="string">'Prewitt'</span>);</div></pre></td></tr></table></figure>
+<h2 id="Running-Results"><a href="#Running-Results" class="headerlink" title="Running Results"></a>Running Results</h2><h3 id="Image-1"><a href="#Image-1" class="headerlink" title="Image 1"></a>Image 1</h3><p><img src="http://p1.bqimg.com/567571/728f82c98eab1b1c.png" alt=""></p>
+<h3 id="Image-2"><a href="#Image-2" class="headerlink" title="Image 2"></a>Image 2</h3><p><img src="http://p1.bpimg.com/567571/7377cd16b8da0332.png" alt=""></p>
+<h3 id="Image-3"><a href="#Image-3" class="headerlink" title="Image 3"></a>Image 3</h3><p><img src="http://i1.piimg.com/567571/c01246ee9232ef1c.png" alt=""></p>
+<h3 id="Image-4"><a href="#Image-4" class="headerlink" title="Image 4"></a>Image 4</h3><p><img src="http://p1.bpimg.com/567571/525d29994cddacfb.png" alt=""></p>
+<h3 id="Image-5"><a href="#Image-5" class="headerlink" title="Image 5"></a>Image 5</h3><p><img src="http://i1.piimg.com/567571/432e8143224ea386.png" alt=""></p>
 
       
     </div>
@@ -434,11 +439,13 @@ var _hmt = _hmt || [];
           
             <a href="/tags/图像处理/" rel="tag">#图像处理</a>
           
-            <a href="/tags/OpenCV/" rel="tag">#OpenCV</a>
+            <a href="/tags/边缘检测/" rel="tag">#边缘检测</a>
           
             <a href="/tags/egde-detecting/" rel="tag">#egde detecting</a>
           
-            <a href="/tags/边缘检测/" rel="tag">#边缘检测</a>
+            <a href="/tags/OpenCV/" rel="tag">#OpenCV</a>
+          
+            <a href="/tags/Matlab/" rel="tag">#Matlab</a>
           
         </div>
       
@@ -447,17 +454,13 @@ var _hmt = _hmt || [];
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/15/xampp-configuration-and-attention/" rel="next" title="xampp 常见问题及其解决方式">
-                <i class="fa fa-chevron-left"></i> xampp 常见问题及其解决方式
+              <a href="/2017/01/25/image-processing-assignment-1-2/" rel="next" title="图像处理作业(1-2)：The math deduction to the form of "Laplacian of Gaussian(LoG)"">
+                <i class="fa fa-chevron-left"></i> 图像处理作业(1-2)：The math deduction to the form of "Laplacian of Gaussian(LoG)"
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/10/26/opengl-learning-2/" rel="prev" title="OpenGL入门学习（二）">
-                OpenGL入门学习（二） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -486,8 +489,8 @@ var _hmt = _hmt || [];
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/10/16/image-processing-assignment-2/"
-           data-title="图像处理第2次大作业" data-url="http://www.dengfuping.com/2016/10/16/image-processing-assignment-2/">
+      <div class="ds-thread" data-thread-key="2017/01/25/image-processing-assignment-2/"
+           data-title="图像处理作业(2)：Edge Detection Algorithms" data-url="http://www.dengfuping.com/2017/01/25/image-processing-assignment-2/">
       </div>
     
   </div>
@@ -549,7 +552,7 @@ var _hmt = _hmt || [];
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-count">49</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -623,7 +626,7 @@ var _hmt = _hmt || [];
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Assignment-2-1"><span class="nav-number">1.</span> <span class="nav-text">Assignment #2-1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Assignment-2-2"><span class="nav-number">2.</span> <span class="nav-text">Assignment #2-2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Assignment-2-3"><span class="nav-number">3.</span> <span class="nav-text">Assignment #2-3</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Prewitt-Operator"><span class="nav-number">1.</span> <span class="nav-text">Prewitt Operator</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Source-Code-Matlab"><span class="nav-number">1.1.</span> <span class="nav-text">Source Code (Matlab)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Running-Results"><span class="nav-number">1.2.</span> <span class="nav-text">Running Results</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Image-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">Image 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Image-2"><span class="nav-number">1.2.2.</span> <span class="nav-text">Image 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Image-3"><span class="nav-number">1.2.3.</span> <span class="nav-text">Image 3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Image-4"><span class="nav-number">1.2.4.</span> <span class="nav-text">Image 4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Image-5"><span class="nav-number">1.2.5.</span> <span class="nav-text">Image 5</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>

@@ -4,17 +4,28 @@
   
     
     <entry>
+      <title><![CDATA[图像处理作业(2)：Edge Detection Algorithms]]></title>
+      <url>http://www.dengfuping.com/2017/01/25/image-processing-assignment-2/</url>
+      <content type="html"><![CDATA[<h1 id="Prewitt-Operator"><a href="#Prewitt-Operator" class="headerlink" title="Prewitt Operator"></a>Prewitt Operator</h1><h2 id="Source-Code-Matlab"><a href="#Source-Code-Matlab" class="headerlink" title="Source Code (Matlab)"></a>Source Code (Matlab)</h2><figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">I2 = imread(<span class="string">'img1.jpg'</span>);</div><div class="line">I = rgb2gray(I2);</div><div class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>), imshow(I2);</div><div class="line">title(<span class="string">'Original'</span>);</div><div class="line">BW1 = edge(I, <span class="string">'prewitt'</span>);  </div><div class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>), imshow(BW3); </div><div class="line">title(<span class="string">'Prewitt'</span>);</div></pre></td></tr></table></figure>
+<h2 id="Running-Results"><a href="#Running-Results" class="headerlink" title="Running Results"></a>Running Results</h2><h3 id="Image-1"><a href="#Image-1" class="headerlink" title="Image 1"></a>Image 1</h3><p><img src="http://p1.bqimg.com/567571/728f82c98eab1b1c.png" alt=""></p>
+<h3 id="Image-2"><a href="#Image-2" class="headerlink" title="Image 2"></a>Image 2</h3><p><img src="http://p1.bpimg.com/567571/7377cd16b8da0332.png" alt=""></p>
+<h3 id="Image-3"><a href="#Image-3" class="headerlink" title="Image 3"></a>Image 3</h3><p><img src="http://i1.piimg.com/567571/c01246ee9232ef1c.png" alt=""></p>
+<h3 id="Image-4"><a href="#Image-4" class="headerlink" title="Image 4"></a>Image 4</h3><p><img src="http://p1.bpimg.com/567571/525d29994cddacfb.png" alt=""></p>
+<h3 id="Image-5"><a href="#Image-5" class="headerlink" title="Image 5"></a>Image 5</h3><p><img src="http://i1.piimg.com/567571/432e8143224ea386.png" alt=""></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[图像处理作业(1-2)：The math deduction to the form of "Laplacian of Gaussian(LoG)"]]></title>
       <url>http://www.dengfuping.com/2017/01/25/image-processing-assignment-1-2/</url>
       <content type="html"><![CDATA[<h2 id="Laplacian-of-Gaussian-LoG"><a href="#Laplacian-of-Gaussian-LoG" class="headerlink" title="Laplacian of Gaussian(LoG)"></a>Laplacian of Gaussian(LoG)</h2><p>As Laplace operator may detect edges as well as noise (isolated, out-of-range), it may be desirable to smooth the image first by a convolution with a Gaussian kernel of width $\sigma$<br><img src="http://i1.piimg.com/567571/4bca2943b11e1f54.png" alt=""></p>
-<p>In $N = 2$ to suppress the noise before using Laplace for edge detection<br><img src="http://p1.bqimg.com/567571/70d260a96f3ad397.png" alt=""></p>
-<p>The first equal sign is due to the fact that<br><img src="http://p1.bqimg.com/567571/d8405f8025330a90.png" alt=""></p>
+<p>In $N = 2$ to suppress the noise before using Laplace for edge detection<br><img src="http://p1.bqimg.com/567571/6f7bf8f192eab9f2.png" alt=""></p>
+<p>The first equal sign is due to the fact that<br><img src="http://i1.piimg.com/567571/d910371dc711719a.png" alt=""></p>
 <p>So we can obtain the Laplacian of Gaussian  $\bigtriangleup G_{\sigma}(x,y)$ first and then convolve it with the input image. To do so, first consider<br><img src="http://p1.bpimg.com/567571/76fd3ec51805db7a.png" alt=""></p>
 <p>and<br><img src="http://i1.piimg.com/567571/af039fab929de898.png" alt=""></p>
-<p>Note that for simplicity we omitted the normalizing coefficient  $1/\sqrt{2\pi \sigma^2}$. Similarly we can get<br><img src="http://p1.bpimg.com/567571/f5af4d9dc68d41a0.png" alt=""></p>
+<p>Note that for simplicity we omitted the normalizing coefficient  $1/\sqrt{2\pi \sigma^2}$. Similarly we can get<br><img src="http://p1.bpimg.com/567571/9cc3a6d7d7d25787.png" alt=""></p>
 <p>Now we have LoG as an operator or convolution kernel defined as<br><img src="http://p1.bqimg.com/567571/b4e995ab6d114087.png" alt=""></p>
-<p>There are few examples of LoG operator of size $5\times5$ below:<br><img src="http://i1.piimg.com/567571/76f3abd7f2d760ec.png" alt=""></p>
-<p><img src="http://p1.bpimg.com/567571/4d93bb1217220deb.png" alt=""></p>
+<p>There is an example of LoG operator of size $5\times5$ below:<br><img src="http://i1.piimg.com/567571/76f3abd7f2d760ec.png" alt=""></p>
 ]]></content>
     </entry>
     
@@ -329,17 +340,6 @@
 </ol>
 </li>
 </ul>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[图像处理第2次大作业]]></title>
-      <url>http://www.dengfuping.com/2016/10/16/image-processing-assignment-2/</url>
-      <content type="html"><![CDATA[<p><img src="http://p1.bpimg.com/567571/39a50e63c48a0019.jpg" alt=""></p>
-<p>这是图像处理最近的一次大作业，主要的 topic 是图像处理问题中常见的边缘检测问题 (Edge Detection)。涉及到了常用的边缘检测算子 Prewitt、Sobel、Canny、Laplacian 以及最近几年新出现的 FDoG。作业中相关算法主要是借助 OpenCV 和 Matlab 进行实现，有兴趣的同学可以参考以下我提交的大作业。<br><a id="more"></a></p>
-<h2 id="Assignment-2-1"><a href="#Assignment-2-1" class="headerlink" title="Assignment #2-1"></a>Assignment #2-1</h2><p><a href="http://www.dengfuping.name/pages/study/display/image-processing/Assignment2-1.pdf" target="_blank" rel="external">点击下载</a></p>
-<h2 id="Assignment-2-2"><a href="#Assignment-2-2" class="headerlink" title="Assignment #2-2"></a>Assignment #2-2</h2><p><a href="http://www.dengfuping.name/pages/study/display/image-processing/Assignment2-2.pdf" target="_blank" rel="external">点击下载</a></p>
-<h2 id="Assignment-2-3"><a href="#Assignment-2-3" class="headerlink" title="Assignment #2-3"></a>Assignment #2-3</h2><p><a href="http://www.dengfuping.name/pages/study/display/image-processing/Assignment2-3.pdf" target="_blank" rel="external">点击下载</a></p>
 ]]></content>
     </entry>
     

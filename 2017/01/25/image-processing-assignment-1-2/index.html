@@ -93,15 +93,14 @@
 <meta property="og:site_name" content="Deng | 不搭">
 <meta property="og:description" content="Laplacian of Gaussian(LoG)As Laplace operator may detect edges as well as noise (isolated, out-of-range), it may be desirable to smooth the image first by a convolution with a Gaussian kernel of width">
 <meta property="og:image" content="http://i1.piimg.com/567571/4bca2943b11e1f54.png">
-<meta property="og:image" content="http://p1.bqimg.com/567571/70d260a96f3ad397.png">
-<meta property="og:image" content="http://p1.bqimg.com/567571/d8405f8025330a90.png">
+<meta property="og:image" content="http://p1.bqimg.com/567571/6f7bf8f192eab9f2.png">
+<meta property="og:image" content="http://i1.piimg.com/567571/d910371dc711719a.png">
 <meta property="og:image" content="http://p1.bpimg.com/567571/76fd3ec51805db7a.png">
 <meta property="og:image" content="http://i1.piimg.com/567571/af039fab929de898.png">
-<meta property="og:image" content="http://p1.bpimg.com/567571/f5af4d9dc68d41a0.png">
+<meta property="og:image" content="http://p1.bpimg.com/567571/9cc3a6d7d7d25787.png">
 <meta property="og:image" content="http://p1.bqimg.com/567571/b4e995ab6d114087.png">
 <meta property="og:image" content="http://i1.piimg.com/567571/76f3abd7f2d760ec.png">
-<meta property="og:image" content="http://p1.bpimg.com/567571/4d93bb1217220deb.png">
-<meta property="og:updated_time" content="2017-01-25T05:53:36.742Z">
+<meta property="og:updated_time" content="2017-01-25T06:02:16.425Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图像处理作业(1-2)：The math deduction to the form of "Laplacian of Gaussian(LoG)"">
 <meta name="twitter:description" content="Laplacian of Gaussian(LoG)As Laplace operator may detect edges as well as noise (isolated, out-of-range), it may be desirable to smooth the image first by a convolution with a Gaussian kernel of width">
@@ -393,14 +392,13 @@ var _hmt = _hmt || [];
 
       
         <h2 id="Laplacian-of-Gaussian-LoG"><a href="#Laplacian-of-Gaussian-LoG" class="headerlink" title="Laplacian of Gaussian(LoG)"></a>Laplacian of Gaussian(LoG)</h2><p>As Laplace operator may detect edges as well as noise (isolated, out-of-range), it may be desirable to smooth the image first by a convolution with a Gaussian kernel of width $\sigma$<br><img src="http://i1.piimg.com/567571/4bca2943b11e1f54.png" alt=""></p>
-<p>In $N = 2$ to suppress the noise before using Laplace for edge detection<br><img src="http://p1.bqimg.com/567571/70d260a96f3ad397.png" alt=""></p>
-<p>The first equal sign is due to the fact that<br><img src="http://p1.bqimg.com/567571/d8405f8025330a90.png" alt=""></p>
+<p>In $N = 2$ to suppress the noise before using Laplace for edge detection<br><img src="http://p1.bqimg.com/567571/6f7bf8f192eab9f2.png" alt=""></p>
+<p>The first equal sign is due to the fact that<br><img src="http://i1.piimg.com/567571/d910371dc711719a.png" alt=""></p>
 <p>So we can obtain the Laplacian of Gaussian  $\bigtriangleup G_{\sigma}(x,y)$ first and then convolve it with the input image. To do so, first consider<br><img src="http://p1.bpimg.com/567571/76fd3ec51805db7a.png" alt=""></p>
 <p>and<br><img src="http://i1.piimg.com/567571/af039fab929de898.png" alt=""></p>
-<p>Note that for simplicity we omitted the normalizing coefficient  $1/\sqrt{2\pi \sigma^2}$. Similarly we can get<br><img src="http://p1.bpimg.com/567571/f5af4d9dc68d41a0.png" alt=""></p>
+<p>Note that for simplicity we omitted the normalizing coefficient  $1/\sqrt{2\pi \sigma^2}$. Similarly we can get<br><img src="http://p1.bpimg.com/567571/9cc3a6d7d7d25787.png" alt=""></p>
 <p>Now we have LoG as an operator or convolution kernel defined as<br><img src="http://p1.bqimg.com/567571/b4e995ab6d114087.png" alt=""></p>
-<p>There are few examples of LoG operator of size $5\times5$ below:<br><img src="http://i1.piimg.com/567571/76f3abd7f2d760ec.png" alt=""></p>
-<p><img src="http://p1.bpimg.com/567571/4d93bb1217220deb.png" alt=""></p>
+<p>There is an example of LoG operator of size $5\times5$ below:<br><img src="http://i1.piimg.com/567571/76f3abd7f2d760ec.png" alt=""></p>
 
       
     </div>
@@ -464,6 +462,10 @@ var _hmt = _hmt || [];
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/25/image-processing-assignment-2/" rel="prev" title="图像处理作业(2)：Edge Detection Algorithms">
+                图像处理作业(2)：Edge Detection Algorithms <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -555,7 +557,7 @@ var _hmt = _hmt || [];
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-count">49</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
