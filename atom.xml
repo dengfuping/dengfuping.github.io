@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dengfuping.com/"/>
-  <updated>2017-01-27T17:16:45.474Z</updated>
+  <updated>2017-01-27T17:28:38.596Z</updated>
   <id>http://www.dengfuping.com/</id>
   
   <author>
@@ -20,13 +20,13 @@
     <link href="http://www.dengfuping.com/2017/01/27/introduction-to-computer-frontier-development-1/"/>
     <id>http://www.dengfuping.com/2017/01/27/introduction-to-computer-frontier-development-1/</id>
     <published>2017-01-27T11:52:17.000Z</published>
-    <updated>2017-01-27T17:16:45.474Z</updated>
+    <updated>2017-01-27T17:28:38.596Z</updated>
     
     <content type="html"><![CDATA[<h2 id="实验要求"><a href="#实验要求" class="headerlink" title="实验要求"></a>实验要求</h2><ol>
 <li>运行环境包含Linux操作系统如Ubuntu、Web服务器、PHP服务器、MySQL服务器，服务器版本可自行选择；</li>
 <li>利用Dockerfile创建Docker Image；</li>
 <li>基于第2步创建的Docker Image, 启动两个Docker容器，需要映射Web应用到不同端口；</li>
-<li>利用Curl工具下载网站到本地。</li>
+<li>利用Curl工具下载网站到本地。<a id="more"></a></li>
 </ol>
 <h2 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h2><ul>
 <li>Ubuntu 16.04</li>
@@ -63,7 +63,10 @@
     <summary type="html">
     
       &lt;h2 id=&quot;实验要求&quot;&gt;&lt;a href=&quot;#实验要求&quot; class=&quot;headerlink&quot; title=&quot;实验要求&quot;&gt;&lt;/a&gt;实验要求&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;运行环境包含Linux操作系统如Ubuntu、Web服务器、PHP服务器、MySQL服务器，服务器版本可自行选择
+&lt;li&gt;运行环境包含Linux操作系统如Ubuntu、Web服务器、PHP服务器、MySQL服务器，服务器版本可自行选择；&lt;/li&gt;
+&lt;li&gt;利用Dockerfile创建Docker Image；&lt;/li&gt;
+&lt;li&gt;基于第2步创建的Docker Image, 启动两个Docker容器，需要映射Web应用到不同端口；&lt;/li&gt;
+&lt;li&gt;利用Curl工具下载网站到本地。
     
     </summary>
     
@@ -845,7 +848,7 @@
     <link href="http://www.dengfuping.com/2016/10/15/xampp-configuration-and-attention/"/>
     <id>http://www.dengfuping.com/2016/10/15/xampp-configuration-and-attention/</id>
     <published>2016-10-15T12:48:27.000Z</published>
-    <updated>2016-10-15T16:15:14.651Z</updated>
+    <updated>2017-01-27T17:27:53.139Z</updated>
     
     <content type="html"><![CDATA[<p>最近在可视化的一个小实验中需要使用 xampp 这个建站集成的软件包。在帮同学解决问题的过程中，想到自己去年刚刚接触这个的时候也是各种小问题不断。今天正好趁此机会，将常见的问题及其解决方式一并总结如下。<br><a id="more"></a></p>
 <h2 id="xampp-安装及需要了解的常识"><a href="#xampp-安装及需要了解的常识" class="headerlink" title="xampp 安装及需要了解的常识"></a>xampp 安装及需要了解的常识</h2><p>虽然安装时会提示你将杀毒软件关闭，否则可能安装失败。但实际测试的效果是，关不关都没什么区别。</p>
@@ -887,13 +890,13 @@
       <category term="环境搭建" scheme="http://www.dengfuping.com/categories/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
     
     
+      <category term="Apache" scheme="http://www.dengfuping.com/tags/Apache/"/>
+    
       <category term="xampp" scheme="http://www.dengfuping.com/tags/xampp/"/>
     
-      <category term="apache" scheme="http://www.dengfuping.com/tags/apache/"/>
+      <category term="Tomcat" scheme="http://www.dengfuping.com/tags/Tomcat/"/>
     
-      <category term="tomcat" scheme="http://www.dengfuping.com/tags/tomcat/"/>
-    
-      <category term="mysql" scheme="http://www.dengfuping.com/tags/mysql/"/>
+      <category term="Mysql" scheme="http://www.dengfuping.com/tags/Mysql/"/>
     
       <category term="环境搭建" scheme="http://www.dengfuping.com/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
     
