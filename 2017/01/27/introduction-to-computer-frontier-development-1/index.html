@@ -1,0 +1,1163 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Docker,Dockerfile,Ubuntu,Apache,MySQL,curl,w3m," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Deng | 不搭" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="实验要求
+运行环境包含Linux操作系统如Ubuntu、Web服务器、PHP服务器、MySQL服务器，服务器版本可自行选择；
+利用Dockerfile创建Docker Image；
+基于第2步创建的Docker Image, 启动两个Docker容器，需要映射Web应用到不同端口；
+利用Curl工具下载网站到本地。
+
+实验环境
+Ubuntu 16.04
+Docker
+Apache 、MySQL、c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机前沿开发介绍作业(1)：利用Docker容器搭建Web应用">
+<meta property="og:url" content="http://www.dengfuping.com/2017/01/27/introduction-to-computer-frontier-development-1/index.html">
+<meta property="og:site_name" content="Deng | 不搭">
+<meta property="og:description" content="实验要求
+运行环境包含Linux操作系统如Ubuntu、Web服务器、PHP服务器、MySQL服务器，服务器版本可自行选择；
+利用Dockerfile创建Docker Image；
+基于第2步创建的Docker Image, 启动两个Docker容器，需要映射Web应用到不同端口；
+利用Curl工具下载网站到本地。
+
+实验环境
+Ubuntu 16.04
+Docker
+Apache 、MySQL、c">
+<meta property="og:image" content="http://p1.bpimg.com/567571/a008dd677cec7d0f.png">
+<meta property="og:image" content="http://p1.bpimg.com/567571/15179ce34f3922ad.png">
+<meta property="og:image" content="http://i1.piimg.com/567571/80987c947d0779ce.png">
+<meta property="og:image" content="http://p1.bpimg.com/567571/538c6092b07cf9e8.png">
+<meta property="og:image" content="http://p1.bpimg.com/567571/899b34266e7e9b76.png">
+<meta property="og:image" content="http://p1.bqimg.com/567571/1438107f0d88aa6d.png">
+<meta property="og:image" content="http://i1.piimg.com/567571/0d6e9b70e3e7cdce.png">
+<meta property="og:image" content="http://p1.bpimg.com/567571/c3e0b3c0e580a580.png">
+<meta property="og:image" content="http://p1.bpimg.com/567571/844fe85c569e2e10.png">
+<meta property="og:image" content="http://p1.bpimg.com/567571/24f43cbe34217374.png">
+<meta property="og:image" content="http://p1.bpimg.com/567571/3f99124b9527f8a3.png">
+<meta property="og:image" content="http://p1.bpimg.com/567571/720c185d7b2ef13b.png">
+<meta property="og:image" content="http://p1.bpimg.com/567571/ac48682640a7d380.png">
+<meta property="og:image" content="http://p1.bpimg.com/567571/a32e417870446ce4.png">
+<meta property="og:image" content="http://i1.piimg.com/567571/1d8294a5ae7d619a.png">
+<meta property="og:image" content="http://p1.bqimg.com/567571/73dc72847f8f8db1.png">
+<meta property="og:image" content="http://i1.piimg.com/567571/aaa682319e31a595.png">
+<meta property="og:image" content="http://p1.bpimg.com/567571/b0b91c47ebb14534.png">
+<meta property="og:image" content="http://i1.piimg.com/567571/27bfd167903e4e24.png">
+<meta property="og:image" content="http://p1.bpimg.com/567571/a32e417870446ce4.png">
+<meta property="og:image" content="http://i1.piimg.com/567571/1d8294a5ae7d619a.png">
+<meta property="og:updated_time" content="2017-01-27T17:16:45.474Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机前沿开发介绍作业(1)：利用Docker容器搭建Web应用">
+<meta name="twitter:description" content="实验要求
+运行环境包含Linux操作系统如Ubuntu、Web服务器、PHP服务器、MySQL服务器，服务器版本可自行选择；
+利用Dockerfile创建Docker Image；
+基于第2步创建的Docker Image, 启动两个Docker容器，需要映射Web应用到不同端口；
+利用Curl工具下载网站到本地。
+
+实验环境
+Ubuntu 16.04
+Docker
+Apache 、MySQL、c">
+<meta name="twitter:image" content="http://p1.bpimg.com/567571/a008dd677cec7d0f.png">
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?eb6f1ecd13c02e655d76231bed4dc79e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6337155367398540000,
+      author: '博主大人'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.dengfuping.com/2017/01/27/introduction-to-computer-frontier-development-1/"/>
+
+  <title> 计算机前沿开发介绍作业(1)：利用Docker容器搭建Web应用 | Deng | 不搭 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?eb6f1ecd13c02e655d76231bed4dc79e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Deng | 不搭</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                计算机前沿开发介绍作业(1)：利用Docker容器搭建Web应用
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-27T19:52:17+08:00" content="2017-01-27">
+              2017-01-27
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/计算机前沿开发介绍/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机前沿开发介绍</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/01/27/introduction-to-computer-frontier-development-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/27/introduction-to-computer-frontier-development-1/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/27/introduction-to-computer-frontier-development-1/" class="leancloud_visitors" data-flag-title="计算机前沿开发介绍作业(1)：利用Docker容器搭建Web应用">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="实验要求"><a href="#实验要求" class="headerlink" title="实验要求"></a>实验要求</h2><ol>
+<li>运行环境包含Linux操作系统如Ubuntu、Web服务器、PHP服务器、MySQL服务器，服务器版本可自行选择；</li>
+<li>利用Dockerfile创建Docker Image；</li>
+<li>基于第2步创建的Docker Image, 启动两个Docker容器，需要映射Web应用到不同端口；</li>
+<li>利用Curl工具下载网站到本地。</li>
+</ol>
+<h2 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h2><ul>
+<li>Ubuntu 16.04</li>
+<li>Docker</li>
+<li>Apache 、MySQL、curl和w3m</li>
+</ul>
+<h2 id="实验过程"><a href="#实验过程" class="headerlink" title="实验过程"></a>实验过程</h2><p>创建Dockerfile文件，并写入以下配置：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Pull and install base images from the remote server  </span></div><div class="line">FROM ubuntu:14.04</div><div class="line">  </div><div class="line">MAINTAINER dengfuping &lt;dengfuping@tju.edu.cn&gt;   </div><div class="line"></div><div class="line"><span class="comment"># update source  </span></div><div class="line">RUN apt-get update</div><div class="line"></div><div class="line"><span class="comment">#install wegt</span></div><div class="line">RUN  /bin/bash</div><div class="line">RUN  sudo apt-get -y install wget</div><div class="line"></div><div class="line"><span class="comment">#install xampp</span></div><div class="line">RUN wget http://sourceforge.net/projects/xampp/files/XAMPP%20Linux/1.8.3/xampp-linux-x64-1.8.3-2-installer.run/download</div><div class="line"></div><div class="line">RUN chmod +x download</div><div class="line">RUN ./download</div></pre></td></tr></table></figure></p>
+<p>根据创建的Dockerfile文件，使用“sudo docker build -t xampp .”命令安装实验环境，以下是安装命令和安装过程：<br><img src="http://p1.bpimg.com/567571/a008dd677cec7d0f.png" alt=""></p>
+<p><img src="http://p1.bpimg.com/567571/15179ce34f3922ad.png" alt=""></p>
+<p><img src="http://i1.piimg.com/567571/80987c947d0779ce.png" alt=""></p>
+<p>出现以下字样说明安装成功：<br><img src="http://p1.bpimg.com/567571/538c6092b07cf9e8.png" alt=""></p>
+<p>安装完成后使用“sudo docker images”查看安装的xampp镜像：<br><img src="http://p1.bpimg.com/567571/899b34266e7e9b76.png" alt=""></p>
+<p>然后使用以下命令创建一个名为xampp的容器，映射端口号为127.0.0.1:80其对应的容器ID为c1951aef43de，命令和截图如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo docker run -i -t <span class="_">-d</span> -p 127.0.0.1:8086:80 -v /opt/lampp/htdocs:/opt/lampp/htdocs xampp /bin/bash</div></pre></td></tr></table></figure></p>
+<p><img src="http://p1.bqimg.com/567571/1438107f0d88aa6d.png" alt=""></p>
+<p>接着使用以下命令依次进入xampp容器并开启xampp中Apache和MySQL的服务：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo docker start c1951aef43de</div><div class="line">sudo docker start c1951aef43de</div><div class="line">/opt/lamp/lamp start</div></pre></td></tr></table></figure></p>
+<p><img src="http://i1.piimg.com/567571/0d6e9b70e3e7cdce.png" alt=""></p>
+<p>然后使用“sudo apt-get install curl”命令安装curl工具：<br><img src="http://p1.bpimg.com/567571/c3e0b3c0e580a580.png" alt=""></p>
+<p>出现以下提示说明curl安装成功：<br><img src="http://p1.bpimg.com/567571/844fe85c569e2e10.png" alt=""></p>
+<p>将web项目复制到Apache服务器根目录以后，使用以下curl命令下载第二次作业的个人网站到本地：curl <a href="http://localhost/hw2/select.php。输出结果如下所示：将web项目复制到Apache服务器根目录以后，使用以下curl命令下载第二次作业的个人网站到本地：curl" target="_blank" rel="external">http://localhost/hw2/select.php。输出结果如下所示：将web项目复制到Apache服务器根目录以后，使用以下curl命令下载第二次作业的个人网站到本地：curl</a> <a href="http://localhost/hw2/select.php。输出结果如下所示：" target="_blank" rel="external">http://localhost/hw2/select.php。输出结果如下所示：</a><br><img src="http://p1.bpimg.com/567571/24f43cbe34217374.png" alt=""></p>
+<p><img src="http://p1.bpimg.com/567571/3f99124b9527f8a3.png" alt=""></p>
+<p>为了显示网站的页面效果，我们需要安装w3m工具：为了显示网站的页面效果，我们需要安装w3m工具：<br><img src="http://p1.bpimg.com/567571/720c185d7b2ef13b.png" alt=""></p>
+<p><img src="http://p1.bpimg.com/567571/ac48682640a7d380.png" alt=""></p>
+<p>通过运行“w3m <a href="http://localhost/hw2/select.php”命令，可得：" target="_blank" rel="external">http://localhost/hw2/select.php”命令，可得：</a><br><img src="http://p1.bpimg.com/567571/a32e417870446ce4.png" alt=""></p>
+<p><img src="http://i1.piimg.com/567571/1d8294a5ae7d619a.png" alt=""></p>
+<p>使用“sudo docker rm c1951aef43de”移除上述容器，输入查看容器命令“sudo docker ps”后结果如下图所示：<br><img src="http://p1.bqimg.com/567571/73dc72847f8f8db1.png" alt=""></p>
+<p>使用如下命令创建一个映射端口号为127.0.0.1:88、容器ID为6e888a82e084的新的xampp容器：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo docker run -i -t <span class="_">-d</span> -p 127.0.0.1:8086:88 -v /opt/lampp/htdocs:/opt/lampp/htdocs xampp /bin/bash</div></pre></td></tr></table></figure></p>
+<p><img src="http://i1.piimg.com/567571/aaa682319e31a595.png" alt=""></p>
+<p>同样的，和第一个容器中的操作步骤一样，输入“curl <a href="http://localhost/hw2/select.php”命令可得：" target="_blank" rel="external">http://localhost/hw2/select.php”命令可得：</a><br><img src="http://p1.bpimg.com/567571/b0b91c47ebb14534.png" alt=""></p>
+<p><img src="http://i1.piimg.com/567571/27bfd167903e4e24.png" alt=""></p>
+<p>输入“w3m <a href="http://localhost/hw2/select.php”命令可得：" target="_blank" rel="external">http://localhost/hw2/select.php”命令可得：</a><br><img src="http://p1.bpimg.com/567571/a32e417870446ce4.png" alt=""></p>
+<p><img src="http://i1.piimg.com/567571/1d8294a5ae7d619a.png" alt=""></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="Deng | 不搭 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay-reward-image.jpg" alt="Deng | 不搭 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Docker/" rel="tag">#Docker</a>
+          
+            <a href="/tags/Dockerfile/" rel="tag">#Dockerfile</a>
+          
+            <a href="/tags/Ubuntu/" rel="tag">#Ubuntu</a>
+          
+            <a href="/tags/Apache/" rel="tag">#Apache</a>
+          
+            <a href="/tags/MySQL/" rel="tag">#MySQL</a>
+          
+            <a href="/tags/curl/" rel="tag">#curl</a>
+          
+            <a href="/tags/w3m/" rel="tag">#w3m</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/25/image-processing-assignment-2/" rel="next" title="图像处理作业(2)：Edge Detection Algorithms">
+                <i class="fa fa-chevron-left"></i> 图像处理作业(2)：Edge Detection Algorithms
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/01/27/introduction-to-computer-frontier-development-1/"
+           data-title="计算机前沿开发介绍作业(1)：利用Docker容器搭建Web应用" data-url="http://www.dengfuping.com/2017/01/27/introduction-to-computer-frontier-development-1/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Deng | 不搭" />
+          <p class="site-author-name" itemprop="name">Deng | 不搭</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/dengfuping" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/fupingdeng" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/deng-fu-ping" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-user-plus"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/77aa30232051/" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-pencil"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#实验要求"><span class="nav-number">1.</span> <span class="nav-text">实验要求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验环境"><span class="nav-number">2.</span> <span class="nav-text">实验环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验过程"><span class="nav-number">3.</span> <span class="nav-text">实验过程</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Deng | 不搭</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">
+    &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;总访问量: <span id="busuanzi_value_site_pv"></span>
+</span>
+
+<!--配置MathJax环境-->
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+ tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+ TeX: { noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+ messageStyle: "none"
+ });
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Queue(function() {
+ var all = MathJax.Hub.getAllJax(), i;
+ for(i=0; i < all.length; i += 1) {
+ all[i].SourceElement().parentNode.className += ' has-jax';
+ }
+ });
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Queue(function() {
+ var all = MathJax.Hub.getAllJax(), i;
+ for(i=0; i < all.length; i += 1) {
+ all[i].SourceElement().parentNode.className += ' has-jax';
+ }
+ });
+</script>
+<script charset="utf-8" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"gitblog-hexo"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("LJCAnXzwjch5P2FkxXtkLeVh-gzGzoHsz", "YuIRTNkE4XGPPWUQG6djiNkF");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

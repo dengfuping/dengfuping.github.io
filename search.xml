@@ -4,6 +4,48 @@
   
     
     <entry>
+      <title><![CDATA[计算机前沿开发介绍作业(1)：利用Docker容器搭建Web应用]]></title>
+      <url>http://www.dengfuping.com/2017/01/27/introduction-to-computer-frontier-development-1/</url>
+      <content type="html"><![CDATA[<h2 id="实验要求"><a href="#实验要求" class="headerlink" title="实验要求"></a>实验要求</h2><ol>
+<li>运行环境包含Linux操作系统如Ubuntu、Web服务器、PHP服务器、MySQL服务器，服务器版本可自行选择；</li>
+<li>利用Dockerfile创建Docker Image；</li>
+<li>基于第2步创建的Docker Image, 启动两个Docker容器，需要映射Web应用到不同端口；</li>
+<li>利用Curl工具下载网站到本地。</li>
+</ol>
+<h2 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h2><ul>
+<li>Ubuntu 16.04</li>
+<li>Docker</li>
+<li>Apache 、MySQL、curl和w3m</li>
+</ul>
+<h2 id="实验过程"><a href="#实验过程" class="headerlink" title="实验过程"></a>实验过程</h2><p>创建Dockerfile文件，并写入以下配置：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Pull and install base images from the remote server  </span></div><div class="line">FROM ubuntu:14.04</div><div class="line">  </div><div class="line">MAINTAINER dengfuping &lt;dengfuping@tju.edu.cn&gt;   </div><div class="line"></div><div class="line"><span class="comment"># update source  </span></div><div class="line">RUN apt-get update</div><div class="line"></div><div class="line"><span class="comment">#install wegt</span></div><div class="line">RUN  /bin/bash</div><div class="line">RUN  sudo apt-get -y install wget</div><div class="line"></div><div class="line"><span class="comment">#install xampp</span></div><div class="line">RUN wget http://sourceforge.net/projects/xampp/files/XAMPP%20Linux/1.8.3/xampp-linux-x64-1.8.3-2-installer.run/download</div><div class="line"></div><div class="line">RUN chmod +x download</div><div class="line">RUN ./download</div></pre></td></tr></table></figure></p>
+<p>根据创建的Dockerfile文件，使用“sudo docker build -t xampp .”命令安装实验环境，以下是安装命令和安装过程：<br><img src="http://p1.bpimg.com/567571/a008dd677cec7d0f.png" alt=""></p>
+<p><img src="http://p1.bpimg.com/567571/15179ce34f3922ad.png" alt=""></p>
+<p><img src="http://i1.piimg.com/567571/80987c947d0779ce.png" alt=""></p>
+<p>出现以下字样说明安装成功：<br><img src="http://p1.bpimg.com/567571/538c6092b07cf9e8.png" alt=""></p>
+<p>安装完成后使用“sudo docker images”查看安装的xampp镜像：<br><img src="http://p1.bpimg.com/567571/899b34266e7e9b76.png" alt=""></p>
+<p>然后使用以下命令创建一个名为xampp的容器，映射端口号为127.0.0.1:80其对应的容器ID为c1951aef43de，命令和截图如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo docker run -i -t <span class="_">-d</span> -p 127.0.0.1:8086:80 -v /opt/lampp/htdocs:/opt/lampp/htdocs xampp /bin/bash</div></pre></td></tr></table></figure></p>
+<p><img src="http://p1.bqimg.com/567571/1438107f0d88aa6d.png" alt=""></p>
+<p>接着使用以下命令依次进入xampp容器并开启xampp中Apache和MySQL的服务：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo docker start c1951aef43de</div><div class="line">sudo docker start c1951aef43de</div><div class="line">/opt/lamp/lamp start</div></pre></td></tr></table></figure></p>
+<p><img src="http://i1.piimg.com/567571/0d6e9b70e3e7cdce.png" alt=""></p>
+<p>然后使用“sudo apt-get install curl”命令安装curl工具：<br><img src="http://p1.bpimg.com/567571/c3e0b3c0e580a580.png" alt=""></p>
+<p>出现以下提示说明curl安装成功：<br><img src="http://p1.bpimg.com/567571/844fe85c569e2e10.png" alt=""></p>
+<p>将web项目复制到Apache服务器根目录以后，使用以下curl命令下载第二次作业的个人网站到本地：curl <a href="http://localhost/hw2/select.php。输出结果如下所示：将web项目复制到Apache服务器根目录以后，使用以下curl命令下载第二次作业的个人网站到本地：curl" target="_blank" rel="external">http://localhost/hw2/select.php。输出结果如下所示：将web项目复制到Apache服务器根目录以后，使用以下curl命令下载第二次作业的个人网站到本地：curl</a> <a href="http://localhost/hw2/select.php。输出结果如下所示：" target="_blank" rel="external">http://localhost/hw2/select.php。输出结果如下所示：</a><br><img src="http://p1.bpimg.com/567571/24f43cbe34217374.png" alt=""></p>
+<p><img src="http://p1.bpimg.com/567571/3f99124b9527f8a3.png" alt=""></p>
+<p>为了显示网站的页面效果，我们需要安装w3m工具：为了显示网站的页面效果，我们需要安装w3m工具：<br><img src="http://p1.bpimg.com/567571/720c185d7b2ef13b.png" alt=""></p>
+<p><img src="http://p1.bpimg.com/567571/ac48682640a7d380.png" alt=""></p>
+<p>通过运行“w3m <a href="http://localhost/hw2/select.php”命令，可得：" target="_blank" rel="external">http://localhost/hw2/select.php”命令，可得：</a><br><img src="http://p1.bpimg.com/567571/a32e417870446ce4.png" alt=""></p>
+<p><img src="http://i1.piimg.com/567571/1d8294a5ae7d619a.png" alt=""></p>
+<p>使用“sudo docker rm c1951aef43de”移除上述容器，输入查看容器命令“sudo docker ps”后结果如下图所示：<br><img src="http://p1.bqimg.com/567571/73dc72847f8f8db1.png" alt=""></p>
+<p>使用如下命令创建一个映射端口号为127.0.0.1:88、容器ID为6e888a82e084的新的xampp容器：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo docker run -i -t <span class="_">-d</span> -p 127.0.0.1:8086:88 -v /opt/lampp/htdocs:/opt/lampp/htdocs xampp /bin/bash</div></pre></td></tr></table></figure></p>
+<p><img src="http://i1.piimg.com/567571/aaa682319e31a595.png" alt=""></p>
+<p>同样的，和第一个容器中的操作步骤一样，输入“curl <a href="http://localhost/hw2/select.php”命令可得：" target="_blank" rel="external">http://localhost/hw2/select.php”命令可得：</a><br><img src="http://p1.bpimg.com/567571/b0b91c47ebb14534.png" alt=""></p>
+<p><img src="http://i1.piimg.com/567571/27bfd167903e4e24.png" alt=""></p>
+<p>输入“w3m <a href="http://localhost/hw2/select.php”命令可得：" target="_blank" rel="external">http://localhost/hw2/select.php”命令可得：</a><br><img src="http://p1.bpimg.com/567571/a32e417870446ce4.png" alt=""></p>
+<p><img src="http://i1.piimg.com/567571/1d8294a5ae7d619a.png" alt=""></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[图像处理作业(2)：Edge Detection Algorithms]]></title>
       <url>http://www.dengfuping.com/2017/01/25/image-processing-assignment-2/</url>
       <content type="html"><![CDATA[<h1 id="Prewitt-Operator"><a href="#Prewitt-Operator" class="headerlink" title="Prewitt Operator"></a>Prewitt Operator</h1><h2 id="Source-Code-Matlab"><a href="#Source-Code-Matlab" class="headerlink" title="Source Code (Matlab)"></a>Source Code (Matlab)</h2><figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">I2 = imread(<span class="string">'img1.jpg'</span>);</div><div class="line">I = rgb2gray(I2);</div><div class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>), imshow(I2);</div><div class="line">title(<span class="string">'Original'</span>);</div><div class="line">BW1 = edge(I, <span class="string">'prewitt'</span>);  </div><div class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>), imshow(BW3); </div><div class="line">title(<span class="string">'Prewitt'</span>);</div></pre></td></tr></table></figure>
