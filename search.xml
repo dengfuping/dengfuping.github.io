@@ -4,6 +4,36 @@
   
     
     <entry>
+      <title><![CDATA[introduction-to-computer-frontier-development-2]]></title>
+      <url>http://www.dengfuping.com/2017/01/28/introduction-to-computer-frontier-development-2/</url>
+      <content type="html"><![CDATA[<h2 id="实验一：MySQL数据库操作"><a href="#实验一：MySQL数据库操作" class="headerlink" title="实验一：MySQL数据库操作"></a>实验一：MySQL数据库操作</h2><h3 id="实验要求"><a href="#实验要求" class="headerlink" title="实验要求"></a>实验要求</h3><p><img src="http://p1.bqimg.com/567571/044b6fd0fc84a84c.png" alt=""></p>
+<p>根据上面给出的表格,利用MySQL设计出student学生表格;<br>（1）设计完后,用select语句输出所有的相关信息,并给出截图;<br>（2）查询zhangsan的Computer成绩,并给出截图;<br>（3）修改lisi的Math成绩,改为95.给出截图。<a id="more"></a></p>
+<h3 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h3><p>使用show databases查看当前数据库：<br><img src="http://p1.bqimg.com/567571/3809414aeaec45ba.png" alt=""></p>
+<p>创建名为hw5的数据库：<br><img src="http://p1.bqimg.com/567571/fa34f0565814a097.png" alt=""></p>
+<p>在hw5数据库中创建student表：<br><img src="http://p1.bqimg.com/567571/c331be8dfbbb8478.png" alt=""></p>
+<p>向student表中插入数据：<br><img src="http://p1.bqimg.com/567571/fd5deda7fb3c50e8.png" alt=""></p>
+<p>使用select语句输出student表中所有的相关信息：<br><img src="http://p1.bqimg.com/567571/cddb97ba165426c4.png" alt=""></p>
+<p>查询zhangsan的Computer成绩：<br><img src="http://p1.bqimg.com/567571/6d3ffddaad7d38cf.png" alt=""></p>
+<p>修改lisi的Math成绩,改为95：<br><img src="http://p1.bqimg.com/567571/1059523522fee08c.png" alt=""></p>
+<h2 id="实验二：HBase数据库操作"><a href="#实验二：HBase数据库操作" class="headerlink" title="实验二：HBase数据库操作"></a>实验二：HBase数据库操作</h2><h3 id="实验要求-1"><a href="#实验要求-1" class="headerlink" title="实验要求"></a>实验要求</h3><p><img src="http://p1.bqimg.com/567571/3c0a9d78d9a648c4.png" alt=""></p>
+<p>根据上面给出的表格，用Hbase Shell模式设计student学生表格。<br>（1）设计完后，用scan指令浏览表的相关信息，给出截图。<br>（2）查询zhangsan 的Computer成绩,给出截图。<br>（3）修改lisi的Math成绩，改为95,给出截图。</p>
+<h3 id="实验步骤-1"><a href="#实验步骤-1" class="headerlink" title="实验步骤"></a>实验步骤</h3><p>创建student表，其中name和score均为列名：<br><img src="http://i1.piimg.com/567571/aa6e8ee80b0ee0b8.png" alt=""></p>
+<p>向student表中插入数据：<br><img src="http://p1.bqimg.com/567571/8c7897c662ba361a.png" alt=""></p>
+<p>使用scan指令输出student表的所有相关信息：<br><img src="http://p1.bqimg.com/567571/6a922f4a7d742942.png" alt=""></p>
+<p>使用get指令查询zhangsan 的Computer成绩：<br><img src="http://p1.bqimg.com/567571/33a8ad984c4c5a6a.png" alt=""></p>
+<p>修改lisi的Math成绩，改为95：<br><img src="http://p1.bqimg.com/567571/1f148acba50c72cd.png" alt=""></p>
+<h2 id="实验三：MongoDB数据库操作"><a href="#实验三：MongoDB数据库操作" class="headerlink" title="实验三：MongoDB数据库操作"></a>实验三：MongoDB数据库操作</h2><h3 id="实验要求-2"><a href="#实验要求-2" class="headerlink" title="实验要求"></a>实验要求</h3><p>Student文档如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    “name”: “zhangsan”,</div><div class="line">    “score”: &#123;</div><div class="line">        “English”: 69,</div><div class="line">        “Math”: 86,</div><div class="line">        “Computer”: 77</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">&#123;</div><div class="line">    “name”: “lisi”,</div><div class="line">    “score”: &#123;</div><div class="line">        “English”: 55,</div><div class="line">        “Math”: 100,</div><div class="line">        “Computer”: 88</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>根据上面给出的文档,用Mongo shell设计出student集合.<br>（1）设计完后,用find()方法输出两个学生的信息,给出截图;<br>（2）用find函数查询zhangsan 的所有成绩(只显示score列),给出截图。<br>（3）修改lisi的Math成绩，改为95,给出截图。</p>
+<h3 id="实验步骤-2"><a href="#实验步骤-2" class="headerlink" title="实验步骤"></a>实验步骤</h3><p>新建hw5数据库：<br><img src="http://p1.bpimg.com/567571/8e986c3755e6021d.png" alt=""></p>
+<p>新建student文档：<br><img src="http://p1.bqimg.com/567571/cb6b12219b98bbe0.png" alt=""></p>
+<p>向student文档中插入数据：<br><img src="http://p1.bqimg.com/567571/561cdb5e4f7f05e6.png" alt=""></p>
+<p>用find()方法输出两个学生的信息：<br><img src="http://p1.bqimg.com/567571/943a78da423f37ff.png" alt=""></p>
+<p>使用find函数查询zhangsan 的所有成绩(只显示score列)：<br><img src="http://p1.bqimg.com/567571/aadc29722c41591f.png" alt=""></p>
+<p>使用update函数修改lisi的Math成绩，改为95：<br><img src="http://p1.bpimg.com/567571/907e7d5531f79480.png" alt=""></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[计算机前沿开发介绍作业(1)：利用Docker容器搭建Web应用]]></title>
       <url>http://www.dengfuping.com/2017/01/27/introduction-to-computer-frontier-development-1/</url>
       <content type="html"><![CDATA[<h2 id="实验要求"><a href="#实验要求" class="headerlink" title="实验要求"></a>实验要求</h2><ol>

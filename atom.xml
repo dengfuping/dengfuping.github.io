@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dengfuping.com/"/>
-  <updated>2017-01-27T17:28:38.596Z</updated>
+  <updated>2017-01-28T14:03:47.185Z</updated>
   <id>http://www.dengfuping.com/</id>
   
   <author>
@@ -14,6 +14,61 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>introduction-to-computer-frontier-development-2</title>
+    <link href="http://www.dengfuping.com/2017/01/28/introduction-to-computer-frontier-development-2/"/>
+    <id>http://www.dengfuping.com/2017/01/28/introduction-to-computer-frontier-development-2/</id>
+    <published>2017-01-28T03:48:51.000Z</published>
+    <updated>2017-01-28T14:03:47.185Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="实验一：MySQL数据库操作"><a href="#实验一：MySQL数据库操作" class="headerlink" title="实验一：MySQL数据库操作"></a>实验一：MySQL数据库操作</h2><h3 id="实验要求"><a href="#实验要求" class="headerlink" title="实验要求"></a>实验要求</h3><p><img src="http://p1.bqimg.com/567571/044b6fd0fc84a84c.png" alt=""></p>
+<p>根据上面给出的表格,利用MySQL设计出student学生表格;<br>（1）设计完后,用select语句输出所有的相关信息,并给出截图;<br>（2）查询zhangsan的Computer成绩,并给出截图;<br>（3）修改lisi的Math成绩,改为95.给出截图。<a id="more"></a></p>
+<h3 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h3><p>使用show databases查看当前数据库：<br><img src="http://p1.bqimg.com/567571/3809414aeaec45ba.png" alt=""></p>
+<p>创建名为hw5的数据库：<br><img src="http://p1.bqimg.com/567571/fa34f0565814a097.png" alt=""></p>
+<p>在hw5数据库中创建student表：<br><img src="http://p1.bqimg.com/567571/c331be8dfbbb8478.png" alt=""></p>
+<p>向student表中插入数据：<br><img src="http://p1.bqimg.com/567571/fd5deda7fb3c50e8.png" alt=""></p>
+<p>使用select语句输出student表中所有的相关信息：<br><img src="http://p1.bqimg.com/567571/cddb97ba165426c4.png" alt=""></p>
+<p>查询zhangsan的Computer成绩：<br><img src="http://p1.bqimg.com/567571/6d3ffddaad7d38cf.png" alt=""></p>
+<p>修改lisi的Math成绩,改为95：<br><img src="http://p1.bqimg.com/567571/1059523522fee08c.png" alt=""></p>
+<h2 id="实验二：HBase数据库操作"><a href="#实验二：HBase数据库操作" class="headerlink" title="实验二：HBase数据库操作"></a>实验二：HBase数据库操作</h2><h3 id="实验要求-1"><a href="#实验要求-1" class="headerlink" title="实验要求"></a>实验要求</h3><p><img src="http://p1.bqimg.com/567571/3c0a9d78d9a648c4.png" alt=""></p>
+<p>根据上面给出的表格，用Hbase Shell模式设计student学生表格。<br>（1）设计完后，用scan指令浏览表的相关信息，给出截图。<br>（2）查询zhangsan 的Computer成绩,给出截图。<br>（3）修改lisi的Math成绩，改为95,给出截图。</p>
+<h3 id="实验步骤-1"><a href="#实验步骤-1" class="headerlink" title="实验步骤"></a>实验步骤</h3><p>创建student表，其中name和score均为列名：<br><img src="http://i1.piimg.com/567571/aa6e8ee80b0ee0b8.png" alt=""></p>
+<p>向student表中插入数据：<br><img src="http://p1.bqimg.com/567571/8c7897c662ba361a.png" alt=""></p>
+<p>使用scan指令输出student表的所有相关信息：<br><img src="http://p1.bqimg.com/567571/6a922f4a7d742942.png" alt=""></p>
+<p>使用get指令查询zhangsan 的Computer成绩：<br><img src="http://p1.bqimg.com/567571/33a8ad984c4c5a6a.png" alt=""></p>
+<p>修改lisi的Math成绩，改为95：<br><img src="http://p1.bqimg.com/567571/1f148acba50c72cd.png" alt=""></p>
+<h2 id="实验三：MongoDB数据库操作"><a href="#实验三：MongoDB数据库操作" class="headerlink" title="实验三：MongoDB数据库操作"></a>实验三：MongoDB数据库操作</h2><h3 id="实验要求-2"><a href="#实验要求-2" class="headerlink" title="实验要求"></a>实验要求</h3><p>Student文档如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    “name”: “zhangsan”,</div><div class="line">    “score”: &#123;</div><div class="line">        “English”: 69,</div><div class="line">        “Math”: 86,</div><div class="line">        “Computer”: 77</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">&#123;</div><div class="line">    “name”: “lisi”,</div><div class="line">    “score”: &#123;</div><div class="line">        “English”: 55,</div><div class="line">        “Math”: 100,</div><div class="line">        “Computer”: 88</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>根据上面给出的文档,用Mongo shell设计出student集合.<br>（1）设计完后,用find()方法输出两个学生的信息,给出截图;<br>（2）用find函数查询zhangsan 的所有成绩(只显示score列),给出截图。<br>（3）修改lisi的Math成绩，改为95,给出截图。</p>
+<h3 id="实验步骤-2"><a href="#实验步骤-2" class="headerlink" title="实验步骤"></a>实验步骤</h3><p>新建hw5数据库：<br><img src="http://p1.bpimg.com/567571/8e986c3755e6021d.png" alt=""></p>
+<p>新建student文档：<br><img src="http://p1.bqimg.com/567571/cb6b12219b98bbe0.png" alt=""></p>
+<p>向student文档中插入数据：<br><img src="http://p1.bqimg.com/567571/561cdb5e4f7f05e6.png" alt=""></p>
+<p>用find()方法输出两个学生的信息：<br><img src="http://p1.bqimg.com/567571/943a78da423f37ff.png" alt=""></p>
+<p>使用find函数查询zhangsan 的所有成绩(只显示score列)：<br><img src="http://p1.bqimg.com/567571/aadc29722c41591f.png" alt=""></p>
+<p>使用update函数修改lisi的Math成绩，改为95：<br><img src="http://p1.bpimg.com/567571/907e7d5531f79480.png" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;实验一：MySQL数据库操作&quot;&gt;&lt;a href=&quot;#实验一：MySQL数据库操作&quot; class=&quot;headerlink&quot; title=&quot;实验一：MySQL数据库操作&quot;&gt;&lt;/a&gt;实验一：MySQL数据库操作&lt;/h2&gt;&lt;h3 id=&quot;实验要求&quot;&gt;&lt;a href=&quot;#实验要求&quot; class=&quot;headerlink&quot; title=&quot;实验要求&quot;&gt;&lt;/a&gt;实验要求&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://p1.bqimg.com/567571/044b6fd0fc84a84c.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;根据上面给出的表格,利用MySQL设计出student学生表格;&lt;br&gt;（1）设计完后,用select语句输出所有的相关信息,并给出截图;&lt;br&gt;（2）查询zhangsan的Computer成绩,并给出截图;&lt;br&gt;（3）修改lisi的Math成绩,改为95.给出截图。
+    
+    </summary>
+    
+      <category term="计算机前沿开发介绍" scheme="http://www.dengfuping.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%89%8D%E6%B2%BF%E5%BC%80%E5%8F%91%E4%BB%8B%E7%BB%8D/"/>
+    
+    
+      <category term="大数据" scheme="http://www.dengfuping.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="数据库" scheme="http://www.dengfuping.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="MySQL" scheme="http://www.dengfuping.com/tags/MySQL/"/>
+    
+      <category term="HBase" scheme="http://www.dengfuping.com/tags/HBase/"/>
+    
+      <category term="MongoDB" scheme="http://www.dengfuping.com/tags/MongoDB/"/>
+    
+  </entry>
   
   <entry>
     <title>计算机前沿开发介绍作业(1)：利用Docker容器搭建Web应用</title>
@@ -73,6 +128,8 @@
       <category term="计算机前沿开发介绍" scheme="http://www.dengfuping.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%89%8D%E6%B2%BF%E5%BC%80%E5%8F%91%E4%BB%8B%E7%BB%8D/"/>
     
     
+      <category term="MySQL" scheme="http://www.dengfuping.com/tags/MySQL/"/>
+    
       <category term="Docker" scheme="http://www.dengfuping.com/tags/Docker/"/>
     
       <category term="Dockerfile" scheme="http://www.dengfuping.com/tags/Dockerfile/"/>
@@ -80,8 +137,6 @@
       <category term="Ubuntu" scheme="http://www.dengfuping.com/tags/Ubuntu/"/>
     
       <category term="Apache" scheme="http://www.dengfuping.com/tags/Apache/"/>
-    
-      <category term="MySQL" scheme="http://www.dengfuping.com/tags/MySQL/"/>
     
       <category term="curl" scheme="http://www.dengfuping.com/tags/curl/"/>
     
@@ -840,65 +895,6 @@
       <category term="FreeGlut" scheme="http://www.dengfuping.com/tags/FreeGlut/"/>
     
       <category term="计算机图形" scheme="http://www.dengfuping.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>xampp 常见问题及其解决方式</title>
-    <link href="http://www.dengfuping.com/2016/10/15/xampp-configuration-and-attention/"/>
-    <id>http://www.dengfuping.com/2016/10/15/xampp-configuration-and-attention/</id>
-    <published>2016-10-15T12:48:27.000Z</published>
-    <updated>2017-01-27T17:27:53.139Z</updated>
-    
-    <content type="html"><![CDATA[<p>最近在可视化的一个小实验中需要使用 xampp 这个建站集成的软件包。在帮同学解决问题的过程中，想到自己去年刚刚接触这个的时候也是各种小问题不断。今天正好趁此机会，将常见的问题及其解决方式一并总结如下。<br><a id="more"></a></p>
-<h2 id="xampp-安装及需要了解的常识"><a href="#xampp-安装及需要了解的常识" class="headerlink" title="xampp 安装及需要了解的常识"></a>xampp 安装及需要了解的常识</h2><p>虽然安装时会提示你将杀毒软件关闭，否则可能安装失败。但实际测试的效果是，关不关都没什么区别。</p>
-<p>另外，需要注意的是，如果你的电脑已经安装有以下组件，要么先删除再安装，，要么在安装 xampp 是将你已经安装过的组件取消勾选，以免发生冲突。这里，我们采取的是全部安装。</p>
-<p><img src="http://p1.bpimg.com/567571/d9a3de3a3d2f9a85.png" alt=""></p>
-<p>默认端口号</p>
-<ul>
-<li>Apache: 80 和 443</li>
-<li>MySQL： 3306</li>
-<li>Tomcat： 8080</li>
-</ul>
-<p>MySQL 默认用户名为 root ，密码为空</p>
-<h2 id="端口占用问题"><a href="#端口占用问题" class="headerlink" title="端口占用问题"></a>端口占用问题</h2><p>一般网上的教程都是建议将端口号改成未被占用的端口号。此处，我建议采取将占用端口的进程关闭的解决方案。一来是方便以后的开发，二来改端口号需要改动配置文件的多处地方，比较麻烦。</p>
-<p>那如何查看端口被哪个进程占用呢？我们可以在命令行下输入 <code>netstat -ano</code> 来进行查看。结果发现 Apache需要使用的 443 端口被占用。</p>
-<p><img src="http://i1.piimg.com/567571/813e79cd24b5d0fc.png" alt=""></p>
-<p>当然，也可以不采取这种方式就可以达到查看进程信息的目的。在 xampp 的控制面板的右上角有一 netstat 的按钮，其实就告诉我们它就已经集成了查看进程信息的功能。</p>
-<p><img src="http://i1.piimg.com/567571/c58bb8f75c0554af.png" alt=""></p>
-<p><img src="http://i1.piimg.com/567571/698a95aae068605f.png" alt=""></p>
-<p>找到与端口号相对应的进程编号 PID。右键任务栏-&gt;任务管理器，进入任务管理器界面。在“详细信息”一栏中找到对应的 PID 进程编号，选中以后直接选择“结束任务”即可。</p>
-<p>重新启动 Apache，发现启动成功。</p>
-<p><img src="http://p1.bpimg.com/567571/93fdae831d8b7c1f.png" alt=""></p>
-<p>其他类似端口号被占用的问题都可以用同样的方法解决。</p>
-<h2 id="Apache-相关问题"><a href="#Apache-相关问题" class="headerlink" title="Apache 相关问题"></a>Apache 相关问题</h2><p>当我们新建 Web 项目（尤其是涉及到后台开发）的时候，我们需要将项目保存到 xampp 目录下的 htdocs 文件夹中，其中， htdocs 是 xampp 中 Apache 的服务器根目录。但这样既麻烦又不方便管理项目，那有没有办法不放在这个目录中呢？答案是有的。 </p>
-<p>在 xamp 控制面板点击 MySQL 对应的 Config 按钮选中并进入 httpd.conf 配置文件，将原有的服务器根目录改为你自己喜欢的目录。为了项目的方便管理，此处我将我的一个 PhpProjects 目录映射为 apache 的服务器根目录。</p>
-<p><img src="http://p1.bqimg.com/567571/76d9e0560a90082f.png" alt=""></p>
-<h3 id="MySQL-相关问题"><a href="#MySQL-相关问题" class="headerlink" title="MySQL 相关问题"></a>MySQL 相关问题</h3><h3 id="修改数据库密码"><a href="#修改数据库密码" class="headerlink" title="修改数据库密码"></a>修改数据库密码</h3><p>如前面所讲到的，安装的 MySQL 数据库密码默认为空，那如何修改数据库密码呢？其实很简单，只需要一条命令即可。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysqladmin -u root -p password admin</div><div class="line">Enter password: (在此处输入你原有的密码，原先密码为空，因此我们直接回车即可，之后会提示你输入你的新密码)</div></pre></td></tr></table></figure>
-<h3 id="修改数据库密码后-phpMyAdmin-无法打开"><a href="#修改数据库密码后-phpMyAdmin-无法打开" class="headerlink" title="修改数据库密码后 phpMyAdmin 无法打开"></a>修改数据库密码后 phpMyAdmin 无法打开</h3><p>找到 phpMyAdmin 的安装目录，打开 config.inc.php 文件，将 password 改为你的新密码即可通过 <a href="http://localhost/phpMyAdmin" target="_blank" rel="external">http://localhost/phpMyAdmin</a> 进行访问。</p>
-<h3 id="MySQL-数据库中中文乱码问题"><a href="#MySQL-数据库中中文乱码问题" class="headerlink" title="MySQL 数据库中中文乱码问题"></a>MySQL 数据库中中文乱码问题</h3><p>同样的，在 xamp 控制面板点击 MySQL 对应的 Config 按钮选中并进入 my.ini （这是 MySQL 的配置文件）文件，将 UTF 8 Settings 中的设置全部解除注释（默认是非 UTF-8 编码），如下图所示，保存以后即不会再出现乱码。</p>
-<p><img src="http://p1.bpimg.com/567571/82339639e5e64322.png" alt=""></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;最近在可视化的一个小实验中需要使用 xampp 这个建站集成的软件包。在帮同学解决问题的过程中，想到自己去年刚刚接触这个的时候也是各种小问题不断。今天正好趁此机会，将常见的问题及其解决方式一并总结如下。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="环境搭建" scheme="http://www.dengfuping.com/categories/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
-    
-    
-      <category term="Apache" scheme="http://www.dengfuping.com/tags/Apache/"/>
-    
-      <category term="xampp" scheme="http://www.dengfuping.com/tags/xampp/"/>
-    
-      <category term="Tomcat" scheme="http://www.dengfuping.com/tags/Tomcat/"/>
-    
-      <category term="Mysql" scheme="http://www.dengfuping.com/tags/Mysql/"/>
-    
-      <category term="环境搭建" scheme="http://www.dengfuping.com/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
     
   </entry>
   
