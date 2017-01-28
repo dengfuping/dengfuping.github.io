@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dengfuping.com/"/>
-  <updated>2017-01-28T14:03:47.185Z</updated>
+  <updated>2017-01-28T14:07:34.651Z</updated>
   <id>http://www.dengfuping.com/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>introduction-to-computer-frontier-development-2</title>
+    <title>计算机前沿开发介绍作业(2)：大数据存储之数据库操作实验</title>
     <link href="http://www.dengfuping.com/2017/01/28/introduction-to-computer-frontier-development-2/"/>
     <id>http://www.dengfuping.com/2017/01/28/introduction-to-computer-frontier-development-2/</id>
     <published>2017-01-28T03:48:51.000Z</published>
-    <updated>2017-01-28T14:03:47.185Z</updated>
+    <updated>2017-01-28T14:07:34.651Z</updated>
     
     <content type="html"><![CDATA[<h2 id="实验一：MySQL数据库操作"><a href="#实验一：MySQL数据库操作" class="headerlink" title="实验一：MySQL数据库操作"></a>实验一：MySQL数据库操作</h2><h3 id="实验要求"><a href="#实验要求" class="headerlink" title="实验要求"></a>实验要求</h3><p><img src="http://p1.bqimg.com/567571/044b6fd0fc84a84c.png" alt=""></p>
 <p>根据上面给出的表格,利用MySQL设计出student学生表格;<br>（1）设计完后,用select语句输出所有的相关信息,并给出截图;<br>（2）查询zhangsan的Computer成绩,并给出截图;<br>（3）修改lisi的Math成绩,改为95.给出截图。<a id="more"></a></p>
@@ -58,11 +58,11 @@
       <category term="计算机前沿开发介绍" scheme="http://www.dengfuping.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%89%8D%E6%B2%BF%E5%BC%80%E5%8F%91%E4%BB%8B%E7%BB%8D/"/>
     
     
+      <category term="MySQL" scheme="http://www.dengfuping.com/tags/MySQL/"/>
+    
       <category term="大数据" scheme="http://www.dengfuping.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
       <category term="数据库" scheme="http://www.dengfuping.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-      <category term="MySQL" scheme="http://www.dengfuping.com/tags/MySQL/"/>
     
       <category term="HBase" scheme="http://www.dengfuping.com/tags/HBase/"/>
     
@@ -128,8 +128,6 @@
       <category term="计算机前沿开发介绍" scheme="http://www.dengfuping.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%89%8D%E6%B2%BF%E5%BC%80%E5%8F%91%E4%BB%8B%E7%BB%8D/"/>
     
     
-      <category term="MySQL" scheme="http://www.dengfuping.com/tags/MySQL/"/>
-    
       <category term="Docker" scheme="http://www.dengfuping.com/tags/Docker/"/>
     
       <category term="Dockerfile" scheme="http://www.dengfuping.com/tags/Dockerfile/"/>
@@ -137,6 +135,8 @@
       <category term="Ubuntu" scheme="http://www.dengfuping.com/tags/Ubuntu/"/>
     
       <category term="Apache" scheme="http://www.dengfuping.com/tags/Apache/"/>
+    
+      <category term="MySQL" scheme="http://www.dengfuping.com/tags/MySQL/"/>
     
       <category term="curl" scheme="http://www.dengfuping.com/tags/curl/"/>
     

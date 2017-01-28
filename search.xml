@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title><![CDATA[introduction-to-computer-frontier-development-2]]></title>
+      <title><![CDATA[计算机前沿开发介绍作业(2)：大数据存储之数据库操作实验]]></title>
       <url>http://www.dengfuping.com/2017/01/28/introduction-to-computer-frontier-development-2/</url>
       <content type="html"><![CDATA[<h2 id="实验一：MySQL数据库操作"><a href="#实验一：MySQL数据库操作" class="headerlink" title="实验一：MySQL数据库操作"></a>实验一：MySQL数据库操作</h2><h3 id="实验要求"><a href="#实验要求" class="headerlink" title="实验要求"></a>实验要求</h3><p><img src="http://p1.bqimg.com/567571/044b6fd0fc84a84c.png" alt=""></p>
 <p>根据上面给出的表格,利用MySQL设计出student学生表格;<br>（1）设计完后,用select语句输出所有的相关信息,并给出截图;<br>（2）查询zhangsan的Computer成绩,并给出截图;<br>（3）修改lisi的Math成绩,改为95.给出截图。<a id="more"></a></p>
