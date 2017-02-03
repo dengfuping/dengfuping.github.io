@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dengfuping.com/"/>
-  <updated>2017-02-03T16:26:02.957Z</updated>
+  <updated>2017-02-03T16:39:58.012Z</updated>
   <id>http://www.dengfuping.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.dengfuping.com/2017/02/03/mongodb-learning-1/"/>
     <id>http://www.dengfuping.com/2017/02/03/mongodb-learning-1/</id>
     <published>2017-02-03T15:17:02.000Z</published>
-    <updated>2017-02-03T16:26:02.957Z</updated>
+    <updated>2017-02-03T16:39:58.012Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Windows平台"><a href="#Windows平台" class="headerlink" title="Windows平台"></a>Windows平台</h2><p>MongoDB提供了可用于32位和64位系统的预编译二进制包，你可以从MongoDB官网下载安装，MongoDB预编译二进制包下载地址：<a href="https://www.mongodb.com/download-center#community" target="_blank" rel="external">https://www.mongodb.com/download-center#community</a><br><img src="http://i1.piimg.com/567571/aeb5ffe8372aa4a2.png" alt=""><a id="more"></a></p>
 <p>下载对应的.msi文件后双击该文件，按操作提示安装即可。此处我的安装路径为：F:\Program Files\MongoDB</p>
@@ -29,16 +29,18 @@
 <h3 id="创建数据和日志目录"><a href="#创建数据和日志目录" class="headerlink" title="创建数据和日志目录"></a>创建数据和日志目录</h3><p>MongoDB将数据目录存储在db目录下。但是这个数据目录不会主动创建，我们在安装完成后需要创建它。在本教程中，我在F盘的根目录下创建data目录，然后在data目录里创建db和log目录。</p>
 <h3 id="命令行下运行MongoDB服务器"><a href="#命令行下运行MongoDB服务器" class="headerlink" title="命令行下运行MongoDB服务器"></a>命令行下运行MongoDB服务器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod --dbpath F:\data\db</div></pre></td></tr></table></figure>
 <p><img src="http://i1.piimg.com/567571/5e882e11c8b296a7.png" alt=""></p>
-<p>如果觉得每次运行都要输入数据路径比较麻烦，也可以将其写入一个配置文件中，然后通过-f属性将其引入即可。具体操作为：新建一个mongodb.cnf文件，写入如下命令并保存：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dbpath=F:\data\db</div></pre></td></tr></table></figure></p>
+<p>如果觉得每次运行都要输入数据路径比较麻烦，也可以将其写入一个配置文件中，然后通过 -f 属性将其引入即可。具体操作为：新建一个mongodb.cnf文件，写入如下命令并保存：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dbpath=F:\data\db</div></pre></td></tr></table></figure></p>
 <p><img src="http://p1.bpimg.com/567571/411c10cd3ce5b2d4.png" alt=""></p>
 <p>此时可以在“F:\Program Files\MongoDB\Server\3.4”目录下通过以下命令来运行MongoDB服务器：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod -f mongodb.cnf</div></pre></td></tr></table></figure></p>
-<p>若在其它目录下，则需要指定mongodb.cnf的绝对路径：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod -f &quot;F:\Program Files\MongoDB\Server\3.4\mongodb.cnf&quot;</div></pre></td></tr></table></figure></p>
 <p><img src="http://i1.piimg.com/567571/5e5807dee5b4b4e0.png" alt=""></p>
+<p>若在其它目录下，则需要指定mongodb.cnf的绝对路径：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod -f &quot;F:\Program Files\MongoDB\Server\3.4\mongodb.cnf&quot;</div></pre></td></tr></table></figure></p>
 <h3 id="将MongoDB服务器设置成Windows启动服务"><a href="#将MongoDB服务器设置成Windows启动服务" class="headerlink" title="将MongoDB服务器设置成Windows启动服务"></a>将MongoDB服务器设置成Windows启动服务</h3><p>在“F:\Program Files\MongoDB\Server\3.4”目录下新建名为mongod.cfg的配置文件，并写入如下配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">systemLog:</div><div class="line">    destination: file</div><div class="line">    path: f:\data\log\mongod.log</div><div class="line">storage:</div><div class="line">    dbPath: f:\data\db</div></pre></td></tr></table></figure></p>
 <p>使用管理员身份运行命令行终端，然后输入如下命令来安装MongoDB服务（注意不要开启MongoDB）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod --config &quot;F:\Program Files\MongoDB\Server\3.4\mongod.cfg&quot; --install</div></pre></td></tr></table></figure></p>
 <p>开启MongoDB服务：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">net start MongoDB</div></pre></td></tr></table></figure></p>
 <p><img src="http://p1.bpimg.com/567571/d10ab1219463d05a.png" alt=""></p>
 <p>这样，每次系统开机MongoDB就会作为系统服务自动开启，而不需要每次都通过命令行来运行MongoDB服务器，会节约不少时间。</p>
+<h3 id="MongoDB后台管理-Shell"><a href="#MongoDB后台管理-Shell" class="headerlink" title="MongoDB后台管理 Shell"></a>MongoDB后台管理 Shell</h3><p>在开启MongoDB的情况下，可以在命令行直接输入mongo命令进入MongoDB的后台管理。其中，MongoDB Shell是MongoDB自带的交互式Javascript shell,用来对MongoDB进行操作和管理的交互式环境。当然，你也可以先打开MongoDB安装目录的下的bin目录，然后执行mongo.exe文件，也可以进入。值得说明的是，当你进入mongoDB后台后，它默认会链接到 test 文档（数据库）。</p>
+<p><img src="http://p1.bpimg.com/567571/1ee9314393686168.png" alt=""></p>
 ]]></content>
     
     <summary type="html">
