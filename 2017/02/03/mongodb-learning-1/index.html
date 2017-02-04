@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="数据库,MongoDB,NoSQL," />
+  <meta name="keywords" content="MongoDB,NoSQL,数据库," />
 
 
 
@@ -98,8 +98,8 @@
 <meta property="og:image" content="http://p1.bpimg.com/567571/411c10cd3ce5b2d4.png">
 <meta property="og:image" content="http://i1.piimg.com/567571/5e5807dee5b4b4e0.png">
 <meta property="og:image" content="http://p1.bpimg.com/567571/d10ab1219463d05a.png">
-<meta property="og:image" content="http://p1.bpimg.com/567571/1ee9314393686168.png">
-<meta property="og:updated_time" content="2017-02-03T16:43:50.686Z">
+<meta property="og:image" content="http://i1.piimg.com/567571/22f6d1ce33224ce0.png">
+<meta property="og:updated_time" content="2017-02-04T03:26:40.815Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MongoDB学习笔记（一）：安装与配置">
 <meta name="twitter:description" content="Windows平台MongoDB提供了可用于32位和64位系统的预编译二进制包，你可以从MongoDB官网下载安装，MongoDB预编译二进制包下载地址：https://www.mongodb.com/download-center#community">
@@ -402,13 +402,13 @@ var _hmt = _hmt || [];
 <p>此时可以在“F:\Program Files\MongoDB\Server\3.4”目录下通过以下命令来运行MongoDB服务器：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod -f mongodb.cnf</div></pre></td></tr></table></figure></p>
 <p><img src="http://i1.piimg.com/567571/5e5807dee5b4b4e0.png" alt=""></p>
 <p>若在其它目录下，则需要指定mongodb.cnf的绝对路径：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod -f &quot;F:\Program Files\MongoDB\Server\3.4\mongodb.cnf&quot;</div></pre></td></tr></table></figure></p>
-<h3 id="将MongoDB服务器设置成Windows启动服务"><a href="#将MongoDB服务器设置成Windows启动服务" class="headerlink" title="将MongoDB服务器设置成Windows启动服务"></a>将MongoDB服务器设置成Windows启动服务</h3><p>在“F:\Program Files\MongoDB\Server\3.4”目录下新建名为mongod.cfg的配置文件，并写入如下配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">systemLog:</div><div class="line">    destination: file</div><div class="line">    path: f:\data\log\mongod.log</div><div class="line">storage:</div><div class="line">    dbPath: f:\data\db</div></pre></td></tr></table></figure></p>
+<h3 id="将MongoDB设置成Windows启动服务"><a href="#将MongoDB设置成Windows启动服务" class="headerlink" title="将MongoDB设置成Windows启动服务"></a>将MongoDB设置成Windows启动服务</h3><p>在“F:\Program Files\MongoDB\Server\3.4”目录下新建名为mongod.cfg的配置文件，并写入如下配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">systemLog:</div><div class="line">    destination: file</div><div class="line">    path: f:\data\log\mongod.log</div><div class="line">storage:</div><div class="line">    dbPath: f:\data\db</div></pre></td></tr></table></figure></p>
 <p>使用管理员身份运行命令行终端，然后输入如下命令来安装MongoDB服务（注意不要开启MongoDB）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod --config &quot;F:\Program Files\MongoDB\Server\3.4\mongod.cfg&quot; --install</div></pre></td></tr></table></figure></p>
 <p>开启MongoDB服务：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">net start MongoDB</div></pre></td></tr></table></figure></p>
 <p><img src="http://p1.bpimg.com/567571/d10ab1219463d05a.png" alt=""></p>
 <p>这样，每次系统开机MongoDB就会作为系统服务自动开启，而不需要每次都通过命令行来运行MongoDB服务器，会节约不少时间。</p>
-<h3 id="MongoDB后台管理-Shell"><a href="#MongoDB后台管理-Shell" class="headerlink" title="MongoDB后台管理 Shell"></a>MongoDB后台管理 Shell</h3><p>在开启MongoDB的情况下，可以在命令行直接输入mongo命令进入MongoDB的后台管理。其中，MongoDB Shell是MongoDB自带的交互式Javascript shell,用来对MongoDB进行操作和管理的交互式环境。当然，你也可以先打开MongoDB安装目录的下的bin目录，然后执行mongo.exe文件，也可以进入。值得说明的是，当你进入mongoDB后台后，它默认会链接到 test 文档（数据库）。</p>
-<p><img src="http://p1.bpimg.com/567571/1ee9314393686168.png" alt=""></p>
+<h3 id="MongoDB后台管理-Shell"><a href="#MongoDB后台管理-Shell" class="headerlink" title="MongoDB后台管理 Shell"></a>MongoDB后台管理 Shell</h3><p>在开启MongoDB的情况下，可以在命令行直接输入mongo命令进入MongoDB的后台管理。其中，MongoDB Shell是MongoDB自带的交互式Javascript shell,用来对MongoDB进行操作和管理的交互式环境。当然，你也可以先打开MongoDB安装目录的下的bin目录，然后执行mongo.exe文件，也可以进入。值得说明的是，当你进入mongoDB后台后，它默认会链接到 test 文档（数据库）。<br><img src="http://i1.piimg.com/567571/22f6d1ce33224ce0.png" alt=""></p>
+<p>其中，db 命令用于查看当前操作的文档（数据库）。</p>
 
       
     </div>
@@ -452,11 +452,11 @@ var _hmt = _hmt || [];
       
         <div class="post-tags">
           
-            <a href="/tags/数据库/" rel="tag">#数据库</a>
-          
             <a href="/tags/MongoDB/" rel="tag">#MongoDB</a>
           
             <a href="/tags/NoSQL/" rel="tag">#NoSQL</a>
+          
+            <a href="/tags/数据库/" rel="tag">#数据库</a>
           
         </div>
       
@@ -472,6 +472,10 @@ var _hmt = _hmt || [];
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/04/mongodb-learning-2/" rel="prev" title="MongoDB学习笔记（二）：常见问题和常用技巧">
+                MongoDB学习笔记（二）：常见问题和常用技巧 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -546,7 +550,7 @@ var _hmt = _hmt || [];
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-count">24</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -637,7 +641,7 @@ var _hmt = _hmt || [];
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows平台"><span class="nav-number">1.</span> <span class="nav-text">Windows平台</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加系统路径"><span class="nav-number">1.1.</span> <span class="nav-text">添加系统路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建数据和日志目录"><span class="nav-number">1.2.</span> <span class="nav-text">创建数据和日志目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令行下运行MongoDB服务器"><span class="nav-number">1.3.</span> <span class="nav-text">命令行下运行MongoDB服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将MongoDB服务器设置成Windows启动服务"><span class="nav-number">1.4.</span> <span class="nav-text">将MongoDB服务器设置成Windows启动服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MongoDB后台管理-Shell"><span class="nav-number">1.5.</span> <span class="nav-text">MongoDB后台管理 Shell</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows平台"><span class="nav-number">1.</span> <span class="nav-text">Windows平台</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加系统路径"><span class="nav-number">1.1.</span> <span class="nav-text">添加系统路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建数据和日志目录"><span class="nav-number">1.2.</span> <span class="nav-text">创建数据和日志目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令行下运行MongoDB服务器"><span class="nav-number">1.3.</span> <span class="nav-text">命令行下运行MongoDB服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将MongoDB设置成Windows启动服务"><span class="nav-number">1.4.</span> <span class="nav-text">将MongoDB设置成Windows启动服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MongoDB后台管理-Shell"><span class="nav-number">1.5.</span> <span class="nav-text">MongoDB后台管理 Shell</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
