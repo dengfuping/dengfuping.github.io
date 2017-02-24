@@ -905,18 +905,17 @@ var _hmt = _hmt || [];
 
       
         
-          
-            <h2 id="常见错误（一）：fatal-remote-origin-already-exists"><a href="#常见错误（一）：fatal-remote-origin-already-exists" class="headerlink" title="常见错误（一）：fatal: remote origin already exists"></a>常见错误（一）：fatal: remote origin already exists</h2><p>输入以下命令关联远程库（注：以下的operating-system-and-xv6是我自己的一个仓库名）：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$ git remote add origin git@github.com:dengfuping/operating-system-and-xv6.git</div><div class="line">```&lt;!--more--&gt;</div><div class="line"></div><div class="line">出现 `fatal: remote origin already exists` 的问题：</div><div class="line">![](http://i1.piimg.com/567571/fff480eb0b83213c.png)</div><div class="line"></div><div class="line">只需输入以下命令将远程关联删除即可解决：</div><div class="line"></div><div class="line">```bash</div><div class="line">$ git remote rm origin</div></pre></td></tr></table></figure>
-<p>之后再使用 <code>git remote add origin git@github.com:dengfuping/operating-system-and-xv6.git</code> 命令将本地仓库与远程库重新关联即可。</p>
-<h2 id="常见问题（二）"><a href="#常见问题（二）" class="headerlink" title="常见问题（二）"></a>常见问题（二）</h2><p>我在将本地的仓库和远程对应的Github的远程库进行关联之后，输入 <code>git push -u origin master</code> 命令出现如下错误：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ git push -u origin master</div><div class="line">To git@github.com:dengfuping/operating-system-and-xv6.git</div><div class="line"> ! [rejected]        master -&gt; master (fetch first)</div><div class="line">error: failed to push some refs to <span class="string">'git@github.com:dengfuping/operating-system-and-xv6.git'</span></div><div class="line">hint: Updates were rejected because the remote contains work that you <span class="keyword">do</span></div><div class="line">hint: not have locally. This is usually caused by another repository pushing</div><div class="line">hint: to the same ref. You may want to first integrate the remote changes</div><div class="line">hint: (e.g., <span class="string">'git pull ...'</span>) before pushing again.</div><div class="line">hint: See the <span class="string">'Note about fast-forwards'</span> <span class="keyword">in</span> <span class="string">'git push --help'</span> <span class="keyword">for</span> details.</div></pre></td></tr></table></figure>
-<p><img src="http://i1.piimg.com/567571/aeb2a480f5634897.png" alt=""></p>
-<p>出现错误的主要原因是我在Github新建远程仓库的时候创建了一个README.md文件，而这个文件则不在本地仓库目录中。</p>
-<p>可以通过如下命令进行代码合并（其中 <code>pull = fetch + merge</code>）：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git pull --rebase origin master</div></pre></td></tr></table></figure></p>
-<p>执行上面代码后就可以看到本地代码库中多了README.md文件。此时再执行语句 <code>git push -u origin master</code> 即可完成代码上传到Github上。</p>
-
-          
+          <h2 id="常见错误（一）：fatal-remote-origin-already-exists"><a href="#常见错误（一）：fatal-remote-origin-already-exists" class="headerlink" title="常见错误（一）：fatal: remote origin already exists"></a>常见错误（一）：fatal: remote origin already exists</h2><p>输入以下命令关联远程库（注：以下的 <code>operating-system-and-xv6</code> 是我自己的一个仓库名）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git remote add origin git@github.com:dengfuping/operating-system-and-xv6.git</div></pre></td></tr></table></figure>
+<p>出现 <code>fatal: remote origin already exists</code> 的问题：<br><img src="http://i1.piimg.com/567571/fff480eb0b83213c.png" alt=""></p>
+<p>只需输入以下命令将远程关联删除即可解决：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git remote rm origin</div></pre></td></tr></table></figure>
+<p>之后再使用 <code>git remote add origin git@github.com:dengfuping/operating-system-and-xv6.git</code> 命令将本地仓库与远程库重新关联即可。
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/24/git-learning-1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>

@@ -36,11 +36,11 @@
       <category term="MongoDB" scheme="http://www.dengfuping.com/categories/MongoDB/"/>
     
     
+      <category term="数据库" scheme="http://www.dengfuping.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
       <category term="MongoDB" scheme="http://www.dengfuping.com/tags/MongoDB/"/>
     
       <category term="NoSQL" scheme="http://www.dengfuping.com/tags/NoSQL/"/>
-    
-      <category term="数据库" scheme="http://www.dengfuping.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
   </entry>
   
@@ -81,11 +81,11 @@
       <category term="MongoDB" scheme="http://www.dengfuping.com/categories/MongoDB/"/>
     
     
+      <category term="数据库" scheme="http://www.dengfuping.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
       <category term="MongoDB" scheme="http://www.dengfuping.com/tags/MongoDB/"/>
     
       <category term="NoSQL" scheme="http://www.dengfuping.com/tags/NoSQL/"/>
-    
-      <category term="数据库" scheme="http://www.dengfuping.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
   </entry>
   
@@ -134,13 +134,13 @@
     
       <category term="mysql" scheme="http://www.dengfuping.com/tags/mysql/"/>
     
-      <category term="MongoDB" scheme="http://www.dengfuping.com/tags/MongoDB/"/>
+      <category term="大数据" scheme="http://www.dengfuping.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
       <category term="数据库" scheme="http://www.dengfuping.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
-      <category term="大数据" scheme="http://www.dengfuping.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
       <category term="HBase" scheme="http://www.dengfuping.com/tags/HBase/"/>
+    
+      <category term="MongoDB" scheme="http://www.dengfuping.com/tags/MongoDB/"/>
     
   </entry>
   
@@ -723,11 +723,11 @@
     
       <category term="xv6" scheme="http://www.dengfuping.com/tags/xv6/"/>
     
-      <category term="CPU alarm" scheme="http://www.dengfuping.com/tags/CPU-alarm/"/>
-    
       <category term="system call" scheme="http://www.dengfuping.com/tags/system-call/"/>
     
       <category term="系统调用" scheme="http://www.dengfuping.com/tags/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/"/>
+    
+      <category term="CPU alarm" scheme="http://www.dengfuping.com/tags/CPU-alarm/"/>
     
   </entry>
   
