@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dengfuping.com/"/>
-  <updated>2017-02-04T08:14:20.866Z</updated>
+  <updated>2017-02-04T08:17:25.748Z</updated>
   <id>http://www.dengfuping.com/</id>
   
   <author>
@@ -20,16 +20,16 @@
     <link href="http://www.dengfuping.com/2017/02/04/mongodb-learning-2/"/>
     <id>http://www.dengfuping.com/2017/02/04/mongodb-learning-2/</id>
     <published>2017-02-04T05:44:11.000Z</published>
-    <updated>2017-02-04T08:14:20.866Z</updated>
+    <updated>2017-02-04T08:17:25.748Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="使用pretty-方法格式化输出数据"><a href="#使用pretty-方法格式化输出数据" class="headerlink" title="使用pretty()方法格式化输出数据"></a>使用pretty()方法格式化输出数据</h3><p>使用 db.collection_name.find() 是以非结构化的方式返回数据，每一条占一整行，一点格式都没有，很难阅读。<br><img src="http://p1.bpimg.com/567571/fe3fc2378bab0ae9.png" alt=""></p>
+    <content type="html"><![CDATA[<h3 id="使用pretty-方法格式化输出数据"><a href="#使用pretty-方法格式化输出数据" class="headerlink" title="使用pretty()方法格式化输出数据"></a>使用pretty()方法格式化输出数据</h3><p>使用 db.collection_name.find() 是以非结构化的方式返回数据，每一条占一整行，一点格式都没有，很难阅读。<br><img src="http://p1.bpimg.com/567571/fe3fc2378bab0ae9.png" alt=""><a id="more"></a></p>
 <p>如果你需要以易读的方式来读取数据，可以使用 pretty() 方法，语法格式如下：db.collection_name.find().pretty()<br><img src="http://p1.bpimg.com/567571/0a0a728416a3034e.png" alt=""></p>
 <p>当然，你也可以使用在MongoDB shell执行以下命令将全局的数据输出都格式化，这样也就不用每次都调用pretty()方法了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo &quot;DBQuery.prototype._prettyShell = true&quot; &gt;&gt; ~/.mongorc.js</div></pre></td></tr></table></figure></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;使用pretty-方法格式化输出数据&quot;&gt;&lt;a href=&quot;#使用pretty-方法格式化输出数据&quot; class=&quot;headerlink&quot; title=&quot;使用pretty()方法格式化输出数据&quot;&gt;&lt;/a&gt;使用pretty()方法格式化输出数据&lt;/h3&gt;&lt;p&gt;使用 d
+      &lt;h3 id=&quot;使用pretty-方法格式化输出数据&quot;&gt;&lt;a href=&quot;#使用pretty-方法格式化输出数据&quot; class=&quot;headerlink&quot; title=&quot;使用pretty()方法格式化输出数据&quot;&gt;&lt;/a&gt;使用pretty()方法格式化输出数据&lt;/h3&gt;&lt;p&gt;使用 db.collection_name.find() 是以非结构化的方式返回数据，每一条占一整行，一点格式都没有，很难阅读。&lt;br&gt;&lt;img src=&quot;http://p1.bpimg.com/567571/fe3fc2378bab0ae9.png&quot; alt=&quot;&quot;&gt;
     
     </summary>
     
@@ -132,11 +132,11 @@
       <category term="计算机前沿开发介绍" scheme="http://www.dengfuping.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%89%8D%E6%B2%BF%E5%BC%80%E5%8F%91%E4%BB%8B%E7%BB%8D/"/>
     
     
+      <category term="mysql" scheme="http://www.dengfuping.com/tags/mysql/"/>
+    
       <category term="MongoDB" scheme="http://www.dengfuping.com/tags/MongoDB/"/>
     
       <category term="数据库" scheme="http://www.dengfuping.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-      <category term="mysql" scheme="http://www.dengfuping.com/tags/mysql/"/>
     
       <category term="大数据" scheme="http://www.dengfuping.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
