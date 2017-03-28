@@ -4,6 +4,18 @@
   
     
     <entry>
+      <title><![CDATA[腾讯 2017 暑期实习生招聘电话一面总结]]></title>
+      <url>http://www.dengfuping.com/2017/03/28/tencent-the-first-interview-summary/</url>
+      <content type="html"><![CDATA[<p>我是3月份在牛客网上找腾讯的内部员工内推的，当时就把自己的个人信息（姓名-邮箱-电话-学校）和自己的简历用邮箱发给他，然后第二天就收到了内推的邮件，要求在腾讯的官网上完善自己的简历。我申请的是前端开发的暑期实习生岗位。</p>
+<p>后来看腾讯的招聘流程，发现4月2号和3号有在线笔试，我还以为腾讯的内推也要经过笔试呢。今天快中午的时候接到了腾讯面试官的电话，问我现在方不方便面试，正好那个时候我翘掉了毛概，想想再约时间也一样，就说现在就可以开始。以下是面试时的问题总结：<a id="more"></a></p>
+<p>1.开始就问我做过哪些项目。由于我只做过自己的一些个人项目和 demo，没有过正式的项目经验，所以就直接说没有。不过谈到了我最近自己在鼓捣的一个问答系统，主要是讲了用到了哪些技术，遇到的难点是什么。其中说到的 Vue.js，面试官问有没有看过它的源代码，知不知道它的实现原理。哈哈，这就 gg 了。数据绑定的实现原理好像看到过，但记得不是很深，就胡乱答了一通，感觉不是很好。</p>
+<p>2.谈谈你对浏览器兼容问题的看法</p>
+<p>3.http 和 https 的区别，为什么 https 更安全，要求说出原理和指出具体的发送过程（我只知道需要公钥私钥一起才能实现对加密传输的信息进行解密，一问到具体的发送过程就不知道了）。</p>
+<p>4.在浏览器中输入网页地址并进行访问的流程是什么？这是前两年的面试题了，恰好之前准备面试的时候专门复习过，所以流程答得还不错。但当我谈到查找缓存的时候，他就让我说查找缓存的原理是什么。这就尴尬了，反正就照着自己的理解答了一下。但一直被追问底层原理，所以个人感觉答得不是很好。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[MongoDB学习笔记（二）：常见问题和常用技巧]]></title>
       <url>http://www.dengfuping.com/2017/02/04/mongodb-learning-2/</url>
       <content type="html"><![CDATA[<h3 id="使用pretty-方法格式化输出数据"><a href="#使用pretty-方法格式化输出数据" class="headerlink" title="使用pretty()方法格式化输出数据"></a>使用pretty()方法格式化输出数据</h3><p>使用 db.collection_name.find() 是以非结构化的方式返回数据，每一条占一整行，一点格式都没有，很难阅读。<br><img src="http://p1.bpimg.com/567571/fe3fc2378bab0ae9.png" alt=""><a id="more"></a></p>
@@ -563,7 +575,7 @@
 <p>只需输入以下命令将远程关联删除即可解决：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git remote rm origin</div></pre></td></tr></table></figure>
 <p>之后再使用 <code>git remote add origin git@github.com:dengfuping/operating-system-and-xv6.git</code> 命令将本地仓库与远程库重新关联即可。<a id="more"></a></p>
-<h2 id="常见问题（二）-error-failed-to-push-some-refs-to"><a href="#常见问题（二）-error-failed-to-push-some-refs-to" class="headerlink" title="常见问题（二）:error: failed to push some refs to"></a>常见问题（二）:error: failed to push some refs to</h2><p>我在将本地的仓库和远程对应的 <code>Github</code> 的远程库进行关联之后，输入 <code>git push -u origin master</code> 命令出现如下错误：</p>
+<h2 id="常见问题（二）：error-failed-to-push-some-refs-to"><a href="#常见问题（二）：error-failed-to-push-some-refs-to" class="headerlink" title="常见问题（二）：error: failed to push some refs to"></a>常见问题（二）：error: failed to push some refs to</h2><p>我在将本地的仓库和远程对应的 <code>Github</code> 的远程库进行关联之后，输入 <code>git push -u origin master</code> 命令出现如下错误：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ git push -u origin master</div><div class="line">To git@github.com:dengfuping/operating-system-and-xv6.git</div><div class="line"> ! [rejected]        master -&gt; master (fetch first)</div><div class="line">error: failed to push some refs to <span class="string">'git@github.com:dengfuping/operating-system-and-xv6.git'</span></div><div class="line">hint: Updates were rejected because the remote contains work that you <span class="keyword">do</span></div><div class="line">hint: not have locally. This is usually caused by another repository pushing</div><div class="line">hint: to the same ref. You may want to first integrate the remote changes</div><div class="line">hint: (e.g., <span class="string">'git pull ...'</span>) before pushing again.</div><div class="line">hint: See the <span class="string">'Note about fast-forwards'</span> <span class="keyword">in</span> <span class="string">'git push --help'</span> <span class="keyword">for</span> details.</div></pre></td></tr></table></figure>
 <p><img src="http://i1.piimg.com/567571/aeb2a480f5634897.png" alt=""></p>
 <p>出现错误的主要原因是我在 <code>Github</code> 新建远程仓库的时候创建了一个 <code>README.md</code> 文件，而这个文件则不在本地仓库目录中。</p>

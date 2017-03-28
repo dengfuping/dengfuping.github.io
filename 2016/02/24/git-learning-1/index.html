@@ -98,7 +98,7 @@
 出现 fatal: remote orig">
 <meta property="og:image" content="http://i1.piimg.com/567571/fff480eb0b83213c.png">
 <meta property="og:image" content="http://i1.piimg.com/567571/aeb2a480f5634897.png">
-<meta property="og:updated_time" content="2017-02-24T13:57:33.844Z">
+<meta property="og:updated_time" content="2017-02-24T15:19:09.554Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git学习笔记（一）：常见问题及其解决办法">
 <meta name="twitter:description" content="常见错误（一）：fatal: remote origin already exists输入以下命令关联远程库（注：以下的 operating-system-and-xv6 是我自己的一个仓库名）：
@@ -397,7 +397,7 @@ var _hmt = _hmt || [];
 <p>只需输入以下命令将远程关联删除即可解决：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git remote rm origin</div></pre></td></tr></table></figure>
 <p>之后再使用 <code>git remote add origin git@github.com:dengfuping/operating-system-and-xv6.git</code> 命令将本地仓库与远程库重新关联即可。<a id="more"></a></p>
-<h2 id="常见问题（二）-error-failed-to-push-some-refs-to"><a href="#常见问题（二）-error-failed-to-push-some-refs-to" class="headerlink" title="常见问题（二）:error: failed to push some refs to"></a>常见问题（二）:error: failed to push some refs to</h2><p>我在将本地的仓库和远程对应的 <code>Github</code> 的远程库进行关联之后，输入 <code>git push -u origin master</code> 命令出现如下错误：</p>
+<h2 id="常见问题（二）：error-failed-to-push-some-refs-to"><a href="#常见问题（二）：error-failed-to-push-some-refs-to" class="headerlink" title="常见问题（二）：error: failed to push some refs to"></a>常见问题（二）：error: failed to push some refs to</h2><p>我在将本地的仓库和远程对应的 <code>Github</code> 的远程库进行关联之后，输入 <code>git push -u origin master</code> 命令出现如下错误：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ git push -u origin master</div><div class="line">To git@github.com:dengfuping/operating-system-and-xv6.git</div><div class="line"> ! [rejected]        master -&gt; master (fetch first)</div><div class="line">error: failed to push some refs to <span class="string">'git@github.com:dengfuping/operating-system-and-xv6.git'</span></div><div class="line">hint: Updates were rejected because the remote contains work that you <span class="keyword">do</span></div><div class="line">hint: not have locally. This is usually caused by another repository pushing</div><div class="line">hint: to the same ref. You may want to first integrate the remote changes</div><div class="line">hint: (e.g., <span class="string">'git pull ...'</span>) before pushing again.</div><div class="line">hint: See the <span class="string">'Note about fast-forwards'</span> <span class="keyword">in</span> <span class="string">'git push --help'</span> <span class="keyword">for</span> details.</div></pre></td></tr></table></figure>
 <p><img src="http://i1.piimg.com/567571/aeb2a480f5634897.png" alt=""></p>
 <p>出现错误的主要原因是我在 <code>Github</code> 新建远程仓库的时候创建了一个 <code>README.md</code> 文件，而这个文件则不在本地仓库目录中。</p>
@@ -538,7 +538,7 @@ var _hmt = _hmt || [];
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-count">26</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -555,7 +555,7 @@ var _hmt = _hmt || [];
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">61</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -629,7 +629,7 @@ var _hmt = _hmt || [];
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#常见错误（一）：fatal-remote-origin-already-exists"><span class="nav-number">1.</span> <span class="nav-text">常见错误（一）：fatal: remote origin already exists</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见问题（二）-error-failed-to-push-some-refs-to"><span class="nav-number">2.</span> <span class="nav-text">常见问题（二）:error: failed to push some refs to</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#常见错误（一）：fatal-remote-origin-already-exists"><span class="nav-number">1.</span> <span class="nav-text">常见错误（一）：fatal: remote origin already exists</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见问题（二）：error-failed-to-push-some-refs-to"><span class="nav-number">2.</span> <span class="nav-text">常见问题（二）：error: failed to push some refs to</span></a></li></ol></div>
             
           </div>
         </section>
