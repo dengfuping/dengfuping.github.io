@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dengfuping.com/"/>
-  <updated>2017-03-29T02:01:38.888Z</updated>
+  <updated>2017-03-29T09:53:46.065Z</updated>
   <id>http://www.dengfuping.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.dengfuping.com/2017/03/28/tencent-the-first-interview-summary/"/>
     <id>http://www.dengfuping.com/2017/03/28/tencent-the-first-interview-summary/</id>
     <published>2017-03-28T09:32:24.000Z</published>
-    <updated>2017-03-29T02:01:38.888Z</updated>
+    <updated>2017-03-29T09:53:46.065Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://i2.muimg.com/567571/12498fa06454beda.png" alt=""><br>我是3月份在牛客网上找腾讯的内部员工内推的，当时就把自己的个人信息（姓名-邮箱-电话-学校）和自己的简历用邮箱发给他，然后第二天就收到了内推的邮件，要求在腾讯的官网上完善自己的简历。我申请的是 <code>前端开发</code> 的暑期实习生岗位。<a id="more"></a></p>
 <p>后来看腾讯的招聘流程，发现4月2号和3号有在线笔试，我还以为腾讯的内推也要经过笔试呢。今天快中午的时候接到了腾讯面试官的电话，问我现在方不方便面试，正好那个时候我翘掉了毛概，想想再约时间也一样，就说现在就可以开始。以下是面试时的问题总结：</p>
@@ -38,6 +38,8 @@
 <li><p><code>ES6</code> 中的 <code>promise</code> 对象，作用是什么？</p>
 </li>
 <li><p>前端优化问题，有哪些优化或提高性能的方法？</p>
+</li>
+<li><p>谈谈你对分布式系统的理解。发送网络请求时如何选择请求的网络服务器？是按照什么原则进行选择的？</p>
 </li>
 </ol>
 ]]></content>
@@ -767,11 +769,11 @@
     
       <category term="xv6" scheme="http://www.dengfuping.com/tags/xv6/"/>
     
-      <category term="CPU alarm" scheme="http://www.dengfuping.com/tags/CPU-alarm/"/>
-    
       <category term="system call" scheme="http://www.dengfuping.com/tags/system-call/"/>
     
       <category term="系统调用" scheme="http://www.dengfuping.com/tags/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/"/>
+    
+      <category term="CPU alarm" scheme="http://www.dengfuping.com/tags/CPU-alarm/"/>
     
   </entry>
   
