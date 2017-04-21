@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dengfuping.com/"/>
-  <updated>2017-04-21T12:17:07.973Z</updated>
+  <updated>2017-04-21T12:24:47.964Z</updated>
   <id>http://www.dengfuping.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.dengfuping.com/2017/04/21/javascript-basic-function/"/>
     <id>http://www.dengfuping.com/2017/04/21/javascript-basic-function/</id>
     <published>2017-04-21T11:45:54.000Z</published>
-    <updated>2017-04-21T12:17:07.973Z</updated>
+    <updated>2017-04-21T12:24:47.964Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://i1.piimg.com/567571/ffcf817d274532d9.png" alt=""></p>
 <p>此文主要是对 JavaScript 的常用函数做一个总结和解析，方便理解和参考。</p>
@@ -31,14 +31,14 @@
 <li>函数用法：slice(start, end)</li>
 <li>函数功能：对数组或字符串进行 <code>截取</code> ，并返回一个数组副本。即原数组或字符串 <code>不会被修改</code> 。</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//如果不传入参数二，那么将从参数一的索引位置开始截取，一直到数组或字符串结尾</span></div><div class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>];</div><div class="line"><span class="keyword">var</span> b = a.slice(<span class="number">0</span>, <span class="number">3</span>);  <span class="comment">// b = [1,2,3]</span></div><div class="line"><span class="keyword">var</span> c = a.slice(<span class="number">3</span>);     <span class="comment">// c = [4,5,6]</span></div><div class="line"><span class="comment">// 此时数组 a = [1, 2, 3, 4, 5, 6]</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>];</div><div class="line"><span class="keyword">var</span> b = a.slice(<span class="number">0</span>, <span class="number">3</span>);  <span class="comment">// b = [1,2,3]</span></div><div class="line"></div><div class="line"><span class="comment">//如果不传入参数二，那么将从参数一的索引位置开始截取，一直到数组或字符串结尾</span></div><div class="line"><span class="keyword">var</span> c = a.slice(<span class="number">3</span>);     <span class="comment">// c = [4,5,6]</span></div><div class="line"></div><div class="line"><span class="comment">// 此时数组 a = [1, 2, 3, 4, 5, 6]</span></div></pre></td></tr></table></figure>
 <h2 id="split"><a href="#split" class="headerlink" title="split()"></a>split()</h2><ul>
 <li>操作对象：String 对象</li>
 <li>原对象是否发生变化：不发生</li>
 <li>函数用法：slice(start, end)</li>
 <li>函数功能：把这个字符串分割成片段来创建一个字符串数组。可选参数 <code>limit</code> 可以限制被分割的片段数量。<code>separator</code> 参数可以是一个字符串或一个正则表达式。如果 <code>separator</code> 是一个空字符，会返回一个单字符的数组。</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//如果不传入参数二，那么将从参数一的索引位置开始截取，一直到数组或字符串结尾</span></div><div class="line"><span class="keyword">var</span> a = <span class="string">"Hello World Are You Ok"</span>;</div><div class="line"><span class="keyword">var</span> b = a.split(<span class="string">" "</span>);        <span class="comment">// 分隔符为一个空格，返回 ["Hello", "World", "Are", "You", "Ok"]</span></div><div class="line"><span class="keyword">var</span> c = a.split(<span class="string">" "</span>, <span class="number">2</span>);     <span class="comment">// 分隔符为一个空格，且设置 `limit` 参数["Hello", "World"]</span></div></pre></td></tr></table></figure>]]></content>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="string">"Hello World Are You Ok"</span>;</div><div class="line"><span class="keyword">var</span> b = a.split(<span class="string">" "</span>);        <span class="comment">// 分隔符为一个空格，返回 ["Hello", "World", "Are", "You", "Ok"]</span></div><div class="line"><span class="keyword">var</span> c = a.split(<span class="string">" "</span>, <span class="number">2</span>);     <span class="comment">// 分隔符为一个空格，且设置 limit 参数，则返回 ["Hello", "World"]</span></div><div class="line"><span class="keyword">var</span> d = a.split(<span class="string">""</span>);        <span class="comment">// 分隔符为空字符，返回 ["H", "e", "l", ... , "O", "k"]</span></div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
