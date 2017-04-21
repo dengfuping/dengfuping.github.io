@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dengfuping.com/"/>
-  <updated>2017-04-21T13:19:35.135Z</updated>
+  <updated>2017-04-21T13:24:24.725Z</updated>
   <id>http://www.dengfuping.com/</id>
   
   <author>
@@ -16,14 +16,13 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>judge-object-is-array-or-not</title>
+    <title>判断某个对象是否为数组的四种方法</title>
     <link href="http://www.dengfuping.com/2017/04/21/judge-object-is-array-or-not/"/>
     <id>http://www.dengfuping.com/2017/04/21/judge-object-is-array-or-not/</id>
     <published>2017-04-21T12:41:13.000Z</published>
-    <updated>2017-04-21T13:19:35.135Z</updated>
+    <updated>2017-04-21T13:24:24.725Z</updated>
     
-    <content type="html"><![CDATA[<p>这篇文章主要是总结在 JavaScript 中判断某个对象是否为数组的四种方法。</p>
-<h2 id="instanceof-操作符（有限制）"><a href="#instanceof-操作符（有限制）" class="headerlink" title="instanceof 操作符（有限制）"></a>instanceof 操作符（有限制）</h2><p>我们可以使用 instanceof 操作符来检测某个对象是否是数组的实例，该检测会返回一个布尔型值(boolean)。如果是数组的话，返回 true，否则的话返回 false</p>
+    <content type="html"><![CDATA[<h2 id="instanceof-操作符（有限制）"><a href="#instanceof-操作符（有限制）" class="headerlink" title="instanceof 操作符（有限制）"></a>instanceof 操作符（有限制）</h2><p>我们可以使用 instanceof 操作符来检测某个对象是否是数组的实例，该检测会返回一个布尔型值(boolean)。如果是数组的话，返回 true，否则的话返回 false</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log([] <span class="keyword">instanceof</span> <span class="built_in">Array</span>);      <span class="comment">// true</span></div><div class="line"><span class="built_in">console</span>.log(<span class="regexp">/\d+/g</span> <span class="keyword">instanceof</span> <span class="built_in">Array</span>);  <span class="comment">// false</span></div></pre></td></tr></table></figure>
 <a id="more"></a>
 <p>使用 instanceof 操作符有一个问题就是，它假定只有一个全局作用域。如果一个网页中有多个框架（iframe 元素），那实际上就存在两个以上不同的全局执行环境，从而存在两个以上不同版本的 Array 构造函数。如果你从一个框架向另一个框架传入一个数组，那么传入的数组与在第二个框架中原生创建的数组分别具有各自不同的构造函数。传入的数组在该框架中用 instanceof 操作符判断就会返回 false。代码如下：</p>
@@ -38,8 +37,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;这篇文章主要是总结在 JavaScript 中判断某个对象是否为数组的四种方法。&lt;/p&gt;
-&lt;h2 id=&quot;instanceof-操作符（有限制）&quot;&gt;&lt;a href=&quot;#instanceof-操作符（有限制）&quot; class=&quot;headerlink&quot; title=&quot;instanceof 操作符（有限制）&quot;&gt;&lt;/a&gt;instanceof 操作符（有限制）&lt;/h2&gt;&lt;p&gt;我们可以使用 instanceof 操作符来检测某个对象是否是数组的实例，该检测会返回一个布尔型值(boolean)。如果是数组的话，返回 true，否则的话返回 false&lt;/p&gt;
+      &lt;h2 id=&quot;instanceof-操作符（有限制）&quot;&gt;&lt;a href=&quot;#instanceof-操作符（有限制）&quot; class=&quot;headerlink&quot; title=&quot;instanceof 操作符（有限制）&quot;&gt;&lt;/a&gt;instanceof 操作符（有限制）&lt;/h2&gt;&lt;p&gt;我们可以使用 instanceof 操作符来检测某个对象是否是数组的实例，该检测会返回一个布尔型值(boolean)。如果是数组的话，返回 true，否则的话返回 false&lt;/p&gt;
 &lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log([] &lt;span class=&quot;keyword&quot;&gt;instanceof&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Array&lt;/span&gt;);      &lt;span class=&quot;comment&quot;&gt;// true&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;regexp&quot;&gt;/\d+/g&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;instanceof&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Array&lt;/span&gt;);  &lt;span class=&quot;comment&quot;&gt;// false&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>

@@ -86,22 +86,19 @@
 
 
 
-<meta name="description" content="这篇文章主要是总结在 JavaScript 中判断某个对象是否为数组的四种方法。
-instanceof 操作符（有限制）我们可以使用 instanceof 操作符来检测某个对象是否是数组的实例，该检测会返回一个布尔型值(boolean)。如果是数组的话，返回 true，否则的话返回 false
-12console.log([] instanceof Array);      // truecons">
+<meta name="description" content="instanceof 操作符（有限制）我们可以使用 instanceof 操作符来检测某个对象是否是数组的实例，该检测会返回一个布尔型值(boolean)。如果是数组的话，返回 true，否则的话返回 false
+12console.log([] instanceof Array);      // trueconsole.log(/\d+/g instanceof Array);  // fal">
 <meta property="og:type" content="article">
-<meta property="og:title" content="judge-object-is-array-or-not">
+<meta property="og:title" content="判断某个对象是否为数组的四种方法">
 <meta property="og:url" content="http://www.dengfuping.com/2017/04/21/judge-object-is-array-or-not/index.html">
 <meta property="og:site_name" content="Deng | 不搭">
-<meta property="og:description" content="这篇文章主要是总结在 JavaScript 中判断某个对象是否为数组的四种方法。
-instanceof 操作符（有限制）我们可以使用 instanceof 操作符来检测某个对象是否是数组的实例，该检测会返回一个布尔型值(boolean)。如果是数组的话，返回 true，否则的话返回 false
-12console.log([] instanceof Array);      // truecons">
-<meta property="og:updated_time" content="2017-04-21T13:19:35.135Z">
+<meta property="og:description" content="instanceof 操作符（有限制）我们可以使用 instanceof 操作符来检测某个对象是否是数组的实例，该检测会返回一个布尔型值(boolean)。如果是数组的话，返回 true，否则的话返回 false
+12console.log([] instanceof Array);      // trueconsole.log(/\d+/g instanceof Array);  // fal">
+<meta property="og:updated_time" content="2017-04-21T13:24:24.725Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="judge-object-is-array-or-not">
-<meta name="twitter:description" content="这篇文章主要是总结在 JavaScript 中判断某个对象是否为数组的四种方法。
-instanceof 操作符（有限制）我们可以使用 instanceof 操作符来检测某个对象是否是数组的实例，该检测会返回一个布尔型值(boolean)。如果是数组的话，返回 true，否则的话返回 false
-12console.log([] instanceof Array);      // truecons">
+<meta name="twitter:title" content="判断某个对象是否为数组的四种方法">
+<meta name="twitter:description" content="instanceof 操作符（有限制）我们可以使用 instanceof 操作符来检测某个对象是否是数组的实例，该检测会返回一个布尔型值(boolean)。如果是数组的话，返回 true，否则的话返回 false
+12console.log([] instanceof Array);      // trueconsole.log(/\d+/g instanceof Array);  // fal">
 
 
 <script>
@@ -135,7 +132,7 @@ var _hmt = _hmt || [];
 
   <link rel="canonical" href="http://www.dengfuping.com/2017/04/21/judge-object-is-array-or-not/"/>
 
-  <title> judge-object-is-array-or-not | Deng | 不搭 </title>
+  <title> 判断某个对象是否为数组的四种方法 | Deng | 不搭 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -308,7 +305,7 @@ var _hmt = _hmt || [];
             
             
               
-                judge-object-is-array-or-not
+                判断某个对象是否为数组的四种方法
               
             
           </h1>
@@ -361,7 +358,7 @@ var _hmt = _hmt || [];
 
           
           
-             <span id="/2017/04/21/judge-object-is-array-or-not/" class="leancloud_visitors" data-flag-title="judge-object-is-array-or-not">
+             <span id="/2017/04/21/judge-object-is-array-or-not/" class="leancloud_visitors" data-flag-title="判断某个对象是否为数组的四种方法">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -388,8 +385,7 @@ var _hmt = _hmt || [];
       
 
       
-        <p>这篇文章主要是总结在 JavaScript 中判断某个对象是否为数组的四种方法。</p>
-<h2 id="instanceof-操作符（有限制）"><a href="#instanceof-操作符（有限制）" class="headerlink" title="instanceof 操作符（有限制）"></a>instanceof 操作符（有限制）</h2><p>我们可以使用 instanceof 操作符来检测某个对象是否是数组的实例，该检测会返回一个布尔型值(boolean)。如果是数组的话，返回 true，否则的话返回 false</p>
+        <h2 id="instanceof-操作符（有限制）"><a href="#instanceof-操作符（有限制）" class="headerlink" title="instanceof 操作符（有限制）"></a>instanceof 操作符（有限制）</h2><p>我们可以使用 instanceof 操作符来检测某个对象是否是数组的实例，该检测会返回一个布尔型值(boolean)。如果是数组的话，返回 true，否则的话返回 false</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log([] <span class="keyword">instanceof</span> <span class="built_in">Array</span>);      <span class="comment">// true</span></div><div class="line"><span class="built_in">console</span>.log(<span class="regexp">/\d+/g</span> <span class="keyword">instanceof</span> <span class="built_in">Array</span>);  <span class="comment">// false</span></div></pre></td></tr></table></figure>
 <a id="more"></a>
 <p>使用 instanceof 操作符有一个问题就是，它假定只有一个全局作用域。如果一个网页中有多个框架（iframe 元素），那实际上就存在两个以上不同的全局执行环境，从而存在两个以上不同版本的 Array 构造函数。如果你从一个框架向另一个框架传入一个数组，那么传入的数组与在第二个框架中原生创建的数组分别具有各自不同的构造函数。传入的数组在该框架中用 instanceof 操作符判断就会返回 false。代码如下：</p>
@@ -488,7 +484,7 @@ var _hmt = _hmt || [];
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2017/04/21/judge-object-is-array-or-not/"
-           data-title="judge-object-is-array-or-not" data-url="http://www.dengfuping.com/2017/04/21/judge-object-is-array-or-not/">
+           data-title="判断某个对象是否为数组的四种方法" data-url="http://www.dengfuping.com/2017/04/21/judge-object-is-array-or-not/">
       </div>
     
   </div>
