@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dengfuping.com/"/>
-  <updated>2017-04-23T10:40:23.199Z</updated>
+  <updated>2017-04-23T13:52:10.530Z</updated>
   <id>http://www.dengfuping.com/</id>
   
   <author>
@@ -14,6 +14,54 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CSS 常用技巧（一）：文本溢出显示省略号</title>
+    <link href="http://www.dengfuping.com/2017/04/23/css-text-overflow-ellipsis/"/>
+    <id>http://www.dengfuping.com/2017/04/23/css-text-overflow-ellipsis/</id>
+    <published>2017-04-23T12:46:34.000Z</published>
+    <updated>2017-04-23T13:52:10.530Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="单行文本溢出"><a href="#单行文本溢出" class="headerlink" title="单行文本溢出"></a>单行文本溢出</h2><p>可以使用 <code>text-overflow: ellipsis</code> 属性来实现单行文本溢出显示省略号，当然还需要加宽度 <code>width</code> 属性来兼容部分浏览器。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.single-text</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">490px</span>;</div><div class="line">    <span class="attribute">overflow</span>: hidden;</div><div class="line">    <span class="attribute">text-overflow</span>: ellipsis;</div><div class="line">    <span class="attribute">white-space</span>: nowrap;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>overflow: hidden; 溢出元素内容区的内容不可见的。</li>
+<li>white-space: nowrap; 文本不会换行，文本会在在同一行上继续，直到遇到 <br> 标签为止。用以保证为单行文本</li>
+<li>text-overflow: ellipsis; 使用显示省略符号来代表溢出的文本。</li>
+</ol>
+<p>效果如图：<br><img src="http://i1.piimg.com/567571/47c40f8cd4ed1bed.png" alt=""></p>
+<h2 id="多行文本溢出"><a href="#多行文本溢出" class="headerlink" title="多行文本溢出"></a>多行文本溢出</h2><h3 id="方法（一）"><a href="#方法（一）" class="headerlink" title="方法（一）"></a>方法（一）</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.multi-text</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">500px</span>;</div><div class="line">    <span class="attribute">overflow</span>: hidden;</div><div class="line">    <span class="attribute">display</span>: -webkit-box;</div><div class="line">    <span class="attribute">-webkit-box-orient</span>: vertical;</div><div class="line">    <span class="attribute">-webkit-line-clamp</span>: <span class="number">3</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>-webkit-line-clamp用来限制在一个块元素显示的文本的行数。 为了实现该效果，它需要组合其他的WebKit属性。常见结合属性：</li>
+<li>display: -webkit-box; 必须结合的属性 ，将对象作为弹性伸缩盒子模型显示 。</li>
+<li>-webkit-box-orient; 必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式 。</li>
+</ol>
+<p>效果如图：<br><img src="http://i1.piimg.com/567571/0eeae8b0184983d8.png" alt=""></p>
+<p>适用范围：<br>由于使用了 WebKit 的 CSS 扩展属性，该方法适用于 WebKit 浏览器及移动端，其中移动端大部分是 WebKit 内核的浏览器。</p>
+<h3 id="方法（二）"><a href="#方法（二）" class="headerlink" title="方法（二）"></a>方法（二）</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.multi-text-complete</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">500px</span>;</div><div class="line">    <span class="attribute">position</span>: relative;</div><div class="line">    <span class="attribute">line-height</span>: <span class="number">20px</span>;</div><div class="line">    <span class="attribute">max-height</span>: <span class="number">60px</span>;   <span class="comment">/*将 height设为 line-height 的整数倍，防止超出的文字露出*/</span></div><div class="line">    <span class="attribute">overflow</span>: hidden;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.multi-text-complete</span><span class="selector-pseudo">:after</span> &#123;</div><div class="line">    <span class="attribute">content</span>: <span class="string">"..."</span>;</div><div class="line">    <span class="attribute">position</span>: absolute;</div><div class="line">    <span class="attribute">bottom</span>: <span class="number">0</span>;</div><div class="line">    <span class="attribute">right</span>: <span class="number">0</span>;</div><div class="line">    <span class="attribute">padding-left</span>: <span class="number">40px</span>;</div><div class="line">    <span class="attribute">background</span>: <span class="built_in">-webkit-linear-gradient</span>(left, transparent, #fff 55%);</div><div class="line">    <span class="attribute">background</span>: <span class="built_in">-o-linear-gradient</span>(right, transparent, #fff 55%);</div><div class="line">    <span class="attribute">background</span>: <span class="built_in">-moz-linear-gradient</span>(right, transparent, #fff 55%);</div><div class="line">    <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(to right, transparent, #fff 55%);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>将 height 设置为 line-height 的整数倍，防止超出的文字露出。</li>
+<li>给 p::after 添加渐变背景可避免文字只显示一半。</li>
+<li>由于 ie6-7 不显示 content 内容，所以要添加标签兼容 ie6-7（如：<span>…<span>）；兼容ie8需要将 ::after 替换成 :after。</span></span></li>
+</ol>
+<p>效果如图：<br><img src="http://i1.piimg.com/567571/77f3897a79586a21.png" alt=""></p>
+<p>适用范围：该方法适用范围广，但文字未超出行的情况下也会出现省略号，可结合js优化该方法。</p>
+<h2 id="源代码和运行效果"><a href="#源代码和运行效果" class="headerlink" title="源代码和运行效果"></a>源代码和运行效果</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>文本溢出显示省略号<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line">        <span class="selector-class">.single-text</span> &#123;</div><div class="line">            <span class="attribute">width</span>: <span class="number">490px</span>;</div><div class="line">            <span class="attribute">overflow</span>: hidden;</div><div class="line">            <span class="attribute">text-overflow</span>: ellipsis;</div><div class="line">            <span class="attribute">white-space</span>: nowrap;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="selector-class">.multi-text</span> &#123;</div><div class="line">            <span class="attribute">width</span>: <span class="number">500px</span>;</div><div class="line">            <span class="attribute">overflow</span>: hidden;</div><div class="line">            <span class="attribute">display</span>: -webkit-box;</div><div class="line">            <span class="attribute">-webkit-box-orient</span>: vertical;</div><div class="line">            <span class="attribute">-webkit-line-clamp</span>: <span class="number">3</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="selector-class">.multi-text-complete</span> &#123;</div><div class="line">            <span class="attribute">width</span>: <span class="number">500px</span>;</div><div class="line">            <span class="attribute">position</span>: relative;</div><div class="line">            <span class="attribute">line-height</span>: <span class="number">20px</span>;</div><div class="line">            <span class="attribute">max-height</span>: <span class="number">60px</span>;</div><div class="line">            <span class="attribute">overflow</span>: hidden;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="selector-class">.multi-text-complete</span><span class="selector-pseudo">:after</span> &#123;</div><div class="line">            <span class="attribute">content</span>: <span class="string">"..."</span>;</div><div class="line">            <span class="attribute">position</span>: absolute;</div><div class="line">            <span class="attribute">bottom</span>: <span class="number">0</span>;</div><div class="line">            <span class="attribute">right</span>: <span class="number">0</span>;</div><div class="line">            <span class="attribute">padding-left</span>: <span class="number">40px</span>;</div><div class="line">            <span class="attribute">background</span>: <span class="built_in">-webkit-linear-gradient</span>(left, transparent, #fff 55%);</div><div class="line">            <span class="attribute">background</span>: <span class="built_in">-o-linear-gradient</span>(right, transparent, #fff 55%);</div><div class="line">            <span class="attribute">background</span>: <span class="built_in">-moz-linear-gradient</span>(right, transparent, #fff 55%);</div><div class="line">            <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(to right, transparent, #fff 55%);</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"single-text"</span>&gt;</span></div><div class="line">        CSS实现单行文本溢出显示省略号CSS实现单行文本溢出显示省略号CSS实现单行文本溢出显示省略号CSS实现单行文本溢出显示省略号CSS实现单行文本溢出显示省略号CSS实现单行文本溢出显示省略号CSS实现单行文本溢出显示省略号</div><div class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"multi-text"</span>&gt;</span></div><div class="line">        CSS实现单行文本溢出显示省略号CSS实现单行文本溢出显示省略号CSS实现单行文本溢出显示省略号CSS实现单行文本溢出显示省略号CSS实现单行文本溢出显示省略号CSS实现单行文本溢出显示省略号CSS实现单行文本溢出显示省略号</div><div class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"multi-text-complete"</span>&gt;</span></div><div class="line">        CSS实现单行文本溢出显示省略号CSS实现单行文本溢出显示省略号CSS实现单行文本溢出显示省略号CSS实现单行文本溢出显示省略号CSS实现单行文本溢出显示省略号CSS实现单行文本溢出显示省略号CSS实现单行文本溢出显示省略号</div><div class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>效果如图：<br><img src="http://i1.piimg.com/567571/a7ddbd8efe1110d2.png" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;单行文本溢出&quot;&gt;&lt;a href=&quot;#单行文本溢出&quot; class=&quot;headerlink&quot; title=&quot;单行文本溢出&quot;&gt;&lt;/a&gt;单行文本溢出&lt;/h2&gt;&lt;p&gt;可以使用 &lt;code&gt;text-overflow: ellipsis&lt;/code&gt; 属性来实现单行文本溢出显
+    
+    </summary>
+    
+      <category term="CSS常用技巧" scheme="http://www.dengfuping.com/categories/CSS%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/"/>
+    
+    
+      <category term="CSS" scheme="http://www.dengfuping.com/tags/CSS/"/>
+    
+  </entry>
   
   <entry>
     <title>ES6 学习笔记（一）：spread operator（展开运算符）</title>
@@ -854,40 +902,6 @@
       <category term="多线程编程" scheme="http://www.dengfuping.com/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/"/>
     
       <category term="线程和锁" scheme="http://www.dengfuping.com/tags/%E7%BA%BF%E7%A8%8B%E5%92%8C%E9%94%81/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>操作系统原理作业（六）：xv6 lazy page allocation</title>
-    <link href="http://www.dengfuping.com/2017/01/14/operating-system-homework-6/"/>
-    <id>http://www.dengfuping.com/2017/01/14/operating-system-homework-6/</id>
-    <published>2017-01-14T09:16:45.000Z</published>
-    <updated>2017-01-14T09:31:14.013Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Eliminate-allocation-from-sbrk"><a href="#Eliminate-allocation-from-sbrk" class="headerlink" title="Eliminate allocation from sbrk()"></a>Eliminate allocation from sbrk()</h2><h3 id="修改sys-sbrk-函数"><a href="#修改sys-sbrk-函数" class="headerlink" title="修改sys_sbrk()函数"></a>修改sys_sbrk()函数</h3><p>对系统调用sbrk的实际实现sys_sbrk进行修改，只将进程的内存空间大小增加n而不进行实际的分配，即把调用growproc()函数的部分注释掉并增加内存大小。修改后的sys_sbrk()函数如下：<br><a id="more"></a><br><img src="http://p1.bpimg.com/567571/cab4cebf8cb60fdd.png" alt=""></p>
-<p>其中，返回的地址是新分配的地址空间的开头，在此处就是原来地址空间的末尾。我们增加了proc-&gt;sz，但实际却并未增加进程大小。</p>
-<h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><p>启动xv6后输入echo hi命令，得到如下错误提示：<br><img src="http://p1.bpimg.com/567571/3dfb755048cfa8c9.png" alt=""></p>
-<p>原因是当程序试图操作该内存区域的时候，发现该内存区域不是当前进程所有的，因为在sys_sbrk中根本没分配。</p>
-<h2 id="Lazy-allocation"><a href="#Lazy-allocation" class="headerlink" title="Lazy allocation"></a>Lazy allocation</h2><h3 id="去除static关键字"><a href="#去除static关键字" class="headerlink" title="去除static关键字"></a>去除static关键字</h3><p>由于我们需要在trap.c中调用vm.c中的int mappages()函数，所以要去除原本的static关键字。<br><img src="http://i1.piimg.com/567571/82ceee72c19f689b.png" alt=""></p>
-<h3 id="声明int-mappages-函数"><a href="#声明int-mappages-函数" class="headerlink" title="声明int mappages()函数"></a>声明int mappages()函数</h3><p>在trap.c中在调用之前使用extern关键字声明int mappages()函数。<br><img src="http://i1.piimg.com/567571/b1c2ef193728d56d.png" alt=""></p>
-<h3 id="修改trap-c中void-trap-函数"><a href="#修改trap-c中void-trap-函数" class="headerlink" title="修改trap.c中void trap()函数"></a>修改trap.c中void trap()函数</h3><p>在trap.c中的void trap(struct trapframe *tf)的defaut部分添加以下代码，放置的位置为if模块后。<br><img src="http://i1.piimg.com/567571/0624084e31be7576.png" alt=""></p>
-<h2 id="运行结果-1"><a href="#运行结果-1" class="headerlink" title="运行结果"></a>运行结果</h2><p>重新启动xv6后输入echo hi命令，输出结果如下：<br><img src="http://i1.piimg.com/567571/e81661df030b9b0d.png" alt=""></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Eliminate-allocation-from-sbrk&quot;&gt;&lt;a href=&quot;#Eliminate-allocation-from-sbrk&quot; class=&quot;headerlink&quot; title=&quot;Eliminate allocation from sbrk()&quot;&gt;&lt;/a&gt;Eliminate allocation from sbrk()&lt;/h2&gt;&lt;h3 id=&quot;修改sys-sbrk-函数&quot;&gt;&lt;a href=&quot;#修改sys-sbrk-函数&quot; class=&quot;headerlink&quot; title=&quot;修改sys_sbrk()函数&quot;&gt;&lt;/a&gt;修改sys_sbrk()函数&lt;/h3&gt;&lt;p&gt;对系统调用sbrk的实际实现sys_sbrk进行修改，只将进程的内存空间大小增加n而不进行实际的分配，即把调用growproc()函数的部分注释掉并增加内存大小。修改后的sys_sbrk()函数如下：&lt;br&gt;
-    
-    </summary>
-    
-      <category term="操作系统原理" scheme="http://www.dengfuping.com/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/"/>
-    
-    
-      <category term="操作系统原理" scheme="http://www.dengfuping.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/"/>
-    
-      <category term="xv6" scheme="http://www.dengfuping.com/tags/xv6/"/>
-    
-      <category term="lazy page allocation" scheme="http://www.dengfuping.com/tags/lazy-page-allocation/"/>
     
   </entry>
   
