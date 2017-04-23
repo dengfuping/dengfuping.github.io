@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dengfuping.com/"/>
-  <updated>2017-04-21T13:24:24.725Z</updated>
+  <updated>2017-04-23T10:40:23.199Z</updated>
   <id>http://www.dengfuping.com/</id>
   
   <author>
@@ -14,6 +14,81 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ES6 学习笔记（一）：spread operator（展开运算符）</title>
+    <link href="http://www.dengfuping.com/2017/04/23/es6-spread-operator/"/>
+    <id>http://www.dengfuping.com/2017/04/23/es6-spread-operator/</id>
+    <published>2017-04-23T09:52:58.000Z</published>
+    <updated>2017-04-23T10:40:23.199Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="含义"><a href="#含义" class="headerlink" title="含义"></a>含义</h2><p>ES6 中的 spread operator （展开运算符）是三个点（<code>...</code>）。它好比 rest 参数的逆运算，将一个数组转为用逗号分隔的参数序列。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(...[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])                 <span class="comment">// 1 2 3  </span></div><div class="line"><span class="built_in">console</span>.log(<span class="number">1</span>, ...[<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], <span class="number">5</span>)           <span class="comment">// 1 2 3 4 5  </span></div><div class="line">[...document.querySelectorAll(<span class="string">'div'</span>)]     <span class="comment">// [&lt;div&gt;, &lt;div&gt;, &lt;div&gt;]</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>该运算符主要用于函数调用:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">push</span>(<span class="params">array, ...items</span>) </span>&#123;  </div><div class="line">    array.push(...items);  </div><div class="line">&#125;</div><div class="line">  </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">x, y</span>) </span>&#123;  </div><div class="line">    <span class="keyword">return</span> x + y;  </div><div class="line">&#125;</div><div class="line">  </div><div class="line"><span class="keyword">var</span> numbers = [<span class="number">4</span>, <span class="number">38</span>];  </div><div class="line">add(...numbers)             <span class="comment">// 42</span></div></pre></td></tr></table></figure>
+<p>上面代码中，array.push(…items)和add(…numbers)这两行，都是函数的调用，它们的都使用了扩展运算符。该运算符将一个数组，变为参数序列。</p>
+<p>扩展运算符与正常的函数参数可以结合使用，非常灵活:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">v, w, x, y, z</span>) </span>&#123;</div><div class="line"></div><div class="line">&#125;  </div><div class="line"></div><div class="line"><span class="keyword">var</span> args = [<span class="number">0</span>, <span class="number">1</span>];  </div><div class="line">f(<span class="number">-1</span>, ...args, <span class="number">2</span>, ...[<span class="number">3</span>]);</div></pre></td></tr></table></figure>
+<h2 id="替代数组的-apply-方法"><a href="#替代数组的-apply-方法" class="headerlink" title="替代数组的 apply 方法"></a>替代数组的 apply 方法</h2><p>由于扩展运算符可以展开数组，所以不再需要apply方法，将数组转为函数的参数了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ES5 的写法  </span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x, y, z</span>) </span>&#123;  </div><div class="line"><span class="comment">// ...  </span></div><div class="line">&#125;  </div><div class="line"><span class="keyword">var</span> args = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>];  </div><div class="line">f.apply(<span class="literal">null</span>, args);</div><div class="line">  </div><div class="line"><span class="comment">// ES6 的写法  </span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x, y, z</span>) </span>&#123;  </div><div class="line"><span class="comment">// ...  </span></div><div class="line">&#125;  </div><div class="line"><span class="keyword">var</span> args = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>];  </div><div class="line">f(...args);</div></pre></td></tr></table></figure>
+<p>下面是扩展运算符取代apply方法的一个实际的例子，应用Math.max方法，简化求出一个数组最大元素的写法:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ES5 的写法  </span></div><div class="line"><span class="built_in">Math</span>.max.apply(<span class="literal">null</span>, [<span class="number">14</span>, <span class="number">3</span>, <span class="number">77</span>])  </div><div class="line"><span class="comment">// ES6 的写法  </span></div><div class="line"><span class="built_in">Math</span>.max(...[<span class="number">14</span>, <span class="number">3</span>, <span class="number">77</span>])  </div><div class="line"><span class="comment">//  等同于  </span></div><div class="line"><span class="built_in">Math</span>.max(<span class="number">14</span>, <span class="number">3</span>, <span class="number">77</span>);</div></pre></td></tr></table></figure>
+<p>上面代码表示，由于 JavaScript 不提供求数组最大元素的函数，所以只能套用Math.max函数，将数组转为一个参数序列，然后求最大值。有了扩展运算符以后，就可以直接用Math.max了。</p>
+<p>另一个例子是通过push函数，将一个数组添加到另一个数组的尾部:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ES5 的写法  </span></div><div class="line"><span class="keyword">var</span> arr1 = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>];</div><div class="line"><span class="keyword">var</span> arr2 = [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</div><div class="line"><span class="built_in">Array</span>.prototype.push.apply(arr1, arr2);</div><div class="line"> </div><div class="line"><span class="comment">// ES6 的写法  </span></div><div class="line"><span class="keyword">var</span> arr1 = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>];  </div><div class="line"><span class="keyword">var</span> arr2 = [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];  </div><div class="line">arr1.push(...arr2);</div></pre></td></tr></table></figure>
+<p>上面代码的 ES5 写法中，push方法的参数不能是数组，所以只好通过apply方法变通使用push方法。有了扩展运算符，就可以直接将数组传入push方法。</p>
+<p>下面是另外一个例子:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ES5  </span></div><div class="line"><span class="keyword">new</span> (<span class="built_in">Date</span>.bind.apply(<span class="built_in">Date</span>, [<span class="literal">null</span>, <span class="number">2015</span>, <span class="number">1</span>, <span class="number">1</span>]));</div><div class="line"> </div><div class="line"><span class="comment">// ES6  </span></div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(...[<span class="number">2015</span>, <span class="number">1</span>, <span class="number">1</span>]);</div></pre></td></tr></table></figure>
+<h2 id="扩展运算符的应用"><a href="#扩展运算符的应用" class="headerlink" title="扩展运算符的应用"></a>扩展运算符的应用</h2><h3 id="合并数组"><a href="#合并数组" class="headerlink" title="合并数组"></a>合并数组</h3><p>扩展运算符提供了数组合并的新写法:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ES5  </span></div><div class="line">[<span class="number">1</span>, <span class="number">2</span>].concat(more)</div><div class="line"></div><div class="line"><span class="comment">// ES6  </span></div><div class="line">[<span class="number">1</span>, <span class="number">2</span>, ...more]  </div><div class="line"><span class="keyword">var</span> arr1 = [<span class="string">'a'</span>, <span class="string">'b'</span>];  </div><div class="line"><span class="keyword">var</span> arr2 = [<span class="string">'c'</span>];  </div><div class="line"><span class="keyword">var</span> arr3 = [<span class="string">'d'</span>, <span class="string">'e'</span>];</div><div class="line"> </div><div class="line"><span class="comment">// ES5 的合并数组  </span></div><div class="line">arr1.concat(arr2, arr3);        <span class="comment">// [ 'a', 'b', 'c', 'd', 'e' ]  </span></div><div class="line"><span class="comment">// ES6 的合并数组  </span></div><div class="line">[...arr1, ...arr2, ...arr3]     <span class="comment">// [ 'a', 'b', 'c', 'd', 'e' ]</span></div></pre></td></tr></table></figure>
+<h3 id="与-ES6-中的解构赋值结合"><a href="#与-ES6-中的解构赋值结合" class="headerlink" title="与 ES6 中的解构赋值结合"></a>与 ES6 中的解构赋值结合</h3><p>扩展运算符可以与解构赋值结合起来，用于生成数组。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ES5  </span></div><div class="line">a = list[<span class="number">0</span>], rest = list.slice(<span class="number">1</span>)  </div><div class="line"><span class="comment">// ES6  </span></div><div class="line">[a, ...rest] = list</div></pre></td></tr></table></figure>
+<p>下面是另外一些例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> [first, ...rest] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];  </div><div class="line">first      <span class="comment">// 1  </span></div><div class="line">rest       <span class="comment">// [2, 3, 4, 5]</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> [first, ...rest] = [];  </div><div class="line">first      <span class="comment">// undefined  </span></div><div class="line">rest       <span class="comment">// []</span></div><div class="line">  </div><div class="line"><span class="keyword">const</span> [first, ...rest] = [<span class="string">"foo"</span>];  </div><div class="line">first      <span class="comment">// "foo"  </span></div><div class="line">rest       <span class="comment">// []</span></div></pre></td></tr></table></figure>
+<p>如果将扩展运算符用于数组赋值，只能放在参数的最后一位，否则会报错：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> [...butLast, last] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];          <span class="comment">//  报错  </span></div><div class="line"><span class="keyword">const</span> [first, ...middle, last] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];    <span class="comment">//  报错</span></div></pre></td></tr></table></figure>
+<h3 id="函数返回多个值"><a href="#函数返回多个值" class="headerlink" title="函数返回多个值"></a>函数返回多个值</h3><p>JavaScript 的函数只能返回一个值，如果需要返回多个值，只能返回数组或对象。扩展运算符提供了解决这个问题的一种变通方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> dateFields = readDateFields(database);  </div><div class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>(...dateFields);</div></pre></td></tr></table></figure>
+<p>上面代码从数据库取出一行数据，通过扩展运算符，直接将其传入构造函数Date。</p>
+<h3 id="转换字符串为数组"><a href="#转换字符串为数组" class="headerlink" title="转换字符串为数组"></a>转换字符串为数组</h3><p>扩展运算符还可以将字符串转为真正的数组：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[...<span class="string">'hello'</span>]        <span class="comment">// [ "h", "e", "l", "l", "o" ]</span></div></pre></td></tr></table></figure>
+<p>上面的写法，有一个重要的好处，那就是能够正确识别 32 位的 Unicode 字符。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">'x\uD83D\uDE80y'</span>.length         <span class="comment">// 4  </span></div><div class="line">[...<span class="string">'x\uD83D\uDE80y'</span>].length    <span class="comment">// 3</span></div></pre></td></tr></table></figure>
+<p>上面代码的第一种写法， JavaScript 会将 32 位 Unicode 字符，识别为 2 个字符，采用扩展运算符就没有这个问题。因此，正确返回字符串长度的函数，可以像下面这样写：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">length</span>(<span class="params">str</span>) </span>&#123;  </div><div class="line">    <span class="keyword">return</span> [...str].length;  </div><div class="line">&#125;</div><div class="line"></div><div class="line">length(<span class="string">'x\uD83D\uDE80y'</span>)         <span class="comment">// 3</span></div></pre></td></tr></table></figure>
+<p>凡是涉及到操作 32 位 Unicode 字符的函数，都有这个问题。因此，最好都用扩展运算符改写。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> str = <span class="string">'x\uD83D\uDE80y'</span>;  </div><div class="line">str.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>)  <span class="comment">// 'y\uDE80\uD83Dx'  </span></div><div class="line">[...str].reverse().join(<span class="string">''</span>)       <span class="comment">// 'y\uD83D\uDE80x'</span></div></pre></td></tr></table></figure>
+<p>上面代码中，如果不用扩展运算符，字符串的reverse操作就不正确。</p>
+<h3 id="将-Iterator-接口对象转换为数组"><a href="#将-Iterator-接口对象转换为数组" class="headerlink" title="将 Iterator 接口对象转换为数组"></a>将 Iterator 接口对象转换为数组</h3><p>任何 Iterator 接口的对象，都可以用扩展运算符转为真正的数组：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> nodeList = <span class="built_in">document</span>.querySelectorAll(<span class="string">'div'</span>);  </div><div class="line"><span class="keyword">var</span> array = [...nodeList];</div></pre></td></tr></table></figure>
+<p>上面代码中，querySelectorAll方法返回的是一个nodeList对象。它不是数组，而是一个类似数组的对象。这时，扩展运算符可以将其转为真正的数组，原因就在于NodeList对象实现了 Iterator 接口。</p>
+<p>对于那些没有部署 Iterator 接口的类似数组的对象，扩展运算符就无法将其转为真正的数组。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> arrayLike = &#123;  </div><div class="line">    <span class="string">'0'</span>: <span class="string">'a'</span>,  </div><div class="line">    <span class="string">'1'</span>: <span class="string">'b'</span>,  </div><div class="line">    <span class="string">'2'</span>: <span class="string">'c'</span>,  </div><div class="line">    <span class="attr">length</span>: <span class="number">3</span>  </div><div class="line">&#125;;</div><div class="line">    </div><div class="line"><span class="keyword">let</span> arr = [...arrayLike];    <span class="comment">// TypeError: Cannot spread non-iterable object.</span></div></pre></td></tr></table></figure>
+<p>上面代码中，arrayLike 是一个类似数组的对象，但是没有部署 Iterator 接口，扩展运算符就会报错。这时，可以改为使用 <code>Array.from</code> 方法将 <code>arrayLike</code> 转为真正的数组。</p>
+<h3 id="Map、Set-和-Generator-函数"><a href="#Map、Set-和-Generator-函数" class="headerlink" title="Map、Set 和 Generator 函数"></a>Map、Set 和 Generator 函数</h3><p>扩展运算符内部调用的是数据结构的 <code>Iterator</code> 接口，因此只要具有 Iterator 接口的对象，都可以使用扩展运算符，比如 Map 结构。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>([  </div><div class="line">    [<span class="number">1</span>, <span class="string">'one'</span>],  </div><div class="line">    [<span class="number">2</span>, <span class="string">'two'</span>],  </div><div class="line">    [<span class="number">3</span>, <span class="string">'three'</span>],  </div><div class="line">]);</div><div class="line">  </div><div class="line"><span class="keyword">let</span> arr = [...map.keys()];       <span class="comment">// [1, 2, 3]</span></div></pre></td></tr></table></figure>
+<p>Generator 函数运行后，返回一个遍历器对象，因此也可以使用扩展运算符：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> go = <span class="function"><span class="keyword">function</span>*(<span class="params"></span>)</span>&#123;  </div><div class="line">    <span class="keyword">yield</span> <span class="number">1</span>;  </div><div class="line">    <span class="keyword">yield</span> <span class="number">2</span>;  </div><div class="line">    <span class="keyword">yield</span> <span class="number">3</span>;  </div><div class="line">&#125;;</div><div class="line"> </div><div class="line">[...go()];        <span class="comment">// [1, 2, 3]</span></div></pre></td></tr></table></figure>
+<p>上面代码中，变量 go 是一个 <code>Generator</code> 函数，执行后返回的是一个遍历器对象，对这个遍历器对象执行扩展运算符，就会将内部遍历得到的值，转为一个数组。</p>
+<p>如果对没有 Iterator 接口的对象，使用扩展运算符，将会报错。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>&#125;;  </div><div class="line"><span class="keyword">let</span> arr = [...obj];    <span class="comment">// TypeError: Cannot spread non-iterable object</span></div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;含义&quot;&gt;&lt;a href=&quot;#含义&quot; class=&quot;headerlink&quot; title=&quot;含义&quot;&gt;&lt;/a&gt;含义&lt;/h2&gt;&lt;p&gt;ES6 中的 spread operator （展开运算符）是三个点（&lt;code&gt;...&lt;/code&gt;）。它好比 rest 参数的逆运算，将一个数组转为用逗号分隔的参数序列。&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(...[&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;])                 &lt;span class=&quot;comment&quot;&gt;// 1 2 3  &lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, ...[&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;], &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;)           &lt;span class=&quot;comment&quot;&gt;// 1 2 3 4 5  &lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;[...document.querySelectorAll(&lt;span class=&quot;string&quot;&gt;&#39;div&#39;&lt;/span&gt;)]     &lt;span class=&quot;comment&quot;&gt;// [&amp;lt;div&amp;gt;, &amp;lt;div&amp;gt;, &amp;lt;div&amp;gt;]&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="ES6 学习笔记" scheme="http://www.dengfuping.com/categories/ES6-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="ES6" scheme="http://www.dengfuping.com/tags/ES6/"/>
+    
+      <category term="ECMAScript 6" scheme="http://www.dengfuping.com/tags/ECMAScript-6/"/>
+    
+  </entry>
   
   <entry>
     <title>判断某个对象是否为数组的四种方法</title>
@@ -162,11 +237,11 @@
       <category term="MongoDB" scheme="http://www.dengfuping.com/categories/MongoDB/"/>
     
     
-      <category term="数据库" scheme="http://www.dengfuping.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
       <category term="MongoDB" scheme="http://www.dengfuping.com/tags/MongoDB/"/>
     
       <category term="NoSQL" scheme="http://www.dengfuping.com/tags/NoSQL/"/>
+    
+      <category term="数据库" scheme="http://www.dengfuping.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
   </entry>
   
@@ -207,11 +282,11 @@
       <category term="MongoDB" scheme="http://www.dengfuping.com/categories/MongoDB/"/>
     
     
-      <category term="数据库" scheme="http://www.dengfuping.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
       <category term="MongoDB" scheme="http://www.dengfuping.com/tags/MongoDB/"/>
     
       <category term="NoSQL" scheme="http://www.dengfuping.com/tags/NoSQL/"/>
+    
+      <category term="数据库" scheme="http://www.dengfuping.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
   </entry>
   
@@ -260,13 +335,13 @@
     
       <category term="mysql" scheme="http://www.dengfuping.com/tags/mysql/"/>
     
-      <category term="大数据" scheme="http://www.dengfuping.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+      <category term="MongoDB" scheme="http://www.dengfuping.com/tags/MongoDB/"/>
     
       <category term="数据库" scheme="http://www.dengfuping.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
-      <category term="HBase" scheme="http://www.dengfuping.com/tags/HBase/"/>
+      <category term="大数据" scheme="http://www.dengfuping.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
-      <category term="MongoDB" scheme="http://www.dengfuping.com/tags/MongoDB/"/>
+      <category term="HBase" scheme="http://www.dengfuping.com/tags/HBase/"/>
     
   </entry>
   
@@ -813,47 +888,6 @@
       <category term="xv6" scheme="http://www.dengfuping.com/tags/xv6/"/>
     
       <category term="lazy page allocation" scheme="http://www.dengfuping.com/tags/lazy-page-allocation/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>操作系统原理作业（五）：xv6 CPU alarm</title>
-    <link href="http://www.dengfuping.com/2017/01/14/operating-system-homework-5/"/>
-    <id>http://www.dengfuping.com/2017/01/14/operating-system-homework-5/</id>
-    <published>2017-01-14T08:53:19.000Z</published>
-    <updated>2017-01-14T09:24:53.964Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><h3 id="添加alarm系统调用"><a href="#添加alarm系统调用" class="headerlink" title="添加alarm系统调用"></a>添加alarm系统调用</h3><p>使用grep命令筛选出出现uptime字样的文件和文件中所在行号，以便仿照uptime系统调用实现alarm系统调用：<br><img src="http://i1.piimg.com/567571/b449eb3650ec4c8c.png" alt=""><br><a id="more"></a><br>在syscall.c中添加系统调用函数的外部声明，共有两处地方需要添加：<br><img src="http://p1.bqimg.com/567571/eda2df5a78f77959.png" alt=""></p>
-<p><img src="http://p1.bqimg.com/567571/135d3a90b9996530.png" alt=""></p>
-<p>在syscall.h中添加系统调用号：<br><img src="http://p1.bqimg.com/567571/0a6babf17226d707.png" alt=""></p>
-<p>在sysproc.c中添加系统调用函数sys_alarm()的实现：<br><img src="http://p1.bqimg.com/567571/a43d46dfb8420e8d.png" alt=""></p>
-<p>在user.h中添加用户态函数的定义：<br><img src="http://p1.bqimg.com/567571/5046f03de31588b6.png" alt=""></p>
-<p>在usys.S中添加用户态函数的实现：<br><img src="http://p1.bqimg.com/567571/80960fe721a22aa1.png" alt=""></p>
-<h3 id="创建用户程序alarmtest-c"><a href="#创建用户程序alarmtest-c" class="headerlink" title="创建用户程序alarmtest.c"></a>创建用户程序alarmtest.c</h3><p>由于我们还需要在用户空间来对内核提供的系统命令进行调用，新建用户程序alarmtest.c文件，写入以下代码：<br><img src="http://p1.bqimg.com/567571/7d42436daf478335.png" alt=""></p>
-<h3 id="修改Makefile文件"><a href="#修改Makefile文件" class="headerlink" title="修改Makefile文件"></a>修改Makefile文件</h3><p>在Makefile文件UPROGS处添加_alarmtest：<br><img src="http://p1.bqimg.com/567571/4ae5aea7adfda51e.png" alt=""></p>
-<h3 id="修改proc-h文件"><a href="#修改proc-h文件" class="headerlink" title="修改proc.h文件"></a>修改proc.h文件</h3><p>在proc.h文件的proc结构体中，添加以下三个属性：<br><img src="http://p1.bqimg.com/567571/3a02394c1382a3d7.png" alt=""></p>
-<h3 id="修改trap-c文件"><a href="#修改trap-c文件" class="headerlink" title="修改trap.c文件"></a>修改trap.c文件</h3><p>在trap.c文件中的“case T_IRQ0 + IRQ_TIMER”位置处添加以下代码：<br><img src="http://p1.bqimg.com/567571/19c29f3ddddb7149.png" alt=""></p>
-<h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p><img src="http://p1.bqimg.com/567571/42e8413eb6f94c0f.png" alt=""></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;实验步骤&quot;&gt;&lt;a href=&quot;#实验步骤&quot; class=&quot;headerlink&quot; title=&quot;实验步骤&quot;&gt;&lt;/a&gt;实验步骤&lt;/h2&gt;&lt;h3 id=&quot;添加alarm系统调用&quot;&gt;&lt;a href=&quot;#添加alarm系统调用&quot; class=&quot;headerlink&quot; title=&quot;添加alarm系统调用&quot;&gt;&lt;/a&gt;添加alarm系统调用&lt;/h3&gt;&lt;p&gt;使用grep命令筛选出出现uptime字样的文件和文件中所在行号，以便仿照uptime系统调用实现alarm系统调用：&lt;br&gt;&lt;img src=&quot;http://i1.piimg.com/567571/b449eb3650ec4c8c.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="操作系统原理" scheme="http://www.dengfuping.com/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/"/>
-    
-    
-      <category term="操作系统原理" scheme="http://www.dengfuping.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/"/>
-    
-      <category term="xv6" scheme="http://www.dengfuping.com/tags/xv6/"/>
-    
-      <category term="system call" scheme="http://www.dengfuping.com/tags/system-call/"/>
-    
-      <category term="系统调用" scheme="http://www.dengfuping.com/tags/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/"/>
-    
-      <category term="CPU alarm" scheme="http://www.dengfuping.com/tags/CPU-alarm/"/>
     
   </entry>
   
