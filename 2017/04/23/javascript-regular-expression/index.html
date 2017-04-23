@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="博客, 技术, 开发, 不搭" />
+  <meta name="keywords" content="JavaScript," />
 
 
 
@@ -86,12 +86,15 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Deng | 不搭">
-<meta property="og:url" content="http://www.dengfuping.com/tags/磁盘/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 正则表达式">
+<meta property="og:url" content="http://www.dengfuping.com/2017/04/23/javascript-regular-expression/index.html">
 <meta property="og:site_name" content="Deng | 不搭">
+<meta property="og:image" content="http://i1.piimg.com/567571/aa45ebe58e9a229f.jpg">
+<meta property="og:updated_time" content="2017-04-23T15:22:48.289Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Deng | 不搭">
+<meta name="twitter:title" content="JavaScript 正则表达式">
+<meta name="twitter:image" content="http://i1.piimg.com/567571/aa45ebe58e9a229f.jpg">
 
 
 <script>
@@ -123,9 +126,9 @@ var _hmt = _hmt || [];
 
 
 
-  <link rel="canonical" href="http://www.dengfuping.com/tags/磁盘/"/>
+  <link rel="canonical" href="http://www.dengfuping.com/2017/04/23/javascript-regular-expression/"/>
 
-  <title> 标签: 磁盘 | Deng | 不搭 </title>
+  <title> JavaScript 正则表达式 | Deng | 不搭 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -156,7 +159,7 @@ var _hmt = _hmt || [];
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -277,53 +280,236 @@ var _hmt = _hmt || [];
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        磁盘
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JavaScript 正则表达式
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-23T22:33:29+08:00" content="2017-04-23">
+              2017-04-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/04/23/javascript-regular-expression/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/23/javascript-regular-expression/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/04/23/javascript-regular-expression/" class="leancloud_visitors" data-flag-title="JavaScript 正则表达式">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <p><img src="http://i1.piimg.com/567571/aa45ebe58e9a229f.jpg" alt=""><br><a id="more"></a></p>
+<ol>
+<li>^ 匹配一个输入或一行的开头，<code>/^a/</code> 匹配”an A”，而不匹配”An a” </li>
+<li>$ 匹配一个输入或一行的结尾，<code>/a$/</code> 匹配”An a”，而不匹配”an A” </li>
+<li><ul>
+<li>匹配前面元字符0次或多次，<code>/ba*/</code> 将匹配b,ba,baa,baaa </li>
+</ul>
+</li>
+<li><ul>
+<li>匹配前面元字符1次或多次，<code>/ba*/</code> 将匹配ba,baa,baaa </li>
+</ul>
+</li>
+<li>? 匹配前面元字符0次或1次，<code>/ba*/</code> 将匹配b,ba </li>
+<li>(x) 匹配 x 保存 x 在名为 $1…$9 的变量中 </li>
+<li>x|y 匹配 x 或 y </li>
+<li>{n} 精确匹配 n 次 </li>
+<li>{n,} 匹配 n 次以上 </li>
+<li>{n, m} 匹配 n-m 次 </li>
+<li><code>[xyz]</code> 字符集(character set)，匹配这个集合中的任一一个字符(或元字符) </li>
+<li><code>[^xyz]</code> 不匹配这个集合中的任何一个字符 </li>
+<li>[\b] 匹配一个退格符 </li>
+<li>\b 匹配一个单词的边界 </li>
+<li>\B 匹配一个单词的非边界 </li>
+<li>\cX 这儿，X 是一个控制符，<code>/\cM/</code> 匹配 Ctrl-M </li>
+<li>\d 匹配一个字数字符，<code>/\d/ = /[0-9]/</code> </li>
+<li>\D 匹配一个非字数字符，<code>/\D/ = /[^0-9]/</code> </li>
+<li>\n 匹配一个换行符 </li>
+<li>\r 匹配一个回车符 </li>
+<li>\s 匹配一个空白字符，包括 \n, \r, \f, \t, \v 等 </li>
+<li>\S 匹配一个非空白字符，等于 <code>/[^\n\f\r\t\v]/</code> </li>
+<li>\t 匹配一个制表符 </li>
+<li>\v 匹配一个重直制表符 </li>
+<li>\w 匹配一个可以组成单词的字符(alphanumeric，这是我的意译，含数字)，包括下划线，如 <code>[\w]</code> 匹配 “$5.98” 中的 5，等于 <code>[a-zA-Z0-9]</code> </li>
+<li>\W 匹配一个不可以组成单词的字符，如 [\W] 匹配 “$5.98” 中的 $，等于 <code>[^a-zA-Z0-9]</code></li>
+<li>.（点符号）：除了换行符之外的任意字符,等价于 <code>[^\n]</code>（在2017年阿里巴巴春季实习生招聘的前端模拟笔试考察过这一知识点） </li>
+</ol>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2017/01/24/operating-system-homework-13/" itemprop="url">
-              
-                <span itemprop="name">操作系统原理作业（十三）：ex04.disk作业</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="Deng | 不搭 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay-reward-image.jpg" alt="Deng | 不搭 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-01-24T23:01:30+08:00"
-              content="2017-01-24" >
-          01-24
-        </time>
-      </div>
 
-    </header>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/23/css-text-overflow-ellipsis/" rel="next" title="CSS 常用技巧（一）：文本溢出显示省略号">
+                <i class="fa fa-chevron-left"></i> CSS 常用技巧（一）：文本溢出显示省略号
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
           
 
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/04/23/javascript-regular-expression/"
+           data-title="JavaScript 正则表达式" data-url="http://www.dengfuping.com/2017/04/23/javascript-regular-expression/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -343,8 +529,17 @@ var _hmt = _hmt || [];
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -439,6 +634,17 @@ var _hmt = _hmt || [];
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -581,6 +787,10 @@ var _hmt = _hmt || [];
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
