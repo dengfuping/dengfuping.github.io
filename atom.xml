@@ -17,8 +17,8 @@
   
   <entry>
     <title>jQuery 事件绑定函数解析：bind, on, delegate</title>
-    <link href="http://www.dengfuping.com/2017/04/24/javascript-bind-on-delegate-live/"/>
-    <id>http://www.dengfuping.com/2017/04/24/javascript-bind-on-delegate-live/</id>
+    <link href="http://www.dengfuping.com/2017/04/24/javascript-jquery-bind-on-delegate/"/>
+    <id>http://www.dengfuping.com/2017/04/24/javascript-jquery-bind-on-delegate/</id>
     <published>2017-04-24T03:05:16.000Z</published>
     <updated>2017-04-24T03:50:35.538Z</updated>
     
@@ -429,11 +429,11 @@
       <category term="MongoDB" scheme="http://www.dengfuping.com/categories/MongoDB/"/>
     
     
+      <category term="数据库" scheme="http://www.dengfuping.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
       <category term="MongoDB" scheme="http://www.dengfuping.com/tags/MongoDB/"/>
     
       <category term="NoSQL" scheme="http://www.dengfuping.com/tags/NoSQL/"/>
-    
-      <category term="数据库" scheme="http://www.dengfuping.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
   </entry>
   
@@ -474,11 +474,11 @@
       <category term="MongoDB" scheme="http://www.dengfuping.com/categories/MongoDB/"/>
     
     
+      <category term="数据库" scheme="http://www.dengfuping.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
       <category term="MongoDB" scheme="http://www.dengfuping.com/tags/MongoDB/"/>
     
       <category term="NoSQL" scheme="http://www.dengfuping.com/tags/NoSQL/"/>
-    
-      <category term="数据库" scheme="http://www.dengfuping.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
   </entry>
   
@@ -527,13 +527,13 @@
     
       <category term="mysql" scheme="http://www.dengfuping.com/tags/mysql/"/>
     
-      <category term="MongoDB" scheme="http://www.dengfuping.com/tags/MongoDB/"/>
+      <category term="大数据" scheme="http://www.dengfuping.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
       <category term="数据库" scheme="http://www.dengfuping.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
-      <category term="大数据" scheme="http://www.dengfuping.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
       <category term="HBase" scheme="http://www.dengfuping.com/tags/HBase/"/>
+    
+      <category term="MongoDB" scheme="http://www.dengfuping.com/tags/MongoDB/"/>
     
   </entry>
   
