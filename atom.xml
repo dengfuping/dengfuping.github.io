@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dengfuping.com/"/>
-  <updated>2017-04-23T15:22:48.289Z</updated>
+  <updated>2017-04-24T03:50:35.538Z</updated>
   <id>http://www.dengfuping.com/</id>
   
   <author>
@@ -14,6 +14,88 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>jQuery 事件绑定函数解析：bind, on, delegate</title>
+    <link href="http://www.dengfuping.com/2017/04/24/javascript-bind-on-delegate-live/"/>
+    <id>http://www.dengfuping.com/2017/04/24/javascript-bind-on-delegate-live/</id>
+    <published>2017-04-24T03:05:16.000Z</published>
+    <updated>2017-04-24T03:50:35.538Z</updated>
+    
+    <content type="html"><![CDATA[<p>本篇文章主要是对 jQuery 中的四种事件绑定函数 bind, on, delegate, live 进行一个分析和比较。</p>
+<p>先准备一个html页面再对其中的元素进行事件绑定：<a id="more"></a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>bind-on-delegate-live<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"button"</span>&gt;</span>添加新的p元素<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>第一个p元素<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>第二个p元素<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>第三个p元素<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>第四个p元素<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>第五个p元素<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    $(<span class="string">"#button"</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        $(<span class="string">"div"</span>).append(<span class="string">"&lt;p&gt;这是一个新的p元素&lt;/p&gt;"</span>)</div><div class="line">    &#125;);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>一个简单的页面，放置了一个div，div里面若干个p元素和一个按钮，点击按钮可以追加p元素。我们下面将对页面上的p元素绑定click事件。</p>
+<h2 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// bind</span></div><div class="line">$(<span class="string">"div p"</span>).bind(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    alert($(<span class="keyword">this</span>).text());</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// bind 的简写形式</span></div><div class="line">$(<span class="string">"div p"</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    alert($(<span class="keyword">this</span>).text());</div></pre></td></tr></table></figure>
+<ol>
+<li>这里用了隐式迭代的方法，如果匹配到的元素特别多的时候，比如如果我在 div 里放了 50 个 p 元素，就得执行绑定 50 次。对于大量元素来说，影响到了性能。但是如果是 id 选择器，因为id唯一，用 bind() 方法就很快捷了。</li>
+<li>对于尚未存在的元素，无法绑定。点击页面上的按钮，将动态添加一个p元素，点击这个 p 元素，会发现没有动作响应。</li>
+</ol>
+<p>使用 delegate 可以解决以上这两个问题。</p>
+<h2 id="delegate"><a href="#delegate" class="headerlink" title="delegate"></a>delegate</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// delegate</span></div><div class="line">$(<span class="string">"div"</span>).delegate(<span class="string">"p"</span>, <span class="string">"click"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    alert($(<span class="keyword">this</span>).text());</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol>
+<li><p>这种方式采用了事件委托的概念。不是直接为 p 元素绑定事件，而是为其父元素（或祖先元素也可）绑定事件，当在 div 内任意元素上点击时，事件会一层层从 event target向上冒泡，直至到达你为其绑定事件的元素，如此例中的div元素。冒泡的过程中，如果事件的 currentTarget 与选择器匹配时，就会执行代码。</p>
+</li>
+<li><p>这样就解决了用 bind() 方法的上面两个问题，不用再一个个地去为 p 元素绑定事件，也可以为动态添加进来的 p 元素绑定。甚至，如果你将事件绑定到 document 上，都不用等 document 准备好就可执行绑定。</p>
+</li>
+<li><p>这样，绑定是容易了，但是调用的时候也可能出现问题。如果事件目标在 DOM 树中很深的位置，这样一层层冒泡上来查找与选择器匹配的元素，又影响到性能了。</p>
+</li>
+</ol>
+<h2 id="on"><a href="#on" class="headerlink" title="on"></a>on</h2><p>on() 其实是将以前的绑定事件方法作了统一，查看 jQuery 无压缩的源码（版本 1.11.3），可以发现无论 bind() 还是 delegate() 其实都是通过 on() 方法实现的，只是参数不同罢了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">bind: <span class="function"><span class="keyword">function</span>(<span class="params"> types, data, fn </span>) </span>&#123;</div><div class="line">     <span class="keyword">return</span> <span class="keyword">this</span>.on( types, <span class="literal">null</span>, data, fn );</div><div class="line">&#125;,</div><div class="line"><span class="attr">unbind</span>: <span class="function"><span class="keyword">function</span>(<span class="params"> types, fn </span>) </span>&#123;</div><div class="line">     <span class="keyword">return</span> <span class="keyword">this</span>.off( types, <span class="literal">null</span>, fn );</div><div class="line">&#125;,</div><div class="line"><span class="attr">delegate</span>: <span class="function"><span class="keyword">function</span>(<span class="params"> selector, types, data, fn </span>) </span>&#123;</div><div class="line">     <span class="keyword">return</span> <span class="keyword">this</span>.on( types, selector, data, fn );</div><div class="line">&#125;</div><div class="line">undelegate: <span class="function"><span class="keyword">function</span>(<span class="params"> selector, types, fn </span>) </span>&#123;</div><div class="line"> <span class="comment">// ( namespace ) or ( selector, types [, fn] )</span></div><div class="line">     <span class="keyword">return</span> <span class="built_in">arguments</span>.length === <span class="number">1</span> ? <span class="keyword">this</span>.off( selector, <span class="string">"**"</span> ) : <span class="keyword">this</span>.off( types, selector || <span class="string">"**"</span>, fn );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>用法如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// on</span></div><div class="line">$(<span class="string">"div"</span>).on(<span class="string">"click"</span>, <span class="string">"p"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    alert($(<span class="keyword">this</span>).text());</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="移除事件"><a href="#移除事件" class="headerlink" title="移除事件"></a>移除事件</h2><p>对应于 bind()、delegate() 和 on() 绑定方法，其移除事件的方法分别为：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$( <span class="string">"div p"</span> ).unbind( <span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;);</div><div class="line">$( <span class="string">"div"</span> ).undelegate( <span class="string">"p"</span>, <span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;);</div><div class="line">$( <span class="string">"div"</span> ).off( <span class="string">"click"</span>, <span class="string">"p"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;);</div></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>选择器匹配到的元素比较多时，不要用 bind() 迭代绑定。</li>
+<li>用 id 选择器时，可以用 bind()。</li>
+<li>需要给动态添加的元素绑定时，用 delegate() 或者 on()。</li>
+<li>用 delegate() 和 on() 方法，DOM 树不要太深。</li>
+<li>尽量使用 on()。</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本篇文章主要是对 jQuery 中的四种事件绑定函数 bind, on, delegate, live 进行一个分析和比较。&lt;/p&gt;
+&lt;p&gt;先准备一个html页面再对其中的元素进行事件绑定：
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://www.dengfuping.com/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="http://www.dengfuping.com/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript 事件绑定的三种方法</title>
+    <link href="http://www.dengfuping.com/2017/04/24/javascript-three-ways-of-event-binding/"/>
+    <id>http://www.dengfuping.com/2017/04/24/javascript-three-ways-of-event-binding/</id>
+    <published>2017-04-24T02:43:36.000Z</published>
+    <updated>2017-04-24T03:06:06.744Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"button1"</span> <span class="attr">onclick</span>=<span class="string">"click1()"</span>&gt;</span>按钮1<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">click1</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        alert(<span class="string">"你点击了按钮1"</span>);</div><div class="line">    &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"button2"</span>&gt;</span>按钮2<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"button2"</span>).onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        alert(<span class="string">"你点击了按钮2"</span>);</div><div class="line">    &#125;;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"button3"</span>&gt;</span>按钮3<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">click3</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        alert(<span class="string">"你点击了按钮3"</span>);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"button3"</span>).addEventListener(<span class="string">"click"</span>, click3, <span class="literal">false</span>);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>使用 <code>addEventlistener()</code> 可以多次绑定同一个事件，且都会执行。如果使用方法一绑定两个 <code>onclick</code> 事件，则只会执行第一个；而使用方法二绑定的只会执行最后一个事件。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;方法一&quot;&gt;&lt;a href=&quot;#方法一&quot; class=&quot;headerlink&quot; title=&quot;方法一&quot;&gt;&lt;/a&gt;方法一&lt;/h2&gt;&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;button&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;button1&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;onclick&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;click1()&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;按钮1&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;button&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;javascript&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;click1&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        alert(&lt;span class=&quot;string&quot;&gt;&quot;你点击了按钮1&quot;&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://www.dengfuping.com/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="http://www.dengfuping.com/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>JavaScript 正则表达式</title>
@@ -130,7 +212,7 @@
     <link href="http://www.dengfuping.com/2017/04/23/es6-spread-operator/"/>
     <id>http://www.dengfuping.com/2017/04/23/es6-spread-operator/</id>
     <published>2017-04-23T09:52:58.000Z</published>
-    <updated>2017-04-23T10:40:23.199Z</updated>
+    <updated>2017-04-23T15:27:51.918Z</updated>
     
     <content type="html"><![CDATA[<h2 id="含义"><a href="#含义" class="headerlink" title="含义"></a>含义</h2><p>ES6 中的 spread operator （展开运算符）是三个点（<code>...</code>）。它好比 rest 参数的逆运算，将一个数组转为用逗号分隔的参数序列。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(...[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])                 <span class="comment">// 1 2 3  </span></div><div class="line"><span class="built_in">console</span>.log(<span class="number">1</span>, ...[<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], <span class="number">5</span>)           <span class="comment">// 1 2 3 4 5  </span></div><div class="line">[...document.querySelectorAll(<span class="string">'div'</span>)]     <span class="comment">// [&lt;div&gt;, &lt;div&gt;, &lt;div&gt;]</span></div></pre></td></tr></table></figure>
@@ -191,7 +273,7 @@
     
     </summary>
     
-      <category term="ES6 学习笔记" scheme="http://www.dengfuping.com/categories/ES6-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="ES6学习笔记" scheme="http://www.dengfuping.com/categories/ES6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
       <category term="ES6" scheme="http://www.dengfuping.com/tags/ES6/"/>
@@ -863,70 +945,6 @@
       <category term="信号量" scheme="http://www.dengfuping.com/tags/%E4%BF%A1%E5%8F%B7%E9%87%8F/"/>
     
       <category term="PV操作" scheme="http://www.dengfuping.com/tags/PV%E6%93%8D%E4%BD%9C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>操作系统原理作业（九）：Barriers</title>
-    <link href="http://www.dengfuping.com/2017/01/24/operating-system-homework-9/"/>
-    <id>http://www.dengfuping.com/2017/01/24/operating-system-homework-9/</id>
-    <published>2017-01-24T11:40:04.000Z</published>
-    <updated>2017-01-24T11:46:43.312Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="实验要求"><a href="#实验要求" class="headerlink" title="实验要求"></a>实验要求</h2><p>使用环境变量（condition variables）来实现barrier，以在多线程的并行计算中达到同步的目的。其中barrier相当于一堵“墙”，先到达barrier的线程需要等待后到达barrier的线程。对于源代码中的一组线程来说，只有其它线程都到达了这堵“墙”，系统才会允许其中的线程继续运行。可以说，这堵“墙”起到了拦截的作用，以便达到让所有的线程实现同步运行的目的。<a id="more"></a></p>
-<h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><p>下载barrier.c源文件，并在Linux环境下进行编译运行，出现“Assertion failed”错误：<br><img src="http://p1.bqimg.com/567571/2fcc9be79e34e946.png" alt=""></p>
-<p>修改barrier.c中的barrier()函数如下：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">barrier</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">  <span class="comment">//对临界区进行加锁，barrier_mutex是开头定义的信号量</span></div><div class="line">  pthread_mutex_lock(&amp;bstate.barrier_mutex);</div><div class="line">  <span class="comment">//将到达barrier的线程数加1       </span></div><div class="line">  bstate.nthread++; </div><div class="line">  <span class="comment">//当所有的线程都到达barrier时</span></div><div class="line">  <span class="keyword">if</span> (bstate.nthread == nthread) &#123;</div><div class="line">      <span class="comment">//针对barrier_cond这个环境变量广播，表示激活所有线程以继续执行</span></div><div class="line">      pthread_cond_broadcast(&amp;bstate.barrier_cond);</div><div class="line">      bstate.nthread = <span class="number">0</span>;</div><div class="line">      bstate.round++;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">//否则进入sleep状态，并释放互斥锁</span></div><div class="line">  <span class="keyword">else</span> &#123;</div><div class="line">      pthread_cond_wait(&amp;bstate.barrier_cond, &amp;bstate.barrier_mutex);</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  pthread_mutex_unlock(&amp;bstate.barrier_mutex);</div><div class="line"></div><div class="line">  <span class="keyword">return</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>再次运行barrier.c，运行成功：<br><img src="http://i1.piimg.com/567571/42077968a9fa91eb.png" alt=""></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;实验要求&quot;&gt;&lt;a href=&quot;#实验要求&quot; class=&quot;headerlink&quot; title=&quot;实验要求&quot;&gt;&lt;/a&gt;实验要求&lt;/h2&gt;&lt;p&gt;使用环境变量（condition variables）来实现barrier，以在多线程的并行计算中达到同步的目的。其中barrier相当于一堵“墙”，先到达barrier的线程需要等待后到达barrier的线程。对于源代码中的一组线程来说，只有其它线程都到达了这堵“墙”，系统才会允许其中的线程继续运行。可以说，这堵“墙”起到了拦截的作用，以便达到让所有的线程实现同步运行的目的。
-    
-    </summary>
-    
-      <category term="操作系统原理" scheme="http://www.dengfuping.com/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/"/>
-    
-    
-      <category term="操作系统原理" scheme="http://www.dengfuping.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/"/>
-    
-      <category term="xv6" scheme="http://www.dengfuping.com/tags/xv6/"/>
-    
-      <category term="Barriers" scheme="http://www.dengfuping.com/tags/Barriers/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>操作系统原理作业（八）：bigger files for xv6</title>
-    <link href="http://www.dengfuping.com/2017/01/24/operating-system-homework-8/"/>
-    <id>http://www.dengfuping.com/2017/01/24/operating-system-homework-8/</id>
-    <published>2017-01-24T11:26:05.000Z</published>
-    <updated>2017-01-24T11:45:26.290Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><p>修改Makefile文件：将CPUS的值设为1，,并添加如下语句。目的是加快xv6创建大文件时的qemu的运行速度：<a id="more"></a><br><img src="http://p1.bqimg.com/567571/ef39f193fcc39b12.png" alt=""></p>
-<p>修改param.h文件，将文件系统的最大数据块数设置为20000：<br><img src="http://p1.bpimg.com/567571/dce5d3e509538fe3.png" alt=""></p>
-<p>下载big.c文件放入xv6的目录下，并在Makefile文件中的UPROGS列表中增加对big命令的引用：<br><img src="http://i1.piimg.com/567571/f06e9fbf7f72ded6.png" alt=""></p>
-<p>启动xv6，输入big命令，显示“wrote 140 sectors”，说明所有的准备工作已完成：<br><img src="http://i1.piimg.com/567571/c7be50364293978d.png" alt=""></p>
-<p>修改fs.c中的bmap()函数如下：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">static</span> uint</span></div><div class="line"><span class="title">bmap</span><span class="params">(<span class="keyword">struct</span> inode *ip, uint bn)</span></div><div class="line">&#123;</div><div class="line">  uint addr, *a, *indirect, *double_indirect,indirect_idx, double_indirect_idx;</div><div class="line">  <span class="keyword">struct</span> buf *bp, *bp2;</div><div class="line"></div><div class="line">  <span class="keyword">if</span>(bn &lt; NDIRECT)&#123;</div><div class="line">    <span class="keyword">if</span>((addr = ip-&gt;addrs[bn]) == <span class="number">0</span>)</div><div class="line">      ip-&gt;addrs[bn] = addr =balloc(ip-&gt;dev);</div><div class="line">    <span class="keyword">return</span> addr;</div><div class="line">  &#125;</div><div class="line">  bn -= NDIRECT;</div><div class="line">  <span class="keyword">if</span>(bn &lt; NINDIRECT)&#123;</div><div class="line">    <span class="comment">// Load indirect block, allocating ifnecessary.</span></div><div class="line">    <span class="keyword">if</span>((addr = ip-&gt;addrs[NDIRECT]) == <span class="number">0</span>)</div><div class="line">      ip-&gt;addrs[NDIRECT] = addr =balloc(ip-&gt;dev);</div><div class="line"></div><div class="line">    bp = bread(ip-&gt;dev, addr);</div><div class="line">    a = (uint*)bp-&gt;data;</div><div class="line"></div><div class="line">    <span class="keyword">if</span>((addr = a[bn]) == <span class="number">0</span>)&#123;</div><div class="line">      a[bn] = addr = balloc(ip-&gt;dev);</div><div class="line">      log_write(bp);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    brelse(bp);</div><div class="line">    <span class="keyword">return</span> addr;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  bn -= NINDIRECT;</div><div class="line">  <span class="keyword">if</span> (bn &lt; NINDIRECT*NINDIRECT) &#123;</div><div class="line">    <span class="comment">// Load first indirect block, allocating ifnecessary.</span></div><div class="line">    <span class="keyword">if</span>((addr = ip-&gt;addrs[NDIRECT + <span class="number">1</span>]) == <span class="number">0</span>)</div><div class="line">      ip-&gt;addrs[NDIRECT + <span class="number">1</span>] = addr =balloc(ip-&gt;dev);</div><div class="line">    bp = bread(ip-&gt;dev, addr);</div><div class="line"></div><div class="line">    indirect = (uint *) bp-&gt;data;</div><div class="line">    indirect_idx = bn / NINDIRECT;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> ((addr = indirect[indirect_idx]) == <span class="number">0</span>) &#123;</div><div class="line">      addr = indirect[indirect_idx] =balloc(ip-&gt;dev);</div><div class="line">      log_write(bp);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    bp2 = bread(ip-&gt;dev, addr);</div><div class="line">    double_indirect = (uint *) bp2-&gt;data;</div><div class="line">    double_indirect_idx = bn % NINDIRECT;</div><div class="line"></div><div class="line">    <span class="keyword">if</span>((addr = double_indirect[double_indirect_idx]) == <span class="number">0</span>) &#123;</div><div class="line">      addr =double_indirect[double_indirect_idx] = balloc(ip-&gt;dev);</div><div class="line">      log_write(bp2);</div><div class="line">    &#125;</div><div class="line">    brelse(bp2);</div><div class="line">    brelse(bp);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> addr;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  panic(<span class="string">"bmap: out of range"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>打开fs.h文件，将NDIRECT的值改为11，对应的架构数据块地址的索引由加1变为加2，最后将MAXFILE修改成如下值：<br><img src="http://p1.bqimg.com/567571/55f507096f88ec58.png" alt=""></p>
-<p>保存后重新启动xv6，输入big命令，得到如下运行结果说明实验成功：<br><img src="http://p1.bqimg.com/567571/ca4dc9f8bd60a027.png" alt=""></p>
-<p>其中，16523 = 128*128（doubly-indirectblocks） + 11(singly-indirect blocks) + 128(directblocks)</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;实验步骤&quot;&gt;&lt;a href=&quot;#实验步骤&quot; class=&quot;headerlink&quot; title=&quot;实验步骤&quot;&gt;&lt;/a&gt;实验步骤&lt;/h2&gt;&lt;p&gt;修改Makefile文件：将CPUS的值设为1，,并添加如下语句。目的是加快xv6创建大文件时的qemu的运行速度：
-    
-    </summary>
-    
-      <category term="操作系统原理" scheme="http://www.dengfuping.com/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/"/>
-    
-    
-      <category term="操作系统原理" scheme="http://www.dengfuping.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/"/>
-    
-      <category term="xv6" scheme="http://www.dengfuping.com/tags/xv6/"/>
-    
-      <category term="bigger files" scheme="http://www.dengfuping.com/tags/bigger-files/"/>
     
   </entry>
   
