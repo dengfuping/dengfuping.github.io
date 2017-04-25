@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dengfuping.com/"/>
-  <updated>2017-04-24T03:50:35.538Z</updated>
+  <updated>2017-04-25T10:00:52.241Z</updated>
   <id>http://www.dengfuping.com/</id>
   
   <author>
@@ -14,6 +14,129 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Fetch API 用法解析</title>
+    <link href="http://www.dengfuping.com/2017/04/25/fetch-api/"/>
+    <id>http://www.dengfuping.com/2017/04/25/fetch-api/</id>
+    <published>2017-04-25T09:56:35.000Z</published>
+    <updated>2017-04-25T10:00:52.241Z</updated>
+    
+    <content type="html"><![CDATA[<p>参考链接：<a href="http://javascript.ruanyifeng.com/bom/ajax.html#toc27" target="_blank" rel="external">http://javascript.ruanyifeng.com/bom/ajax.html#toc27</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;参考链接：&lt;a href=&quot;http://javascript.ruanyifeng.com/bom/ajax.html#toc27&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://javascript.ruanyifeng.com/bom/a
+    
+    </summary>
+    
+      <category term="计算机网络" scheme="http://www.dengfuping.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    
+      <category term="fetch" scheme="http://www.dengfuping.com/tags/fetch/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Http 状态码详解</title>
+    <link href="http://www.dengfuping.com/2017/04/25/http-status-code/"/>
+    <id>http://www.dengfuping.com/2017/04/25/http-status-code/</id>
+    <published>2017-04-25T09:18:14.000Z</published>
+    <updated>2017-04-25T09:57:41.121Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1xx（临时响应）"><a href="#1xx（临时响应）" class="headerlink" title="1xx（临时响应）"></a>1xx（临时响应）</h2><p>表示临时响应并需要请求者继续执行操作的状态代码。</p>
+<p>100（继续）：请求者应当继续提出请求。 服务器返回此代码表示已收到请求的第一部分，正在等待其余部分。 </p>
+<p>101（切换协议）：请求者已要求服务器切换协议，服务器已确认并准备切换。</p>
+<h2 id="2xx-（成功）"><a href="#2xx-（成功）" class="headerlink" title="2xx （成功）"></a>2xx （成功）</h2><p>表示成功处理了请求的状态代码。</p>
+<p>200（成功）：服务器已成功处理了请求。 通常，这表示服务器提供了请求的网页。</p>
+<p>201（已创建）：请求成功并且服务器创建了新的资源。 </p>
+<p>202（已接受）：服务器已接受请求，但尚未处理。 </p>
+<p>203（非授权信息）：服务器已成功处理了请求，但返回的信息可能来自另一来源。</p>
+<p>204（无内容）：服务器成功处理了请求，但没有返回任何内容。 </p>
+<p>205（重置内容）：服务器成功处理了请求，但没有返回任何内容。 </p>
+<p>206（部分内容）：服务器成功处理了部分 GET 请求。</p>
+<h2 id="3xx-（重定向）"><a href="#3xx-（重定向）" class="headerlink" title="3xx （重定向）"></a>3xx （重定向）</h2><p>表示要完成请求，需要进一步操作。 通常，这些状态代码用来重定向。</p>
+<p>300（多种选择）：针对请求，服务器可执行多种操作。 服务器可根据请求者 (user agent) 选择一项操作，或提供操作列表供请求者选择。</p>
+<p>301（永久重定向/永久移动）：请求的网页已永久移动到新位置。 服务器返回此响应（对 GET 或 HEAD 请求的响应）时，会自动将请求者转到新位置。</p>
+<p>302（临时移动）：服务器目前从不同位置的网页响应请求，但请求者应继续使用原有位置来进行以后的请求。</p>
+<p>303（查看其他位置）：请求者应当对不同的位置使用单独的 GET 请求来检索响应时，服务器返回此代码。</p>
+<p>304（未修改）：自从上次请求后，请求的网页未修改过。 服务器返回此响应时，不会返回网页内容。</p>
+<p>305（使用代理）：请求者只能使用代理访问请求的网页。 如果服务器返回此响应，还表示请求者应使用代理。</p>
+<p>307（临时重定向）：服务器目前从不同位置的网页响应请求，但请求者应继续使用原有位置来进行以后的请求。</p>
+<h2 id="4xx（客户端请求错误）"><a href="#4xx（客户端请求错误）" class="headerlink" title="4xx（客户端请求错误）"></a>4xx（客户端请求错误）</h2><p>这些状态代码表示请求可能出错，妨碍了服务器的处理。</p>
+<p>400（错误请求）：服务器不理解请求的语法。</p>
+<p>401（未授权）：请求要求身份验证。 对于需要登录的网页，服务器可能返回此响应。</p>
+<p>403（禁止）：服务器拒绝请求。</p>
+<p>404（未找到）：服务器找不到请求的网页。</p>
+<p>405（方法禁用）：禁用请求中指定的方法。</p>
+<p>406（不接受）：无法使用请求的内容特性响应请求的网页。</p>
+<p>407（需要代理授权）：此状态代码与 401（未授权）类似，但指定请求者应当授权使用代理。</p>
+<p>408（请求超时）：服务器等候请求时发生超时。</p>
+<p>409（冲突）：服务器在完成请求时发生冲突。 服务器必须在响应中包含有关冲突的信息。</p>
+<p>410（已删除）：如果请求的资源已永久删除，服务器就会返回此响应。</p>
+<p>411（需要有效长度）：服务器不接受不含有效内容长度标头字段的请求。</p>
+<p>412（未满足前提条件）：服务器未满足请求者在请求中设置的其中一个前提条件。</p>
+<p>413（请求实体过大）：服务器无法处理请求，因为请求实体过大，超出服务器的处理能力。</p>
+<p>414（请求的 URI 过长）：请求的 URI（通常为网址）过长，服务器无法处理。</p>
+<p>415（不支持的媒体类型）：请求的格式不受请求页面的支持。</p>
+<p>416（请求范围不符合要求）：如果页面无法提供请求的范围，则服务器会返回此状态代码。</p>
+<p>417（未满足期望值）：服务器未满足”期望”请求标头字段的要求。</p>
+<h2 id="5xx（服务器错误）"><a href="#5xx（服务器错误）" class="headerlink" title="5xx（服务器错误）"></a>5xx（服务器错误）</h2><p>这些状态代码表示服务器在尝试处理请求时发生内部错误。 这些错误可能是服务器本身的错误，而不是请求出错。</p>
+<p>500（服务器内部错误）：服务器遇到错误，无法完成请求。</p>
+<p>501（尚未实施）：服务器不具备完成请求的功能。 例如，服务器无法识别请求方法时可能会返回此代码。</p>
+<p>502（错误网关）：服务器作为网关或代理，从上游服务器收到无效响应。</p>
+<p>503（服务不可用）：服务器目前无法使用（由于超载或停机维护）。通常，这只是暂时状态。</p>
+<p>504（网关超时）：服务器作为网关或代理，但是没有及时从上游服务器收到请求。</p>
+<p>505（HTTP 版本不受支持）：服务器不支持请求中所用的 HTTP 协议版本。</p>
+<h2 id="4-个新的-HTTP-状态码"><a href="#4-个新的-HTTP-状态码" class="headerlink" title="4 个新的 HTTP 状态码"></a>4 个新的 HTTP 状态码</h2><p>RFC 6585 最近刚刚发布，该文档描述了 4 个新的 HTTP 状态码。新的状态码对于开发 REST 服务或者说是基于 HTTP 的服务非常有用，下面我们为你详细介绍这四个新的状态码以及是否应该使用。</p>
+<h3 id="428-Precondition-Required-要求先决条件"><a href="#428-Precondition-Required-要求先决条件" class="headerlink" title="428: Precondition Required (要求先决条件)"></a>428: Precondition Required (要求先决条件)</h3><p>先决条件是客户端发送 HTTP 请求时，如果想要请求能成功必须满足一些预设的条件。</p>
+<p>一个好的例子就是 If-None-Match 头，经常在 GET 请求中使用，如果指定了 If-None-Match ，那么客户端只在响应中的 ETag 改变后才会重新接收回应。</p>
+<p>先决条件的另外一个例子就是 If-Match 头，这个一般用在 PUT 请求上用于指示只更新没被改变的资源，这在多个客户端使用 HTTP 服务时用来防止彼此间不会覆盖相同内容。</p>
+<p>当服务器端使用 428 Precondition Required 状态码时，表示客户端必须发送上述的请求头才能执行请求，这个方法为服务器提供一种有效的方法来阻止 ‘lost update’ 问题。</p>
+<h3 id="429-Too-Many-Requests-太多请求"><a href="#429-Too-Many-Requests-太多请求" class="headerlink" title="429: Too Many Requests (太多请求)"></a>429: Too Many Requests (太多请求)</h3><p>当你需要限制客户端请求某个服务数量时，该状态码就很有用，也就是请求速度限制。</p>
+<p>在此之前，有一些类似的状态码，例如 ‘509 Bandwidth Limit Exceeded’. Twitter 使用 420 （这不是HTTP定义的状态码）</p>
+<p>如果你希望限制客户端对服务的请求数，可使用 429 状态码，同时包含一个 Retry-After 响应头用于告诉客户端多长时间后可以再次请求服务。</p>
+<h3 id="431-Request-Header-Fields-Too-Large-请求头字段太大"><a href="#431-Request-Header-Fields-Too-Large-请求头字段太大" class="headerlink" title="431: Request Header Fields Too Large (请求头字段太大)"></a>431: Request Header Fields Too Large (请求头字段太大)</h3><p>某些情况下，客户端发送 HTTP 请求头会变得很大，那么服务器可发送 431 Request Header Fields Too Large 来指明该问题。</p>
+<p>我不太清楚为什么没有 430 状态码，而是直接从 429 跳到 431，我尝试搜索但没有结果。唯一的猜测是 430 Forbidden 跟 403 Forbidden 太像了，为了避免混淆才这么做的，天知道！</p>
+<h3 id="511-Network-Authentication-Required-要求网络认证"><a href="#511-Network-Authentication-Required-要求网络认证" class="headerlink" title="511: Network Authentication Required (要求网络认证)"></a>511: Network Authentication Required (要求网络认证)</h3><p>对我来说这个状态码很有趣，如果你在开发一个 HTTP 服务器，你不一定需要处理该状态码，但如果你在编写 HTTP 客户端，那这个状态码就非常重要。</p>
+<p>如果你频繁使用笔记本和智能手机，你可能会注意到大量的公用 WIFI 服务要求你必须接受一些协议或者必须登录后才能使用。</p>
+<p>这是通过拦截 HTTP 流量，当用户试图访问网络返回一个重定向和登录，这很讨厌，但是实际情况就是这样的。</p>
+<p>使用这些“拦截”客户端，会有一些讨厌的副作用。在 RFC 中有提到这两个的例子：</p>
+<p>如果你在登录WIFI前访问某个网站，网络设备将会拦截首个请求，这些设备往往也有自己的网站图标 ‘favicon.ico’。登录后您会发现，有一段时间内你访问的网站图标一直是 WIFI 登录网站的图标。<br>如果客户端使用HTTP请求来查找文档（可能是 JSON），网络将会响应一个登录页，这样你的客户端就会解析错误并导致客户端运行异常，在现实中这种问题非常常见。<br>因此 511 状态码的提出就是为了解决这个问题。</p>
+<p>如果你正在编写 HTTP 的客户端，你最好还是检查 511 状态码以确认是否需要认证后才能访问。</p>
+<p>原文地址：<a href="http://www.cnblogs.com/aliang1992/p/6049681.html" target="_blank" rel="external">http://www.cnblogs.com/aliang1992/p/6049681.html</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;1xx（临时响应）&quot;&gt;&lt;a href=&quot;#1xx（临时响应）&quot; class=&quot;headerlink&quot; title=&quot;1xx（临时响应）&quot;&gt;&lt;/a&gt;1xx（临时响应）&lt;/h2&gt;&lt;p&gt;表示临时响应并需要请求者继续执行操作的状态代码。&lt;/p&gt;
+&lt;p&gt;100（继续）：请求
+    
+    </summary>
+    
+      <category term="计算机网络" scheme="http://www.dengfuping.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    
+      <category term="http" scheme="http://www.dengfuping.com/tags/http/"/>
+    
+      <category term="状态码" scheme="http://www.dengfuping.com/tags/%E7%8A%B6%E6%80%81%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javascript-bubble-and-capture</title>
+    <link href="http://www.dengfuping.com/2017/04/25/javascript-bubble-and-capture/"/>
+    <id>http://www.dengfuping.com/2017/04/25/javascript-bubble-and-capture/</id>
+    <published>2017-04-25T01:48:41.000Z</published>
+    <updated>2017-04-25T01:48:41.469Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>jQuery 事件绑定函数解析：bind, on, delegate</title>
@@ -321,7 +444,7 @@
     <link href="http://www.dengfuping.com/2017/04/21/javascript-basic-function/"/>
     <id>http://www.dengfuping.com/2017/04/21/javascript-basic-function/</id>
     <published>2017-04-21T11:45:54.000Z</published>
-    <updated>2017-04-21T12:41:17.835Z</updated>
+    <updated>2017-04-25T10:20:10.038Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://i1.piimg.com/567571/ffcf817d274532d9.png" alt=""></p>
 <p>此文主要是对 JavaScript 的常用函数做一个总结和解析，方便理解和参考。</p>
@@ -337,16 +460,23 @@
 <li>操作对象：String 对象</li>
 <li>原对象是否发生变化：<code>不变化</code></li>
 <li>函数用法：split(start, end)</li>
-<li>函数功能：把这个字符串分割成片段来创建一个字符串数组。可选参数 <code>limit</code> 可以限制被分割的片段数量。<code>separator</code> 参数可以是一个字符串或一个正则表达式。如果 <code>separator</code> 是一个空字符，会返回一个单字符的数组。</li>
+<li>函数功能：把这个字符串分割成片段来创建一个字符串数组。可选参数 <code>limit</code> 可以限制被分割的片段数量。<code>separator</code> 参数可以是一个字符串或一个正则表达式。如果 <code>separator</code> 是一个空字符，会返回一个单字符的数组。<code>可以将一个字符串变为数组</code> 。</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="string">"Hello World Are You Ok"</span>;</div><div class="line"><span class="keyword">var</span> b = a.split(<span class="string">" "</span>);        <span class="comment">// 分隔符为一个空格，返回 ["Hello", "World", "Are", "You", "Ok"]</span></div><div class="line"><span class="keyword">var</span> c = a.split(<span class="string">" "</span>, <span class="number">2</span>);     <span class="comment">// 分隔符为一个空格，且设置 limit 参数，则返回 ["Hello", "World"]</span></div><div class="line"><span class="keyword">var</span> d = a.split(<span class="string">""</span>);        <span class="comment">// 分隔符为空字符，返回 ["H", "e", "l", ... , "O", "k"]</span></div></pre></td></tr></table></figure>
 <h2 id="splice"><a href="#splice" class="headerlink" title="splice()"></a>splice()</h2><ul>
 <li>操作对象：Array 对象</li>
-<li>原对象是否发生变化：<code>变化</code></li>
+<li>原对象是否发生变化：<code>不变化</code></li>
 <li>函数用法：splice(start, deleteCount, item1, item2,…)</li>
 <li>函数功能：参数 <code>start</code> 是从数组中移除元素的开始位置。参数 <code>deleteCount</code> 是要移除的元素的个数。后面的 item1, item2…是可选参数，表示会插入到被移除元素的位置上。</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>];</div><div class="line"><span class="keyword">var</span> b = a.splice(<span class="number">1</span>, <span class="number">1</span>, <span class="string">'e'</span>, <span class="string">'f'</span>);  <span class="comment">//a = ['a', 'e', 'f', 'c'], b = ['b']</span></div></pre></td></tr></table></figure>]]></content>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>];</div><div class="line"><span class="keyword">var</span> b = a.splice(<span class="number">1</span>, <span class="number">1</span>, <span class="string">'e'</span>, <span class="string">'f'</span>);  <span class="comment">//a = ['a', 'e', 'f', 'c'], b = ['b']</span></div></pre></td></tr></table></figure>
+<h2 id="join"><a href="#join" class="headerlink" title="join()"></a>join()</h2><ul>
+<li>操作对象：Array 对象</li>
+<li>原对象是否发生变化：<code>变化</code></li>
+<li>函数用法：splice(separator)</li>
+<li>函数功能：把数组中的所有元素放入一个字符串，并使用指定的分隔符进行分隔的。其中 separator 为可选可选参数，指定要使用的分隔符。如果省略该参数，则使用 <code>逗号</code> 作为分隔符。 <code>可以将一个数组变为字符串</code> 。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</div><div class="line"><span class="keyword">var</span> b = a.join(<span class="string">"&amp;"</span>);  <span class="comment">//  a = [1, 2, 3, 4, 5], b = "1&amp;2&amp;3&amp;4&amp;5"</span></div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -429,11 +559,11 @@
       <category term="MongoDB" scheme="http://www.dengfuping.com/categories/MongoDB/"/>
     
     
-      <category term="数据库" scheme="http://www.dengfuping.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
       <category term="MongoDB" scheme="http://www.dengfuping.com/tags/MongoDB/"/>
     
       <category term="NoSQL" scheme="http://www.dengfuping.com/tags/NoSQL/"/>
+    
+      <category term="数据库" scheme="http://www.dengfuping.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
   </entry>
   
@@ -474,11 +604,11 @@
       <category term="MongoDB" scheme="http://www.dengfuping.com/categories/MongoDB/"/>
     
     
-      <category term="数据库" scheme="http://www.dengfuping.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
       <category term="MongoDB" scheme="http://www.dengfuping.com/tags/MongoDB/"/>
     
       <category term="NoSQL" scheme="http://www.dengfuping.com/tags/NoSQL/"/>
+    
+      <category term="数据库" scheme="http://www.dengfuping.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
   </entry>
   
@@ -527,13 +657,13 @@
     
       <category term="mysql" scheme="http://www.dengfuping.com/tags/mysql/"/>
     
-      <category term="大数据" scheme="http://www.dengfuping.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+      <category term="MongoDB" scheme="http://www.dengfuping.com/tags/MongoDB/"/>
     
       <category term="数据库" scheme="http://www.dengfuping.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
-      <category term="HBase" scheme="http://www.dengfuping.com/tags/HBase/"/>
+      <category term="大数据" scheme="http://www.dengfuping.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
-      <category term="MongoDB" scheme="http://www.dengfuping.com/tags/MongoDB/"/>
+      <category term="HBase" scheme="http://www.dengfuping.com/tags/HBase/"/>
     
   </entry>
   
@@ -831,120 +961,6 @@
       <category term="磁盘" scheme="http://www.dengfuping.com/tags/%E7%A3%81%E7%9B%98/"/>
     
       <category term="disk" scheme="http://www.dengfuping.com/tags/disk/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>操作系统原理作业（十二）：ex03.memory作业</title>
-    <link href="http://www.dengfuping.com/2017/01/24/operating-system-homework-12/"/>
-    <id>http://www.dengfuping.com/2017/01/24/operating-system-homework-12/</id>
-    <published>2017-01-24T13:35:15.000Z</published>
-    <updated>2017-01-24T15:42:08.691Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h2><p>1、某个OS采用可变分区分配方法管理，用户主存512KB，自由区由可用空区表管理。若分配时采用分配自由区的低地址部分的方案，假设初始时全为空。对于下列申请顺序： 申请(300KB),  申请(100KB),  释放(300KB),  申请(150KB),申请(30KB),申请(40KB),申请(60KB),释放(30KB)。回答下列问题：<br>（1）采用首次适应（FF），自由空区中有哪些空块（给出地址和大小）？<br>（2）若采用最佳适应（BF），回答（1）中的问题。<br>（3）如果再申请100KB，针对（1）和（2）各有什么结果？<a id="more"></a><br><strong>解答：</strong><br>（1）如下图所示：<br><img src="http://p1.bqimg.com/567571/cbdd67f896833e85.png" alt=""></p>
-<p>（2）如下图所示：<br><img src="http://i1.piimg.com/567571/22dd24d534557283.png" alt=""></p>
-<p>（3）针对（1） 可分配在400K位置；针对（2） 无法分配。</p>
-<h2 id="题目2"><a href="#题目2" class="headerlink" title="题目2"></a>题目2</h2><p>2、考虑下面的页访问串：1,2,3,4,2,1,5,6,2,1,2,3,7,6,3,2,1,2,3,6 假定有4,5,6个页块，应用下面的页面替换算法，计算各会出现多少次缺页中断。注意，所给定的页块初始均为空，因此，首次访问一页时就会发生缺页中断。<br>（1）LRU  （2）FIFO  （3）Optimal<br><strong>解答：</strong><br>（1）LRU<br>对于4个页块：<br><img src="http://i1.piimg.com/567571/fd1d382c5c43d983.png" alt=""><br>可得共出现缺页中断10次；<br>步骤同上图可得5个页块共出现缺页中断8次，6个页块共出现缺页中断7次。</p>
-<p>（2）FIFO<br>对于4个页块：<br><img src="http://p1.bpimg.com/567571/4b94ef51c07e9059.png" alt=""><br>可得共出现缺页中断14次；<br>步骤同上图可得5个页块共出现缺页中断10次，6个页块共出现缺页中断10次。</p>
-<p>（3）Optimal<br>对于4个页块：<br><img src="http://i1.piimg.com/567571/d37a24a6660201ec.png" alt=""><br>可得共出现缺页中断8次；<br>步骤同上图可得5个页块共出现缺页中断8次，6个页块共出现缺页中断7次。</p>
-<h2 id="题目3"><a href="#题目3" class="headerlink" title="题目3"></a>题目3</h2><p>3、一台计算机有4个页块，装入时间、上次引用时间、它们的R（读）与M（修改）位如下表所示（时间：滴答），请问NRU、FIFO、LRU和第二次机会算法将替换那一页？<br><img src="http://i1.piimg.com/567571/26d58b5369fee2e8.png" alt=""><br><strong>解答：</strong><br>NRU算法将替换0类编号页页0；<br>FIFO算法将替换最早装入页页2<br>LRU算法将替换最近未被使用页页1<br>第二次机会算法将替换载入时间早且R位为零的页页0。</p>
-<h2 id="题目4"><a href="#题目4" class="headerlink" title="题目4"></a>题目4</h2><p>4、有一页式系统，其页表存放在主存中。<br>（1）如果对主存的一次存取需要1.5微秒，试问实现一次页面访问时的存取时间是多少？<br>（2）如果系统加有快表且平均命中率为85%，而页表项在快表中的查找时间忽略为0，试问此时的存取时间为多少？<br><strong>解答：</strong><br>（1）需要两次访问内存：第一次是访问页表，从而找到线性地址对应的物理地址；第二次是利用找到的物理地址来访问实际的内存页面。所以共需要3微秒。<br>（2）在快表中得到物理地址到主存找的概率是85%，需要1.5微秒；页表不在快表中在主存的概率是15%，需要3微秒，所以存取时间为1.5<em>0.85+3</em>0.15=1.725微秒。</p>
-<h2 id="题目5"><a href="#题目5" class="headerlink" title="题目5"></a>题目5</h2><p>5、已知某系统页面长4KB，页表项4B，采用多层分页策略映射64位虚拟地址空间。若限定最高层页表占1页，问它可以采用几层分页策略。<br><strong>解答：</strong><br>页面大小为4KB，总共有2^12位信息，其中只有2^10位信息是所需要的信息，而另外4字节的内容是管理这张页表的信息。64位地址空间，事实上每页只能存放10位的容量，去掉作为页内地址的12位空间，将有2^52页表，将这些页表按每页存放10位容量计算，则需要[52/10]=6层，故必须采取6层分页策略。</p>
-<h2 id="题目6"><a href="#题目6" class="headerlink" title="题目6"></a>题目6</h2><p>6、在一个段式存储管理系统中，其段表如表1所示。试求表2所示中的逻辑地址所对应的物理地址。<br><img src="http://i1.piimg.com/567571/6a43da1cefe2dfe7.png" alt=""><br><strong>解答：</strong><br>（1）由于第0段的内存始址为210，段长为500，故逻辑地址[0,430]是合法地址。逻辑地址[0,430] 对应的物理地址为210＋430＝640。<br>（2）由于第1段的内存始址为2350，段长为20，故逻辑地址[1,10]是合法地址。逻辑地址[1,10]对应 的物理地址为2350+10=2360。<br>（3）由于第段起始地址为100，段长为90，所给逻辑地址[2,500]非法。<br>（4）由于第3段的内存始址为1350，段长为590，故逻辑地址[3,400]是合法地址。逻辑地址[3,400] 对应的物理地址为1350＋400＝1750 。<br>（5）由于第4段的内存始址为1938，段长为95，所给逻辑地址[4,112]非法。<br>（6）由于系统中不存在第5段，所给逻辑地址[5,32]非法。</p>
-<h2 id="题目7"><a href="#题目7" class="headerlink" title="题目7"></a>题目7</h2><p>7、请求分页管理系统中,假设某进程的页表内容如下表所示:<br><img src="http://i1.piimg.com/567571/acdd92b7d812c9d6.png" alt=""><br>页面大小为 4KB,一次内存的访问时间是 100ns,一次快表(TLB)的访问时间是10ns,处理一次缺页的平均时间 10^8 ns(已含更新 TLB 和页表的时间),进程的驻留集大小固定为 2,采用最近最少使用置换算法(LRU)和局部淘汰策略。假设（1）TLB 初始为空;（2）地址转换时先访问 TLB,若 TLB 未命中,再访问页表(忽略访问页表之后的 TLB 更新时间);（3）有效位为 0 表示页面不在内存,产生缺页中断,缺页中断处理后,返回到产生缺页中断的指令处重新执行。设有虚地址访问序列2362H、1565H、25A5H,请问:<br>(1)依次访问上述三个虚地址,各需多少时间?给出计算过程。<br>(2)基于上述访问序列,虚地址 1565H 的物理地址是多少?请说明理由。<br><strong>解答：</strong><br>（1）根据页式管理工作原理，应先考虑页面大小，以便将页号和页内位移分解出来。页面大小为4KB，即212，则得到页内位移占虚地址12位，页号占剩余高位。可得三个虚地址的页号P如下：<br>2362H: P=2,访问快表10ns，因初始为空，访问页表100ns得到页框号，合成物理地址后访问主存100ns，共计10ns+100ns+100ns=210ns。<br>1565H：P=1，访问快表10ns，落空，访问页表100ns，落空，进行缺页中断处理108ns，合成物理地址后访问主存100ns，共计10ns+100ns+108ns+100ns≈108ns。<br>25A5H：P=2，访问快表，因第一次访问已将该页号放入块表，因此花费10ns便可合成物理地址，访主存100ns，共计10ns+100ns=110ns。</p>
-<p>（2）当访问虚地址1565H时，产生缺页中断，合法驻留集为2，必须从页表中淘汰一个页面，根据题目的置换算法，应淘汰0号页面，因此1565H的对应页框号为101H。由此可得1565H物理地址为101565H。</p>
-<h2 id="题目8"><a href="#题目8" class="headerlink" title="题目8"></a>题目8</h2><p>8、设某计算机的逻辑地址空间和物理地址空间均为 64KB,按字节编址。若某进程最多需要 6 页(Page)数据存储空间,页的大小为 1KB,操作系统采用固定分配局部置换策略为此进程分配 4 个页框(Page Frame)。在时刻 260 前的该进程访问情况如下表所示(访问位即使用位)。<br><img src="http://p1.bpimg.com/567571/d731e808a3e170e1.png" alt=""><br>当该进程执行到时刻 260 时,要访问逻辑地址为 17CAH 的数据。请回答下列问题:<br>(1) 该逻辑地址对应的页号是多少?<br>(2) 若采用先进先出(FIFO)置换算法,该逻辑地址对应的物理地址是多少?要求给出计算过程。<br>(3) 若采用时钟(CLOCK)置换算法,该逻辑地址对应的物理地址是多少?要求给出计算过程 (设搜索下一页的指针沿顺时针方向移动,且当前指向 2 号页框,示意图如下) 。<br><img src="http://p1.bpimg.com/567571/b36ab669b5b5ff04.png" alt=""><br><strong>解答：</strong><br>（1）17CAH=(0001 0111 1100 1010)2。页大小为1K，所以页内偏移地址为10位，于是前6位是页号，所以得到页号为：5。</p>
-<p>（2）若采用FIFO算法，则被置换的页面所在页框为7，所以对应的物理地址为(0001 1111 1100 1010)2=1FCAH。</p>
-<p>（3）若采用时钟算法，第一次循环时访问位都置为0，又当前指针指向2号页框，故第二次循环将置换2号页框对应的页，所以对应的物理地址为(0000 1011 1100 1010)2=0BCAH。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;题目1&quot;&gt;&lt;a href=&quot;#题目1&quot; class=&quot;headerlink&quot; title=&quot;题目1&quot;&gt;&lt;/a&gt;题目1&lt;/h2&gt;&lt;p&gt;1、某个OS采用可变分区分配方法管理，用户主存512KB，自由区由可用空区表管理。若分配时采用分配自由区的低地址部分的方案，假设初始时全为空。对于下列申请顺序： 申请(300KB),  申请(100KB),  释放(300KB),  申请(150KB),申请(30KB),申请(40KB),申请(60KB),释放(30KB)。回答下列问题：&lt;br&gt;（1）采用首次适应（FF），自由空区中有哪些空块（给出地址和大小）？&lt;br&gt;（2）若采用最佳适应（BF），回答（1）中的问题。&lt;br&gt;（3）如果再申请100KB，针对（1）和（2）各有什么结果？
-    
-    </summary>
-    
-      <category term="操作系统原理" scheme="http://www.dengfuping.com/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/"/>
-    
-    
-      <category term="操作系统原理" scheme="http://www.dengfuping.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/"/>
-    
-      <category term="存储" scheme="http://www.dengfuping.com/tags/%E5%AD%98%E5%82%A8/"/>
-    
-      <category term="memory" scheme="http://www.dengfuping.com/tags/memory/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>操作系统原理作业（十一）：ex02.process作业</title>
-    <link href="http://www.dengfuping.com/2017/01/24/operating-system-homework-11/"/>
-    <id>http://www.dengfuping.com/2017/01/24/operating-system-homework-11/</id>
-    <published>2017-01-24T12:32:56.000Z</published>
-    <updated>2017-01-24T15:42:33.724Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h2><p>1、有三个批处理作业，第一个作业10:00到达，需要执行2小时；第二个作业在10:10到达，需要执行1小时；第三个作业在10:25 到达，需要执行25 分钟。分别采用先来先服务，短作业优先和最高响应比优先三种调度算法，各自的平均周转时间是多少？<a id="more"></a><br><strong>解答：</strong><br>（1）先来先服务<br><img src="http://i1.piimg.com/567571/0cfb722b437eb77a.png" alt=""><br>平均周转时间为：(120+175+180)/3 = 156.7分钟</p>
-<p>（2）短作业优先<br><img src="http://p1.bqimg.com/567571/f14bccc912bd8e48.png" alt=""><br>平均周转时间为：(120+195+120)/3 = 145分钟</p>
-<p>（3）最高响应比优先<br><img src="http://i1.piimg.com/567571/ac35b7ae9eed8d05.png" alt=""><br>平均周转时间为：(120+195+120)/3 = 145分钟</p>
-<h2 id="题目2"><a href="#题目2" class="headerlink" title="题目2"></a>题目2</h2><p>2、在一单道批处理系统中，一组作业的提交时刻和运行时间如下表所示。试计算一下三种作业调度算法的平均周转时间T和平均带权周转时间W。<br>（1）先来先服务； （2）短作业优先； （3）高响应比优先<br><img src="http://p1.bpimg.com/567571/ad60973315ff7457.png" alt=""><br><strong>解答：</strong><br>（1）先来先服务：运行顺序为1,2,3,4<br><img src="http://p1.bqimg.com/567571/e823e066952a06a0.png" alt=""><br>平均周转时间：<br>T = ((9.0-8.0) + (9.5-8.5) + (9.7-9.0) + (9.8-9.1))/4 = 0.85<br>平均带权周转时间：<br>W = ((9.0-8.0)/1.0 + (9.5-8.5)/0.5 + (9.7-9.0)/0.2 + (9.8-9.1)/0.1)/4 = 3.375</p>
-<p>（2）短作业优先：运行顺序为1,3,4,2<br><img src="http://i1.piimg.com/567571/ecdb2a21da3d2fdb.png" alt=""><br>平均周转时间：<br>T = ((9.0-8.0) + (9.8-8.5) + (9.2-9.0) + (9.3-9.1))/4 = 0.675<br>平均带权周转时间：<br>W = ((9.0-8.0)/1.0 + (9.8-8.5)/0.5 + (9.2-9.0)/0.2 + (9.3-9.1)/0.1)/4 = 1.65</p>
-<p>（3）高响应比优先：运行顺序为1,2,4,3<br><img src="http://p1.bqimg.com/567571/d3b1224ddf613499.png" alt=""><br>平均周转时间：<br>T = ((9.0-8.0) + (9.5-8.5) + (9.8-9.0) + (9.6-9.1))/4 = 0.825<br>平均带权周转时间：<br>W = ((9.0-8.0)/1.0 + (9.5-8.5)/0.5 + (9.8-9.0)/0.2 + (9.6-9.1)/0.1)/4 = 3</p>
-<h2 id="题目3"><a href="#题目3" class="headerlink" title="题目3"></a>题目3</h2><p>3、设系统中有3种类型的资源（A,B,C）和5个进程（P1,P2,P3,P4,P5），A资源的数量为17，B资源的数量为5，C资源的数量为20。在T0时刻系统状态表如下表所示。<br><img src="http://p1.bqimg.com/567571/cbee1a0f06535042.png" alt=""><br>系统采用银行家算法试试死锁避免策略。<br>（1）T0 时刻是否为安全状态？若是，请给出安全序列。<br>（2）在 T0 时刻若进程 P2 请求资源（0,3,4），是否能实施资源分配？为什么？<br>（3）在（2）的基础上，若进程P4请求资源（2,0,1），是否能实施资源分配？为什么？<br>（4）在（3）的基础上，若进程P1请求资源（0,2,0），是否能实施资源分配？为什么？<br><strong>解答：</strong><br>（1）是安全状态。安全序列为P4、P5、P3、P2、P1。<br>（2）不能，因为A、B、C的资源剩余量为（2,3,3），其中C资源不能满足需求。P2会阻塞。<br>（3）能，若分配给P4，还存在安全序列P4、P5、P3、P2、P1。<br>（4）不能，如果分配给P1，剩余（0,1,2）资源不能满足任一进程，将成为死锁。</p>
-<h2 id="题目4"><a href="#题目4" class="headerlink" title="题目4"></a>题目4</h2><p>4、某系统有R1,R2,R3共3类资源，在T0时刻P1,P2,P3和P4这4个进程对资源的占用和需求情况见下表，此刻系统可用资源向量为（2,1,2）。<br><img src="http://p1.bpimg.com/567571/5578ad519070c176.png" alt=""><br>问题:<br>（1）将系统中各种资源总量和此刻各进程对各资源的需求数目用向量或矩阵表示出来。<br>（2）如果此时P1,P2均发出资源请求向量Request(1,0,1),为了保持系统的安全性应该如何分配资源？说明你所采用策略的原因。<br>（3）如果（2）中两个请求立刻得到满足后，系统此刻是否处于死锁状态？<br><strong>解答：</strong><br><img src="http://i1.piimg.com/567571/1106b2c26c6073f8.png" alt=""></p>
-<p>（2）应该分配给P2。因为如果分配给P1，则系统剩余（1,1,1）讲不能满足任意一个进程，为不安全状态，而分配给P2为安全状态，存在安全序列为P2、P1、P3、P4</p>
-<p>（3）是。因为任何进程的需求都不能得到满足，也不能结束释放资源。</p>
-<h2 id="题目5"><a href="#题目5" class="headerlink" title="题目5"></a>题目5</h2><p>5、设有3个进程P、Q、R，它们共享10个同类资源，P、Q、R进程的资源最大需求量依次为4、7和8。现假定它们对资源的请示序列如下表所示：<br><img src="http://p1.bpimg.com/567571/47736185d420d365.png" alt=""><br>为了避免死锁，系统分配资源时采用银行家算法。如果申请资源得不到满足，进程就转入阻塞态。根据上述信息，试描述各步骤结束时，申请资源的进程是得到满足，还是转入阻塞状态，为什么？（起始状态：各进程均不拥有资源，无进程处于阻塞态）<br><strong>解答：</strong><br>（1）满足P进程申请。分配后为安全状态。<br>（2）满足Q进程申请。分配后为安全状态，存在安全序列P,Q,R。<br>（3）满足R进程申请。分配后为安全状态，存在安全序列P,Q,R。<br>（4）阻塞Q进程，若分配给Q资源，则剩余资源不能满足任意一进程完成任务，会出现死锁。<br>（5）阻塞R进程，理由同上。<br>（6）满足P进程申请。分配后为安全状态，P可以完成任务，释放资源，存在安全序列Q,R。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;题目1&quot;&gt;&lt;a href=&quot;#题目1&quot; class=&quot;headerlink&quot; title=&quot;题目1&quot;&gt;&lt;/a&gt;题目1&lt;/h2&gt;&lt;p&gt;1、有三个批处理作业，第一个作业10:00到达，需要执行2小时；第二个作业在10:10到达，需要执行1小时；第三个作业在10:25 到达，需要执行25 分钟。分别采用先来先服务，短作业优先和最高响应比优先三种调度算法，各自的平均周转时间是多少？
-    
-    </summary>
-    
-      <category term="操作系统原理" scheme="http://www.dengfuping.com/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/"/>
-    
-    
-      <category term="操作系统原理" scheme="http://www.dengfuping.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/"/>
-    
-      <category term="进程" scheme="http://www.dengfuping.com/tags/%E8%BF%9B%E7%A8%8B/"/>
-    
-      <category term="process" scheme="http://www.dengfuping.com/tags/process/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>操作系统原理作业（十）：ex01.pv作业</title>
-    <link href="http://www.dengfuping.com/2017/01/24/operating-system-homework-10/"/>
-    <id>http://www.dengfuping.com/2017/01/24/operating-system-homework-10/</id>
-    <published>2017-01-24T11:48:27.000Z</published>
-    <updated>2017-01-24T12:34:06.530Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h2><p>1、有一个仓库，可以存放 A 和 B 两种产品，仓库的存储空间足够大，但要求：<br>（1）一次只能存入一种产品（A 或 B）；<br>（2）-N &lt; (A 产品数量 - B 产品数量) &lt; M。<br>其中， N 和 M 是正整数。试用“存放 A”和“存放 B”以及 P、 V 操作描述产品 A 与产品 B 的入库过程。<a id="more"></a><br><strong>解答：</strong><br>由题中的表达式可得：<br>B产品数量 - A产品数量 &lt; N<br>A产品数量 - B产品数量 &lt; M。<br>则此题意为：<br>（1）若只放人A产品，而不放入B产品，则A产品最多可放M-1次便被阻塞，即A进程每操作一次就应当将计数器减1（计数器初值为M-1），当计数器值为0时，进程A被阻塞；每当放入一个B产品，则可令A产品的计数器增加1，表明A产品可以多一次放入产品的机会；<br>（2）同理，若只放人B产品，而不放入A产品，则B产品最多可放N-1次便被阻塞，即A进程每操作一次就应当将计数器减1（计数器初值为N-1）。当计数器值为0时，进程B被阻塞；每当放人一个A产品，则可令B产品的计数器增加1，表明B产品可以多一次放入产品的机会。<br>由此可见，该问题是一个同步控制问题。实现其入库过程如下：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> semaphore;  </div><div class="line">semaphore mutex = <span class="number">1</span>;   <span class="comment">//互斥信号量</span></div><div class="line">semaphore a = M - <span class="number">1</span>；  <span class="comment">//存放A的资源信号量，初值为M-1</span></div><div class="line">semaphore b = N - <span class="number">1</span>;   <span class="comment">//存放B的资源信号量，初值为N-1</span></div><div class="line"></div><div class="line">PA:</div><div class="line"><span class="keyword">while</span> (<span class="literal">true</span>)</div><div class="line">&#123;</div><div class="line">    P(&amp;a);</div><div class="line">    P(&amp;mutex);</div><div class="line">    A 入库；</div><div class="line">    V(&amp;mutex);</div><div class="line">    V(&amp;b);</div><div class="line">&#125;</div><div class="line"></div><div class="line">PB:</div><div class="line"><span class="keyword">while</span> (<span class="literal">true</span>)</div><div class="line">&#123;</div><div class="line">    P(&amp;b);</div><div class="line">    P(&amp;mutex);</div><div class="line">    B 入库；</div><div class="line">    V(&amp;mutex);</div><div class="line">    V(&amp;a);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="题目2"><a href="#题目2" class="headerlink" title="题目2"></a>题目2</h2><p>2、桌子上有一只盘子，最多可容纳两个水果，每次只能放入或取出一个水果。爸爸专向盘子放苹果（ apple），妈妈专向盘子中放桔子（ orange）；两个儿子专等吃盘子中的桔子，两个女儿专等吃盘子中的苹果。请用 P、 V 操作来实现爸爸、妈妈、儿子、女儿之间的<br>同步与互斥关系。<br><strong>解答：</strong><br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> semaphore;</div><div class="line">semaphore mutex = <span class="number">1</span>;    <span class="comment">//互斥信号量, 其初值为1</span></div><div class="line">semaphore empty = <span class="number">2</span>;    <span class="comment">//记录允许向盘子中放入水果的个数，初值为2</span></div><div class="line">semaphore orange = <span class="number">0</span>;   <span class="comment">//盘子中已放入的苹果的个数，初值为0</span></div><div class="line">semaphore apple = <span class="number">0</span>;    <span class="comment">//盘子中已放入的桔子的个数，初值为0</span></div><div class="line"></div><div class="line">main() </div><div class="line">&#123;</div><div class="line">    Cobegin</div><div class="line">    &#123;</div><div class="line">        father      <span class="comment">//父亲进程</span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">while</span> (<span class="literal">true</span>)</div><div class="line">            &#123;</div><div class="line">                P(empty);     <span class="comment">//减少盘中可放入的水果数</span></div><div class="line">                P(mutex);     <span class="comment">//申请向盘中取、放水果</span></div><div class="line">                向盘中放苹果;</div><div class="line">                V(mutex);     <span class="comment">//允许向盘中取、放水果</span></div><div class="line">                V(apple);     <span class="comment">//递增盘中的苹果数</span></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        mother     <span class="comment">//母亲进程</span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">while</span> (<span class="literal">true</span>) </div><div class="line">            &#123;</div><div class="line">                P(empty);     <span class="comment">//减少盘中可放入的水果数</span></div><div class="line">                P(mutex);     <span class="comment">//申请向盘中取、放水果</span></div><div class="line">                向盘中放桔子;</div><div class="line">                V(mutex);     <span class="comment">//允许向盘中取、放水果</span></div><div class="line">                V(orange);    <span class="comment">//递增盘中的桔子数</span></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        daughteri（i = <span class="number">1</span>, <span class="number">2</span>）    <span class="comment">//两女儿进程</span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">while</span> (<span class="literal">true</span>) </div><div class="line">            &#123;</div><div class="line">                P(apple);       <span class="comment">//减少盘中苹果数</span></div><div class="line">                P(mutex);      <span class="comment">//申请向盘中取、放水果</span></div><div class="line">                取盘中苹果;</div><div class="line">                V(mutex);      <span class="comment">//允许向盘中取、放水果</span></div><div class="line">                V(empty);      <span class="comment">//递增盘中可放入的水果数</span></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        sonj（j = <span class="number">1</span>, <span class="number">2</span>）         <span class="comment">//两儿子进程</span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">while</span> (<span class="literal">true</span>) </div><div class="line">            &#123;</div><div class="line">                P(orange);      <span class="comment">//减少盘中桔子数</span></div><div class="line">                P(mutex);      <span class="comment">//申请向盘中取、放水果</span></div><div class="line">                取盘中桔子;</div><div class="line">                V(mutex);      <span class="comment">//允许向盘中取、放水果</span></div><div class="line">                V(empty);      <span class="comment">//递增盘中可放入的水果数</span></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    Coend</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="题目3"><a href="#题目3" class="headerlink" title="题目3"></a>题目3</h2><p>3、有一个理发师，一把理发椅和 N 把供等候理发的顾客坐的椅子。如果没有顾客，则理发师便在理发师椅子上睡觉；当一个顾客到来时，必须唤醒理发师进行理发；如果理发师正在理发时又有顾客来到，则如果有空椅子可坐，他就坐下来等，如果没有空椅子，他就离开。为理发师和顾客各编一段程序（伪代码）描述他们的行为，要求不能带有竞争条件。<br><strong>解答：</strong><br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> semaphore;</div><div class="line">semaphore mutex = <span class="number">1</span>;     <span class="comment">//互斥信号量，初值为1.</span></div><div class="line">semaphore wait = <span class="number">0</span>;      <span class="comment">//等待服务的顾客数</span></div><div class="line">semaphore barbers = <span class="number">0</span>;   <span class="comment">//等待顾客的理发师数</span></div><div class="line"><span class="keyword">int</span> custNum = <span class="number">0</span>;         <span class="comment">//等待的顾客(还没理发的)</span></div><div class="line"></div><div class="line">Costumer()</div><div class="line">&#123;</div><div class="line">    <span class="keyword">while</span> (<span class="literal">true</span>)</div><div class="line">    &#123;</div><div class="line">        P(mutex);              <span class="comment">//申请理发</span></div><div class="line">        <span class="keyword">if</span> (custNum &gt; <span class="number">0</span>)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span> (custNum &lt; N)    <span class="comment">//若等待人数小于N</span></div><div class="line">            &#123;</div><div class="line">                V(mutex);      <span class="comment">//释放进程等待</span></div><div class="line">                CustNum++;   <span class="comment">//增加等待人数</span></div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span>               <span class="comment">//若等待人数超过N</span></div><div class="line">            &#123;</div><div class="line">                V(mutex);      <span class="comment">//释放进程等待</span></div><div class="line">                离开;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span>                   <span class="comment">//若目前无人等待</span></div><div class="line">        &#123;</div><div class="line">            V(mutex);          <span class="comment">//释放进程等待</span></div><div class="line">            V(barbers);         <span class="comment">//如果必要的话，唤醒理发师</span></div><div class="line">            理发;</div><div class="line">            离开;</div><div class="line">            P(mutex);          <span class="comment">//要求进程等待</span></div><div class="line">            custNum--;        <span class="comment">//顾客人数减1</span></div><div class="line">            V(mutex);          <span class="comment">//释放进程等待</span></div><div class="line">            V(wait);            <span class="comment">//等待人数减1</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Barber() </div><div class="line">&#123;</div><div class="line">    <span class="keyword">while</span> (<span class="literal">true</span>)</div><div class="line">    &#123;</div><div class="line">        P(mutex);              <span class="comment">//要求进程等待</span></div><div class="line">        <span class="keyword">if</span> (custNum == <span class="number">0</span>)       <span class="comment">//目前无顾客</span></div><div class="line">        &#123;</div><div class="line">            V(mutex);          <span class="comment">//释放进程等待</span></div><div class="line">            P(barbers);         <span class="comment">//理发师睡觉　　</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span></div><div class="line">        &#123;</div><div class="line">            V(mutex);          <span class="comment">//释放进程等待</span></div><div class="line">            理发;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="题目4"><a href="#题目4" class="headerlink" title="题目4"></a>题目4</h2><p>4、吸烟者问题。三个吸烟者在一间房间内，还有一个香烟供应者。为了制造并抽掉香烟，每个吸烟者需要三样东西：烟草、纸和火柴。供应者有丰富的货物提供。三个吸烟者中，第一个有自己的烟草，第二个有自己的纸，第三个有自己的火柴。供应者将两样东西放在桌子上，允许一个吸烟者进行对健康不利的吸烟。当吸烟者完成吸烟后唤醒供应者，供应者再放两样东西（随机地）在桌面上，然后唤醒另一个吸烟者。试为吸烟者和供应者编写程序解决问题。<br><strong>解答：</strong><br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> semaphore;</div><div class="line">semaphore S = <span class="number">1</span>;       <span class="comment">//供应者</span></div><div class="line">semaphore S1 = <span class="number">0</span>, S2 = <span class="number">0</span>, S3 = <span class="number">0</span>;    <span class="comment">//三个吸烟者</span></div><div class="line"><span class="keyword">bool</span> flag1 = <span class="literal">true</span>, flag2 = <span class="literal">true</span>, flag3 = <span class="literal">true</span>;  <span class="comment">//三种吸烟原料</span></div><div class="line"></div><div class="line">Apply()           <span class="comment">//供应者</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">while</span> (<span class="literal">true</span>)</div><div class="line">    &#123;</div><div class="line">        P(S);</div><div class="line">        取两样香烟原料放桌上,由flagi标记;</div><div class="line">        <span class="keyword">if</span> (flag2 &amp;&amp; flag3)        <span class="comment">//供纸和火柴</span></div><div class="line">            V(S1);              <span class="comment">//唤醒吸烟者一</span></div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (flag1 &amp;&amp; flag3)    <span class="comment">//供烟草和火柴</span></div><div class="line">            V(S2);              <span class="comment">//唤醒吸烟者二</span></div><div class="line">        <span class="keyword">else</span>                    <span class="comment">//供烟草和纸</span></div><div class="line">            V(S3);              <span class="comment">//唤醒吸烟者三</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Smoker1()           <span class="comment">//吸烟者一</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">while</span> (<span class="literal">true</span>)</div><div class="line">    &#123;</div><div class="line">        P(S1);</div><div class="line">        取原料;</div><div class="line">        做香烟;</div><div class="line">        V(S);        <span class="comment">//唤醒供应者</span></div><div class="line">        吸香烟;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Smoker2()           <span class="comment">//吸烟者二</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">while</span> (<span class="literal">true</span>)</div><div class="line">    &#123;</div><div class="line">        P(S2);</div><div class="line">        取原料;</div><div class="line">        做香烟;</div><div class="line">        V(S);        <span class="comment">//唤醒供应者</span></div><div class="line">        吸香烟;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Smoker3()           <span class="comment">//吸烟者三</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">while</span> (<span class="literal">true</span>)</div><div class="line">    &#123;</div><div class="line">        P(S3);</div><div class="line">        取原料;</div><div class="line">        做香烟;</div><div class="line">        V(S);        <span class="comment">//唤醒供应者</span></div><div class="line">        吸香烟;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="题目5"><a href="#题目5" class="headerlink" title="题目5"></a>题目5</h2><p>5、面包师问题。面包师有很多面包和蛋糕，由 n 个销售人员销售。每个顾客进店后先取一个号，并且等着叫号。当一个销售人员空闲下来，就叫下一个号。请分别编写销售人员和顾客进程的程序。<br><strong>解答：</strong><br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> semaphore;</div><div class="line">semaphore buyer = <span class="number">0</span>;           <span class="comment">//顾客人数</span></div><div class="line">semaphore seller = n;          <span class="comment">//销售人员数</span></div><div class="line">semaphore mutex_s = <span class="number">1</span>;         <span class="comment">//用于销售人员的互斥信号量</span></div><div class="line">semaphore mutex_b = <span class="number">1</span>;         <span class="comment">//用于顾客的互斥信号量</span></div><div class="line"><span class="keyword">int</span> count_s = <span class="number">0</span>;               <span class="comment">//记录取号的值</span></div><div class="line"><span class="keyword">int</span> count_b = <span class="number">0</span>;               <span class="comment">//记录叫号的值</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Buy</span><span class="params">()</span>                     <span class="comment">//顾客进程</span></span></div><div class="line">&#123;</div><div class="line">    进店;</div><div class="line">    P(mutex_b);        <span class="comment">//取号</span></div><div class="line">    count_b++;</div><div class="line">    V(mutex_b);</div><div class="line">    V(buyer);</div><div class="line">    P(seller);         <span class="comment">//等待叫号</span></div><div class="line">    买面包;</div><div class="line">    离开;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Sell</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) </div><div class="line">    &#123;</div><div class="line">        P(buyer);</div><div class="line">        P(mutex_s);     <span class="comment">//叫号</span></div><div class="line">        count_s++;</div><div class="line">        叫编号为count_s的顾客;</div><div class="line">        V(mutex_s);</div><div class="line">        V(seller);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="题目6"><a href="#题目6" class="headerlink" title="题目6"></a>题目6</h2><p>6、桌上有一空盘，运行存放一只水果，爸爸可向盘中放苹果，也可放桔子，儿子专等吃盘中的桔子，女儿专等吃盘中的苹果。规定当盘中空时一次只能放一个水果供吃者取用，用P、V原语实现爸爸儿子和女儿3个并发进程的同步。<br><strong>解答：</strong><br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> semaphore;</div><div class="line">semaphore S = <span class="number">1</span>;      <span class="comment">//S 表示盘子是否为空；</span></div><div class="line">semaphore Sa = <span class="number">0</span>;     <span class="comment">//Sa 表示盘中是否有苹果；</span></div><div class="line">semaphore Sb = <span class="number">0</span>;     <span class="comment">//Sb 表示盘中是否有桔子；</span></div><div class="line"></div><div class="line">Father()              <span class="comment">//父亲进程</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">while</span> (<span class="literal">true</span>)</div><div class="line">    &#123;</div><div class="line">        P(S);</div><div class="line">        将水果放入盘中;</div><div class="line">        <span class="keyword">if</span> (放入的是桔子)</div><div class="line">            V(Sb);</div><div class="line">        <span class="keyword">else</span></div><div class="line">            V(Sa);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Son()                  <span class="comment">//儿子进程</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">while</span> (<span class="literal">true</span>)</div><div class="line">    &#123;</div><div class="line">        P(Sb);</div><div class="line">        从盘中取出桔子;</div><div class="line">        V(S);</div><div class="line">        吃桔子;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Daughter()             <span class="comment">//女儿进程</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">while</span> (<span class="literal">true</span>)</div><div class="line">    &#123;</div><div class="line">        P(Sa);</div><div class="line">        从盘中取出苹果;</div><div class="line">        V(S);</div><div class="line">        吃苹果;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="题目7"><a href="#题目7" class="headerlink" title="题目7"></a>题目7</h2><p>7、写者优先的读者－－写者问题。读者-写者问题为数据库访问建立了一个模型。例如,一个系统,其中有许多竞争的进程试图读写其中的数据,多个进程同时读是可以接受的,但如果一个进程正在更新数据库,则所有的其他进程都不能访问数据库，即使读操作也不行。写者优先是指当一个写者到达时，将阻止其后面的读者进入数据库，直到其离开为止。<br><strong>解答：</strong><br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> semaphore;</div><div class="line">semaphore mut1 = <span class="number">1</span>, mut2 = <span class="number">1</span>, wmutex = <span class="number">1</span>, fmutex = <span class="number">1</span>;   <span class="comment">//互斥信号量</span></div><div class="line"><span class="keyword">int</span> rcount = <span class="number">0</span>, wcount = <span class="number">0</span>;     <span class="comment">//读写者人数</span></div><div class="line"></div><div class="line">Writer()                        <span class="comment">//写者进程</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">while</span> (<span class="literal">true</span>)</div><div class="line">    &#123;</div><div class="line">        P(mut1);</div><div class="line">        wcount = wcount + <span class="number">1</span>;</div><div class="line">        <span class="keyword">if</span> (wcount == <span class="number">1</span>)</div><div class="line">            P(fmutex);          <span class="comment">//如有读者，则写者阻塞在此处</span></div><div class="line">        V(mut1);</div><div class="line">        P(wmutex);</div><div class="line">        写;</div><div class="line">        V(wmutex);</div><div class="line">        P(mut1);</div><div class="line">        wcount = wcount - <span class="number">1</span>;</div><div class="line">        <span class="keyword">if</span> (wcount == <span class="number">0</span>)</div><div class="line">            V(fmutex);</div><div class="line">        V(mut1);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Reader()                        <span class="comment">//读者进程</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">while</span> (<span class="literal">true</span>)</div><div class="line">    &#123;</div><div class="line">        P(mut2);</div><div class="line">        rcount = rcount + <span class="number">1</span>;</div><div class="line">        <span class="keyword">if</span> (rcount == <span class="number">1</span>)</div><div class="line">            P(fmutex);</div><div class="line">        V(mut2);</div><div class="line">        读;</div><div class="line">        P(mut2);</div><div class="line">        rcount = rcount - <span class="number">1</span>;</div><div class="line">        <span class="keyword">if</span> (rcount == <span class="number">0</span>)</div><div class="line">            V(fmutex);</div><div class="line">        V(mut2);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="题目8"><a href="#题目8" class="headerlink" title="题目8"></a>题目8</h2><p>8、在天津大学与南开大学之间有一条弯曲的小路，这条路上每次每个方向上只允许一辆自行车通过。但其中有一个小的安全岛 M，同时允许两辆自行车停留，可供两辆自行车已从两端进入小路的情况下错车使用。如图所示。<br><img src="http://p1.bpimg.com/567571/0fd906b50c1f4ed1.png" alt=""><br>下面的算法可以使来往的自行车均可顺利通过。其中使用了4个信号量，T代表天大路口资源，S代表南开路口资源，L代表从天大到安全岛一段路的资源，K 代表从南开到安全岛一段路的资源。程序如下，请在空白位置处填写适当的 PV 操作语句，每处空白可能包含若干个 PV 操作语句。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">begin</div><div class="line">    t:=<span class="number">1</span>;s:=<span class="number">1</span>;l:=<span class="number">1</span>;k:=<span class="number">1</span>;</div><div class="line">    cobegin</div><div class="line">    从天大到南开的进程</div><div class="line">        begin</div><div class="line">            ______(<span class="number">1</span>)______</div><div class="line">            通过 L 路段;</div><div class="line">            进入安全岛 M；</div><div class="line">            ______(<span class="number">2</span>)______</div><div class="line">            通过 K 路段</div><div class="line">            ______(<span class="number">3</span>)______</div><div class="line">        end</div><div class="line">    从南开到天大的进程</div><div class="line">        begin</div><div class="line">            略，与“从天大到南开的进程”相反。</div><div class="line">        end</div><div class="line">    coend</div><div class="line">end</div></pre></td></tr></table></figure></p>
-<p><strong>解答：</strong><br>(1) P(t); P(l);<br>(2) V(l); P(k);<br>(3) V(k); V(t);</p>
-<h2 id="题目9"><a href="#题目9" class="headerlink" title="题目9"></a>题目9</h2><p>9、三个进程 P1、P2、P3 互斥使用一个包含N(N&gt;0)个单元的缓冲区。P1每次用 produce()生成一个正整数并用put()送入缓冲区某一空单元中;P2每次用 getodd()从该缓冲区中取出一个奇数并用countodd()统计奇数个数;P3每次用 geteven()从该缓冲区中取出一个偶数并用counteven()统计偶数个数。请用信号量机制实现这三个进程的同步与互斥活动,并说明所定义信号量的含义。要求用伪代码描述。<br><strong>解答：</strong><br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">P1()</div><div class="line">&#123;</div><div class="line">    <span class="keyword">while</span> (<span class="literal">true</span>)</div><div class="line">    &#123;</div><div class="line">        X = produce();      <span class="comment">//生成一个数</span></div><div class="line">        P(empty);           <span class="comment">//是否有空单元格</span></div><div class="line">        P(mutex);           <span class="comment">//进入临界区</span></div><div class="line">        Put();</div><div class="line">        <span class="keyword">if</span> (X % <span class="number">2</span> == <span class="number">0</span>)</div><div class="line">            V(s2);          <span class="comment">//如果是偶数，向P3发出信号</span></div><div class="line">        <span class="keyword">else</span></div><div class="line">            V(s1);          <span class="comment">//如果是奇数，向P2发出信号</span></div><div class="line">        V(mutex);           <span class="comment">//离开临界区，释放互斥信号量</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">P2()</div><div class="line">&#123;</div><div class="line">    <span class="keyword">while</span> (<span class="literal">true</span>)</div><div class="line">    &#123;</div><div class="line">        P(s1);              <span class="comment">//收到P1发送来的信号，已产生奇数</span></div><div class="line">        P(mutex);           <span class="comment">//进入临界区</span></div><div class="line">        getodd();</div><div class="line">        countodd():=countodd() + <span class="number">1</span>;</div><div class="line">        V(mutex);</div><div class="line">        V(empty);           <span class="comment">//离开临界区，释放互斥信号量</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">P3()</div><div class="line">&#123;</div><div class="line">    <span class="keyword">while</span> (<span class="literal">true</span>)</div><div class="line">    &#123;</div><div class="line">        P(s2);              <span class="comment">//收到P1发送来的信号，已产生偶数</span></div><div class="line">        P(mutex);           <span class="comment">//进入临界区</span></div><div class="line">        geteven();</div><div class="line">        counteven() := counteven() + <span class="number">1</span>;</div><div class="line">        V(mutex);</div><div class="line">        V(empty);           <span class="comment">//离开临界区，释放互斥信号量</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;题目1&quot;&gt;&lt;a href=&quot;#题目1&quot; class=&quot;headerlink&quot; title=&quot;题目1&quot;&gt;&lt;/a&gt;题目1&lt;/h2&gt;&lt;p&gt;1、有一个仓库，可以存放 A 和 B 两种产品，仓库的存储空间足够大，但要求：&lt;br&gt;（1）一次只能存入一种产品（A 或 B）；&lt;br&gt;（2）-N &amp;lt; (A 产品数量 - B 产品数量) &amp;lt; M。&lt;br&gt;其中， N 和 M 是正整数。试用“存放 A”和“存放 B”以及 P、 V 操作描述产品 A 与产品 B 的入库过程。
-    
-    </summary>
-    
-      <category term="操作系统原理" scheme="http://www.dengfuping.com/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/"/>
-    
-    
-      <category term="操作系统原理" scheme="http://www.dengfuping.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/"/>
-    
-      <category term="信号量" scheme="http://www.dengfuping.com/tags/%E4%BF%A1%E5%8F%B7%E9%87%8F/"/>
-    
-      <category term="PV操作" scheme="http://www.dengfuping.com/tags/PV%E6%93%8D%E4%BD%9C/"/>
     
   </entry>
   

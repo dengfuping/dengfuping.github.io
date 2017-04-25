@@ -93,7 +93,7 @@
 <meta property="og:site_name" content="Deng | 不搭">
 <meta property="og:description" content="此文主要是对 JavaScript 的常用函数做一个总结和解析，方便理解和参考。">
 <meta property="og:image" content="http://i1.piimg.com/567571/ffcf817d274532d9.png">
-<meta property="og:updated_time" content="2017-04-21T12:41:17.835Z">
+<meta property="og:updated_time" content="2017-04-25T10:20:10.038Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript 常用基础函数解析">
 <meta name="twitter:description" content="此文主要是对 JavaScript 的常用函数做一个总结和解析，方便理解和参考。">
@@ -398,16 +398,23 @@ var _hmt = _hmt || [];
 <li>操作对象：String 对象</li>
 <li>原对象是否发生变化：<code>不变化</code></li>
 <li>函数用法：split(start, end)</li>
-<li>函数功能：把这个字符串分割成片段来创建一个字符串数组。可选参数 <code>limit</code> 可以限制被分割的片段数量。<code>separator</code> 参数可以是一个字符串或一个正则表达式。如果 <code>separator</code> 是一个空字符，会返回一个单字符的数组。</li>
+<li>函数功能：把这个字符串分割成片段来创建一个字符串数组。可选参数 <code>limit</code> 可以限制被分割的片段数量。<code>separator</code> 参数可以是一个字符串或一个正则表达式。如果 <code>separator</code> 是一个空字符，会返回一个单字符的数组。<code>可以将一个字符串变为数组</code> 。</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="string">"Hello World Are You Ok"</span>;</div><div class="line"><span class="keyword">var</span> b = a.split(<span class="string">" "</span>);        <span class="comment">// 分隔符为一个空格，返回 ["Hello", "World", "Are", "You", "Ok"]</span></div><div class="line"><span class="keyword">var</span> c = a.split(<span class="string">" "</span>, <span class="number">2</span>);     <span class="comment">// 分隔符为一个空格，且设置 limit 参数，则返回 ["Hello", "World"]</span></div><div class="line"><span class="keyword">var</span> d = a.split(<span class="string">""</span>);        <span class="comment">// 分隔符为空字符，返回 ["H", "e", "l", ... , "O", "k"]</span></div></pre></td></tr></table></figure>
 <h2 id="splice"><a href="#splice" class="headerlink" title="splice()"></a>splice()</h2><ul>
 <li>操作对象：Array 对象</li>
-<li>原对象是否发生变化：<code>变化</code></li>
+<li>原对象是否发生变化：<code>不变化</code></li>
 <li>函数用法：splice(start, deleteCount, item1, item2,…)</li>
 <li>函数功能：参数 <code>start</code> 是从数组中移除元素的开始位置。参数 <code>deleteCount</code> 是要移除的元素的个数。后面的 item1, item2…是可选参数，表示会插入到被移除元素的位置上。</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>];</div><div class="line"><span class="keyword">var</span> b = a.splice(<span class="number">1</span>, <span class="number">1</span>, <span class="string">'e'</span>, <span class="string">'f'</span>);  <span class="comment">//a = ['a', 'e', 'f', 'c'], b = ['b']</span></div></pre></td></tr></table></figure>
+<h2 id="join"><a href="#join" class="headerlink" title="join()"></a>join()</h2><ul>
+<li>操作对象：Array 对象</li>
+<li>原对象是否发生变化：<code>变化</code></li>
+<li>函数用法：splice(separator)</li>
+<li>函数功能：把数组中的所有元素放入一个字符串，并使用指定的分隔符进行分隔的。其中 separator 为可选可选参数，指定要使用的分隔符。如果省略该参数，则使用 <code>逗号</code> 作为分隔符。 <code>可以将一个数组变为字符串</code> 。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</div><div class="line"><span class="keyword">var</span> b = a.join(<span class="string">"&amp;"</span>);  <span class="comment">//  a = [1, 2, 3, 4, 5], b = "1&amp;2&amp;3&amp;4&amp;5"</span></div></pre></td></tr></table></figure>
       
     </div>
 
@@ -544,7 +551,7 @@ var _hmt = _hmt || [];
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-count">36</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -552,7 +559,7 @@ var _hmt = _hmt || [];
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -561,7 +568,7 @@ var _hmt = _hmt || [];
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">68</span>
+                <span class="site-state-item-count">71</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -635,7 +642,7 @@ var _hmt = _hmt || [];
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#slice"><span class="nav-number">1.</span> <span class="nav-text">slice()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#split"><span class="nav-number">2.</span> <span class="nav-text">split()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#splice"><span class="nav-number">3.</span> <span class="nav-text">splice()</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#slice"><span class="nav-number">1.</span> <span class="nav-text">slice()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#split"><span class="nav-number">2.</span> <span class="nav-text">split()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#splice"><span class="nav-number">3.</span> <span class="nav-text">splice()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#join"><span class="nav-number">4.</span> <span class="nav-text">join()</span></a></li></ol></div>
             
           </div>
         </section>
