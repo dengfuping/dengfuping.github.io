@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="CSS," />
+  <meta name="keywords" content="JavaScript," />
 
 
 
@@ -86,27 +86,22 @@
 
 
 
-<meta name="description" content="这是在网易技术二面的时候面试官问到的一个问题，当时没有答出来，今天在这里作一次解决该问题方法的总结。
-单行文本溢出可以使用 text-overflow: ellipsis 属性来实现单行文本溢出显示省略号，当然还需要加宽度 width 属性来兼容部分浏览器。
-123456.single-text &amp;#123;    width: 490px;    overflow: hidden;    tex">
+<meta name="description" content="prototype（显式原型）Javascript 规定，每一个构造函数都有一个 prototype 属性，指向另一个对象，我们称之为 原型对象 。原型对象的所有属性和方法，都会被构造函数的实例继承。这意味着，我们可以把那些不变的属性和方法，直接定义在 原型对象 上。
+注意：通过 Function.prototype.bind 方法构造出来的函数是个例外，它没有 prototype 属性。
+作用：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS 常用技巧（一）：文本溢出显示省略号">
-<meta property="og:url" content="http://www.dengfuping.com/2017/04/23/css-text-overflow-ellipsis/index.html">
+<meta property="og:title" content="Javascript 中 prototype 和 \_\_proto\_\_ 的区别和联系">
+<meta property="og:url" content="http://www.dengfuping.com/2017/04/29/javascript-prototype-and-__proto__/index.html">
 <meta property="og:site_name" content="Deng | 不搭">
-<meta property="og:description" content="这是在网易技术二面的时候面试官问到的一个问题，当时没有答出来，今天在这里作一次解决该问题方法的总结。
-单行文本溢出可以使用 text-overflow: ellipsis 属性来实现单行文本溢出显示省略号，当然还需要加宽度 width 属性来兼容部分浏览器。
-123456.single-text &amp;#123;    width: 490px;    overflow: hidden;    tex">
-<meta property="og:image" content="http://i2.muimg.com/567571/58e7e8d5d001d16a.png">
-<meta property="og:image" content="http://i4.buimg.com/567571/751b758d27ab9971.png">
-<meta property="og:image" content="http://i1.piimg.com/567571/ea8ba4c779ae4ef7.png">
-<meta property="og:image" content="http://i4.buimg.com/567571/c83e04c2079c8b4f.png">
-<meta property="og:updated_time" content="2017-04-23T14:38:06.605Z">
+<meta property="og:description" content="prototype（显式原型）Javascript 规定，每一个构造函数都有一个 prototype 属性，指向另一个对象，我们称之为 原型对象 。原型对象的所有属性和方法，都会被构造函数的实例继承。这意味着，我们可以把那些不变的属性和方法，直接定义在 原型对象 上。
+注意：通过 Function.prototype.bind 方法构造出来的函数是个例外，它没有 prototype 属性。
+作用：">
+<meta property="og:updated_time" content="2017-04-29T14:51:14.262Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSS 常用技巧（一）：文本溢出显示省略号">
-<meta name="twitter:description" content="这是在网易技术二面的时候面试官问到的一个问题，当时没有答出来，今天在这里作一次解决该问题方法的总结。
-单行文本溢出可以使用 text-overflow: ellipsis 属性来实现单行文本溢出显示省略号，当然还需要加宽度 width 属性来兼容部分浏览器。
-123456.single-text &amp;#123;    width: 490px;    overflow: hidden;    tex">
-<meta name="twitter:image" content="http://i2.muimg.com/567571/58e7e8d5d001d16a.png">
+<meta name="twitter:title" content="Javascript 中 prototype 和 \_\_proto\_\_ 的区别和联系">
+<meta name="twitter:description" content="prototype（显式原型）Javascript 规定，每一个构造函数都有一个 prototype 属性，指向另一个对象，我们称之为 原型对象 。原型对象的所有属性和方法，都会被构造函数的实例继承。这意味着，我们可以把那些不变的属性和方法，直接定义在 原型对象 上。
+注意：通过 Function.prototype.bind 方法构造出来的函数是个例外，它没有 prototype 属性。
+作用：">
 
 
 <script>
@@ -138,9 +133,9 @@ var _hmt = _hmt || [];
 
 
 
-  <link rel="canonical" href="http://www.dengfuping.com/2017/04/23/css-text-overflow-ellipsis/"/>
+  <link rel="canonical" href="http://www.dengfuping.com/2017/04/29/javascript-prototype-and-__proto__/"/>
 
-  <title> CSS 常用技巧（一）：文本溢出显示省略号 | Deng | 不搭 </title>
+  <title> Javascript 中 prototype 和 \_\_proto\_\_ 的区别和联系 | Deng | 不搭 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -313,7 +308,7 @@ var _hmt = _hmt || [];
             
             
               
-                CSS 常用技巧（一）：文本溢出显示省略号
+                Javascript 中 prototype 和 \_\_proto\_\_ 的区别和联系
               
             
           </h1>
@@ -325,8 +320,8 @@ var _hmt = _hmt || [];
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-04-23T20:46:34+08:00" content="2017-04-23">
-              2017-04-23
+            <time itemprop="dateCreated" datetime="2017-04-29T21:42:40+08:00" content="2017-04-29">
+              2017-04-29
             </time>
           </span>
 
@@ -339,8 +334,8 @@ var _hmt = _hmt || [];
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/CSS常用技巧/" itemprop="url" rel="index">
-                    <span itemprop="name">CSS常用技巧</span>
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
                   </a>
                 </span>
 
@@ -355,8 +350,8 @@ var _hmt = _hmt || [];
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/04/23/css-text-overflow-ellipsis/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/23/css-text-overflow-ellipsis/" itemprop="commentsCount"></span>
+                <a href="/2017/04/29/javascript-prototype-and-__proto__/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/29/javascript-prototype-and-__proto__/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -366,7 +361,7 @@ var _hmt = _hmt || [];
 
           
           
-             <span id="/2017/04/23/css-text-overflow-ellipsis/" class="leancloud_visitors" data-flag-title="CSS 常用技巧（一）：文本溢出显示省略号">
+             <span id="/2017/04/29/javascript-prototype-and-__proto__/" class="leancloud_visitors" data-flag-title="Javascript 中 prototype 和 \_\_proto\_\_ 的区别和联系">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -393,34 +388,15 @@ var _hmt = _hmt || [];
       
 
       
-        <p>这是在网易技术二面的时候面试官问到的一个问题，当时没有答出来，今天在这里作一次解决该问题方法的总结。</p>
-<h2 id="单行文本溢出"><a href="#单行文本溢出" class="headerlink" title="单行文本溢出"></a>单行文本溢出</h2><p>可以使用 <code>text-overflow: ellipsis</code> 属性来实现单行文本溢出显示省略号，当然还需要加宽度 <code>width</code> 属性来兼容部分浏览器。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.single-text</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">490px</span>;</div><div class="line">    <span class="attribute">overflow</span>: hidden;</div><div class="line">    <span class="attribute">text-overflow</span>: ellipsis;</div><div class="line">    <span class="attribute">white-space</span>: nowrap;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<ol>
-<li>overflow: hidden; 溢出元素内容区的内容不可见的。</li>
-<li>white-space: nowrap; 文本不会换行，文本会在在同一行上继续，直到遇到 <br> 标签为止。用以保证为单行文本</li>
-<li>text-overflow: ellipsis; 使用显示省略符号来代表溢出的文本。</li>
-</ol>
-<p>效果如图：<br><img src="http://i2.muimg.com/567571/58e7e8d5d001d16a.png" alt=""></p>
-<h2 id="多行文本溢出"><a href="#多行文本溢出" class="headerlink" title="多行文本溢出"></a>多行文本溢出</h2><h3 id="方法（一）"><a href="#方法（一）" class="headerlink" title="方法（一）"></a>方法（一）</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.multi-text</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">500px</span>;</div><div class="line">    <span class="attribute">overflow</span>: hidden;</div><div class="line">    <span class="attribute">display</span>: -webkit-box;</div><div class="line">    <span class="attribute">-webkit-box-orient</span>: vertical;</div><div class="line">    <span class="attribute">-webkit-line-clamp</span>: <span class="number">3</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ol>
-<li>-webkit-line-clamp 用来限制在一个块元素显示的文本的行数。为了实现该效果，它需要组合其他的 WebKit 属性。</li>
-<li>display: -webkit-box; 必须结合的属性 ，将对象作为弹性伸缩盒子模型显示。</li>
-<li>-webkit-box-orient; 必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式。</li>
-</ol>
-<p>效果如图：<br><img src="http://i4.buimg.com/567571/751b758d27ab9971.png" alt=""></p>
-<p>适用范围：<br>由于使用了 WebKit 的 CSS 扩展属性，该方法适用于 WebKit 浏览器及移动端，其中移动端大部分是 WebKit 内核的浏览器。</p>
-<h3 id="方法（二）"><a href="#方法（二）" class="headerlink" title="方法（二）"></a>方法（二）</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.multi-text-complete</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">500px</span>;</div><div class="line">    <span class="attribute">position</span>: relative;</div><div class="line">    <span class="attribute">line-height</span>: <span class="number">20px</span>;</div><div class="line">    <span class="attribute">max-height</span>: <span class="number">60px</span>;   <span class="comment">/*将 height设为 line-height 的整数倍，防止超出的文字露出*/</span></div><div class="line">    <span class="attribute">overflow</span>: hidden;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.multi-text-complete</span><span class="selector-pseudo">:after</span> &#123;</div><div class="line">    <span class="attribute">content</span>: <span class="string">"..."</span>;</div><div class="line">    <span class="attribute">position</span>: absolute;</div><div class="line">    <span class="attribute">bottom</span>: <span class="number">0</span>;</div><div class="line">    <span class="attribute">right</span>: <span class="number">0</span>;</div><div class="line">    <span class="attribute">padding-left</span>: <span class="number">40px</span>;</div><div class="line">    <span class="attribute">background</span>: <span class="built_in">-webkit-linear-gradient</span>(left, transparent, #fff 55%);</div><div class="line">    <span class="attribute">background</span>: <span class="built_in">-o-linear-gradient</span>(right, transparent, #fff 55%);</div><div class="line">    <span class="attribute">background</span>: <span class="built_in">-moz-linear-gradient</span>(right, transparent, #fff 55%);</div><div class="line">    <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(to right, transparent, #fff 55%);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ol>
-<li>将 height 设置为 line-height 的整数倍，防止超出的文字露出。</li>
-<li>给 p::after 添加渐变背景可避免文字只显示一半。</li>
-<li>由于 ie6-7 不显示 content 内容，所以要添加标签兼容 ie6-7（如：<span>…<span>）；兼容ie8需要将 ::after 替换成 :after。</span></span></li>
-</ol>
-<p>效果如图：<br><img src="http://i1.piimg.com/567571/ea8ba4c779ae4ef7.png" alt=""></p>
-<p>适用范围：该方法适用范围广，但文字未超出行的情况下也会出现省略号，可结合js优化该方法。</p>
-<h2 id="源代码和运行效果"><a href="#源代码和运行效果" class="headerlink" title="源代码和运行效果"></a>源代码和运行效果</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>文本溢出显示省略号<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line">        <span class="selector-class">.single-text</span> &#123;</div><div class="line">            <span class="attribute">width</span>: <span class="number">490px</span>;</div><div class="line">            <span class="attribute">overflow</span>: hidden;</div><div class="line">            <span class="attribute">text-overflow</span>: ellipsis;</div><div class="line">            <span class="attribute">white-space</span>: nowrap;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="selector-class">.multi-text</span> &#123;</div><div class="line">            <span class="attribute">width</span>: <span class="number">500px</span>;</div><div class="line">            <span class="attribute">overflow</span>: hidden;</div><div class="line">            <span class="attribute">display</span>: -webkit-box;</div><div class="line">            <span class="attribute">-webkit-box-orient</span>: vertical;</div><div class="line">            <span class="attribute">-webkit-line-clamp</span>: <span class="number">3</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="selector-class">.multi-text-complete</span> &#123;</div><div class="line">            <span class="attribute">width</span>: <span class="number">500px</span>;</div><div class="line">            <span class="attribute">position</span>: relative;</div><div class="line">            <span class="attribute">line-height</span>: <span class="number">20px</span>;</div><div class="line">            <span class="attribute">max-height</span>: <span class="number">60px</span>;</div><div class="line">            <span class="attribute">overflow</span>: hidden;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="selector-class">.multi-text-complete</span><span class="selector-pseudo">:after</span> &#123;</div><div class="line">            <span class="attribute">content</span>: <span class="string">"..."</span>;</div><div class="line">            <span class="attribute">position</span>: absolute;</div><div class="line">            <span class="attribute">bottom</span>: <span class="number">0</span>;</div><div class="line">            <span class="attribute">right</span>: <span class="number">0</span>;</div><div class="line">            <span class="attribute">padding-left</span>: <span class="number">40px</span>;</div><div class="line">            <span class="attribute">background</span>: <span class="built_in">-webkit-linear-gradient</span>(left, transparent, #fff 55%);</div><div class="line">            <span class="attribute">background</span>: <span class="built_in">-o-linear-gradient</span>(right, transparent, #fff 55%);</div><div class="line">            <span class="attribute">background</span>: <span class="built_in">-moz-linear-gradient</span>(right, transparent, #fff 55%);</div><div class="line">            <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(to right, transparent, #fff 55%);</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"single-text"</span>&gt;</span></div><div class="line">        CSS实现单行文本溢出显示省略号CSS实现单行文本溢出显示省略号CSS实现单行文本溢出显示省略号CSS实现单行文本溢出显示省略号CSS实现单行文本溢出显示省略号CSS实现单行文本溢出显示省略号CSS实现单行文本溢出显示省略号</div><div class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"multi-text"</span>&gt;</span></div><div class="line">        CSS实现单行文本溢出显示省略号CSS实现单行文本溢出显示省略号CSS实现单行文本溢出显示省略号CSS实现单行文本溢出显示省略号CSS实现单行文本溢出显示省略号CSS实现单行文本溢出显示省略号CSS实现单行文本溢出显示省略号</div><div class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"multi-text-complete"</span>&gt;</span></div><div class="line">        CSS实现单行文本溢出显示省略号CSS实现单行文本溢出显示省略号CSS实现单行文本溢出显示省略号CSS实现单行文本溢出显示省略号CSS实现单行文本溢出显示省略号CSS实现单行文本溢出显示省略号CSS实现单行文本溢出显示省略号</div><div class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>效果如图：<br><img src="http://i4.buimg.com/567571/c83e04c2079c8b4f.png" alt=""></p>
+        <h2 id="prototype（显式原型）"><a href="#prototype（显式原型）" class="headerlink" title="prototype（显式原型）"></a>prototype（显式原型）</h2><p>Javascript 规定，每一个构造函数都有一个 prototype 属性，指向另一个对象，我们称之为 <code>原型对象</code> 。原型对象的所有属性和方法，都会被构造函数的实例继承。这意味着，我们可以把那些不变的属性和方法，直接定义在 <code>原型对象</code> 上。</p>
+<p>注意：通过 Function.prototype.bind 方法构造出来的函数是个例外，它没有 prototype 属性。</p>
+<p>作用：用来 <code>实现基于原型的继承</code> 与 <code>属性的共享</code> 。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name, color</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.color = color;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Cat.prototype.type = <span class="string">"猫科动物"</span>;</div><div class="line">Cat.prototype.eat = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="string">"吃老鼠"</span>)&#125;;</div></pre></td></tr></table></figure>
+<h2 id="proto-（隐式原型）"><a href="#proto-（隐式原型）" class="headerlink" title="__proto__（隐式原型）"></a>__proto__（隐式原型）</h2><p>JavaScript 中任意对象都有一个内置属性 <code>__proto__</code> ，在 ES5 之前没有标准的方法访问这个内置属性，但是大多数浏览器都支持通过 __proto__ 来访问。ES5中有了对于这个内置属性标准的 Get 方法即 getPrototypeOf() 。</p>
+<p>注意：Object.prototype 这个对象是个例外，它的 __proto__ 值为 null 。</p>
+<p>作用：构成原型链，同样用于 <code>实现基于原型的继承</code> 。举个例子，当我们访问 obj 这个对象中的x属性时，如果在 obj 中找不到，那么就会沿着 <code>__proto__</code> 依次查找。</p>
+<h2 id="关系"><a href="#关系" class="headerlink" title="关系"></a>关系</h2><p>（1）对象有属性 <code>__proto__</code> ，指向该对象的构造函数的原型对象。<br>（2）构造函数除了有属性 <code>__proto__</code> ，还有属性 prototype ，prototype 指向该构造函数的原型对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name, color</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.color = color;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> cat = <span class="keyword">new</span> Cat(<span class="string">"Jetty"</span>, <span class="string">"red"</span>);</div><div class="line"><span class="built_in">console</span>.log(cat.__proto__ == Cat.prototype);    <span class="comment">// true</span></div></pre></td></tr></table></figure>
 
       
     </div>
@@ -464,7 +440,7 @@ var _hmt = _hmt || [];
       
         <div class="post-tags">
           
-            <a href="/tags/CSS/" rel="tag">#CSS</a>
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
           
         </div>
       
@@ -473,17 +449,13 @@ var _hmt = _hmt || [];
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/23/es6-spread-operator/" rel="next" title="ES6 学习笔记（一）：spread operator（展开运算符）">
-                <i class="fa fa-chevron-left"></i> ES6 学习笔记（一）：spread operator（展开运算符）
+              <a href="/2017/04/25/fetch-api/" rel="next" title="Fetch API 用法解析">
+                <i class="fa fa-chevron-left"></i> Fetch API 用法解析
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/23/javascript-regular-expression/" rel="prev" title="JavaScript 正则表达式">
-                JavaScript 正则表达式 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -512,8 +484,8 @@ var _hmt = _hmt || [];
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/04/23/css-text-overflow-ellipsis/"
-           data-title="CSS 常用技巧（一）：文本溢出显示省略号" data-url="http://www.dengfuping.com/2017/04/23/css-text-overflow-ellipsis/">
+      <div class="ds-thread" data-thread-key="2017/04/29/javascript-prototype-and-__proto__/"
+           data-title="Javascript 中 prototype 和 \_\_proto\_\_ 的区别和联系" data-url="http://www.dengfuping.com/2017/04/29/javascript-prototype-and-__proto__/">
       </div>
     
   </div>
@@ -649,7 +621,7 @@ var _hmt = _hmt || [];
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#单行文本溢出"><span class="nav-number">1.</span> <span class="nav-text">单行文本溢出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多行文本溢出"><span class="nav-number">2.</span> <span class="nav-text">多行文本溢出</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法（一）"><span class="nav-number">2.1.</span> <span class="nav-text">方法（一）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法（二）"><span class="nav-number">2.2.</span> <span class="nav-text">方法（二）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源代码和运行效果"><span class="nav-number">3.</span> <span class="nav-text">源代码和运行效果</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#prototype（显式原型）"><span class="nav-number">1.</span> <span class="nav-text">prototype（显式原型）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#proto-（隐式原型）"><span class="nav-number">2.</span> <span class="nav-text">__proto__（隐式原型）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关系"><span class="nav-number">3.</span> <span class="nav-text">关系</span></a></li></ol></div>
             
           </div>
         </section>

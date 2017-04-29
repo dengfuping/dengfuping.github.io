@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dengfuping.com/"/>
-  <updated>2017-04-25T10:24:29.315Z</updated>
+  <updated>2017-04-29T14:51:14.262Z</updated>
   <id>http://www.dengfuping.com/</id>
   
   <author>
@@ -14,6 +14,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Javascript 中 prototype 和 \_\_proto\_\_ 的区别和联系</title>
+    <link href="http://www.dengfuping.com/2017/04/29/javascript-prototype-and-__proto__/"/>
+    <id>http://www.dengfuping.com/2017/04/29/javascript-prototype-and-__proto__/</id>
+    <published>2017-04-29T13:42:40.000Z</published>
+    <updated>2017-04-29T14:51:14.262Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="prototype（显式原型）"><a href="#prototype（显式原型）" class="headerlink" title="prototype（显式原型）"></a>prototype（显式原型）</h2><p>Javascript 规定，每一个构造函数都有一个 prototype 属性，指向另一个对象，我们称之为 <code>原型对象</code> 。原型对象的所有属性和方法，都会被构造函数的实例继承。这意味着，我们可以把那些不变的属性和方法，直接定义在 <code>原型对象</code> 上。</p>
+<p>注意：通过 Function.prototype.bind 方法构造出来的函数是个例外，它没有 prototype 属性。</p>
+<p>作用：用来 <code>实现基于原型的继承</code> 与 <code>属性的共享</code> 。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name, color</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.color = color;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Cat.prototype.type = <span class="string">"猫科动物"</span>;</div><div class="line">Cat.prototype.eat = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="string">"吃老鼠"</span>)&#125;;</div></pre></td></tr></table></figure>
+<h2 id="proto-（隐式原型）"><a href="#proto-（隐式原型）" class="headerlink" title="__proto__（隐式原型）"></a>__proto__（隐式原型）</h2><p>JavaScript 中任意对象都有一个内置属性 <code>__proto__</code> ，在 ES5 之前没有标准的方法访问这个内置属性，但是大多数浏览器都支持通过 __proto__ 来访问。ES5中有了对于这个内置属性标准的 Get 方法即 getPrototypeOf() 。</p>
+<p>注意：Object.prototype 这个对象是个例外，它的 __proto__ 值为 null 。</p>
+<p>作用：构成原型链，同样用于 <code>实现基于原型的继承</code> 。举个例子，当我们访问 obj 这个对象中的x属性时，如果在 obj 中找不到，那么就会沿着 <code>__proto__</code> 依次查找。</p>
+<h2 id="关系"><a href="#关系" class="headerlink" title="关系"></a>关系</h2><p>（1）对象有属性 <code>__proto__</code> ，指向该对象的构造函数的原型对象。<br>（2）构造函数除了有属性 <code>__proto__</code> ，还有属性 prototype ，prototype 指向该构造函数的原型对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name, color</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.color = color;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> cat = <span class="keyword">new</span> Cat(<span class="string">"Jetty"</span>, <span class="string">"red"</span>);</div><div class="line"><span class="built_in">console</span>.log(cat.__proto__ == Cat.prototype);    <span class="comment">// true</span></div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;prototype（显式原型）&quot;&gt;&lt;a href=&quot;#prototype（显式原型）&quot; class=&quot;headerlink&quot; title=&quot;prototype（显式原型）&quot;&gt;&lt;/a&gt;prototype（显式原型）&lt;/h2&gt;&lt;p&gt;Javascript 规定，每一个构
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://www.dengfuping.com/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="http://www.dengfuping.com/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>Fetch API 用法解析</title>
@@ -930,38 +961,6 @@
       <category term="单项选择" scheme="http://www.dengfuping.com/tags/%E5%8D%95%E9%A1%B9%E9%80%89%E6%8B%A9/"/>
     
       <category term="multichoice" scheme="http://www.dengfuping.com/tags/multichoice/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>操作系统原理作业（十三）：ex04.disk作业</title>
-    <link href="http://www.dengfuping.com/2017/01/24/operating-system-homework-13/"/>
-    <id>http://www.dengfuping.com/2017/01/24/operating-system-homework-13/</id>
-    <published>2017-01-24T15:01:30.000Z</published>
-    <updated>2017-01-24T16:12:23.311Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h2><p>1、若干个等待访问磁盘者依次要访问的柱面为 20,44,40,4,80,12,76，假设每移动一个柱面需要3ms时间，移动臂当前位于40号柱面，磁头正向磁道好增加的方向移动，请按 FCFS, SSTF, SCAN 算法分别计算为完成上述访问总共花费的寻找时间。<a id="more"></a><br><strong>解答：</strong><br>（1）FCFS算法：<br>移动臂的移动次序为：40 → 20 → 44 → 40 → 4 → 80 → 12 → 76<br>移动的柱面数 = 20 +24+4+36+76+68+64=292<br>共花费 3×292=876毫秒</p>
-<p>（2）SSTF算法：<br>移动臂的移动次序为：40 → 44 → 20 → 12 → 4 → 76 → 80<br>移动的柱面数 = 4+24+8+8+72+4=120<br>共花费 3×120=360毫秒</p>
-<p>（3）SCAN算法：<br>移动臂的移动次序为<br>40 → 44 → 76 → 80 → 20 → 12 → 4<br>移动的柱面数 = 4+32+4+60+8+8=116<br>共花费 3×116=348毫秒</p>
-<h2 id="题目2"><a href="#题目2" class="headerlink" title="题目2"></a>题目2</h2><p>2、假设计算机系统采用CSCAN(循环扫描)磁盘调度策略,使用2KB的内存空间记录16384个磁盘的空闲状态。<br>（1）请说明在上述条件如何进行磁盘块空闲状态的管理。<br>（2）设某单面磁盘的旋转速度为每分钟6000转，每个磁道有100个扇区，相临磁道间的平均移动的时间为1ms。若在某时刻，磁头位于100号磁道处，并沿着磁道号增大的方向移动，磁道号的请求队列为50，90，30，120对请求队列中的每个磁道需读取1个随机分布的扇区，则读完这个扇区点共需要多少时间？需要给出计算过程。<br>（3）如果将磁盘替换为随机访问的 Flash 半导体存储器(如U盘、SSD 等),是否有比 CSCAN 更高效的磁盘调度策略？若有,给出磁盘调度策略的名称并 说明理由；若无,说明理由。<br><img src="http://i1.piimg.com/567571/706304999d613347.png" alt=""><br><strong>解答：</strong><br>（1）2KB = 2<em>1024</em>8bit = 16384bit。因此可以使用位图法进行磁盘块空闲状态管理，每1bit表示一个磁盘块是否空闲。</p>
-<p>（2）每分钟6000转，转一圈的时间为0.01s，通过一个扇区的时间为0.0001s。 则平均旋转延迟时间为0.01/2 = 5ms, 平均平均读取时间为0.1ms。根据CSCAN算法，被访问的磁道号顺序为100，120，30， 50，90,因此，寻道用去的总时间为：（20 + 90 + 20 + 40）<em> 1ms = 170ms。总共要随机读取四个扇区，用去的时间为：（0.01</em>0.5 + 0.0001）* 4 = 0.0204s = 20.4ms 所以，读完这个扇区点共需要 170ms + 20.4ms = 190.4ms。</p>
-<p>（3）采用FCFS调度策略更高效。随机访问的FLASH半导体存储器的物理结构不需要考虑寻道时间和旋转时间延时，可直接按请求的先后顺序执行。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;题目1&quot;&gt;&lt;a href=&quot;#题目1&quot; class=&quot;headerlink&quot; title=&quot;题目1&quot;&gt;&lt;/a&gt;题目1&lt;/h2&gt;&lt;p&gt;1、若干个等待访问磁盘者依次要访问的柱面为 20,44,40,4,80,12,76，假设每移动一个柱面需要3ms时间，移动臂当前位于40号柱面，磁头正向磁道好增加的方向移动，请按 FCFS, SSTF, SCAN 算法分别计算为完成上述访问总共花费的寻找时间。
-    
-    </summary>
-    
-      <category term="操作系统原理" scheme="http://www.dengfuping.com/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/"/>
-    
-    
-      <category term="操作系统原理" scheme="http://www.dengfuping.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/"/>
-    
-      <category term="磁盘" scheme="http://www.dengfuping.com/tags/%E7%A3%81%E7%9B%98/"/>
-    
-      <category term="disk" scheme="http://www.dengfuping.com/tags/disk/"/>
     
   </entry>
   
