@@ -86,19 +86,15 @@
 
 
 
-<meta name="description" content="instanceof 操作符（有限制）我们可以使用 instanceof 操作符来检测某个对象是否是数组的实例，该检测会返回一个布尔型值(boolean)。如果是数组的话，返回 true，否则的话返回 false
-12console.log([] instanceof Array);      // trueconsole.log(/\d+/g instanceof Array);  // fal">
 <meta property="og:type" content="article">
-<meta property="og:title" content="判断某个对象是否为数组的四种方法">
-<meta property="og:url" content="http://www.dengfuping.com/2017/04/21/judge-object-is-array-or-not/index.html">
+<meta property="og:title" content="JavaScript：正则表达式">
+<meta property="og:url" content="http://www.dengfuping.com/2017/04/23/javascript-regular-expression/index.html">
 <meta property="og:site_name" content="Deng | 不搭">
-<meta property="og:description" content="instanceof 操作符（有限制）我们可以使用 instanceof 操作符来检测某个对象是否是数组的实例，该检测会返回一个布尔型值(boolean)。如果是数组的话，返回 true，否则的话返回 false
-12console.log([] instanceof Array);      // trueconsole.log(/\d+/g instanceof Array);  // fal">
-<meta property="og:updated_time" content="2017-04-21T13:24:24.725Z">
+<meta property="og:image" content="http://i1.piimg.com/567571/aa45ebe58e9a229f.jpg">
+<meta property="og:updated_time" content="2017-05-02T10:12:44.442Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="判断某个对象是否为数组的四种方法">
-<meta name="twitter:description" content="instanceof 操作符（有限制）我们可以使用 instanceof 操作符来检测某个对象是否是数组的实例，该检测会返回一个布尔型值(boolean)。如果是数组的话，返回 true，否则的话返回 false
-12console.log([] instanceof Array);      // trueconsole.log(/\d+/g instanceof Array);  // fal">
+<meta name="twitter:title" content="JavaScript：正则表达式">
+<meta name="twitter:image" content="http://i1.piimg.com/567571/aa45ebe58e9a229f.jpg">
 
 
 <script>
@@ -130,9 +126,9 @@ var _hmt = _hmt || [];
 
 
 
-  <link rel="canonical" href="http://www.dengfuping.com/2017/04/21/judge-object-is-array-or-not/"/>
+  <link rel="canonical" href="http://www.dengfuping.com/2017/04/23/javascript-regular-expression/"/>
 
-  <title> 判断某个对象是否为数组的四种方法 | Deng | 不搭 </title>
+  <title> JavaScript：正则表达式 | Deng | 不搭 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -305,7 +301,7 @@ var _hmt = _hmt || [];
             
             
               
-                判断某个对象是否为数组的四种方法
+                JavaScript：正则表达式
               
             
           </h1>
@@ -317,8 +313,8 @@ var _hmt = _hmt || [];
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-04-21T20:41:13+08:00" content="2017-04-21">
-              2017-04-21
+            <time itemprop="dateCreated" datetime="2017-04-23T22:33:29+08:00" content="2017-04-23">
+              2017-04-23
             </time>
           </span>
 
@@ -347,8 +343,8 @@ var _hmt = _hmt || [];
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/04/21/judge-object-is-array-or-not/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/21/judge-object-is-array-or-not/" itemprop="commentsCount"></span>
+                <a href="/2017/04/23/javascript-regular-expression/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/23/javascript-regular-expression/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -358,7 +354,7 @@ var _hmt = _hmt || [];
 
           
           
-             <span id="/2017/04/21/judge-object-is-array-or-not/" class="leancloud_visitors" data-flag-title="判断某个对象是否为数组的四种方法">
+             <span id="/2017/04/23/javascript-regular-expression/" class="leancloud_visitors" data-flag-title="JavaScript：正则表达式">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -385,17 +381,42 @@ var _hmt = _hmt || [];
       
 
       
-        <h2 id="instanceof-操作符（有限制）"><a href="#instanceof-操作符（有限制）" class="headerlink" title="instanceof 操作符（有限制）"></a>instanceof 操作符（有限制）</h2><p>我们可以使用 instanceof 操作符来检测某个对象是否是数组的实例，该检测会返回一个布尔型值(boolean)。如果是数组的话，返回 true，否则的话返回 false</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log([] <span class="keyword">instanceof</span> <span class="built_in">Array</span>);      <span class="comment">// true</span></div><div class="line"><span class="built_in">console</span>.log(<span class="regexp">/\d+/g</span> <span class="keyword">instanceof</span> <span class="built_in">Array</span>);  <span class="comment">// false</span></div></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>使用 instanceof 操作符有一个问题就是，它假定只有一个全局作用域。如果一个网页中有多个框架（iframe 元素），那实际上就存在两个以上不同的全局执行环境，从而存在两个以上不同版本的 Array 构造函数。如果你从一个框架向另一个框架传入一个数组，那么传入的数组与在第二个框架中原生创建的数组分别具有各自不同的构造函数。传入的数组在该框架中用 instanceof 操作符判断就会返回 false。代码如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = &#123;&#125;;</div><div class="line"><span class="keyword">var</span> b = [];</div><div class="line"><span class="built_in">console</span>.log(a <span class="keyword">instanceof</span> <span class="built_in">Object</span>);              <span class="comment">//true</span></div><div class="line"><span class="built_in">console</span>.log(b <span class="keyword">instanceof</span> <span class="built_in">Array</span>);               <span class="comment">//true</span></div><div class="line">  </div><div class="line"><span class="keyword">var</span> frame = <span class="built_in">document</span>.createElement(<span class="string">"iframe"</span>);  <span class="comment">//创建一个框架</span></div><div class="line"><span class="built_in">document</span>.body.appendChild(frame);</div><div class="line"><span class="keyword">var</span> c = <span class="built_in">window</span>.frames[<span class="number">0</span>].Array;                <span class="comment">//取得框架全局执行环境中的Array构造函数</span></div><div class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> c();                               <span class="comment">//在框架全局执行环境中创建一个数组d</span></div><div class="line"></div><div class="line"><span class="comment">//在当前页面的执行环境中用instanceof 操作符判断 d 是否为数组，返回 false</span></div><div class="line"><span class="built_in">console</span>.log(d <span class="keyword">instanceof</span> <span class="built_in">Array</span>);   </div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Array</span>.isArray(d));                 <span class="comment">//true</span></div></pre></td></tr></table></figure>
-<h2 id="constructor-属性（有限制）"><a href="#constructor-属性（有限制）" class="headerlink" title="constructor 属性（有限制）"></a>constructor 属性（有限制）</h2><p>在javascript中，每个对象都有一个constructor属性，它引用了初始化该对象的构造函数，比如判断未知对象的类型，因此我们可以通过如下方法进行判断：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myIsArray</span>(<span class="params">obj</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">typeof</span> obj == <span class="string">'object'</span> &amp;&amp; obj.constructor == <span class="built_in">Array</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>与使用 instanceof 操作符一样，当存在多个全局作用域时，使用constructor 属性无法进行判断。</p>
-<h2 id="Array-isArray"><a href="#Array-isArray" class="headerlink" title="Array.isArray()"></a>Array.isArray()</h2><p>使用 <code>ES 5</code> 新增的Array.isArray()方法。这个方法的作用就是确定某个值到底是不是数组，而不管它到底是在哪个全局执行环境中创建的。</p>
-<h2 id="Object-prototype-toString-call"><a href="#Object-prototype-toString-call" class="headerlink" title="Object.prototype.toString.call()"></a>Object.prototype.toString.call()</h2><p>该方法返回一个 <code>[object NativeConstructorName]</code> 格式的字符串。每个类在内部都有一个 <code>[[Class]]</code> 属性，这个属性中就指定了上述字符串中的构造函数名。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myIsArray</span>(<span class="params">obj</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(obj) == <span class="string">'[object Array]'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <p><img src="http://i1.piimg.com/567571/aa45ebe58e9a229f.jpg" alt=""><br><a id="more"></a></p>
+<ol>
+<li>^ 匹配一个输入或一行的开头，<code>/^a/</code> 匹配”an A”，而不匹配”An a” </li>
+<li>$ 匹配一个输入或一行的结尾，<code>/a$/</code> 匹配”An a”，而不匹配”an A” </li>
+<li><ul>
+<li>匹配前面元字符0次或多次，<code>/ba*/</code> 将匹配b,ba,baa,baaa </li>
+</ul>
+</li>
+<li><ul>
+<li>匹配前面元字符1次或多次，<code>/ba*/</code> 将匹配ba,baa,baaa </li>
+</ul>
+</li>
+<li>? 匹配前面元字符0次或1次，<code>/ba*/</code> 将匹配b,ba </li>
+<li>(x) 匹配 x 保存 x 在名为 $1…$9 的变量中 </li>
+<li>x|y 匹配 x 或 y </li>
+<li>{n} 精确匹配 n 次 </li>
+<li>{n,} 匹配 n 次以上 </li>
+<li>{n, m} 匹配 n-m 次 </li>
+<li><code>[xyz]</code> 字符集(character set)，匹配这个集合中的任一一个字符(或元字符) </li>
+<li><code>[^xyz]</code> 不匹配这个集合中的任何一个字符 </li>
+<li>[\b] 匹配一个退格符 </li>
+<li>\b 匹配一个单词的边界 </li>
+<li>\B 匹配一个单词的非边界 </li>
+<li>\cX 这儿，X 是一个控制符，<code>/\cM/</code> 匹配 Ctrl-M </li>
+<li>\d 匹配一个字数字符，<code>/\d/ = /[0-9]/</code> </li>
+<li>\D 匹配一个非字数字符，<code>/\D/ = /[^0-9]/</code> </li>
+<li>\n 匹配一个换行符 </li>
+<li>\r 匹配一个回车符 </li>
+<li>\s 匹配一个空白字符，包括 \n, \r, \f, \t, \v 等 </li>
+<li>\S 匹配一个非空白字符，等于 <code>/[^\n\f\r\t\v]/</code> </li>
+<li>\t 匹配一个制表符 </li>
+<li>\v 匹配一个重直制表符 </li>
+<li>\w 匹配一个可以组成单词的字符(alphanumeric，这是我的意译，含数字)，包括下划线，如 <code>[\w]</code> 匹配 “$5.98” 中的 5，等于 <code>[a-zA-Z0-9]</code> </li>
+<li>\W 匹配一个不可以组成单词的字符，如 [\W] 匹配 “$5.98” 中的 $，等于 <code>[^a-zA-Z0-9]</code></li>
+<li>.（点符号）：除了换行符之外的任意字符,等价于 <code>[^\n]</code>（在2017年阿里巴巴春季实习生招聘的前端模拟笔试考察过这一知识点） </li>
+</ol>
 
       
     </div>
@@ -448,16 +469,16 @@ var _hmt = _hmt || [];
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/28/tencent-the-first-interview-summary/" rel="next" title="腾讯 2017 暑期实习生招聘电话一面总结">
-                <i class="fa fa-chevron-left"></i> 腾讯 2017 暑期实习生招聘电话一面总结
+              <a href="/2017/04/23/css-text-overflow-ellipsis/" rel="next" title="CSS 常用技巧（一）：文本溢出显示省略号">
+                <i class="fa fa-chevron-left"></i> CSS 常用技巧（一）：文本溢出显示省略号
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/23/es6-spread-operator/" rel="prev" title="ES6 学习笔记（一）：spread operator（展开运算符）">
-                ES6 学习笔记（一）：spread operator（展开运算符） <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/24/javascript-three-ways-of-event-binding/" rel="prev" title="JavaScript：事件绑定的三种方法">
+                JavaScript：事件绑定的三种方法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -487,8 +508,8 @@ var _hmt = _hmt || [];
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/04/21/judge-object-is-array-or-not/"
-           data-title="判断某个对象是否为数组的四种方法" data-url="http://www.dengfuping.com/2017/04/21/judge-object-is-array-or-not/">
+      <div class="ds-thread" data-thread-key="2017/04/23/javascript-regular-expression/"
+           data-title="JavaScript：正则表达式" data-url="http://www.dengfuping.com/2017/04/23/javascript-regular-expression/">
       </div>
     
   </div>
@@ -533,7 +554,7 @@ var _hmt = _hmt || [];
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-count">38</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -624,7 +645,7 @@ var _hmt = _hmt || [];
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#instanceof-操作符（有限制）"><span class="nav-number">1.</span> <span class="nav-text">instanceof 操作符（有限制）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#constructor-属性（有限制）"><span class="nav-number">2.</span> <span class="nav-text">constructor 属性（有限制）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-isArray"><span class="nav-number">3.</span> <span class="nav-text">Array.isArray()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-prototype-toString-call"><span class="nav-number">4.</span> <span class="nav-text">Object.prototype.toString.call()</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>
