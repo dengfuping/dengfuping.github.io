@@ -4,21 +4,6 @@
   
     
     <entry>
-      <title><![CDATA[Javascript 中 prototype 和 \_\_proto\_\_ 的区别和联系]]></title>
-      <url>http://www.dengfuping.com/2017/04/29/javascript-prototype-and-__proto__/</url>
-      <content type="html"><![CDATA[<h2 id="prototype（显式原型）"><a href="#prototype（显式原型）" class="headerlink" title="prototype（显式原型）"></a>prototype（显式原型）</h2><p>Javascript 规定，每一个构造函数都有一个 prototype 属性，指向另一个对象，我们称之为 <code>原型对象</code> 。原型对象的所有属性和方法，都会被构造函数的实例继承。这意味着，我们可以把那些不变的属性和方法，直接定义在 <code>原型对象</code> 上。</p>
-<p>注意：通过 Function.prototype.bind 方法构造出来的函数是个例外，它没有 prototype 属性。</p>
-<p>作用：用来 <code>实现基于原型的继承</code> 与 <code>属性的共享</code> 。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name, color</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.color = color;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Cat.prototype.type = <span class="string">"猫科动物"</span>;</div><div class="line">Cat.prototype.eat = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="string">"吃老鼠"</span>)&#125;;</div></pre></td></tr></table></figure>
-<h2 id="proto-（隐式原型）"><a href="#proto-（隐式原型）" class="headerlink" title="__proto__（隐式原型）"></a>__proto__（隐式原型）</h2><p>JavaScript 中任意对象都有一个内置属性 <code>__proto__</code> ，在 ES5 之前没有标准的方法访问这个内置属性，但是大多数浏览器都支持通过 __proto__ 来访问。ES5中有了对于这个内置属性标准的 Get 方法即 getPrototypeOf() 。</p>
-<p>注意：Object.prototype 这个对象是个例外，它的 __proto__ 值为 null 。</p>
-<p>作用：构成原型链，同样用于 <code>实现基于原型的继承</code> 。举个例子，当我们访问 obj 这个对象中的x属性时，如果在 obj 中找不到，那么就会沿着 <code>__proto__</code> 依次查找。</p>
-<h2 id="关系"><a href="#关系" class="headerlink" title="关系"></a>关系</h2><p>（1）对象有属性 <code>__proto__</code> ，指向该对象的构造函数的原型对象。<br>（2）构造函数除了有属性 <code>__proto__</code> ，还有属性 prototype ，prototype 指向该构造函数的原型对象。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name, color</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.color = color;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> cat = <span class="keyword">new</span> Cat(<span class="string">"Jetty"</span>, <span class="string">"red"</span>);</div><div class="line"><span class="built_in">console</span>.log(cat.__proto__ == Cat.prototype);    <span class="comment">// true</span></div></pre></td></tr></table></figure>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Fetch API 用法解析]]></title>
       <url>http://www.dengfuping.com/2017/04/25/fetch-api/</url>
       <content type="html"><![CDATA[<p>参考链接：<a href="http://javascript.ruanyifeng.com/bom/ajax.html#toc27" target="_blank" rel="external">http://javascript.ruanyifeng.com/bom/ajax.html#toc27</a><a id="more"></a></p>
@@ -93,12 +78,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[javascript-bubble-and-capture]]></title>
-      <url>http://www.dengfuping.com/2017/04/25/javascript-bubble-and-capture/</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[jQuery 事件绑定函数解析：bind, on, delegate]]></title>
       <url>http://www.dengfuping.com/2017/04/24/javascript-jquery-bind-on-delegate/</url>
       <content type="html"><![CDATA[<p>本篇文章主要是对 jQuery 中的四种事件绑定函数 bind, on, delegate, live 进行一个分析和比较。</p>
@@ -132,59 +111,6 @@
 <li>需要给动态添加的元素绑定时，用 delegate() 或者 on()。</li>
 <li>用 delegate() 和 on() 方法，DOM 树不要太深。</li>
 <li>尽量使用 on()。</li>
-</ol>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[JavaScript 事件绑定的三种方法]]></title>
-      <url>http://www.dengfuping.com/2017/04/24/javascript-three-ways-of-event-binding/</url>
-      <content type="html"><![CDATA[<h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"button1"</span> <span class="attr">onclick</span>=<span class="string">"click1()"</span>&gt;</span>按钮1<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">click1</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        alert(<span class="string">"你点击了按钮1"</span>);</div><div class="line">    &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"button2"</span>&gt;</span>按钮2<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"button2"</span>).onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        alert(<span class="string">"你点击了按钮2"</span>);</div><div class="line">    &#125;;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"button3"</span>&gt;</span>按钮3<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">click3</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        alert(<span class="string">"你点击了按钮3"</span>);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"button3"</span>).addEventListener(<span class="string">"click"</span>, click3, <span class="literal">false</span>);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>使用 <code>addEventlistener()</code> 可以多次绑定同一个事件，且都会执行。如果使用方法一绑定两个 <code>onclick</code> 事件，则只会执行第一个；而使用方法二绑定的只会执行最后一个事件。</p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[JavaScript 正则表达式]]></title>
-      <url>http://www.dengfuping.com/2017/04/23/javascript-regular-expression/</url>
-      <content type="html"><![CDATA[<p><img src="http://i1.piimg.com/567571/aa45ebe58e9a229f.jpg" alt=""><br><a id="more"></a></p>
-<ol>
-<li>^ 匹配一个输入或一行的开头，<code>/^a/</code> 匹配”an A”，而不匹配”An a” </li>
-<li>$ 匹配一个输入或一行的结尾，<code>/a$/</code> 匹配”An a”，而不匹配”an A” </li>
-<li><ul>
-<li>匹配前面元字符0次或多次，<code>/ba*/</code> 将匹配b,ba,baa,baaa </li>
-</ul>
-</li>
-<li><ul>
-<li>匹配前面元字符1次或多次，<code>/ba*/</code> 将匹配ba,baa,baaa </li>
-</ul>
-</li>
-<li>? 匹配前面元字符0次或1次，<code>/ba*/</code> 将匹配b,ba </li>
-<li>(x) 匹配 x 保存 x 在名为 $1…$9 的变量中 </li>
-<li>x|y 匹配 x 或 y </li>
-<li>{n} 精确匹配 n 次 </li>
-<li>{n,} 匹配 n 次以上 </li>
-<li>{n, m} 匹配 n-m 次 </li>
-<li><code>[xyz]</code> 字符集(character set)，匹配这个集合中的任一一个字符(或元字符) </li>
-<li><code>[^xyz]</code> 不匹配这个集合中的任何一个字符 </li>
-<li>[\b] 匹配一个退格符 </li>
-<li>\b 匹配一个单词的边界 </li>
-<li>\B 匹配一个单词的非边界 </li>
-<li>\cX 这儿，X 是一个控制符，<code>/\cM/</code> 匹配 Ctrl-M </li>
-<li>\d 匹配一个字数字符，<code>/\d/ = /[0-9]/</code> </li>
-<li>\D 匹配一个非字数字符，<code>/\D/ = /[^0-9]/</code> </li>
-<li>\n 匹配一个换行符 </li>
-<li>\r 匹配一个回车符 </li>
-<li>\s 匹配一个空白字符，包括 \n, \r, \f, \t, \v 等 </li>
-<li>\S 匹配一个非空白字符，等于 <code>/[^\n\f\r\t\v]/</code> </li>
-<li>\t 匹配一个制表符 </li>
-<li>\v 匹配一个重直制表符 </li>
-<li>\w 匹配一个可以组成单词的字符(alphanumeric，这是我的意译，含数字)，包括下划线，如 <code>[\w]</code> 匹配 “$5.98” 中的 5，等于 <code>[a-zA-Z0-9]</code> </li>
-<li>\W 匹配一个不可以组成单词的字符，如 [\W] 匹配 “$5.98” 中的 $，等于 <code>[^a-zA-Z0-9]</code></li>
-<li>.（点符号）：除了换行符之外的任意字符,等价于 <code>[^\n]</code>（在2017年阿里巴巴春季实习生招聘的前端模拟笔试考察过这一知识点） </li>
 </ol>
 ]]></content>
     </entry>
@@ -294,42 +220,6 @@
 <h2 id="Object-prototype-toString-call"><a href="#Object-prototype-toString-call" class="headerlink" title="Object.prototype.toString.call()"></a>Object.prototype.toString.call()</h2><p>该方法返回一个 <code>[object NativeConstructorName]</code> 格式的字符串。每个类在内部都有一个 <code>[[Class]]</code> 属性，这个属性中就指定了上述字符串中的构造函数名。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myIsArray</span>(<span class="params">obj</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(obj) == <span class="string">'[object Array]'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[JavaScript 常用基础函数解析]]></title>
-      <url>http://www.dengfuping.com/2017/04/21/javascript-basic-function/</url>
-      <content type="html"><![CDATA[<p><img src="http://i1.piimg.com/567571/ffcf817d274532d9.png" alt=""></p>
-<p>此文主要是对 JavaScript 的常用函数做一个总结和解析，方便理解和参考。</p>
-<a id="more"></a>
-<h2 id="slice"><a href="#slice" class="headerlink" title="slice()"></a>slice()</h2><ul>
-<li>操作对象：Array 和 String 对象</li>
-<li>原对象是否变化：<code>不变化</code></li>
-<li>函数用法：slice(start, end)</li>
-<li>函数功能：对数组或字符串进行 <code>截取</code> ，并返回一个数组副本。即原数组或字符串 <code>不会被修改</code> 。</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>];</div><div class="line"><span class="keyword">var</span> b = a.slice(<span class="number">0</span>, <span class="number">3</span>);  <span class="comment">// b = [1,2,3]</span></div><div class="line"></div><div class="line"><span class="comment">//如果不传入参数二，那么将从参数一的索引位置开始截取，一直到数组或字符串结尾</span></div><div class="line"><span class="keyword">var</span> c = a.slice(<span class="number">3</span>);     <span class="comment">// c = [4,5,6]</span></div><div class="line"></div><div class="line"><span class="comment">// 此时数组 a = [1, 2, 3, 4, 5, 6]</span></div></pre></td></tr></table></figure>
-<h2 id="split"><a href="#split" class="headerlink" title="split()"></a>split()</h2><ul>
-<li>操作对象：String 对象</li>
-<li>原对象是否发生变化：<code>不变化</code></li>
-<li>函数用法：split(start, end)</li>
-<li>函数功能：把这个字符串分割成片段来创建一个字符串数组。可选参数 <code>limit</code> 可以限制被分割的片段数量。<code>separator</code> 参数可以是一个字符串或一个正则表达式。如果 <code>separator</code> 是一个空字符，会返回一个单字符的数组。<code>可以将一个字符串变为数组</code> 。</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="string">"Hello World Are You Ok"</span>;</div><div class="line"><span class="keyword">var</span> b = a.split(<span class="string">" "</span>);        <span class="comment">// 分隔符为一个空格，返回 ["Hello", "World", "Are", "You", "Ok"]</span></div><div class="line"><span class="keyword">var</span> c = a.split(<span class="string">" "</span>, <span class="number">2</span>);     <span class="comment">// 分隔符为一个空格，且设置 limit 参数，则返回 ["Hello", "World"]</span></div><div class="line"><span class="keyword">var</span> d = a.split(<span class="string">""</span>);        <span class="comment">// 分隔符为空字符，返回 ["H", "e", "l", ... , "O", "k"]</span></div></pre></td></tr></table></figure>
-<h2 id="splice"><a href="#splice" class="headerlink" title="splice()"></a>splice()</h2><ul>
-<li>操作对象：Array 对象</li>
-<li>原对象是否发生变化：<code>不变化</code></li>
-<li>函数用法：splice(start, deleteCount, item1, item2,…)</li>
-<li>函数功能：参数 <code>start</code> 是从数组中移除元素的开始位置。参数 <code>deleteCount</code> 是要移除的元素的个数。后面的 item1, item2…是可选参数，表示会插入到被移除元素的位置上。</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>];</div><div class="line"><span class="keyword">var</span> b = a.splice(<span class="number">1</span>, <span class="number">1</span>, <span class="string">'e'</span>, <span class="string">'f'</span>);  <span class="comment">//a = ['a', 'e', 'f', 'c'], b = ['b']</span></div></pre></td></tr></table></figure>
-<h2 id="join"><a href="#join" class="headerlink" title="join()"></a>join()</h2><ul>
-<li>操作对象：Array 对象</li>
-<li>原对象是否发生变化：<code>变化</code></li>
-<li>函数用法：splice(separator)</li>
-<li>函数功能：把数组中的所有元素放入一个字符串，并使用指定的分隔符进行分隔的。其中 separator 为可选可选参数，指定要使用的分隔符。如果省略该参数，则使用 <code>逗号</code> 作为分隔符。 <code>可以将一个数组变为字符串</code> 。</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</div><div class="line"><span class="keyword">var</span> b = a.join(<span class="string">"&amp;"</span>);  <span class="comment">//  a = [1, 2, 3, 4, 5], b = "1&amp;2&amp;3&amp;4&amp;5"</span></div></pre></td></tr></table></figure>]]></content>
     </entry>
     
     <entry>
