@@ -88,13 +88,13 @@
 
 <meta name="description" content="prototype（显式原型）Javascript 规定，每一个构造函数都有一个 prototype 属性，指向另一个对象，我们称之为 原型对象 。原型对象的所有属性和方法，都会被构造函数的实例继承。这意味着，我们可以把那些不变的属性和方法，直接定义在 原型对象 上。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Javascript：prototype 和 \_\_proto\_\_ 的区别和联系">
+<meta property="og:title" content="Javascript：prototype 和 __proto__ 的区别和联系">
 <meta property="og:url" content="http://www.dengfuping.com/2017/04/29/javascript-prototype-and-__proto__/index.html">
 <meta property="og:site_name" content="Deng | 不搭">
 <meta property="og:description" content="prototype（显式原型）Javascript 规定，每一个构造函数都有一个 prototype 属性，指向另一个对象，我们称之为 原型对象 。原型对象的所有属性和方法，都会被构造函数的实例继承。这意味着，我们可以把那些不变的属性和方法，直接定义在 原型对象 上。">
-<meta property="og:updated_time" content="2017-05-02T10:12:37.096Z">
+<meta property="og:updated_time" content="2017-05-02T11:36:19.619Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Javascript：prototype 和 \_\_proto\_\_ 的区别和联系">
+<meta name="twitter:title" content="Javascript：prototype 和 __proto__ 的区别和联系">
 <meta name="twitter:description" content="prototype（显式原型）Javascript 规定，每一个构造函数都有一个 prototype 属性，指向另一个对象，我们称之为 原型对象 。原型对象的所有属性和方法，都会被构造函数的实例继承。这意味着，我们可以把那些不变的属性和方法，直接定义在 原型对象 上。">
 
 
@@ -129,7 +129,7 @@ var _hmt = _hmt || [];
 
   <link rel="canonical" href="http://www.dengfuping.com/2017/04/29/javascript-prototype-and-__proto__/"/>
 
-  <title> Javascript：prototype 和 \_\_proto\_\_ 的区别和联系 | Deng | 不搭 </title>
+  <title> Javascript：prototype 和 __proto__ 的区别和联系 | Deng | 不搭 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -302,7 +302,7 @@ var _hmt = _hmt || [];
             
             
               
-                Javascript：prototype 和 \_\_proto\_\_ 的区别和联系
+                Javascript：prototype 和 __proto__ 的区别和联系
               
             
           </h1>
@@ -355,7 +355,7 @@ var _hmt = _hmt || [];
 
           
           
-             <span id="/2017/04/29/javascript-prototype-and-__proto__/" class="leancloud_visitors" data-flag-title="Javascript：prototype 和 \_\_proto\_\_ 的区别和联系">
+             <span id="/2017/04/29/javascript-prototype-and-__proto__/" class="leancloud_visitors" data-flag-title="Javascript：prototype 和 __proto__ 的区别和联系">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -389,7 +389,7 @@ var _hmt = _hmt || [];
 <h2 id="proto-（隐式原型）"><a href="#proto-（隐式原型）" class="headerlink" title="__proto__（隐式原型）"></a>__proto__（隐式原型）</h2><p>JavaScript 中任意对象都有一个内置属性 <code>__proto__</code> ，在 ES5 之前没有标准的方法访问这个内置属性，但是大多数浏览器都支持通过 __proto__ 来访问。ES5中有了对于这个内置属性标准的 Get 方法即 getPrototypeOf() 。</p>
 <p>注意：Object.prototype 这个对象是个例外，它的 __proto__ 值为 null 。</p>
 <p>作用：构成原型链，同样用于 <code>实现基于原型的继承</code> 。举个例子，当我们访问 obj 这个对象中的x属性时，如果在 obj 中找不到，那么就会沿着 <code>__proto__</code> 依次查找。</p>
-<h2 id="关系"><a href="#关系" class="headerlink" title="关系"></a>关系</h2><p>（1）对象有属性 <code>__proto__</code> ，指向该对象的构造函数的原型对象。<br>（2）构造函数除了有属性 <code>__proto__</code> ，还有属性 prototype ，prototype 指向该构造函数的原型对象。</p>
+<h2 id="两者之间的关系"><a href="#两者之间的关系" class="headerlink" title="两者之间的关系"></a>两者之间的关系</h2><p>（1）对象有属性 <code>__proto__</code> ，指向该对象的构造函数的原型对象。<br>（2）构造函数除了有属性 <code>__proto__</code> ，还有属性 prototype ，prototype 指向该构造函数的原型对象。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name, color</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.color = color;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> cat = <span class="keyword">new</span> Cat(<span class="string">"Jetty"</span>, <span class="string">"red"</span>);</div><div class="line"><span class="built_in">console</span>.log(cat.__proto__ == Cat.prototype);    <span class="comment">// true</span></div></pre></td></tr></table></figure>
 
       
@@ -483,7 +483,7 @@ var _hmt = _hmt || [];
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2017/04/29/javascript-prototype-and-__proto__/"
-           data-title="Javascript：prototype 和 \_\_proto\_\_ 的区别和联系" data-url="http://www.dengfuping.com/2017/04/29/javascript-prototype-and-__proto__/">
+           data-title="Javascript：prototype 和 __proto__ 的区别和联系" data-url="http://www.dengfuping.com/2017/04/29/javascript-prototype-and-__proto__/">
       </div>
     
   </div>
@@ -528,7 +528,7 @@ var _hmt = _hmt || [];
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-count">39</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -619,7 +619,7 @@ var _hmt = _hmt || [];
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#prototype（显式原型）"><span class="nav-number">1.</span> <span class="nav-text">prototype（显式原型）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#proto-（隐式原型）"><span class="nav-number">2.</span> <span class="nav-text">__proto__（隐式原型）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关系"><span class="nav-number">3.</span> <span class="nav-text">关系</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#prototype（显式原型）"><span class="nav-number">1.</span> <span class="nav-text">prototype（显式原型）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#proto-（隐式原型）"><span class="nav-number">2.</span> <span class="nav-text">__proto__（隐式原型）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#两者之间的关系"><span class="nav-number">3.</span> <span class="nav-text">两者之间的关系</span></a></li></ol></div>
             
           </div>
         </section>
