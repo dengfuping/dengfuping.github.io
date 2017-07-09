@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dengfuping.com/"/>
-  <updated>2017-07-09T09:59:32.659Z</updated>
+  <updated>2017-07-09T14:02:09.635Z</updated>
   <id>http://www.dengfuping.com/</id>
   
   <author>
@@ -16,16 +16,73 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>JavaScript 开发规范</title>
+    <link href="http://www.dengfuping.com/2017/07/09/javascript-development-norm/"/>
+    <id>http://www.dengfuping.com/2017/07/09/javascript-development-norm/</id>
+    <published>2017-07-09T13:59:20.000Z</published>
+    <updated>2017-07-09T14:02:09.635Z</updated>
+    
+    <content type="html"><![CDATA[<p>参考文章：</p>
+<p><a href="http://www.cnblogs.com/polk6/p/4660195.html#Menu2-NoteStyle" target="_blank" rel="external">JavaScript 开发规范</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;参考文章：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/polk6/p/4660195.html#Menu2-NoteStyle&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;JavaScript 开发规范&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://www.dengfuping.com/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="http://www.dengfuping.com/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>五大浏览器内核</title>
+    <link href="http://www.dengfuping.com/2017/07/09/browser-kernel/"/>
+    <id>http://www.dengfuping.com/2017/07/09/browser-kernel/</id>
+    <published>2017-07-09T13:35:39.000Z</published>
+    <updated>2017-07-09T14:14:29.956Z</updated>
+    
+    <content type="html"><![CDATA[<p>浏览器的内核是分为两个部分的，一是 <code>渲染引擎</code>，另一个是 <code>JS引擎</code>。现在 JS 引擎比较独立，内核更加倾向于说渲染引擎。<a id="more"></a></p>
+<ol>
+<li>Trident 内核：代表作品是IE，因IE捆绑在Windows中，所以占有极高的份额，又称为IE内核或MSHTML，此内核只能用于Windows平台，且不是开源的。代表作品还有腾讯、Maxthon（遨游）、360浏览器等。但由于市场份额比较大，曾经出现脱离了W3C标准的时候，同时IE版本比较多，存在很多的兼容性问题。</li>
+<li>Gecko 内核：代表作品是 Firefox，即火狐浏览器。因火狐是其最多的用户，故常被称为 Firefox 内核它是开源的，最大优势是跨平台，在 Microsoft Windows、Linux、MacOS 等主要操作系统中使用。</li>
+<li>Webkit 内核：代表作品是 Safari、曾经的 Chrome，是开源的项目。</li>
+<li>Presto 内核：代表作品是 Opera，Presto 是由 Opera Software 开发的浏览器排版引擎，它是世界公认最快的渲染速度的引擎。在 2013 年，Opera宣布加入谷歌阵营，弃用了 Presto </li>
+<li>Blink 内核：由 Google 和 Opera Software 开发的浏览器排版引擎，2013年4月发布。现在Chrome 内核是 Blink。谷歌还开发了自己的 JS 引擎（V8），使 JS 运行速度极大地提高了</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;浏览器的内核是分为两个部分的，一是 &lt;code&gt;渲染引擎&lt;/code&gt;，另一个是 &lt;code&gt;JS引擎&lt;/code&gt;。现在 JS 引擎比较独立，内核更加倾向于说渲染引擎。
+    
+    </summary>
+    
+      <category term="前端开发" scheme="http://www.dengfuping.com/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="前端开发" scheme="http://www.dengfuping.com/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="浏览器" scheme="http://www.dengfuping.com/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    
+  </entry>
+  
+  <entry>
     <title>javascript-caller-and-callee</title>
     <link href="http://www.dengfuping.com/2017/07/09/javascript-caller-and-callee/"/>
     <id>http://www.dengfuping.com/2017/07/09/javascript-caller-and-callee/</id>
     <published>2017-07-09T09:44:43.000Z</published>
-    <updated>2017-07-09T09:59:32.659Z</updated>
+    <updated>2017-07-09T13:59:41.413Z</updated>
     
     <content type="html"><![CDATA[<h2 id="caller"><a href="#caller" class="headerlink" title="caller"></a>caller</h2><p>caller 是函数对象的一个属性，返回一个函数的引用，该函数调用了当前函数。使用这个属性是要注意：</p>
 <ul>
 <li>这个属性只有当函数在执行时才有用；</li>
-<li>如果在 JavaScript 程序中，函数是由顶层调用的，则返回 null。</li>
+<li>如果在 JavaScript 程序中，函数是由顶层调用的，则返回 null。<a id="more"></a></li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;   </div><div class="line">    <span class="built_in">console</span>.log(a.caller);   </div><div class="line">&#125;</div><div class="line">   </div><div class="line"><span class="keyword">var</span> b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;   </div><div class="line">    a();   </div><div class="line">&#125;</div><div class="line">   </div><div class="line">b();</div></pre></td></tr></table></figure>
 <p>输出的结果为：</p>
@@ -47,6 +104,9 @@
     <summary type="html">
     
       &lt;h2 id=&quot;caller&quot;&gt;&lt;a href=&quot;#caller&quot; class=&quot;headerlink&quot; title=&quot;caller&quot;&gt;&lt;/a&gt;caller&lt;/h2&gt;&lt;p&gt;caller 是函数对象的一个属性，返回一个函数的引用，该函数调用了当前函数。使用这个属性是要注意：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;这个属性只有当函数在执行时才有用；&lt;/li&gt;
+&lt;li&gt;如果在 JavaScript 程序中，函数是由顶层调用的，则返回 null。
     
     </summary>
     
@@ -631,88 +691,6 @@
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>jQuery 事件绑定函数解析：bind, on, delegate</title>
-    <link href="http://www.dengfuping.com/2017/04/24/javascript-jquery-bind-on-delegate/"/>
-    <id>http://www.dengfuping.com/2017/04/24/javascript-jquery-bind-on-delegate/</id>
-    <published>2017-04-24T03:05:16.000Z</published>
-    <updated>2017-05-02T10:12:11.508Z</updated>
-    
-    <content type="html"><![CDATA[<p>本篇文章主要是对 jQuery 中的四种事件绑定函数 bind, on, delegate, live 进行一个分析和比较。</p>
-<p>先准备一个html页面再对其中的元素进行事件绑定：<a id="more"></a></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>bind-on-delegate-live<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"button"</span>&gt;</span>添加新的p元素<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>第一个p元素<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>第二个p元素<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>第三个p元素<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>第四个p元素<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>第五个p元素<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    $(<span class="string">"#button"</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        $(<span class="string">"div"</span>).append(<span class="string">"&lt;p&gt;这是一个新的p元素&lt;/p&gt;"</span>)</div><div class="line">    &#125;);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>一个简单的页面，放置了一个div，div里面若干个p元素和一个按钮，点击按钮可以追加p元素。我们下面将对页面上的p元素绑定click事件。</p>
-<h2 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// bind</span></div><div class="line">$(<span class="string">"div p"</span>).bind(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    alert($(<span class="keyword">this</span>).text());</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// bind 的简写形式</span></div><div class="line">$(<span class="string">"div p"</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    alert($(<span class="keyword">this</span>).text());</div></pre></td></tr></table></figure>
-<ol>
-<li>这里用了隐式迭代的方法，如果匹配到的元素特别多的时候，比如如果我在 div 里放了 50 个 p 元素，就得执行绑定 50 次。对于大量元素来说，影响到了性能。但是如果是 id 选择器，因为id唯一，用 bind() 方法就很快捷了。</li>
-<li>对于尚未存在的元素，无法绑定。点击页面上的按钮，将动态添加一个p元素，点击这个 p 元素，会发现没有动作响应。</li>
-</ol>
-<p>使用 delegate 可以解决以上这两个问题。</p>
-<h2 id="delegate"><a href="#delegate" class="headerlink" title="delegate"></a>delegate</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// delegate</span></div><div class="line">$(<span class="string">"div"</span>).delegate(<span class="string">"p"</span>, <span class="string">"click"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    alert($(<span class="keyword">this</span>).text());</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<ol>
-<li><p>这种方式采用了事件委托的概念。不是直接为 p 元素绑定事件，而是为其父元素（或祖先元素也可）绑定事件，当在 div 内任意元素上点击时，事件会一层层从 event target向上冒泡，直至到达你为其绑定事件的元素，如此例中的div元素。冒泡的过程中，如果事件的 currentTarget 与选择器匹配时，就会执行代码。</p>
-</li>
-<li><p>这样就解决了用 bind() 方法的上面两个问题，不用再一个个地去为 p 元素绑定事件，也可以为动态添加进来的 p 元素绑定。甚至，如果你将事件绑定到 document 上，都不用等 document 准备好就可执行绑定。</p>
-</li>
-<li><p>这样，绑定是容易了，但是调用的时候也可能出现问题。如果事件目标在 DOM 树中很深的位置，这样一层层冒泡上来查找与选择器匹配的元素，又影响到性能了。</p>
-</li>
-</ol>
-<h2 id="on"><a href="#on" class="headerlink" title="on"></a>on</h2><p>on() 其实是将以前的绑定事件方法作了统一，查看 jQuery 无压缩的源码（版本 1.11.3），可以发现无论 bind() 还是 delegate() 其实都是通过 on() 方法实现的，只是参数不同罢了。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">bind: <span class="function"><span class="keyword">function</span>(<span class="params"> types, data, fn </span>) </span>&#123;</div><div class="line">     <span class="keyword">return</span> <span class="keyword">this</span>.on( types, <span class="literal">null</span>, data, fn );</div><div class="line">&#125;,</div><div class="line"><span class="attr">unbind</span>: <span class="function"><span class="keyword">function</span>(<span class="params"> types, fn </span>) </span>&#123;</div><div class="line">     <span class="keyword">return</span> <span class="keyword">this</span>.off( types, <span class="literal">null</span>, fn );</div><div class="line">&#125;,</div><div class="line"><span class="attr">delegate</span>: <span class="function"><span class="keyword">function</span>(<span class="params"> selector, types, data, fn </span>) </span>&#123;</div><div class="line">     <span class="keyword">return</span> <span class="keyword">this</span>.on( types, selector, data, fn );</div><div class="line">&#125;</div><div class="line">undelegate: <span class="function"><span class="keyword">function</span>(<span class="params"> selector, types, fn </span>) </span>&#123;</div><div class="line"> <span class="comment">// ( namespace ) or ( selector, types [, fn] )</span></div><div class="line">     <span class="keyword">return</span> <span class="built_in">arguments</span>.length === <span class="number">1</span> ? <span class="keyword">this</span>.off( selector, <span class="string">"**"</span> ) : <span class="keyword">this</span>.off( types, selector || <span class="string">"**"</span>, fn );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>用法如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// on</span></div><div class="line">$(<span class="string">"div"</span>).on(<span class="string">"click"</span>, <span class="string">"p"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    alert($(<span class="keyword">this</span>).text());</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h2 id="移除事件"><a href="#移除事件" class="headerlink" title="移除事件"></a>移除事件</h2><p>对应于 bind()、delegate() 和 on() 绑定方法，其移除事件的方法分别为：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$( <span class="string">"div p"</span> ).unbind( <span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;);</div><div class="line">$( <span class="string">"div"</span> ).undelegate( <span class="string">"p"</span>, <span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;);</div><div class="line">$( <span class="string">"div"</span> ).off( <span class="string">"click"</span>, <span class="string">"p"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;);</div></pre></td></tr></table></figure>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
-<li>选择器匹配到的元素比较多时，不要用 bind() 迭代绑定。</li>
-<li>用 id 选择器时，可以用 bind()。</li>
-<li>需要给动态添加的元素绑定时，用 delegate() 或者 on()。</li>
-<li>用 delegate() 和 on() 方法，DOM 树不要太深。</li>
-<li>尽量使用 on()。</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本篇文章主要是对 jQuery 中的四种事件绑定函数 bind, on, delegate, live 进行一个分析和比较。&lt;/p&gt;
-&lt;p&gt;先准备一个html页面再对其中的元素进行事件绑定：
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="http://www.dengfuping.com/categories/JavaScript/"/>
-    
-    
-      <category term="JavaScript" scheme="http://www.dengfuping.com/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JavaScript：事件绑定的三种方法</title>
-    <link href="http://www.dengfuping.com/2017/04/24/javascript-three-ways-of-event-binding/"/>
-    <id>http://www.dengfuping.com/2017/04/24/javascript-three-ways-of-event-binding/</id>
-    <published>2017-04-24T02:43:36.000Z</published>
-    <updated>2017-05-02T10:12:52.814Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"button1"</span> <span class="attr">onclick</span>=<span class="string">"click1()"</span>&gt;</span>按钮1<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">click1</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        alert(<span class="string">"你点击了按钮1"</span>);</div><div class="line">    &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"button2"</span>&gt;</span>按钮2<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"button2"</span>).onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        alert(<span class="string">"你点击了按钮2"</span>);</div><div class="line">    &#125;;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"button3"</span>&gt;</span>按钮3<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">click3</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        alert(<span class="string">"你点击了按钮3"</span>);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"button3"</span>).addEventListener(<span class="string">"click"</span>, click3, <span class="literal">false</span>);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>使用 <code>addEventlistener()</code> 可以多次绑定同一个事件，且都会执行。如果使用方法一绑定两个 <code>onclick</code> 事件，则只会执行第一个；而使用方法二绑定的只会执行最后一个事件。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;方法一&quot;&gt;&lt;a href=&quot;#方法一&quot; class=&quot;headerlink&quot; title=&quot;方法一&quot;&gt;&lt;/a&gt;方法一&lt;/h2&gt;&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;button&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;button1&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;onclick&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;click1()&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;按钮1&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;button&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;javascript&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;click1&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        alert(&lt;span class=&quot;string&quot;&gt;&quot;你点击了按钮1&quot;&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="http://www.dengfuping.com/categories/JavaScript/"/>
-    
-    
-      <category term="JavaScript" scheme="http://www.dengfuping.com/tags/JavaScript/"/>
     
   </entry>
   
