@@ -86,16 +86,16 @@
 
 
 
-<meta name="description" content="一、通过扩展 Object 实现123456789101112131415161718192021// 定义一个父类function Parent(add)&amp;#123;    this.add = add;&amp;#125;// 定义一个子类function Child(name)&amp;#123;    this.name = name;&amp;#125;// 定义一个全局都可以用的继承方法Object.prot">
+<meta name="description" content="一、通过扩展 Object 实现1234567891011121314151617181920// 定义一个父类function Parent(add)&amp;#123;    this.add = add;&amp;#125;// 定义一个子类function Child(name)&amp;#123;    this.name = name;&amp;#125;// 定义一个全局都可以用的继承方法Object.protot">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript：实现类继承的三种方法">
 <meta property="og:url" content="http://www.dengfuping.com/2017/05/10/javascript-class-inheritence/index.html">
 <meta property="og:site_name" content="Deng | 不搭">
-<meta property="og:description" content="一、通过扩展 Object 实现123456789101112131415161718192021// 定义一个父类function Parent(add)&amp;#123;    this.add = add;&amp;#125;// 定义一个子类function Child(name)&amp;#123;    this.name = name;&amp;#125;// 定义一个全局都可以用的继承方法Object.prot">
-<meta property="og:updated_time" content="2017-05-10T00:13:15.872Z">
+<meta property="og:description" content="一、通过扩展 Object 实现1234567891011121314151617181920// 定义一个父类function Parent(add)&amp;#123;    this.add = add;&amp;#125;// 定义一个子类function Child(name)&amp;#123;    this.name = name;&amp;#125;// 定义一个全局都可以用的继承方法Object.protot">
+<meta property="og:updated_time" content="2017-05-10T02:49:58.989Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript：实现类继承的三种方法">
-<meta name="twitter:description" content="一、通过扩展 Object 实现123456789101112131415161718192021// 定义一个父类function Parent(add)&amp;#123;    this.add = add;&amp;#125;// 定义一个子类function Child(name)&amp;#123;    this.name = name;&amp;#125;// 定义一个全局都可以用的继承方法Object.prot">
+<meta name="twitter:description" content="一、通过扩展 Object 实现1234567891011121314151617181920// 定义一个父类function Parent(add)&amp;#123;    this.add = add;&amp;#125;// 定义一个子类function Child(name)&amp;#123;    this.name = name;&amp;#125;// 定义一个全局都可以用的继承方法Object.protot">
 
 
 <script>
@@ -382,8 +382,8 @@ var _hmt = _hmt || [];
       
 
       
-        <h2 id="一、通过扩展-Object-实现"><a href="#一、通过扩展-Object-实现" class="headerlink" title="一、通过扩展 Object 实现"></a>一、通过扩展 Object 实现</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 定义一个父类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params">add</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.add = add;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 定义一个子类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 定义一个全局都可以用的继承方法</span></div><div class="line"><span class="built_in">Object</span>.prototype.extend = <span class="function"><span class="keyword">function</span>(<span class="params">ParentObj</span>)</span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> ParentObj)&#123;</div><div class="line">        <span class="keyword">this</span>[i] = ParentObj[i]</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"></div><div class="line">Child.extend(Parent(<span class="string">'China'</span>)); <span class="comment">// 使用我们的方法进行继承</span></div><div class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> Child(<span class="string">'lemon'</span>)   <span class="comment">// 实例化对象（初始化数据）</span></div><div class="line"><span class="built_in">console</span>.log(obj.add);  <span class="comment">// 此时我们就可以调用父类中的方法或属性了，输出结果：China</span></div></pre></td></tr></table></figure>
-<p>这种方法的原理是通过 <code>浅拷贝</code> 实现的，实际上是将父类的所以属性复制到子类当中，从而使得子类可以访问父类的属性。</p>
+        <h2 id="一、通过扩展-Object-实现"><a href="#一、通过扩展-Object-实现" class="headerlink" title="一、通过扩展 Object 实现"></a>一、通过扩展 Object 实现</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 定义一个父类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params">add</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.add = add;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 定义一个子类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 定义一个全局都可以用的继承方法</span></div><div class="line"><span class="built_in">Object</span>.prototype.extend = <span class="function"><span class="keyword">function</span>(<span class="params">ParentObj</span>)</span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> ParentObj)&#123;</div><div class="line">        <span class="keyword">this</span>[i] = ParentObj[i]</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">Child.extend(Parent(<span class="string">'China'</span>)); <span class="comment">// 使用我们的方法进行继承</span></div><div class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> Child(<span class="string">'lemon'</span>)   <span class="comment">// 实例化对象（初始化数据）</span></div><div class="line"><span class="built_in">console</span>.log(obj.add);  <span class="comment">// 此时我们就可以调用父类中的方法或属性了，输出结果：China</span></div></pre></td></tr></table></figure>
+<p>这种方法的原理是通过 <code>浅拷贝</code> 实现的，实际上是将父类的所以属性复制到子类当中，从而使得子类可以访问父类的属性。<a id="more"></a></p>
 <p>##</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
 <p>##</p>
@@ -446,6 +446,10 @@ var _hmt = _hmt || [];
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/10/react-virtual-dom/" rel="prev" title="React 虚拟 DOM 浅析">
+                React 虚拟 DOM 浅析 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -520,7 +524,7 @@ var _hmt = _hmt || [];
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">44</span>
+              <span class="site-state-item-count">51</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -528,7 +532,7 @@ var _hmt = _hmt || [];
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -537,7 +541,7 @@ var _hmt = _hmt || [];
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">71</span>
+                <span class="site-state-item-count">74</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

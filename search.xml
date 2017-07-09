@@ -4,10 +4,145 @@
   
     
     <entry>
+      <title><![CDATA[javascript-caller-and-callee]]></title>
+      <url>http://www.dengfuping.com/2017/07/09/javascript-caller-and-callee/</url>
+      <content type="html"><![CDATA[<h2 id="caller"><a href="#caller" class="headerlink" title="caller"></a>caller</h2><p>caller 是函数对象的一个属性，返回一个函数的引用，该函数调用了当前函数。使用这个属性是要注意：</p>
+<ul>
+<li>这个属性只有当函数在执行时才有用；</li>
+<li>如果在 JavaScript 程序中，函数是由顶层调用的，则返回 null。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;   </div><div class="line">    <span class="built_in">console</span>.log(a.caller);   </div><div class="line">&#125;</div><div class="line">   </div><div class="line"><span class="keyword">var</span> b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;   </div><div class="line">    a();   </div><div class="line">&#125;</div><div class="line">   </div><div class="line">b();</div></pre></td></tr></table></figure>
+<p>输出的结果为：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;   </div><div class="line">    a();   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>但若是将代码改为：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;   </div><div class="line">    <span class="built_in">console</span>.log(a.caller);   </div><div class="line">&#125;</div><div class="line">   </div><div class="line"><span class="keyword">var</span> b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;   </div><div class="line">    a();   </div><div class="line">&#125;</div><div class="line">   </div><div class="line">a();</div></pre></td></tr></table></figure>
+<p>输出的结果为 <code>null</code>。</p>
+<h2 id="callee"><a href="#callee" class="headerlink" title="callee"></a>callee</h2><p>callee 返回正在执行的函数本身的引用，它是 arguments 的一个属性。使用 callee 时要注意:</p>
+<ul>
+<li>这个属性只有在函数执行时才有效；</li>
+<li>它有一个 length 属性，可以用来获得形参的个数，因此可以用来比较形参和实参个数是否一致，即比较 arguments.length 是否等于 arguments.callee.length；</li>
+<li>它可以用来递归匿名函数。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;   </div><div class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>.callee);   </div><div class="line">&#125;</div><div class="line">   </div><div class="line"><span class="keyword">var</span> b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;   </div><div class="line">    a();   </div><div class="line">&#125;</div><div class="line">   </div><div class="line">b();</div></pre></td></tr></table></figure>
+<p>输出结果为：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;   </div><div class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>.callee);   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[JavaScript：单例模式的实现方法]]></title>
+      <url>http://www.dengfuping.com/2017/06/14/javascript-singleton/</url>
+      <content type="html"><![CDATA[<p>参考文章：</p>
+<p><a href="https://juejin.im/post/593e116c61ff4b006c995c93?utm_source=gold_browser_extension" target="_blank" rel="external">JS 的平凡之路 – 单例模式的各种实现方式</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Javascript：链式调用]]></title>
+      <url>http://www.dengfuping.com/2017/05/23/javascript-call-by-chaining/</url>
+      <content type="html"><![CDATA[<p>最近在研究 jQuery 的源码，发现自己对其链式调用还理解不是很深。今天趁此机会，就来谈一谈 JavaScript 中的链式调用<br>链式调用我们平常用到很多，比如 jQuery 中的$(ele).show().find(child).hide()，再比如angularjs中的$http.get(url).success(fn_s).error(fn_e)。但这都是已经包装好的链式调用，我们只能体会链式调用带来的方便，却不知道形成这样一条函数链的原理是什么。<a id="more"></a></p>
+<p>　　随着链式调用的普及，实现的方案也越来越多。最常见的，是jQuery直接返回this的方式，underscore的可选式的方式，和lodash惰性求值的方式。我们分别来了解，并逐个完成它们的demo。</p>
+<p>参考文章：</p>
+<p><a href="http://www.cnblogs.com/tarol/p/5336666.html" target="_blank" rel="external">玩一把JS的链式调用</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[JavaScript：事件代理（委托）的兼容性]]></title>
+      <url>http://www.dengfuping.com/2017/05/14/javascript-event-delegate-compatibility/</url>
+      <content type="html"><![CDATA[<p>由于网上的很多文章都介绍了 js 中的事件代理，因此本文只探讨一些关于事件代理中容易被忽视的两个问题，那就是原生 js 实现和其在浏览器中的兼容性问题。</p>
+<p>相信很多人都知道，借助 jQuery 中的 delegate() 和 on() 函数我们可以轻松实现事件代理，具体使用方式可以参考我的另外一篇文章：<a href="http://www.dengfuping.com/2017/04/24/javascript-jquery-bind-on-delegate/">jQuery 事件绑定函数解析：bind, on, delegate</a> </p>
+<p>但今天我们要探讨的是如何使用原生 js 来实现事件代理：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>事件代理<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"ul"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>这是第一个li元素<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>这是第二个li元素<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>这是第三个li元素<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>这是第四个li元素<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>这是第五个li元素<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="keyword">var</span> ul = <span class="built_in">document</span>.getElementById(<span class="string">'ul'</span>);</div><div class="line">    ul.onclick = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> myEvent = event || <span class="built_in">window</span>.event;</div><div class="line">        <span class="keyword">var</span> target = myEvent.target || myEvent.srcElement;</div><div class="line">        <span class="keyword">if</span> (target.nodeName.toLocaleLowerCase() == <span class="string">'li'</span>)&#123;</div><div class="line">            alert(target.firstChild.nodeValue);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>针对上面的代码做几点说明：</p>
+<ul>
+<li>event对象用于存储事件的数据，例如触发事件的元素、鼠标的位置及状态、按下的键等等；event对象只在事件发生的过程中才有效。</li>
+<li>firefox 跟其他浏览器中使用的 event 的方法不同，其他浏览器中的 event 是全局变量，随时可用；firefox需要在事件方法的参数里写 event 才能用，是运行时的临时变量。也就是说，在其他浏览器中，是 window.event，而在 firefox 中是 event；</li>
+<li>要获取事件目标，其它浏览器调用的是 event.target 属性，而在 IE 中则需要调用的是 event.srcElement 属性。</li>
+</ul>
+<p>所以在使用原生的 js 实现事件代理时既要考虑 firefox 下的兼容性又要考虑 IE 下的兼容性，这也是面试和实际应用当中会遇到的问题。而在使用 jQuery 时它会帮你做这些兼容性处理。进一步来看，这也可以看成是 jQuery 实现事件委托的基本原理。</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[网络安全之 CSRF 攻击]]></title>
+      <url>http://www.dengfuping.com/2017/05/11/web-security-csrf-attack/</url>
+      <content type="html"><![CDATA[<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>跨站请求伪造（Cross-site request forgery），通常缩写为 CSRF 或者 XSRF， 是一种挟制用户在当前已登录的 Web 应用程序上执行非本意的操作的攻击方法。</p>
+<blockquote>
+<p>跟跨网站脚本（XSS）相比，XSS 利用的是用户对指定网站的信任，CSRF 利用的是网站对用户网页浏览器的信任。</p>
+</blockquote>
+<p>参考文章：</p>
+<p><a href="https://juejin.im/post/583d6384a22b9d006a93c868" target="_blank" rel="external">Token 验证防止 CSRF 攻击的原理</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[网络安全之 XSS 攻击]]></title>
+      <url>http://www.dengfuping.com/2017/05/11/web-security-xss-attack/</url>
+      <content type="html"><![CDATA[<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>XSS，全称是跨站脚本攻击（Cross-site scripting），为了不和层叠样式表(CSS)的缩写混淆，故将跨站脚本攻击缩写为XSS。恶意攻击者往Web页面里插入恶意的 script 代码，当用户浏览该页之时，嵌入其中的 script 代码会被执行，从而达到恶意攻击用户的目的，如盗取用户的 cookie 等敏感信息</p>
+<h2 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h2><h3 id="存储型-XSS"><a href="#存储型-XSS" class="headerlink" title="存储型 XSS"></a>存储型 XSS</h3><p>数据库中存有的存在XSS攻击的数据，返回给客户端。若数据未经过任何转义。被浏览器渲染。就可能导致XSS攻击。</p>
+<h3 id="反射型-XSS"><a href="#反射型-XSS" class="headerlink" title="反射型 XSS"></a>反射型 XSS</h3><p>将用户输入的存在XSS攻击的数据，发送给后台，后台并未对数据进行存储，也未经过任何过滤，直接返回给客户端。被浏览器渲染。就可能导致XSS攻击。</p>
+<h3 id="DOM-XSS"><a href="#DOM-XSS" class="headerlink" title="DOM XSS"></a>DOM XSS</h3><p>纯粹发生在客户端的XSS攻击，比如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http:<span class="comment">//www.some.site/page.html?default=French</span></div></pre></td></tr></table></figure>
+<p>页面代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt; </div><div class="line"><span class="built_in">document</span>.write(<span class="string">"&lt;OPTION value=1&gt;"</span>+<span class="built_in">document</span>.location.href.substring(<span class="built_in">document</span>.location.href.indexOf(<span class="string">"default="</span>)+<span class="number">8</span>)+<span class="string">"&lt;/OPTION&gt;"</span>);  </div><div class="line"><span class="built_in">document</span>.write(<span class="string">"&lt;OPTION value=2&gt;English&lt;/OPTION&gt;"</span>);    </div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div></pre></td></tr></table></figure>
+<p>该XSS攻击实现条件：</p>
+<p>（1）用户点击了如下连接：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http:<span class="comment">//www.some.site/page.html?default=&lt;script&gt;alert(document.cookie)&lt;/script&gt;</span></div></pre></td></tr></table></figure>
+<p>（2）后台对URL参数未做任何过滤处理，返回给客户端，前端直接从url上获取参数。</p>
+<p>（3）打开网址的浏览器是低版本浏览器，常见ie8以下。</p>
+<p>满足以上三者，就会导致URL上的js代码执行:alert(document.cookie)，但是攻击者可以利用这个，做你无法想象的事情。在现代浏览器中，已经做了xss过滤，一旦检测到xss,会提示报错如下:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">The XSS Auditor refused to execute a script <span class="keyword">in</span> <span class="string">'file:///C:/Users/summerhxji/Desktop/taobao/xss.html?default=%3Cscript%3Ealert(document.cookie)%3C/script%3E'</span> because its source code was found within the request. The auditor was enabled <span class="keyword">as</span> the server did not send an <span class="string">'X-XSS-Protection'</span> header.</div><div class="line">(anonymous) @ xss.html?<span class="keyword">default</span>=<span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">alert(<span class="built_in">document</span>.cookie)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div></pre></td></tr></table></figure>
+<p>以上便是学术上的划分的XSS攻击类型，2、3类型其实都是反射型的攻击。了解了这些，意识到XSS攻击无处不在啊。</p>
+<h2 id="防御方法"><a href="#防御方法" class="headerlink" title="防御方法"></a>防御方法</h2><p>（1）从输入和输出进行过滤和转义。可以使用 htmlspecialchars() 等函数进行过滤转义，当然，一些文件上传等，也可能会造成此攻击，要限制上传文件的类型，比如只能传图片等。</p>
+<p>参考文章：</p>
+<p><a href="https://www.zhuyingda.com/blog/article.html?id=2" target="_blank" rel="external">XSS漏洞的原理</a></p>
+<p><a href="http://mp.weixin.qq.com/s/6ChuUdOm7vej8vQ3dbC8fw" target="_blank" rel="external">XSS攻击和防御详解</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[React 虚拟 DOM 浅析]]></title>
+      <url>http://www.dengfuping.com/2017/05/10/react-virtual-dom/</url>
+      <content type="html"><![CDATA[<p>在 Web 开发中，需要将数据的变化实时反映到UI上，这时就需要对 DOM 进行操作，但是复杂或频繁的DOM操作通常是性能瓶颈产生的原因，为此，React 引入了虚拟 DOM（Virtual DOM）的机制。<a id="more"></a></p>
+<h2 id="什么是虚拟-DOM"><a href="#什么是虚拟-DOM" class="headerlink" title="什么是虚拟 DOM"></a>什么是虚拟 DOM</h2><p>在React中，render执行的结果得到的并不是真正的DOM节点，结果仅仅是轻量级的JavaScript对象，我们称之为virtual DOM。</p>
+<p>虚拟DOM是React的一大亮点，具有batching(批处理)和高效的Diff算法。这让我们可以无需担心性能问题而”毫无顾忌”的随时“刷新”整个页面，由虚拟 DOM来确保只对界面上真正变化的部分进行实际的DOM操作。在实际开发中基本无需关心虚拟DOM是如何运作的，但是理解其运行机制不仅有助于更好的理解React组件的生命周期，而且对于进一步优化 React程序也会有很大帮助。</p>
+<h2 id="虚拟DOM-vs-直接操作原生DOM？"><a href="#虚拟DOM-vs-直接操作原生DOM？" class="headerlink" title="虚拟DOM vs 直接操作原生DOM？"></a>虚拟DOM vs 直接操作原生DOM？</h2><p>如果没有 Virtual DOM，简单来说就是直接重置 innerHTML。这样操作，在一个大型列表所有数据都变了的情况下，还算是合理，但是，当只有一行数据发生变化时，它也需要重置整个 innerHTML，这时候显然就造成了大量浪费。</p>
+<p>比较innerHTML 和Virtual DOM 的重绘过程如下：</p>
+<ul>
+<li>innerHTML: render html string + 重新创建所有 DOM 元素</li>
+<li>Virtual DOM: render Virtual DOM + diff + 必要的 DOM 更新</li>
+</ul>
+<p>和 DOM 操作比起来，js 计算是非常便宜的。Virtual DOM render + diff 显然比渲染 html 字符串要慢，但是，它依然是纯 js 层面的计算，比起后面的 DOM 操作来说，依然便宜了太多。当然，曾有人做过验证说React的性能不如直接操作真实DOM，代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Raw</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> data = _buildData(),</div><div class="line">        html = <span class="string">""</span>;</div><div class="line">    ...</div><div class="line">    for(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;data.length; i++) &#123;</div><div class="line">        <span class="keyword">var</span> render = template;</div><div class="line">        render = render.replace(<span class="string">"&#123;&#123;className&#125;&#125;"</span>, <span class="string">""</span>);</div><div class="line">        render = render.replace(<span class="string">"&#123;&#123;label&#125;&#125;"</span>, data[i].label);</div><div class="line">        html += render;</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">    container.innerHTML = html;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>该测试用例中虽然构造了一个包含1000个Tag的String，并把它添加到DOM树中，但是只做了一次DOM操作。然而，在实际开发过程中，这1000个元素更新可能分布在20个逻辑块中，每个逻辑块中包含50个元素，当页面需要更新时，都会引起DOM树的更新，上述代码就近似变成了如下格式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Raw</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> data = _buildData(),</div><div class="line">        html = <span class="string">""</span>;</div><div class="line">    ...</div><div class="line">    for(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;data.length; i++) &#123;</div><div class="line">        <span class="keyword">var</span> render = template;</div><div class="line">        render = render.replace(<span class="string">"&#123;&#123;className&#125;&#125;"</span>, <span class="string">""</span>);</div><div class="line">        render = render.replace(<span class="string">"&#123;&#123;label&#125;&#125;"</span>, data[i].label);</div><div class="line">        html += render;</div><div class="line">        <span class="keyword">if</span>(!(i % <span class="number">50</span>)) &#123;</div><div class="line">            container.innerHTML = html;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样来看，React的性能就远胜于原生DOM操作了。而且，DOM 完全不属于Javascript (也不在Javascript 引擎中在)。Javascript 其实是一个非常独立的引擎，DOM其实是浏览器引出的一组让Javascript操作HTML文档的API而已。在即时编译的时代，调用DOM的开销是很大的。而Virtual DOM的执行完全都在Javascript 引擎中，完全不会有这个开销。</p>
+<p>React.js 相对于直接操作原生DOM有很大的性能优势， 很大程度上都要归功于virtual DOM的batching 和diff。batching把所有的DOM操作搜集起来，一次性提交给真实的DOM。diff算法时间复杂度也从标准的的Diff算法的O(n^3)降到了O(n)。这里留到下一次博客单独讲。</p>
+<h2 id="虚拟-DOM-vs-MVVM"><a href="#虚拟-DOM-vs-MVVM" class="headerlink" title="虚拟 DOM vs MVVM"></a>虚拟 DOM vs MVVM</h2><p>相比起 React，其他 MVVM 系框架比如 Angular, Knockout 以及 Vue、Avalon 采用的都是数据绑定：通过 Directive/Binding 对象，观察数据变化并保留对实际 DOM 元素的引用，当有数据变化时进行对应的操作。MVVM 的变化检查是数据层面的，而 React 的检查是 DOM 结构层面的。MVVM 的性能也根据变动检测的实现原理有所不同：Angular 的脏检查使得任何变动都有固定的 O(watcher count) 的代价；Knockout/Vue/Avalon 都采用了依赖收集，在 js 和 DOM 层面都是 O(change)：</p>
+<ul>
+<li>脏检查：scope digest + 必要 DOM 更新</li>
+<li>依赖收集：重新收集依赖 + 必要 DOM 更新</li>
+</ul>
+<p>可以看到，Angular 最不效率的地方在于任何小变动都有的和 watcher 数量相关的性能代价。但是！当所有数据都变了的时候，Angular 其实并不吃亏。依赖收集在初始化和数据变化的时候都需要重新收集依赖，这个代价在小量更新的时候几乎可以忽略，但在数据量庞大的时候也会产生一定的消耗。</p>
+<p>MVVM 渲染列表的时候，由于每一行都有自己的数据作用域，所以通常都是每一行有一个对应的 ViewModel 实例，或者是一个稍微轻量一些的利用原型继承的 “scope” 对象，但也有一定的代价。所以，MVVM 列表渲染的初始化几乎一定比 React 慢，因为创建 ViewModel / scope 实例比起 Virtual DOM 来说要昂贵很多。这里所有 MVVM 实现的一个共同问题就是在列表渲染的数据源变动时，尤其是当数据是全新的对象时，如何有效地复用已经创建的 ViewModel 实例和 DOM 元素。假如没有任何复用方面的优化，由于数据是 “全新” 的，MVVM 实际上需要销毁之前的所有实例，重新创建所有实例，最后再进行一次渲染！这就是为什么题目里链接的 angular/knockout 实现都相对比较慢。相比之下，React 的变动检查由于是 DOM 结构层面的，即使是全新的数据，只要最后渲染结果没变，那么就不需要做无用功。</p>
+<p>Angular 和 Vue 都提供了列表重绘的优化机制，也就是 “提示” 框架如何有效地复用实例和 DOM 元素。比如数据库里的同一个对象，在两次前端 API 调用里面会成为不同的对象，但是它们依然有一样的 uid。这时候你就可以提示 track by uid 来让 Angular 知道，这两个对象其实是同一份数据。那么原来这份数据对应的实例和 DOM 元素都可以复用，只需要更新变动了的部分。或者，你也可以直接 track by $index 来进行 “原地复用”：直接根据在数组里的位置进行复用。在题目给出的例子里，如果 angular 实现加上 track by $index 的话，后续重绘是不会比 React 慢多少的。甚至在 dbmonster 测试中，Angular 和 Vue 用了 track by $index 以后都比 React 快: dbmon (注意 Angular 默认版本无优化，优化过的在下面）</p>
+<p>在比较性能的时候，要分清楚初始渲染、小量数据更新、大量数据更新这些不同的场合。Virtual DOM、脏检查 MVVM、数据收集 MVVM 在不同场合各有不同的表现和不同的优化需求。Virtual DOM 为了提升小量数据更新时的性能，也需要针对性的优化，比如 shouldComponentUpdate 或是 immutable data。</p>
+<ul>
+<li>初始渲染：Virtual DOM &gt; 脏检查 &gt;= 依赖收集</li>
+<li>小量数据更新：依赖收集 &gt;&gt; Virtual DOM + 优化 &gt; 脏检查（无法优化） &gt; Virtual DOM 无优化</li>
+<li>大量数据更新：脏检查 + 优化 &gt;= 依赖收集 + 优化 &gt; Virtual DOM（无法/无需优化）&gt;&gt; MVVM 无优化</li>
+</ul>
+<h2 id="对-React-虚拟-DOM-的误解"><a href="#对-React-虚拟-DOM-的误解" class="headerlink" title="对 React 虚拟 DOM 的误解"></a>对 React 虚拟 DOM 的误解</h2><p>React 从来没有说过 “React 比原生操作 DOM 快”。React给我们的保证是，在不需要手动优化的情况下，它依然可以给我们提供过得去的性能。</p>
+<p>React掩盖了底层的 DOM 操作，可以用更声明式的方式来描述我们目的，从而让代码更容易维护。下面还是借鉴了知乎上的回答：没有任何框架可以比纯手动的优化 DOM 操作更快，因为框架的 DOM 操作层需要应对任何上层 API 可能产生的操作，它的实现必须是普适的。针对任何一个 benchmark，我都可以写出比任何框架更快的手动优化，但是那有什么意义呢？在构建一个实际应用的时候，你难道为每一个地方都去做手动优化吗？出于可维护性的考虑，这显然不可能。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[JavaScript：实现类继承的三种方法]]></title>
       <url>http://www.dengfuping.com/2017/05/10/javascript-class-inheritence/</url>
-      <content type="html"><![CDATA[<h2 id="一、通过扩展-Object-实现"><a href="#一、通过扩展-Object-实现" class="headerlink" title="一、通过扩展 Object 实现"></a>一、通过扩展 Object 实现</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 定义一个父类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params">add</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.add = add;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 定义一个子类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 定义一个全局都可以用的继承方法</span></div><div class="line"><span class="built_in">Object</span>.prototype.extend = <span class="function"><span class="keyword">function</span>(<span class="params">ParentObj</span>)</span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> ParentObj)&#123;</div><div class="line">        <span class="keyword">this</span>[i] = ParentObj[i]</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"></div><div class="line">Child.extend(Parent(<span class="string">'China'</span>)); <span class="comment">// 使用我们的方法进行继承</span></div><div class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> Child(<span class="string">'lemon'</span>)   <span class="comment">// 实例化对象（初始化数据）</span></div><div class="line"><span class="built_in">console</span>.log(obj.add);  <span class="comment">// 此时我们就可以调用父类中的方法或属性了，输出结果：China</span></div></pre></td></tr></table></figure>
-<p>这种方法的原理是通过 <code>浅拷贝</code> 实现的，实际上是将父类的所以属性复制到子类当中，从而使得子类可以访问父类的属性。</p>
+      <content type="html"><![CDATA[<h2 id="一、通过扩展-Object-实现"><a href="#一、通过扩展-Object-实现" class="headerlink" title="一、通过扩展 Object 实现"></a>一、通过扩展 Object 实现</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 定义一个父类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params">add</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.add = add;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 定义一个子类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 定义一个全局都可以用的继承方法</span></div><div class="line"><span class="built_in">Object</span>.prototype.extend = <span class="function"><span class="keyword">function</span>(<span class="params">ParentObj</span>)</span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> ParentObj)&#123;</div><div class="line">        <span class="keyword">this</span>[i] = ParentObj[i]</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">Child.extend(Parent(<span class="string">'China'</span>)); <span class="comment">// 使用我们的方法进行继承</span></div><div class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> Child(<span class="string">'lemon'</span>)   <span class="comment">// 实例化对象（初始化数据）</span></div><div class="line"><span class="built_in">console</span>.log(obj.add);  <span class="comment">// 此时我们就可以调用父类中的方法或属性了，输出结果：China</span></div></pre></td></tr></table></figure>
+<p>这种方法的原理是通过 <code>浅拷贝</code> 实现的，实际上是将父类的所以属性复制到子类当中，从而使得子类可以访问父类的属性。<a id="more"></a></p>
 <p>##</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
 <p>##</p>
@@ -17,7 +152,8 @@
     <entry>
       <title><![CDATA[JavaScript：继承方式]]></title>
       <url>http://www.dengfuping.com/2017/05/09/javascript-inheritance/</url>
-      <content type="html"><![CDATA[<p><a href="http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_inheritance.html" target="_blank" rel="external">阮一峰：JavaScript 构造函数的继承</a></p>
+      <content type="html"><![CDATA[<p>参考文章：</p>
+<p><a href="http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_inheritance.html" target="_blank" rel="external">阮一峰：JavaScript 构造函数的继承</a></p>
 <p><a href="http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_inheritance_continued.html" target="_blank" rel="external">阮一峰：非构造函数的继承</a></p>
 <p><a href="http://dudodo.cc/2017/04/11/%E7%90%86%E8%A7%A3JS%E4%B8%AD%E7%9A%84%E7%BB%A7%E6%89%BF/" target="_blank" rel="external">理解 JS 中的继承</a></p>
 <p><a href="https://zhuanlan.zhihu.com/p/24964910?refer=muyichuanqi" target="_blank" rel="external">js原型链继承，借用构造函数继承,组合继承，寄生式继承，寄生组合继承</a><br><a id="more"></a></p>
