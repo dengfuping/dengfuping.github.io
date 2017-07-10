@@ -86,19 +86,16 @@
 
 
 
-<meta name="description" content="概念XSS，全称是跨站脚本攻击（Cross-site scripting），为了不和层叠样式表(CSS)的缩写混淆，故将跨站脚本攻击缩写为XSS。恶意攻击者往Web页面里插入恶意的 script 代码，当用户浏览该页之时，嵌入其中的 script 代码会被执行，从而达到恶意攻击用户的目的，如盗取用户的 cookie 等敏感信息
-类型存储型 XSS数据库中存有的存在XSS攻击的数据，返回给客户端。若">
+<meta name="description" content="概念跨站请求伪造（Cross-site request forgery），通常缩写为 CSRF 或者 XSRF， 是一种挟制用户在当前已登录的 Web 应用程序上执行非本意的操作的攻击方法。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="网络安全之 XSS 攻击">
-<meta property="og:url" content="http://www.dengfuping.com/2017/05/11/web-security-xss-attack/index.html">
+<meta property="og:title" content="网络安全之 CSRF 攻击">
+<meta property="og:url" content="http://www.dengfuping.com/2017/05/11/web-security-attack-csrf/index.html">
 <meta property="og:site_name" content="Deng | 不搭">
-<meta property="og:description" content="概念XSS，全称是跨站脚本攻击（Cross-site scripting），为了不和层叠样式表(CSS)的缩写混淆，故将跨站脚本攻击缩写为XSS。恶意攻击者往Web页面里插入恶意的 script 代码，当用户浏览该页之时，嵌入其中的 script 代码会被执行，从而达到恶意攻击用户的目的，如盗取用户的 cookie 等敏感信息
-类型存储型 XSS数据库中存有的存在XSS攻击的数据，返回给客户端。若">
-<meta property="og:updated_time" content="2017-05-11T15:03:03.762Z">
+<meta property="og:description" content="概念跨站请求伪造（Cross-site request forgery），通常缩写为 CSRF 或者 XSRF， 是一种挟制用户在当前已登录的 Web 应用程序上执行非本意的操作的攻击方法。">
+<meta property="og:updated_time" content="2017-07-10T10:34:47.247Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="网络安全之 XSS 攻击">
-<meta name="twitter:description" content="概念XSS，全称是跨站脚本攻击（Cross-site scripting），为了不和层叠样式表(CSS)的缩写混淆，故将跨站脚本攻击缩写为XSS。恶意攻击者往Web页面里插入恶意的 script 代码，当用户浏览该页之时，嵌入其中的 script 代码会被执行，从而达到恶意攻击用户的目的，如盗取用户的 cookie 等敏感信息
-类型存储型 XSS数据库中存有的存在XSS攻击的数据，返回给客户端。若">
+<meta name="twitter:title" content="网络安全之 CSRF 攻击">
+<meta name="twitter:description" content="概念跨站请求伪造（Cross-site request forgery），通常缩写为 CSRF 或者 XSRF， 是一种挟制用户在当前已登录的 Web 应用程序上执行非本意的操作的攻击方法。">
 
 
 <script>
@@ -130,9 +127,9 @@ var _hmt = _hmt || [];
 
 
 
-  <link rel="canonical" href="http://www.dengfuping.com/2017/05/11/web-security-xss-attack/"/>
+  <link rel="canonical" href="http://www.dengfuping.com/2017/05/11/web-security-attack-csrf/"/>
 
-  <title> 网络安全之 XSS 攻击 | Deng | 不搭 </title>
+  <title> 网络安全之 CSRF 攻击 | Deng | 不搭 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -305,7 +302,7 @@ var _hmt = _hmt || [];
             
             
               
-                网络安全之 XSS 攻击
+                网络安全之 CSRF 攻击
               
             
           </h1>
@@ -317,7 +314,7 @@ var _hmt = _hmt || [];
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-05-11T22:25:55+08:00" content="2017-05-11">
+            <time itemprop="dateCreated" datetime="2017-05-11T22:56:32+08:00" content="2017-05-11">
               2017-05-11
             </time>
           </span>
@@ -347,8 +344,8 @@ var _hmt = _hmt || [];
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/05/11/web-security-xss-attack/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/11/web-security-xss-attack/" itemprop="commentsCount"></span>
+                <a href="/2017/05/11/web-security-attack-csrf/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/11/web-security-attack-csrf/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -358,7 +355,7 @@ var _hmt = _hmt || [];
 
           
           
-             <span id="/2017/05/11/web-security-xss-attack/" class="leancloud_visitors" data-flag-title="网络安全之 XSS 攻击">
+             <span id="/2017/05/11/web-security-attack-csrf/" class="leancloud_visitors" data-flag-title="网络安全之 CSRF 攻击">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -385,25 +382,12 @@ var _hmt = _hmt || [];
       
 
       
-        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>XSS，全称是跨站脚本攻击（Cross-site scripting），为了不和层叠样式表(CSS)的缩写混淆，故将跨站脚本攻击缩写为XSS。恶意攻击者往Web页面里插入恶意的 script 代码，当用户浏览该页之时，嵌入其中的 script 代码会被执行，从而达到恶意攻击用户的目的，如盗取用户的 cookie 等敏感信息</p>
-<h2 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h2><h3 id="存储型-XSS"><a href="#存储型-XSS" class="headerlink" title="存储型 XSS"></a>存储型 XSS</h3><p>数据库中存有的存在XSS攻击的数据，返回给客户端。若数据未经过任何转义。被浏览器渲染。就可能导致XSS攻击。</p>
-<h3 id="反射型-XSS"><a href="#反射型-XSS" class="headerlink" title="反射型 XSS"></a>反射型 XSS</h3><p>将用户输入的存在XSS攻击的数据，发送给后台，后台并未对数据进行存储，也未经过任何过滤，直接返回给客户端。被浏览器渲染。就可能导致XSS攻击。</p>
-<h3 id="DOM-XSS"><a href="#DOM-XSS" class="headerlink" title="DOM XSS"></a>DOM XSS</h3><p>纯粹发生在客户端的XSS攻击，比如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http:<span class="comment">//www.some.site/page.html?default=French</span></div></pre></td></tr></table></figure>
-<p>页面代码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt; </div><div class="line"><span class="built_in">document</span>.write(<span class="string">"&lt;OPTION value=1&gt;"</span>+<span class="built_in">document</span>.location.href.substring(<span class="built_in">document</span>.location.href.indexOf(<span class="string">"default="</span>)+<span class="number">8</span>)+<span class="string">"&lt;/OPTION&gt;"</span>);  </div><div class="line"><span class="built_in">document</span>.write(<span class="string">"&lt;OPTION value=2&gt;English&lt;/OPTION&gt;"</span>);    </div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div></pre></td></tr></table></figure>
-<p>该XSS攻击实现条件：</p>
-<p>（1）用户点击了如下连接：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http:<span class="comment">//www.some.site/page.html?default=&lt;script&gt;alert(document.cookie)&lt;/script&gt;</span></div></pre></td></tr></table></figure>
-<p>（2）后台对URL参数未做任何过滤处理，返回给客户端，前端直接从url上获取参数。</p>
-<p>（3）打开网址的浏览器是低版本浏览器，常见ie8以下。</p>
-<p>满足以上三者，就会导致URL上的js代码执行:alert(document.cookie)，但是攻击者可以利用这个，做你无法想象的事情。在现代浏览器中，已经做了xss过滤，一旦检测到xss,会提示报错如下:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">The XSS Auditor refused to execute a script <span class="keyword">in</span> <span class="string">'file:///C:/Users/summerhxji/Desktop/taobao/xss.html?default=%3Cscript%3Ealert(document.cookie)%3C/script%3E'</span> because its source code was found within the request. The auditor was enabled <span class="keyword">as</span> the server did not send an <span class="string">'X-XSS-Protection'</span> header.</div><div class="line">(anonymous) @ xss.html?<span class="keyword">default</span>=<span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">alert(<span class="built_in">document</span>.cookie)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div></pre></td></tr></table></figure>
-<p>以上便是学术上的划分的XSS攻击类型，2、3类型其实都是反射型的攻击。了解了这些，意识到XSS攻击无处不在啊。</p>
-<h2 id="防御方法"><a href="#防御方法" class="headerlink" title="防御方法"></a>防御方法</h2><p>（1）从输入和输出进行过滤和转义。可以使用 htmlspecialchars() 等函数进行过滤转义，当然，一些文件上传等，也可能会造成此攻击，要限制上传文件的类型，比如只能传图片等。</p>
+        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>跨站请求伪造（Cross-site request forgery），通常缩写为 CSRF 或者 XSRF， 是一种挟制用户在当前已登录的 Web 应用程序上执行非本意的操作的攻击方法。<a id="more"></a></p>
+<blockquote>
+<p>跟跨网站脚本（XSS）相比，XSS 利用的是用户对指定网站的信任，CSRF 利用的是网站对用户网页浏览器的信任。</p>
+</blockquote>
 <p>参考文章：</p>
-<p><a href="https://www.zhuyingda.com/blog/article.html?id=2" target="_blank" rel="external">XSS漏洞的原理</a></p>
-<p><a href="http://mp.weixin.qq.com/s/6ChuUdOm7vej8vQ3dbC8fw" target="_blank" rel="external">XSS攻击和防御详解</a></p>
+<p><a href="https://juejin.im/post/583d6384a22b9d006a93c868" target="_blank" rel="external">Token 验证防止 CSRF 攻击的原理</a></p>
 
       
     </div>
@@ -458,16 +442,16 @@ var _hmt = _hmt || [];
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/10/react-virtual-dom/" rel="next" title="React 虚拟 DOM 浅析">
-                <i class="fa fa-chevron-left"></i> React 虚拟 DOM 浅析
+              <a href="/2017/05/11/web-security-attack-xss/" rel="next" title="网络安全之 XSS 攻击">
+                <i class="fa fa-chevron-left"></i> 网络安全之 XSS 攻击
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/05/11/web-security-csrf-attack/" rel="prev" title="网络安全之 CSRF 攻击">
-                网络安全之 CSRF 攻击 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/05/14/javascript-event-delegate-compatibility/" rel="prev" title="JavaScript：事件代理（委托）的兼容性">
+                JavaScript：事件代理（委托）的兼容性 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -497,8 +481,8 @@ var _hmt = _hmt || [];
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/05/11/web-security-xss-attack/"
-           data-title="网络安全之 XSS 攻击" data-url="http://www.dengfuping.com/2017/05/11/web-security-xss-attack/">
+      <div class="ds-thread" data-thread-key="2017/05/11/web-security-attack-csrf/"
+           data-title="网络安全之 CSRF 攻击" data-url="http://www.dengfuping.com/2017/05/11/web-security-attack-csrf/">
       </div>
     
   </div>
@@ -634,7 +618,7 @@ var _hmt = _hmt || [];
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类型"><span class="nav-number">2.</span> <span class="nav-text">类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#存储型-XSS"><span class="nav-number">2.1.</span> <span class="nav-text">存储型 XSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#反射型-XSS"><span class="nav-number">2.2.</span> <span class="nav-text">反射型 XSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM-XSS"><span class="nav-number">2.3.</span> <span class="nav-text">DOM XSS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#防御方法"><span class="nav-number">3.</span> <span class="nav-text">防御方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li></ol></div>
             
           </div>
         </section>

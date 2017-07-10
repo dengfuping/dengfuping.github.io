@@ -73,11 +73,11 @@
   </entry>
   
   <entry>
-    <title>javascript-caller-and-callee</title>
+    <title>JavaScript：caller 和 callee</title>
     <link href="http://www.dengfuping.com/2017/07/09/javascript-caller-and-callee/"/>
     <id>http://www.dengfuping.com/2017/07/09/javascript-caller-and-callee/</id>
     <published>2017-07-09T09:44:43.000Z</published>
-    <updated>2017-07-09T13:59:41.413Z</updated>
+    <updated>2017-07-10T10:32:28.914Z</updated>
     
     <content type="html"><![CDATA[<h2 id="caller"><a href="#caller" class="headerlink" title="caller"></a>caller</h2><p>caller 是函数对象的一个属性，返回一个函数的引用，该函数调用了当前函数。使用这个属性是要注意：</p>
 <ul>
@@ -147,17 +147,17 @@
     <link href="http://www.dengfuping.com/2017/05/23/javascript-call-by-chaining/"/>
     <id>http://www.dengfuping.com/2017/05/23/javascript-call-by-chaining/</id>
     <published>2017-05-23T06:48:49.000Z</published>
-    <updated>2017-05-23T09:00:22.148Z</updated>
+    <updated>2017-07-10T10:39:17.874Z</updated>
     
-    <content type="html"><![CDATA[<p>最近在研究 jQuery 的源码，发现自己对其链式调用还理解不是很深。今天趁此机会，就来谈一谈 JavaScript 中的链式调用<br>链式调用我们平常用到很多，比如 jQuery 中的$(ele).show().find(child).hide()，再比如angularjs中的$http.get(url).success(fn_s).error(fn_e)。但这都是已经包装好的链式调用，我们只能体会链式调用带来的方便，却不知道形成这样一条函数链的原理是什么。<a id="more"></a></p>
-<p>　　随着链式调用的普及，实现的方案也越来越多。最常见的，是jQuery直接返回this的方式，underscore的可选式的方式，和lodash惰性求值的方式。我们分别来了解，并逐个完成它们的demo。</p>
+    <content type="html"><![CDATA[<p>最近在研究 jQuery 的源码，发现自己对其链式调用还理解不是很深。今天趁此机会，就来谈一谈 JavaScript 中的链式调用。链式调用我们平常用到很多，比如 jQuery 中的 $(ele).show().find(child).hide()，再比如 angularjs 中的 $http.get(url).success(fn_s).error(fn_e)。但这都是已经包装好的链式调用，我们只能体会链式调用带来的方便，却不知道形成这样一条函数链的原理是什么。<a id="more"></a></p>
+<p>随着链式调用的普及，实现的方案也越来越多。最常见的，是 jQuery 直接返回 this 的方式，underscore 的可选式的方式，和 lodash 惰性求值的方式。我们分别来了解，并逐个完成它们的demo。</p>
 <p>参考文章：</p>
 <p><a href="http://www.cnblogs.com/tarol/p/5336666.html" target="_blank" rel="external">玩一把JS的链式调用</a></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;最近在研究 jQuery 的源码，发现自己对其链式调用还理解不是很深。今天趁此机会，就来谈一谈 JavaScript 中的链式调用&lt;br&gt;链式调用我们平常用到很多，比如 jQuery 中的$(ele).show().find(child).hide()，再比如angularjs中的$http.get(url).success(fn_s).error(fn_e)。但这都是已经包装好的链式调用，我们只能体会链式调用带来的方便，却不知道形成这样一条函数链的原理是什么。
+      &lt;p&gt;最近在研究 jQuery 的源码，发现自己对其链式调用还理解不是很深。今天趁此机会，就来谈一谈 JavaScript 中的链式调用。链式调用我们平常用到很多，比如 jQuery 中的 $(ele).show().find(child).hide()，再比如 angularjs 中的 $http.get(url).success(fn_s).error(fn_e)。但这都是已经包装好的链式调用，我们只能体会链式调用带来的方便，却不知道形成这样一条函数链的原理是什么。
     
     </summary>
     
@@ -173,10 +173,10 @@
     <link href="http://www.dengfuping.com/2017/05/14/javascript-event-delegate-compatibility/"/>
     <id>http://www.dengfuping.com/2017/05/14/javascript-event-delegate-compatibility/</id>
     <published>2017-05-14T03:46:37.000Z</published>
-    <updated>2017-05-14T04:31:30.635Z</updated>
+    <updated>2017-07-10T10:36:53.018Z</updated>
     
-    <content type="html"><![CDATA[<p>由于网上的很多文章都介绍了 js 中的事件代理，因此本文只探讨一些关于事件代理中容易被忽视的两个问题，那就是原生 js 实现和其在浏览器中的兼容性问题。</p>
-<p>相信很多人都知道，借助 jQuery 中的 delegate() 和 on() 函数我们可以轻松实现事件代理，具体使用方式可以参考我的另外一篇文章：<a href="http://www.dengfuping.com/2017/04/24/javascript-jquery-bind-on-delegate/">jQuery 事件绑定函数解析：bind, on, delegate</a> </p>
+    <content type="html"><![CDATA[<p>由于网上的很多文章都介绍了 js 中的 <code>事件代理</code>，因此本文只探讨一些关于事件代理中容易被忽视的两个问题，那就是原生 js 实现和其在浏览器中的<code>兼容性问题</code>。<a id="more"></a></p>
+<p>相信很多人都知道，借助 jQuery 中的 delegate() 和 on() 函数我们可以轻松实现事件代理，具体使用方式可以参考我的另外一篇文章：<a href="http://www.dengfuping.com/2017/04/24/javascript-jquery-bind-on-delegate/">jQuery 事件绑定函数解析：bind, on, delegate</a>。</p>
 <p>但今天我们要探讨的是如何使用原生 js 来实现事件代理：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>事件代理<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"ul"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>这是第一个li元素<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>这是第二个li元素<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>这是第三个li元素<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>这是第四个li元素<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>这是第五个li元素<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="keyword">var</span> ul = <span class="built_in">document</span>.getElementById(<span class="string">'ul'</span>);</div><div class="line">    ul.onclick = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> myEvent = event || <span class="built_in">window</span>.event;</div><div class="line">        <span class="keyword">var</span> target = myEvent.target || myEvent.srcElement;</div><div class="line">        <span class="keyword">if</span> (target.nodeName.toLocaleLowerCase() == <span class="string">'li'</span>)&#123;</div><div class="line">            alert(target.firstChild.nodeValue);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>针对上面的代码做几点说明：</p>
@@ -190,8 +190,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;由于网上的很多文章都介绍了 js 中的事件代理，因此本文只探讨一些关于事件代理中容易被忽视的两个问题，那就是原生 js 实现和其在浏览器中的兼容性问题。&lt;/p&gt;
-&lt;p&gt;相信很多人都知道，借助 jQuery 中的 delegate() 和 on() 函数我们可以轻松实现事件代
+      &lt;p&gt;由于网上的很多文章都介绍了 js 中的 &lt;code&gt;事件代理&lt;/code&gt;，因此本文只探讨一些关于事件代理中容易被忽视的两个问题，那就是原生 js 实现和其在浏览器中的&lt;code&gt;兼容性问题&lt;/code&gt;。
     
     </summary>
     
@@ -204,12 +203,12 @@
   
   <entry>
     <title>网络安全之 CSRF 攻击</title>
-    <link href="http://www.dengfuping.com/2017/05/11/web-security-csrf-attack/"/>
-    <id>http://www.dengfuping.com/2017/05/11/web-security-csrf-attack/</id>
+    <link href="http://www.dengfuping.com/2017/05/11/web-security-attack-csrf/"/>
+    <id>http://www.dengfuping.com/2017/05/11/web-security-attack-csrf/</id>
     <published>2017-05-11T14:56:32.000Z</published>
-    <updated>2017-05-11T15:06:09.338Z</updated>
+    <updated>2017-07-10T10:34:47.247Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>跨站请求伪造（Cross-site request forgery），通常缩写为 CSRF 或者 XSRF， 是一种挟制用户在当前已登录的 Web 应用程序上执行非本意的操作的攻击方法。</p>
+    <content type="html"><![CDATA[<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>跨站请求伪造（Cross-site request forgery），通常缩写为 CSRF 或者 XSRF， 是一种挟制用户在当前已登录的 Web 应用程序上执行非本意的操作的攻击方法。<a id="more"></a></p>
 <blockquote>
 <p>跟跨网站脚本（XSS）相比，XSS 利用的是用户对指定网站的信任，CSRF 利用的是网站对用户网页浏览器的信任。</p>
 </blockquote>
@@ -219,7 +218,7 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot; class=&quot;headerlink&quot; title=&quot;概念&quot;&gt;&lt;/a&gt;概念&lt;/h2&gt;&lt;p&gt;跨站请求伪造（Cross-site request forgery），通常缩写为 CSRF 或者 XSRF， 是一种挟制用户在当前已登录的 
+      &lt;h2 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot; class=&quot;headerlink&quot; title=&quot;概念&quot;&gt;&lt;/a&gt;概念&lt;/h2&gt;&lt;p&gt;跨站请求伪造（Cross-site request forgery），通常缩写为 CSRF 或者 XSRF， 是一种挟制用户在当前已登录的 Web 应用程序上执行非本意的操作的攻击方法。
     
     </summary>
     
@@ -234,12 +233,12 @@
   
   <entry>
     <title>网络安全之 XSS 攻击</title>
-    <link href="http://www.dengfuping.com/2017/05/11/web-security-xss-attack/"/>
-    <id>http://www.dengfuping.com/2017/05/11/web-security-xss-attack/</id>
+    <link href="http://www.dengfuping.com/2017/05/11/web-security-attack-xss/"/>
+    <id>http://www.dengfuping.com/2017/05/11/web-security-attack-xss/</id>
     <published>2017-05-11T14:25:55.000Z</published>
-    <updated>2017-05-11T15:03:03.762Z</updated>
+    <updated>2017-07-10T10:34:38.631Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>XSS，全称是跨站脚本攻击（Cross-site scripting），为了不和层叠样式表(CSS)的缩写混淆，故将跨站脚本攻击缩写为XSS。恶意攻击者往Web页面里插入恶意的 script 代码，当用户浏览该页之时，嵌入其中的 script 代码会被执行，从而达到恶意攻击用户的目的，如盗取用户的 cookie 等敏感信息</p>
+    <content type="html"><![CDATA[<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>XSS，全称是跨站脚本攻击（Cross-site scripting），为了不和层叠样式表(CSS)的缩写混淆，故将跨站脚本攻击缩写为XSS。恶意攻击者往Web页面里插入恶意的 script 代码，当用户浏览该页之时，嵌入其中的 script 代码会被执行，从而达到恶意攻击用户的目的，如盗取用户的 cookie 等敏感信息。<a id="more"></a></p>
 <h2 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h2><h3 id="存储型-XSS"><a href="#存储型-XSS" class="headerlink" title="存储型 XSS"></a>存储型 XSS</h3><p>数据库中存有的存在XSS攻击的数据，返回给客户端。若数据未经过任何转义。被浏览器渲染。就可能导致XSS攻击。</p>
 <h3 id="反射型-XSS"><a href="#反射型-XSS" class="headerlink" title="反射型 XSS"></a>反射型 XSS</h3><p>将用户输入的存在XSS攻击的数据，发送给后台，后台并未对数据进行存储，也未经过任何过滤，直接返回给客户端。被浏览器渲染。就可能导致XSS攻击。</p>
 <h3 id="DOM-XSS"><a href="#DOM-XSS" class="headerlink" title="DOM XSS"></a>DOM XSS</h3><p>纯粹发生在客户端的XSS攻击，比如：</p>
@@ -262,7 +261,7 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot; class=&quot;headerlink&quot; title=&quot;概念&quot;&gt;&lt;/a&gt;概念&lt;/h2&gt;&lt;p&gt;XSS，全称是跨站脚本攻击（Cross-site scripting），为了不和层叠样式表(CSS)的缩写混淆，故将跨站脚本攻击缩写为XSS
+      &lt;h2 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot; class=&quot;headerlink&quot; title=&quot;概念&quot;&gt;&lt;/a&gt;概念&lt;/h2&gt;&lt;p&gt;XSS，全称是跨站脚本攻击（Cross-site scripting），为了不和层叠样式表(CSS)的缩写混淆，故将跨站脚本攻击缩写为XSS。恶意攻击者往Web页面里插入恶意的 script 代码，当用户浏览该页之时，嵌入其中的 script 代码会被执行，从而达到恶意攻击用户的目的，如盗取用户的 cookie 等敏感信息。
     
     </summary>
     
@@ -392,14 +391,14 @@
     <link href="http://www.dengfuping.com/2017/05/06/javascript-closure/"/>
     <id>http://www.dengfuping.com/2017/05/06/javascript-closure/</id>
     <published>2017-05-06T10:32:37.000Z</published>
-    <updated>2017-05-09T09:19:19.346Z</updated>
+    <updated>2017-07-10T10:32:45.118Z</updated>
     
     <content type="html"><![CDATA[<p>一、什么是闭包？闭包有什么好处？使用闭包要注意什么？</p>
 <p>闭包：函数嵌套函数，内部函数可以引用外部函数的参数和变量，变量和参数不会被垃圾回收机制所回收</p>
 <p>好处：<br>（1）希望一个变量长期驻扎在内存之中</p>
 <p>（2）避免全局变量的污染</p>
 <p>（3）私有成员的存在</p>
-<p>注意：可能会造成内存泄漏<br><a id="more"></a></p>
+<p>注意：可能会造成内存泄漏。<a id="more"></a></p>
 ]]></content>
     
     <summary type="html">
@@ -409,7 +408,7 @@
 &lt;p&gt;好处：&lt;br&gt;（1）希望一个变量长期驻扎在内存之中&lt;/p&gt;
 &lt;p&gt;（2）避免全局变量的污染&lt;/p&gt;
 &lt;p&gt;（3）私有成员的存在&lt;/p&gt;
-&lt;p&gt;注意：可能会造成内存泄漏&lt;br&gt;
+&lt;p&gt;注意：可能会造成内存泄漏。
     
     </summary>
     

@@ -563,7 +563,7 @@ var _hmt = _hmt || [];
               
                 
                 <a class="post-title-link" href="/2017/07/09/javascript-caller-and-callee/" itemprop="url">
-                  javascript-caller-and-callee
+                  JavaScript：caller 和 callee
                 </a>
               
             
@@ -617,7 +617,7 @@ var _hmt = _hmt || [];
 
           
           
-             <span id="/2017/07/09/javascript-caller-and-callee/" class="leancloud_visitors" data-flag-title="javascript-caller-and-callee">
+             <span id="/2017/07/09/javascript-caller-and-callee/" class="leancloud_visitors" data-flag-title="JavaScript：caller 和 callee">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -904,7 +904,7 @@ var _hmt = _hmt || [];
 
       
         
-          <p>最近在研究 jQuery 的源码，发现自己对其链式调用还理解不是很深。今天趁此机会，就来谈一谈 JavaScript 中的链式调用<br>链式调用我们平常用到很多，比如 jQuery 中的$(ele).show().find(child).hide()，再比如angularjs中的$http.get(url).success(fn_s).error(fn_e)。但这都是已经包装好的链式调用，我们只能体会链式调用带来的方便，却不知道形成这样一条函数链的原理是什么。
+          <p>最近在研究 jQuery 的源码，发现自己对其链式调用还理解不是很深。今天趁此机会，就来谈一谈 JavaScript 中的链式调用。链式调用我们平常用到很多，比如 jQuery 中的 $(ele).show().find(child).hide()，再比如 angularjs 中的 $http.get(url).success(fn_s).error(fn_e)。但这都是已经包装好的链式调用，我们只能体会链式调用带来的方便，却不知道形成这样一条函数链的原理是什么。
           <div class="post-more-link text-center">
             <a class="btn" href="/2017/05/23/javascript-call-by-chaining/#more" rel="contents">
               阅读全文 &raquo;
@@ -1035,20 +1035,12 @@ var _hmt = _hmt || [];
 
       
         
-          
-            <p>由于网上的很多文章都介绍了 js 中的事件代理，因此本文只探讨一些关于事件代理中容易被忽视的两个问题，那就是原生 js 实现和其在浏览器中的兼容性问题。</p>
-<p>相信很多人都知道，借助 jQuery 中的 delegate() 和 on() 函数我们可以轻松实现事件代理，具体使用方式可以参考我的另外一篇文章：<a href="http://www.dengfuping.com/2017/04/24/javascript-jquery-bind-on-delegate/">jQuery 事件绑定函数解析：bind, on, delegate</a> </p>
-<p>但今天我们要探讨的是如何使用原生 js 来实现事件代理：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>事件代理<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"ul"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>这是第一个li元素<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>这是第二个li元素<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>这是第三个li元素<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>这是第四个li元素<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>这是第五个li元素<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="keyword">var</span> ul = <span class="built_in">document</span>.getElementById(<span class="string">'ul'</span>);</div><div class="line">    ul.onclick = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> myEvent = event || <span class="built_in">window</span>.event;</div><div class="line">        <span class="keyword">var</span> target = myEvent.target || myEvent.srcElement;</div><div class="line">        <span class="keyword">if</span> (target.nodeName.toLocaleLowerCase() == <span class="string">'li'</span>)&#123;</div><div class="line">            alert(target.firstChild.nodeValue);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>针对上面的代码做几点说明：</p>
-<ul>
-<li>event对象用于存储事件的数据，例如触发事件的元素、鼠标的位置及状态、按下的键等等；event对象只在事件发生的过程中才有效。</li>
-<li>firefox 跟其他浏览器中使用的 event 的方法不同，其他浏览器中的 event 是全局变量，随时可用；firefox需要在事件方法的参数里写 event 才能用，是运行时的临时变量。也就是说，在其他浏览器中，是 window.event，而在 firefox 中是 event；</li>
-<li>要获取事件目标，其它浏览器调用的是 event.target 属性，而在 IE 中则需要调用的是 event.srcElement 属性。</li>
-</ul>
-<p>所以在使用原生的 js 实现事件代理时既要考虑 firefox 下的兼容性又要考虑 IE 下的兼容性，这也是面试和实际应用当中会遇到的问题。而在使用 jQuery 时它会帮你做这些兼容性处理。进一步来看，这也可以看成是 jQuery 实现事件委托的基本原理。</p>
-
-          
+          <p>由于网上的很多文章都介绍了 js 中的 <code>事件代理</code>，因此本文只探讨一些关于事件代理中容易被忽视的两个问题，那就是原生 js 实现和其在浏览器中的<code>兼容性问题</code>。
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/05/14/javascript-event-delegate-compatibility/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1096,7 +1088,7 @@ var _hmt = _hmt || [];
             
               
                 
-                <a class="post-title-link" href="/2017/05/11/web-security-csrf-attack/" itemprop="url">
+                <a class="post-title-link" href="/2017/05/11/web-security-attack-csrf/" itemprop="url">
                   网络安全之 CSRF 攻击
                 </a>
               
@@ -1140,8 +1132,8 @@ var _hmt = _hmt || [];
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/05/11/web-security-csrf-attack/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/11/web-security-csrf-attack/" itemprop="commentsCount"></span>
+                <a href="/2017/05/11/web-security-attack-csrf/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/11/web-security-attack-csrf/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1151,7 +1143,7 @@ var _hmt = _hmt || [];
 
           
           
-             <span id="/2017/05/11/web-security-csrf-attack/" class="leancloud_visitors" data-flag-title="网络安全之 CSRF 攻击">
+             <span id="/2017/05/11/web-security-attack-csrf/" class="leancloud_visitors" data-flag-title="网络安全之 CSRF 攻击">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1174,15 +1166,12 @@ var _hmt = _hmt || [];
 
       
         
-          
-            <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>跨站请求伪造（Cross-site request forgery），通常缩写为 CSRF 或者 XSRF， 是一种挟制用户在当前已登录的 Web 应用程序上执行非本意的操作的攻击方法。</p>
-<blockquote>
-<p>跟跨网站脚本（XSS）相比，XSS 利用的是用户对指定网站的信任，CSRF 利用的是网站对用户网页浏览器的信任。</p>
-</blockquote>
-<p>参考文章：</p>
-<p><a href="https://juejin.im/post/583d6384a22b9d006a93c868" target="_blank" rel="external">Token 验证防止 CSRF 攻击的原理</a></p>
-
-          
+          <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>跨站请求伪造（Cross-site request forgery），通常缩写为 CSRF 或者 XSRF， 是一种挟制用户在当前已登录的 Web 应用程序上执行非本意的操作的攻击方法。
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/05/11/web-security-attack-csrf/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1230,7 +1219,7 @@ var _hmt = _hmt || [];
             
               
                 
-                <a class="post-title-link" href="/2017/05/11/web-security-xss-attack/" itemprop="url">
+                <a class="post-title-link" href="/2017/05/11/web-security-attack-xss/" itemprop="url">
                   网络安全之 XSS 攻击
                 </a>
               
@@ -1274,8 +1263,8 @@ var _hmt = _hmt || [];
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/05/11/web-security-xss-attack/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/11/web-security-xss-attack/" itemprop="commentsCount"></span>
+                <a href="/2017/05/11/web-security-attack-xss/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/11/web-security-attack-xss/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1285,7 +1274,7 @@ var _hmt = _hmt || [];
 
           
           
-             <span id="/2017/05/11/web-security-xss-attack/" class="leancloud_visitors" data-flag-title="网络安全之 XSS 攻击">
+             <span id="/2017/05/11/web-security-attack-xss/" class="leancloud_visitors" data-flag-title="网络安全之 XSS 攻击">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1308,28 +1297,12 @@ var _hmt = _hmt || [];
 
       
         
-          
-            <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>XSS，全称是跨站脚本攻击（Cross-site scripting），为了不和层叠样式表(CSS)的缩写混淆，故将跨站脚本攻击缩写为XSS。恶意攻击者往Web页面里插入恶意的 script 代码，当用户浏览该页之时，嵌入其中的 script 代码会被执行，从而达到恶意攻击用户的目的，如盗取用户的 cookie 等敏感信息</p>
-<h2 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h2><h3 id="存储型-XSS"><a href="#存储型-XSS" class="headerlink" title="存储型 XSS"></a>存储型 XSS</h3><p>数据库中存有的存在XSS攻击的数据，返回给客户端。若数据未经过任何转义。被浏览器渲染。就可能导致XSS攻击。</p>
-<h3 id="反射型-XSS"><a href="#反射型-XSS" class="headerlink" title="反射型 XSS"></a>反射型 XSS</h3><p>将用户输入的存在XSS攻击的数据，发送给后台，后台并未对数据进行存储，也未经过任何过滤，直接返回给客户端。被浏览器渲染。就可能导致XSS攻击。</p>
-<h3 id="DOM-XSS"><a href="#DOM-XSS" class="headerlink" title="DOM XSS"></a>DOM XSS</h3><p>纯粹发生在客户端的XSS攻击，比如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http:<span class="comment">//www.some.site/page.html?default=French</span></div></pre></td></tr></table></figure>
-<p>页面代码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt; </div><div class="line"><span class="built_in">document</span>.write(<span class="string">"&lt;OPTION value=1&gt;"</span>+<span class="built_in">document</span>.location.href.substring(<span class="built_in">document</span>.location.href.indexOf(<span class="string">"default="</span>)+<span class="number">8</span>)+<span class="string">"&lt;/OPTION&gt;"</span>);  </div><div class="line"><span class="built_in">document</span>.write(<span class="string">"&lt;OPTION value=2&gt;English&lt;/OPTION&gt;"</span>);    </div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div></pre></td></tr></table></figure>
-<p>该XSS攻击实现条件：</p>
-<p>（1）用户点击了如下连接：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http:<span class="comment">//www.some.site/page.html?default=&lt;script&gt;alert(document.cookie)&lt;/script&gt;</span></div></pre></td></tr></table></figure>
-<p>（2）后台对URL参数未做任何过滤处理，返回给客户端，前端直接从url上获取参数。</p>
-<p>（3）打开网址的浏览器是低版本浏览器，常见ie8以下。</p>
-<p>满足以上三者，就会导致URL上的js代码执行:alert(document.cookie)，但是攻击者可以利用这个，做你无法想象的事情。在现代浏览器中，已经做了xss过滤，一旦检测到xss,会提示报错如下:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">The XSS Auditor refused to execute a script <span class="keyword">in</span> <span class="string">'file:///C:/Users/summerhxji/Desktop/taobao/xss.html?default=%3Cscript%3Ealert(document.cookie)%3C/script%3E'</span> because its source code was found within the request. The auditor was enabled <span class="keyword">as</span> the server did not send an <span class="string">'X-XSS-Protection'</span> header.</div><div class="line">(anonymous) @ xss.html?<span class="keyword">default</span>=<span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">alert(<span class="built_in">document</span>.cookie)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div></pre></td></tr></table></figure>
-<p>以上便是学术上的划分的XSS攻击类型，2、3类型其实都是反射型的攻击。了解了这些，意识到XSS攻击无处不在啊。</p>
-<h2 id="防御方法"><a href="#防御方法" class="headerlink" title="防御方法"></a>防御方法</h2><p>（1）从输入和输出进行过滤和转义。可以使用 htmlspecialchars() 等函数进行过滤转义，当然，一些文件上传等，也可能会造成此攻击，要限制上传文件的类型，比如只能传图片等。</p>
-<p>参考文章：</p>
-<p><a href="https://www.zhuyingda.com/blog/article.html?id=2" target="_blank" rel="external">XSS漏洞的原理</a></p>
-<p><a href="http://mp.weixin.qq.com/s/6ChuUdOm7vej8vQ3dbC8fw" target="_blank" rel="external">XSS攻击和防御详解</a></p>
-
-          
+          <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>XSS，全称是跨站脚本攻击（Cross-site scripting），为了不和层叠样式表(CSS)的缩写混淆，故将跨站脚本攻击缩写为XSS。恶意攻击者往Web页面里插入恶意的 script 代码，当用户浏览该页之时，嵌入其中的 script 代码会被执行，从而达到恶意攻击用户的目的，如盗取用户的 cookie 等敏感信息。
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/05/11/web-security-attack-xss/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>

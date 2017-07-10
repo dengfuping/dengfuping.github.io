@@ -86,22 +86,16 @@
 
 
 
-<meta name="description" content="由于网上的很多文章都介绍了 js 中的事件代理，因此本文只探讨一些关于事件代理中容易被忽视的两个问题，那就是原生 js 实现和其在浏览器中的兼容性问题。
-相信很多人都知道，借助 jQuery 中的 delegate() 和 on() 函数我们可以轻松实现事件代理，具体使用方式可以参考我的另外一篇文章：jQuery 事件绑定函数解析：bind, on, delegate 
-但今天我们要探讨的是如何使">
+<meta name="description" content="由于网上的很多文章都介绍了 js 中的 事件代理，因此本文只探讨一些关于事件代理中容易被忽视的两个问题，那就是原生 js 实现和其在浏览器中的兼容性问题。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript：事件代理（委托）的兼容性">
 <meta property="og:url" content="http://www.dengfuping.com/2017/05/14/javascript-event-delegate-compatibility/index.html">
 <meta property="og:site_name" content="Deng | 不搭">
-<meta property="og:description" content="由于网上的很多文章都介绍了 js 中的事件代理，因此本文只探讨一些关于事件代理中容易被忽视的两个问题，那就是原生 js 实现和其在浏览器中的兼容性问题。
-相信很多人都知道，借助 jQuery 中的 delegate() 和 on() 函数我们可以轻松实现事件代理，具体使用方式可以参考我的另外一篇文章：jQuery 事件绑定函数解析：bind, on, delegate 
-但今天我们要探讨的是如何使">
-<meta property="og:updated_time" content="2017-05-14T04:31:30.635Z">
+<meta property="og:description" content="由于网上的很多文章都介绍了 js 中的 事件代理，因此本文只探讨一些关于事件代理中容易被忽视的两个问题，那就是原生 js 实现和其在浏览器中的兼容性问题。">
+<meta property="og:updated_time" content="2017-07-10T10:36:53.018Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript：事件代理（委托）的兼容性">
-<meta name="twitter:description" content="由于网上的很多文章都介绍了 js 中的事件代理，因此本文只探讨一些关于事件代理中容易被忽视的两个问题，那就是原生 js 实现和其在浏览器中的兼容性问题。
-相信很多人都知道，借助 jQuery 中的 delegate() 和 on() 函数我们可以轻松实现事件代理，具体使用方式可以参考我的另外一篇文章：jQuery 事件绑定函数解析：bind, on, delegate 
-但今天我们要探讨的是如何使">
+<meta name="twitter:description" content="由于网上的很多文章都介绍了 js 中的 事件代理，因此本文只探讨一些关于事件代理中容易被忽视的两个问题，那就是原生 js 实现和其在浏览器中的兼容性问题。">
 
 
 <script>
@@ -388,8 +382,8 @@ var _hmt = _hmt || [];
       
 
       
-        <p>由于网上的很多文章都介绍了 js 中的事件代理，因此本文只探讨一些关于事件代理中容易被忽视的两个问题，那就是原生 js 实现和其在浏览器中的兼容性问题。</p>
-<p>相信很多人都知道，借助 jQuery 中的 delegate() 和 on() 函数我们可以轻松实现事件代理，具体使用方式可以参考我的另外一篇文章：<a href="http://www.dengfuping.com/2017/04/24/javascript-jquery-bind-on-delegate/">jQuery 事件绑定函数解析：bind, on, delegate</a> </p>
+        <p>由于网上的很多文章都介绍了 js 中的 <code>事件代理</code>，因此本文只探讨一些关于事件代理中容易被忽视的两个问题，那就是原生 js 实现和其在浏览器中的<code>兼容性问题</code>。<a id="more"></a></p>
+<p>相信很多人都知道，借助 jQuery 中的 delegate() 和 on() 函数我们可以轻松实现事件代理，具体使用方式可以参考我的另外一篇文章：<a href="http://www.dengfuping.com/2017/04/24/javascript-jquery-bind-on-delegate/">jQuery 事件绑定函数解析：bind, on, delegate</a>。</p>
 <p>但今天我们要探讨的是如何使用原生 js 来实现事件代理：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>事件代理<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"ul"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>这是第一个li元素<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>这是第二个li元素<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>这是第三个li元素<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>这是第四个li元素<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>这是第五个li元素<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="keyword">var</span> ul = <span class="built_in">document</span>.getElementById(<span class="string">'ul'</span>);</div><div class="line">    ul.onclick = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> myEvent = event || <span class="built_in">window</span>.event;</div><div class="line">        <span class="keyword">var</span> target = myEvent.target || myEvent.srcElement;</div><div class="line">        <span class="keyword">if</span> (target.nodeName.toLocaleLowerCase() == <span class="string">'li'</span>)&#123;</div><div class="line">            alert(target.firstChild.nodeValue);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>针对上面的代码做几点说明：</p>
@@ -451,7 +445,7 @@ var _hmt = _hmt || [];
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/11/web-security-csrf-attack/" rel="next" title="网络安全之 CSRF 攻击">
+              <a href="/2017/05/11/web-security-attack-csrf/" rel="next" title="网络安全之 CSRF 攻击">
                 <i class="fa fa-chevron-left"></i> 网络安全之 CSRF 攻击
               </a>
             
