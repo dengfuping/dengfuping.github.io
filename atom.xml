@@ -147,9 +147,13 @@
     <link href="http://www.dengfuping.com/2017/05/23/javascript-call-by-chaining/"/>
     <id>http://www.dengfuping.com/2017/05/23/javascript-call-by-chaining/</id>
     <published>2017-05-23T06:48:49.000Z</published>
-    <updated>2017-07-10T10:39:17.874Z</updated>
+    <updated>2017-07-10T10:44:25.866Z</updated>
     
-    <content type="html"><![CDATA[<p>最近在研究 jQuery 的源码，发现自己对其链式调用还理解不是很深。今天趁此机会，就来谈一谈 JavaScript 中的链式调用。链式调用我们平常用到很多，比如 jQuery 中的 $(ele).show().find(child).hide()，再比如 angularjs 中的 $http.get(url).success(fn_s).error(fn_e)。但这都是已经包装好的链式调用，我们只能体会链式调用带来的方便，却不知道形成这样一条函数链的原理是什么。<a id="more"></a></p>
+    <content type="html"><![CDATA[<p>最近在研究 jQuery 的源码，发现自己对其链式调用还理解不是很深。今天趁此机会，就来谈一谈 JavaScript 中的链式调用。链式调用我们平常用到很多，比如 jQuery 中的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(ele).show().find(child).hide();</div></pre></td></tr></table></figure>
+<p>再比如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">angularjs 中的 $http.get(url).success(fn_s).error(fn_e);</div></pre></td></tr></table></figure>
+<p>但这都是已经包装好的链式调用，我们只能体会链式调用带来的方便，却不知道形成这样一条函数链的原理是什么。<a id="more"></a></p>
 <p>随着链式调用的普及，实现的方案也越来越多。最常见的，是 jQuery 直接返回 this 的方式，underscore 的可选式的方式，和 lodash 惰性求值的方式。我们分别来了解，并逐个完成它们的demo。</p>
 <p>参考文章：</p>
 <p><a href="http://www.cnblogs.com/tarol/p/5336666.html" target="_blank" rel="external">玩一把JS的链式调用</a></p>
@@ -157,7 +161,11 @@
     
     <summary type="html">
     
-      &lt;p&gt;最近在研究 jQuery 的源码，发现自己对其链式调用还理解不是很深。今天趁此机会，就来谈一谈 JavaScript 中的链式调用。链式调用我们平常用到很多，比如 jQuery 中的 $(ele).show().find(child).hide()，再比如 angularjs 中的 $http.get(url).success(fn_s).error(fn_e)。但这都是已经包装好的链式调用，我们只能体会链式调用带来的方便，却不知道形成这样一条函数链的原理是什么。
+      &lt;p&gt;最近在研究 jQuery 的源码，发现自己对其链式调用还理解不是很深。今天趁此机会，就来谈一谈 JavaScript 中的链式调用。链式调用我们平常用到很多，比如 jQuery 中的：&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$(ele).show().find(child).hide();&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;再比如：&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;angularjs 中的 $http.get(url).success(fn_s).error(fn_e);&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;但这都是已经包装好的链式调用，我们只能体会链式调用带来的方便，却不知道形成这样一条函数链的原理是什么。
     
     </summary>
     
@@ -206,9 +214,9 @@
     <link href="http://www.dengfuping.com/2017/05/11/web-security-attack-csrf/"/>
     <id>http://www.dengfuping.com/2017/05/11/web-security-attack-csrf/</id>
     <published>2017-05-11T14:56:32.000Z</published>
-    <updated>2017-07-10T10:34:47.247Z</updated>
+    <updated>2017-07-10T10:44:58.661Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>跨站请求伪造（Cross-site request forgery），通常缩写为 CSRF 或者 XSRF， 是一种挟制用户在当前已登录的 Web 应用程序上执行非本意的操作的攻击方法。<a id="more"></a></p>
+    <content type="html"><![CDATA[<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p><code>跨站请求伪造</code>（Cross-site request forgery），通常缩写为 CSRF 或者 XSRF， 是一种挟制用户在当前已登录的 Web 应用程序上执行非本意的操作的攻击方法。<a id="more"></a></p>
 <blockquote>
 <p>跟跨网站脚本（XSS）相比，XSS 利用的是用户对指定网站的信任，CSRF 利用的是网站对用户网页浏览器的信任。</p>
 </blockquote>
@@ -218,7 +226,7 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot; class=&quot;headerlink&quot; title=&quot;概念&quot;&gt;&lt;/a&gt;概念&lt;/h2&gt;&lt;p&gt;跨站请求伪造（Cross-site request forgery），通常缩写为 CSRF 或者 XSRF， 是一种挟制用户在当前已登录的 Web 应用程序上执行非本意的操作的攻击方法。
+      &lt;h2 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot; class=&quot;headerlink&quot; title=&quot;概念&quot;&gt;&lt;/a&gt;概念&lt;/h2&gt;&lt;p&gt;&lt;code&gt;跨站请求伪造&lt;/code&gt;（Cross-site request forgery），通常缩写为 CSRF 或者 XSRF， 是一种挟制用户在当前已登录的 Web 应用程序上执行非本意的操作的攻击方法。
     
     </summary>
     
@@ -236,9 +244,9 @@
     <link href="http://www.dengfuping.com/2017/05/11/web-security-attack-xss/"/>
     <id>http://www.dengfuping.com/2017/05/11/web-security-attack-xss/</id>
     <published>2017-05-11T14:25:55.000Z</published>
-    <updated>2017-07-10T10:34:38.631Z</updated>
+    <updated>2017-07-10T10:45:19.879Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>XSS，全称是跨站脚本攻击（Cross-site scripting），为了不和层叠样式表(CSS)的缩写混淆，故将跨站脚本攻击缩写为XSS。恶意攻击者往Web页面里插入恶意的 script 代码，当用户浏览该页之时，嵌入其中的 script 代码会被执行，从而达到恶意攻击用户的目的，如盗取用户的 cookie 等敏感信息。<a id="more"></a></p>
+    <content type="html"><![CDATA[<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>XSS，全称是 <code>跨站脚本攻击</code>（Cross-site scripting），为了不和层叠样式表(CSS)的缩写混淆，故将跨站脚本攻击缩写为XSS。恶意攻击者往Web页面里插入恶意的 script 代码，当用户浏览该页之时，嵌入其中的 script 代码会被执行，从而达到恶意攻击用户的目的，如盗取用户的 cookie 等敏感信息。<a id="more"></a></p>
 <h2 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h2><h3 id="存储型-XSS"><a href="#存储型-XSS" class="headerlink" title="存储型 XSS"></a>存储型 XSS</h3><p>数据库中存有的存在XSS攻击的数据，返回给客户端。若数据未经过任何转义。被浏览器渲染。就可能导致XSS攻击。</p>
 <h3 id="反射型-XSS"><a href="#反射型-XSS" class="headerlink" title="反射型 XSS"></a>反射型 XSS</h3><p>将用户输入的存在XSS攻击的数据，发送给后台，后台并未对数据进行存储，也未经过任何过滤，直接返回给客户端。被浏览器渲染。就可能导致XSS攻击。</p>
 <h3 id="DOM-XSS"><a href="#DOM-XSS" class="headerlink" title="DOM XSS"></a>DOM XSS</h3><p>纯粹发生在客户端的XSS攻击，比如：</p>
@@ -261,7 +269,7 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot; class=&quot;headerlink&quot; title=&quot;概念&quot;&gt;&lt;/a&gt;概念&lt;/h2&gt;&lt;p&gt;XSS，全称是跨站脚本攻击（Cross-site scripting），为了不和层叠样式表(CSS)的缩写混淆，故将跨站脚本攻击缩写为XSS。恶意攻击者往Web页面里插入恶意的 script 代码，当用户浏览该页之时，嵌入其中的 script 代码会被执行，从而达到恶意攻击用户的目的，如盗取用户的 cookie 等敏感信息。
+      &lt;h2 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot; class=&quot;headerlink&quot; title=&quot;概念&quot;&gt;&lt;/a&gt;概念&lt;/h2&gt;&lt;p&gt;XSS，全称是 &lt;code&gt;跨站脚本攻击&lt;/code&gt;（Cross-site scripting），为了不和层叠样式表(CSS)的缩写混淆，故将跨站脚本攻击缩写为XSS。恶意攻击者往Web页面里插入恶意的 script 代码，当用户浏览该页之时，嵌入其中的 script 代码会被执行，从而达到恶意攻击用户的目的，如盗取用户的 cookie 等敏感信息。
     
     </summary>
     

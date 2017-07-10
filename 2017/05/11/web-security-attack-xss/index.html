@@ -86,16 +86,16 @@
 
 
 
-<meta name="description" content="概念XSS，全称是跨站脚本攻击（Cross-site scripting），为了不和层叠样式表(CSS)的缩写混淆，故将跨站脚本攻击缩写为XSS。恶意攻击者往Web页面里插入恶意的 script 代码，当用户浏览该页之时，嵌入其中的 script 代码会被执行，从而达到恶意攻击用户的目的，如盗取用户的 cookie 等敏感信息。">
+<meta name="description" content="概念XSS，全称是 跨站脚本攻击（Cross-site scripting），为了不和层叠样式表(CSS)的缩写混淆，故将跨站脚本攻击缩写为XSS。恶意攻击者往Web页面里插入恶意的 script 代码，当用户浏览该页之时，嵌入其中的 script 代码会被执行，从而达到恶意攻击用户的目的，如盗取用户的 cookie 等敏感信息。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="网络安全之 XSS 攻击">
 <meta property="og:url" content="http://www.dengfuping.com/2017/05/11/web-security-attack-xss/index.html">
 <meta property="og:site_name" content="Deng | 不搭">
-<meta property="og:description" content="概念XSS，全称是跨站脚本攻击（Cross-site scripting），为了不和层叠样式表(CSS)的缩写混淆，故将跨站脚本攻击缩写为XSS。恶意攻击者往Web页面里插入恶意的 script 代码，当用户浏览该页之时，嵌入其中的 script 代码会被执行，从而达到恶意攻击用户的目的，如盗取用户的 cookie 等敏感信息。">
-<meta property="og:updated_time" content="2017-07-10T10:34:38.631Z">
+<meta property="og:description" content="概念XSS，全称是 跨站脚本攻击（Cross-site scripting），为了不和层叠样式表(CSS)的缩写混淆，故将跨站脚本攻击缩写为XSS。恶意攻击者往Web页面里插入恶意的 script 代码，当用户浏览该页之时，嵌入其中的 script 代码会被执行，从而达到恶意攻击用户的目的，如盗取用户的 cookie 等敏感信息。">
+<meta property="og:updated_time" content="2017-07-10T10:45:19.879Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络安全之 XSS 攻击">
-<meta name="twitter:description" content="概念XSS，全称是跨站脚本攻击（Cross-site scripting），为了不和层叠样式表(CSS)的缩写混淆，故将跨站脚本攻击缩写为XSS。恶意攻击者往Web页面里插入恶意的 script 代码，当用户浏览该页之时，嵌入其中的 script 代码会被执行，从而达到恶意攻击用户的目的，如盗取用户的 cookie 等敏感信息。">
+<meta name="twitter:description" content="概念XSS，全称是 跨站脚本攻击（Cross-site scripting），为了不和层叠样式表(CSS)的缩写混淆，故将跨站脚本攻击缩写为XSS。恶意攻击者往Web页面里插入恶意的 script 代码，当用户浏览该页之时，嵌入其中的 script 代码会被执行，从而达到恶意攻击用户的目的，如盗取用户的 cookie 等敏感信息。">
 
 
 <script>
@@ -382,7 +382,7 @@ var _hmt = _hmt || [];
       
 
       
-        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>XSS，全称是跨站脚本攻击（Cross-site scripting），为了不和层叠样式表(CSS)的缩写混淆，故将跨站脚本攻击缩写为XSS。恶意攻击者往Web页面里插入恶意的 script 代码，当用户浏览该页之时，嵌入其中的 script 代码会被执行，从而达到恶意攻击用户的目的，如盗取用户的 cookie 等敏感信息。<a id="more"></a></p>
+        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>XSS，全称是 <code>跨站脚本攻击</code>（Cross-site scripting），为了不和层叠样式表(CSS)的缩写混淆，故将跨站脚本攻击缩写为XSS。恶意攻击者往Web页面里插入恶意的 script 代码，当用户浏览该页之时，嵌入其中的 script 代码会被执行，从而达到恶意攻击用户的目的，如盗取用户的 cookie 等敏感信息。<a id="more"></a></p>
 <h2 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h2><h3 id="存储型-XSS"><a href="#存储型-XSS" class="headerlink" title="存储型 XSS"></a>存储型 XSS</h3><p>数据库中存有的存在XSS攻击的数据，返回给客户端。若数据未经过任何转义。被浏览器渲染。就可能导致XSS攻击。</p>
 <h3 id="反射型-XSS"><a href="#反射型-XSS" class="headerlink" title="反射型 XSS"></a>反射型 XSS</h3><p>将用户输入的存在XSS攻击的数据，发送给后台，后台并未对数据进行存储，也未经过任何过滤，直接返回给客户端。被浏览器渲染。就可能导致XSS攻击。</p>
 <h3 id="DOM-XSS"><a href="#DOM-XSS" class="headerlink" title="DOM XSS"></a>DOM XSS</h3><p>纯粹发生在客户端的XSS攻击，比如：</p>
