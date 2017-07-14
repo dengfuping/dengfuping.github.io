@@ -88,8 +88,8 @@
 
 <meta name="description" content="最近在研究 jQuery 的源码，发现自己对其链式调用还理解不是很深。今天趁此机会，就来谈一谈 JavaScript 中的链式调用。链式调用我们平常用到很多，比如 jQuery 中的：
 1$(ele).show().find(child).hide();
-再比如：
-1angularjs 中的 $http.get(url).success(fn_s).error(fn_e);
+再比如 angularjs 中的：
+1$http.get(url).success(fn_s).error(fn_e);
 但这都是已经包装好的链">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Javascript：链式调用">
@@ -97,16 +97,16 @@
 <meta property="og:site_name" content="Deng | 不搭">
 <meta property="og:description" content="最近在研究 jQuery 的源码，发现自己对其链式调用还理解不是很深。今天趁此机会，就来谈一谈 JavaScript 中的链式调用。链式调用我们平常用到很多，比如 jQuery 中的：
 1$(ele).show().find(child).hide();
-再比如：
-1angularjs 中的 $http.get(url).success(fn_s).error(fn_e);
+再比如 angularjs 中的：
+1$http.get(url).success(fn_s).error(fn_e);
 但这都是已经包装好的链">
-<meta property="og:updated_time" content="2017-07-10T10:44:25.866Z">
+<meta property="og:updated_time" content="2017-07-14T09:29:50.603Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Javascript：链式调用">
 <meta name="twitter:description" content="最近在研究 jQuery 的源码，发现自己对其链式调用还理解不是很深。今天趁此机会，就来谈一谈 JavaScript 中的链式调用。链式调用我们平常用到很多，比如 jQuery 中的：
 1$(ele).show().find(child).hide();
-再比如：
-1angularjs 中的 $http.get(url).success(fn_s).error(fn_e);
+再比如 angularjs 中的：
+1$http.get(url).success(fn_s).error(fn_e);
 但这都是已经包装好的链">
 
 
@@ -396,8 +396,8 @@ var _hmt = _hmt || [];
       
         <p>最近在研究 jQuery 的源码，发现自己对其链式调用还理解不是很深。今天趁此机会，就来谈一谈 JavaScript 中的链式调用。链式调用我们平常用到很多，比如 jQuery 中的：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(ele).show().find(child).hide();</div></pre></td></tr></table></figure>
-<p>再比如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">angularjs 中的 $http.get(url).success(fn_s).error(fn_e);</div></pre></td></tr></table></figure>
+<p>再比如 angularjs 中的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$http.get(url).success(fn_s).error(fn_e);</div></pre></td></tr></table></figure>
 <p>但这都是已经包装好的链式调用，我们只能体会链式调用带来的方便，却不知道形成这样一条函数链的原理是什么。<a id="more"></a></p>
 <p>随着链式调用的普及，实现的方案也越来越多。最常见的，是 jQuery 直接返回 this 的方式，underscore 的可选式的方式，和 lodash 惰性求值的方式。我们分别来了解，并逐个完成它们的demo。</p>
 <p>参考文章：</p>

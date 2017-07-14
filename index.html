@@ -1038,8 +1038,8 @@ var _hmt = _hmt || [];
         
           <p>最近在研究 jQuery 的源码，发现自己对其链式调用还理解不是很深。今天趁此机会，就来谈一谈 JavaScript 中的链式调用。链式调用我们平常用到很多，比如 jQuery 中的：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(ele).show().find(child).hide();</div></pre></td></tr></table></figure>
-<p>再比如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">angularjs 中的 $http.get(url).success(fn_s).error(fn_e);</div></pre></td></tr></table></figure>
+<p>再比如 angularjs 中的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$http.get(url).success(fn_s).error(fn_e);</div></pre></td></tr></table></figure>
 <p>但这都是已经包装好的链式调用，我们只能体会链式调用带来的方便，却不知道形成这样一条函数链的原理是什么。
           <div class="post-more-link text-center">
             <a class="btn" href="/2017/05/23/javascript-call-by-chaining/#more" rel="contents">
