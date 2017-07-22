@@ -4,6 +4,29 @@
   
     
     <entry>
+      <title><![CDATA[JavaScript：内存泄漏]]></title>
+      <url>http://www.dengfuping.com/2017/07/22/javascript-memory-leak/</url>
+      <content type="html"><![CDATA[<p>参考文章：</p>
+<ul>
+<li><a href="http://www.jb51.net/article/81117.htm" target="_blank" rel="external">深入理解JavaScript程序中内存泄漏</a></li>
+<li><a href="http://www.cnblogs.com/sprying/archive/2013/05/31/3109517.html" target="_blank" rel="external">js内存泄露的几种情况</a></li>
+<li><a href="http://blog.csdn.net/vuturn/article/details/45097353" target="_blank" rel="external">javascript内存泄露及解决方案详解</a></li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[JavaScript：垃圾回收机制和内存管理]]></title>
+      <url>http://www.dengfuping.com/2017/07/22/javascript-garbage-collection-and-memory-management/</url>
+      <content type="html"><![CDATA[<p>参考文章：</p>
+<ul>
+<li><a href="http://www.jb51.net/article/75292.htm" target="_blank" rel="external">跟我学习javascript的垃圾回收机制与内存管理</a></li>
+<li><a href="http://www.cnblogs.com/lcw5945/p/4143050.html" target="_blank" rel="external">JavaScript 的垃圾回收和内存管理</a></li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[CSS：瀑布流布局实现方式]]></title>
       <url>http://www.dengfuping.com/2017/07/14/css-waterfall-layout/</url>
       <content type="html"><![CDATA[<h2 id="1-传统多列浮动"><a href="#1-传统多列浮动" class="headerlink" title="1. 传统多列浮动"></a>1. 传统多列浮动</h2><ol>

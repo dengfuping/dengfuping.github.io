@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dengfuping.com/"/>
-  <updated>2017-07-14T14:53:07.975Z</updated>
+  <updated>2017-07-22T15:41:52.734Z</updated>
   <id>http://www.dengfuping.com/</id>
   
   <author>
@@ -14,6 +14,67 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript：内存泄漏</title>
+    <link href="http://www.dengfuping.com/2017/07/22/javascript-memory-leak/"/>
+    <id>http://www.dengfuping.com/2017/07/22/javascript-memory-leak/</id>
+    <published>2017-07-22T15:38:53.000Z</published>
+    <updated>2017-07-22T15:41:52.734Z</updated>
+    
+    <content type="html"><![CDATA[<p>参考文章：</p>
+<ul>
+<li><a href="http://www.jb51.net/article/81117.htm" target="_blank" rel="external">深入理解JavaScript程序中内存泄漏</a></li>
+<li><a href="http://www.cnblogs.com/sprying/archive/2013/05/31/3109517.html" target="_blank" rel="external">js内存泄露的几种情况</a></li>
+<li><a href="http://blog.csdn.net/vuturn/article/details/45097353" target="_blank" rel="external">javascript内存泄露及解决方案详解</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;参考文章：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.jb51.net/article/81117.htm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;深入理解JavaScript程序中内存泄漏&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a h
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://www.dengfuping.com/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="http://www.dengfuping.com/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript：垃圾回收机制和内存管理</title>
+    <link href="http://www.dengfuping.com/2017/07/22/javascript-garbage-collection-and-memory-management/"/>
+    <id>http://www.dengfuping.com/2017/07/22/javascript-garbage-collection-and-memory-management/</id>
+    <published>2017-07-22T15:33:15.000Z</published>
+    <updated>2017-07-22T15:36:04.781Z</updated>
+    
+    <content type="html"><![CDATA[<p>参考文章：</p>
+<ul>
+<li><a href="http://www.jb51.net/article/75292.htm" target="_blank" rel="external">跟我学习javascript的垃圾回收机制与内存管理</a></li>
+<li><a href="http://www.cnblogs.com/lcw5945/p/4143050.html" target="_blank" rel="external">JavaScript 的垃圾回收和内存管理</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;参考文章：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.jb51.net/article/75292.htm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;跟我学习javascript的垃圾回收机制与内存管理&lt;/a&gt;&lt;/li&gt;
+&lt;li
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://www.dengfuping.com/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="http://www.dengfuping.com/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>CSS：瀑布流布局实现方式</title>
@@ -636,66 +697,6 @@
     
     
       <category term="JavaScript" scheme="http://www.dengfuping.com/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Javascript：prototype 和 __proto__ 的区别和联系</title>
-    <link href="http://www.dengfuping.com/2017/04/29/javascript-prototype-and-__proto__/"/>
-    <id>http://www.dengfuping.com/2017/04/29/javascript-prototype-and-__proto__/</id>
-    <published>2017-04-29T13:42:40.000Z</published>
-    <updated>2017-05-09T09:34:24.292Z</updated>
-    
-    <content type="html"><![CDATA[<p>（1）prototype 是函数( function ) 的一个属性, 它指向函数的原型。</p>
-<p>（2）__proto__ 是对象的内部属性, 它指向构造器的原型, 对象依赖它进行原型链查询，instanceof 也是依赖它来判断是否继承关系。</p>
-<p>由上, prototype 只有函数才有, 其他(非函数)对象不具有该属性. 而 __proto__ 是对象的内部属性, 任何对象都拥有该属性.</p>
-<h2 id="prototype（显式原型）"><a href="#prototype（显式原型）" class="headerlink" title="prototype（显式原型）"></a>prototype（显式原型）</h2><p>Javascript 规定，每一个构造函数都有一个 prototype 属性，指向另一个对象，我们称之为 <code>原型对象</code> 。原型对象的所有属性和方法，都会被构造函数的实例继承。这意味着，我们可以把那些不变的属性和方法，直接定义在 <code>原型对象</code> 上。<a id="more"></a></p>
-<p>注意：通过 Function.prototype.bind 方法构造出来的函数是个例外，它没有 prototype 属性。</p>
-<p>作用：用来 <code>实现基于原型的继承</code> 与 <code>属性的共享</code> 。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name, color</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.color = color;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Cat.prototype.type = <span class="string">"猫科动物"</span>;</div><div class="line">Cat.prototype.eat = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    alert(<span class="string">"吃老鼠"</span>)</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h2 id="proto-（隐式原型）"><a href="#proto-（隐式原型）" class="headerlink" title="__proto__（隐式原型）"></a>__proto__（隐式原型）</h2><p>JavaScript 中任意对象都有一个内置属性 <code>__proto__</code> ，在 ES5 之前没有标准的方法访问这个内置属性，但是大多数浏览器都支持通过 __proto__ 来访问。ES5中有了对于这个内置属性标准的 Get 方法即 getPrototypeOf() 。</p>
-<p>注意：Object.prototype 这个对象是个例外，它的 __proto__ 值为 null 。</p>
-<p>作用：构成原型链，同样用于 <code>实现基于原型的继承</code> 。举个例子，当我们访问 obj 这个对象中的 x 属性时，如果在 obj 中找不到，那么就会沿着 <code>__proto__</code> 依次查找。</p>
-<h2 id="两者之间的关系"><a href="#两者之间的关系" class="headerlink" title="两者之间的关系"></a>两者之间的关系</h2><p>（1）对象有属性 <code>__proto__</code> ，指向该对象的构造函数的原型对象。<br>（2）构造函数除了有属性 <code>__proto__</code> ，还有属性 prototype ，prototype 指向该构造函数的原型对象。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name, color</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.color = color;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> cat = <span class="keyword">new</span> Cat(<span class="string">"Jetty"</span>, <span class="string">"red"</span>);</div><div class="line"><span class="built_in">console</span>.log(cat.__proto__ == Cat.prototype);    <span class="comment">// true</span></div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;（1）prototype 是函数( function ) 的一个属性, 它指向函数的原型。&lt;/p&gt;
-&lt;p&gt;（2）__proto__ 是对象的内部属性, 它指向构造器的原型, 对象依赖它进行原型链查询，instanceof 也是依赖它来判断是否继承关系。&lt;/p&gt;
-&lt;p&gt;由上, prototype 只有函数才有, 其他(非函数)对象不具有该属性. 而 __proto__ 是对象的内部属性, 任何对象都拥有该属性.&lt;/p&gt;
-&lt;h2 id=&quot;prototype（显式原型）&quot;&gt;&lt;a href=&quot;#prototype（显式原型）&quot; class=&quot;headerlink&quot; title=&quot;prototype（显式原型）&quot;&gt;&lt;/a&gt;prototype（显式原型）&lt;/h2&gt;&lt;p&gt;Javascript 规定，每一个构造函数都有一个 prototype 属性，指向另一个对象，我们称之为 &lt;code&gt;原型对象&lt;/code&gt; 。原型对象的所有属性和方法，都会被构造函数的实例继承。这意味着，我们可以把那些不变的属性和方法，直接定义在 &lt;code&gt;原型对象&lt;/code&gt; 上。
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="http://www.dengfuping.com/categories/JavaScript/"/>
-    
-    
-      <category term="JavaScript" scheme="http://www.dengfuping.com/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Fetch API 用法解析</title>
-    <link href="http://www.dengfuping.com/2017/04/25/fetch-api/"/>
-    <id>http://www.dengfuping.com/2017/04/25/fetch-api/</id>
-    <published>2017-04-25T09:56:35.000Z</published>
-    <updated>2017-04-25T10:24:29.315Z</updated>
-    
-    <content type="html"><![CDATA[<p>参考链接：<a href="http://javascript.ruanyifeng.com/bom/ajax.html#toc27" target="_blank" rel="external">http://javascript.ruanyifeng.com/bom/ajax.html#toc27</a><a id="more"></a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;参考链接：&lt;a href=&quot;http://javascript.ruanyifeng.com/bom/ajax.html#toc27&quot;&gt;http://javascript.ruanyifeng.com/bom/ajax.html#toc27&lt;/a&gt;
-    
-    </summary>
-    
-      <category term="计算机网络" scheme="http://www.dengfuping.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
-    
-    
-      <category term="fetch" scheme="http://www.dengfuping.com/tags/fetch/"/>
     
   </entry>
   
