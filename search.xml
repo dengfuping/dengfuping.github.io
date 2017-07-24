@@ -4,6 +4,30 @@
   
     
     <entry>
+      <title><![CDATA[加密算法（一）：MD5 加密算法]]></title>
+      <url>http://www.dengfuping.com/2017/07/24/algorithm-md5-encryption/</url>
+      <content type="html"><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>MD5（单向散列算法）的全称是 Message-Digest Algorithm 5（信息-摘要算法），是 Hash 算法的一种。</p>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><ul>
+<li>数字指纹：输入任意长度的信息，经过处理，输出为 128 位的信息；</li>
+<li>唯一性：不同的输入得到的不同的结果（唯一性）；</li>
+<li>不可逆：根据128位的输出结果不可能反推出输入的信息。</li>
+</ul>
+<h2 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h2><h2 id="信息加密"><a href="#信息加密" class="headerlink" title="信息加密"></a>信息加密</h2><p>在很多网站在数据库存储用户的密码的时候都是存储用户密码的MD5值。这样就算不法分子得到数据库的用户密码的 MD5 值，也无法知道用户的密码(其实这样是不安全的，后面我会提到)。（比如在 UNIX 系统中用户的密码就是以 MD5（或其它类似的算法）经加密后存储在文件系统中。当用户登录的时候，系统把用户输入的密码计算成 MD5 值，然后再去和保存在文件系统中的 MD5 值进行比较，进而确定输入的密码是否正确。通过这样的步骤，系统在并不知道用户密码的明码的情况下就可以确定用户登录系统的合法性。这不但可以避免用户的密码被具有系统管理员权限的用户知道，而且还在一定程度上增加了密码被破解的难度。）</p>
+<h3 id="文件效验（防止被篡改）"><a href="#文件效验（防止被篡改）" class="headerlink" title="文件效验（防止被篡改）"></a>文件效验（防止被篡改）</h3><ol>
+<li>比如发送一个电子文档，发送前，我先得到 MD5 的输出结果 a。然后在对方收到电子文档后，对方也得到一个 MD5 的输出结果 b。如果 a 与 b 一样就代表中途未被篡改。</li>
+<li>比如我提供文件下载，为了防止不法分子在安装程序中添加木马，我可以在网站上公布由安装文件得到的 MD5 输出结果。</li>
+<li>SVN 在检测文件是否在 CheckOut 后被修改过，也是用到了 MD5。</li>
+</ol>
+<h3 id="数字签名"><a href="#数字签名" class="headerlink" title="数字签名"></a>数字签名</h3><p>这需要一个第三方认证机构。例如 A 写了一个文件，认证机构对此文件用 MD5 算法产生摘要信息并做好记录。若以后 A 说这文件不是他写的，权威机构只需对此文件重新产生摘要信息，然后跟记录在册的摘要信息进行比对，相同的话，就证明是 A 写的了。这就是所谓的“数字签名”。</p>
+<p>参考文章：</p>
+<ol>
+<li><a href="http://blog.csdn.net/forgotaboutgirl/article/details/7258109" target="_blank" rel="external">MD5算法原理</a></li>
+<li><a href="http://www.cnblogs.com/hjgods/p/3998570.html" target="_blank" rel="external">MD5加密算法原理及实现</a></li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[JavaScript：内存泄漏]]></title>
       <url>http://www.dengfuping.com/2017/07/22/javascript-memory-leak/</url>
       <content type="html"><![CDATA[<p>参考文章：</p>

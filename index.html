@@ -301,6 +301,152 @@ var _hmt = _hmt || [];
             
               
                 
+                <a class="post-title-link" href="/2017/07/24/algorithm-md5-encryption/" itemprop="url">
+                  加密算法（一）：MD5 加密算法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-07-24T22:18:49+08:00" content="2017-07-24">
+              2017-07-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/07/24/algorithm-md5-encryption/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/07/24/algorithm-md5-encryption/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/07/24/algorithm-md5-encryption/" class="leancloud_visitors" data-flag-title="加密算法（一）：MD5 加密算法">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>MD5（单向散列算法）的全称是 Message-Digest Algorithm 5（信息-摘要算法），是 Hash 算法的一种。</p>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><ul>
+<li>数字指纹：输入任意长度的信息，经过处理，输出为 128 位的信息；</li>
+<li>唯一性：不同的输入得到的不同的结果（唯一性）；</li>
+<li>不可逆：根据128位的输出结果不可能反推出输入的信息。</li>
+</ul>
+<h2 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h2><h2 id="信息加密"><a href="#信息加密" class="headerlink" title="信息加密"></a>信息加密</h2><p>在很多网站在数据库存储用户的密码的时候都是存储用户密码的MD5值。这样就算不法分子得到数据库的用户密码的 MD5 值，也无法知道用户的密码(其实这样是不安全的，后面我会提到)。（比如在 UNIX 系统中用户的密码就是以 MD5（或其它类似的算法）经加密后存储在文件系统中。当用户登录的时候，系统把用户输入的密码计算成 MD5 值，然后再去和保存在文件系统中的 MD5 值进行比较，进而确定输入的密码是否正确。通过这样的步骤，系统在并不知道用户密码的明码的情况下就可以确定用户登录系统的合法性。这不但可以避免用户的密码被具有系统管理员权限的用户知道，而且还在一定程度上增加了密码被破解的难度。）</p>
+<h3 id="文件效验（防止被篡改）"><a href="#文件效验（防止被篡改）" class="headerlink" title="文件效验（防止被篡改）"></a>文件效验（防止被篡改）</h3><ol>
+<li>比如发送一个电子文档，发送前，我先得到 MD5 的输出结果 a。然后在对方收到电子文档后，对方也得到一个 MD5 的输出结果 b。如果 a 与 b 一样就代表中途未被篡改。</li>
+<li>比如我提供文件下载，为了防止不法分子在安装程序中添加木马，我可以在网站上公布由安装文件得到的 MD5 输出结果。</li>
+<li>SVN 在检测文件是否在 CheckOut 后被修改过，也是用到了 MD5。</li>
+</ol>
+<h3 id="数字签名"><a href="#数字签名" class="headerlink" title="数字签名"></a>数字签名</h3><p>这需要一个第三方认证机构。例如 A 写了一个文件，认证机构对此文件用 MD5 算法产生摘要信息并做好记录。若以后 A 说这文件不是他写的，权威机构只需对此文件重新产生摘要信息，然后跟记录在册的摘要信息进行比对，相同的话，就证明是 A 写的了。这就是所谓的“数字签名”。</p>
+<p>参考文章：</p>
+<ol>
+<li><a href="http://blog.csdn.net/forgotaboutgirl/article/details/7258109" target="_blank" rel="external">MD5算法原理</a></li>
+<li><a href="http://www.cnblogs.com/hjgods/p/3998570.html" target="_blank" rel="external">MD5加密算法原理及实现</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/07/22/javascript-memory-leak/" itemprop="url">
                   JavaScript：内存泄漏
                 </a>
@@ -1508,137 +1654,6 @@ var _hmt = _hmt || [];
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/05/14/javascript-event-delegate-compatibility/" itemprop="url">
-                  JavaScript：事件代理（委托）的兼容性
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-05-14T11:46:37+08:00" content="2017-05-14">
-              2017-05-14
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/05/14/javascript-event-delegate-compatibility/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/14/javascript-event-delegate-compatibility/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2017/05/14/javascript-event-delegate-compatibility/" class="leancloud_visitors" data-flag-title="JavaScript：事件代理（委托）的兼容性">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>由于网上的很多文章都介绍了 js 中的 <code>事件代理</code>，因此本文只探讨一些关于事件代理中容易被忽视的两个问题，那就是原生 js 实现和其在浏览器中的<code>兼容性问题</code>。
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/05/14/javascript-event-delegate-compatibility/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1684,7 +1699,7 @@ var _hmt = _hmt || [];
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">57</span>
+              <span class="site-state-item-count">58</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1692,7 +1707,7 @@ var _hmt = _hmt || [];
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1701,7 +1716,7 @@ var _hmt = _hmt || [];
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">76</span>
+                <span class="site-state-item-count">77</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
