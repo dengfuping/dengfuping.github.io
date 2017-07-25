@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dengfuping.com/"/>
-  <updated>2017-07-24T14:31:16.858Z</updated>
+  <updated>2017-07-25T09:19:50.257Z</updated>
   <id>http://www.dengfuping.com/</id>
   
   <author>
@@ -20,9 +20,10 @@
     <link href="http://www.dengfuping.com/2017/07/24/algorithm-md5-encryption/"/>
     <id>http://www.dengfuping.com/2017/07/24/algorithm-md5-encryption/</id>
     <published>2017-07-24T14:18:49.000Z</published>
-    <updated>2017-07-24T14:31:16.858Z</updated>
+    <updated>2017-07-25T09:19:50.257Z</updated>
     
     <content type="html"><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>MD5（单向散列算法）的全称是 Message-Digest Algorithm 5（信息-摘要算法），是 Hash 算法的一种。</p>
+<a id="more"></a>
 <h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><ul>
 <li>数字指纹：输入任意长度的信息，经过处理，输出为 128 位的信息；</li>
 <li>唯一性：不同的输入得到的不同的结果（唯一性）；</li>
@@ -45,7 +46,6 @@
     <summary type="html">
     
       &lt;h2 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h2&gt;&lt;p&gt;MD5（单向散列算法）的全称是 Message-Digest Algorithm 5（信息-摘要算法），是 Hash 算法的一种。&lt;/p&gt;
-
     
     </summary>
     
