@@ -379,8 +379,8 @@ var _hmt = _hmt || [];
 
       
         
-          <h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>输入 <code>php artisan tinker</code> 进入 <code>tinker</code> 环境，然后可以通过 factory 的 make() 和 create() 生成测试数据：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// make() 方法不会将生成的数据写入数据库</div><div class="line">$ factory(User::class, 5)-&gt;make();</div><div class="line">// 而 create() 方法则会将生成的数据写入数据库</div><div class="line">$ factory(User::class, 5)-&gt;create();</div></pre></td></tr></table></figure>
+          <h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>输入 <code>php artisan tinker</code> 进入 <code>tinker</code> 环境，然后可以通过 <code>factory</code> 的 <code>make()</code> 和 <code>create()</code> 生成测试数据：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// make() 方法不会将生成的数据写入数据库</span></div><div class="line">$ factory(User::class, <span class="number">5</span>)-&gt;make();</div><div class="line"><span class="comment">// 而 create() 方法则会将生成的数据写入数据库</span></div><div class="line">$ factory(User::class, <span class="number">5</span>)-&gt;create();</div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
             <a class="btn" href="/2017/07/29/laravel-Model-Factory/#more" rel="contents">
               阅读全文 &raquo;
