@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dengfuping.com/"/>
-  <updated>2017-07-25T09:19:50.257Z</updated>
+  <updated>2017-07-29T15:54:23.650Z</updated>
   <id>http://www.dengfuping.com/</id>
   
   <author>
@@ -14,6 +14,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Laravel 学习（一）：Model Factory</title>
+    <link href="http://www.dengfuping.com/2017/07/29/laravel-Model-Factory/"/>
+    <id>http://www.dengfuping.com/2017/07/29/laravel-Model-Factory/</id>
+    <published>2017-07-29T15:40:37.000Z</published>
+    <updated>2017-07-29T15:54:23.650Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>输入 <code>php artisan tinker</code> 进入 <code>tinker</code> 环境，然后可以通过 factory 的 make() 和 create() 生成测试数据。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">// make() 方法不会将生成的数据写入数据库</div><div class="line">$ factory(User::class, 5)-&gt;make();</div><div class="line">// 而 create() 方法则会将生成的数据写入数据库</div><div class="line">$ factory(User::class, 5)-&gt;create();</div><div class="line"></div><div class="line">```&lt;!--more--&gt;</div><div class="line"></div><div class="line"><span class="comment">## 本地化</span></div><div class="line"></div><div class="line">在 `\App\Providers\AppServiceProvider` 的 boot()  方法中添加如下代码即可实现 Model Factory 本地化：</div><div class="line"></div><div class="line">```php</div><div class="line">public <span class="keyword">function</span> <span class="function"><span class="title">boot</span></span>()</div><div class="line">&#123;</div><div class="line">    <span class="variable">$this</span>-&gt;app-&gt;singleton(FakerGenerator::class, <span class="function"><span class="title">function</span></span> ()&#123;</div><div class="line">        <span class="built_in">return</span> FakerFactory::create(<span class="string">'zh_CN'</span>);</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>更多用法可以参考 <a href="https://github.com/fzaninotto/Faker" target="_blank" rel="external">Faker 项目</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;用法&quot;&gt;&lt;a href=&quot;#用法&quot; class=&quot;headerlink&quot; title=&quot;用法&quot;&gt;&lt;/a&gt;用法&lt;/h2&gt;&lt;p&gt;输入 &lt;code&gt;php artisan tinker&lt;/code&gt; 进入 &lt;code&gt;tinker&lt;/code&gt; 环境，然后可以通过 fa
+    
+    </summary>
+    
+      <category term="Laravel" scheme="http://www.dengfuping.com/categories/Laravel/"/>
+    
+    
+      <category term="Laravel" scheme="http://www.dengfuping.com/tags/Laravel/"/>
+    
+      <category term="PHP" scheme="http://www.dengfuping.com/tags/PHP/"/>
+    
+  </entry>
   
   <entry>
     <title>加密算法（一）：MD5 加密算法</title>
@@ -669,30 +696,6 @@
     <summary type="html">
     
       &lt;h2 id=&quot;行内元素&quot;&gt;&lt;a href=&quot;#行内元素&quot; class=&quot;headerlink&quot; title=&quot;行内元素&quot;&gt;&lt;/a&gt;行内元素&lt;/h2&gt;&lt;p&gt;给其 &lt;code&gt;父元素&lt;/code&gt; 设置 &lt;code&gt;text-align: center&lt;/code&gt; ，即可实现行内
-    
-    </summary>
-    
-      <category term="CSS" scheme="http://www.dengfuping.com/categories/CSS/"/>
-    
-    
-      <category term="CSS" scheme="http://www.dengfuping.com/tags/CSS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CSS（二）：BFC 深入理解</title>
-    <link href="http://www.dengfuping.com/2017/05/04/css-BFC/"/>
-    <id>http://www.dengfuping.com/2017/05/04/css-BFC/</id>
-    <published>2017-05-04T08:54:58.000Z</published>
-    <updated>2017-05-06T09:54:21.246Z</updated>
-    
-    <content type="html"><![CDATA[<p>请参考文章：<a href="https://juejin.im/post/5909db2fda2f60005d2093db" target="_blank" rel="external">布局概念之关于CSS-BFC深入理解</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;请参考文章：&lt;a href=&quot;https://juejin.im/post/5909db2fda2f60005d2093db&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;布局概念之关于CSS-BFC深入理解&lt;/a&gt;&lt;/p&gt;
-
     
     </summary>
     
