@@ -379,12 +379,13 @@ var _hmt = _hmt || [];
 
       
         
-          
-            <h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>输入 <code>php artisan tinker</code> 进入 <code>tinker</code> 环境，然后可以通过 factory 的 make() 和 create() 生成测试数据。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">// make() 方法不会将生成的数据写入数据库</div><div class="line">$ factory(User::class, 5)-&gt;make();</div><div class="line">// 而 create() 方法则会将生成的数据写入数据库</div><div class="line">$ factory(User::class, 5)-&gt;create();</div><div class="line"></div><div class="line">```&lt;!--more--&gt;</div><div class="line"></div><div class="line"><span class="comment">## 本地化</span></div><div class="line"></div><div class="line">在 `\App\Providers\AppServiceProvider` 的 boot()  方法中添加如下代码即可实现 Model Factory 本地化：</div><div class="line"></div><div class="line">```php</div><div class="line">public <span class="keyword">function</span> <span class="function"><span class="title">boot</span></span>()</div><div class="line">&#123;</div><div class="line">    <span class="variable">$this</span>-&gt;app-&gt;singleton(FakerGenerator::class, <span class="function"><span class="title">function</span></span> ()&#123;</div><div class="line">        <span class="built_in">return</span> FakerFactory::create(<span class="string">'zh_CN'</span>);</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>更多用法可以参考 <a href="https://github.com/fzaninotto/Faker" target="_blank" rel="external">Faker 项目</a></p>
-
-          
+          <h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>输入 <code>php artisan tinker</code> 进入 <code>tinker</code> 环境，然后可以通过 factory 的 make() 和 create() 生成测试数据：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// make() 方法不会将生成的数据写入数据库</div><div class="line">$ factory(User::class, 5)-&gt;make();</div><div class="line">// 而 create() 方法则会将生成的数据写入数据库</div><div class="line">$ factory(User::class, 5)-&gt;create();</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/07/29/laravel-Model-Factory/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
