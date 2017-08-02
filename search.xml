@@ -6,7 +6,7 @@
     <entry>
       <title><![CDATA[Java 基础教程（一）：环境搭建和运行]]></title>
       <url>http://www.dengfuping.com/2017/07/31/java-environment-setup/</url>
-      <content type="html"><![CDATA[<h2 id="JDK-下载-amp-安装"><a href="#JDK-下载-amp-安装" class="headerlink" title="JDK 下载&amp;安装"></a>JDK 下载&amp;安装</h2><p><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="external">点击此处进入下载页面</a>，此处我们下载的是 64 位版本。注意，下载前要点击 <code>Accept License Agreement</code> 才能下载。</p>
+      <content type="html"><![CDATA[<h2 id="JDK-下载-amp-安装"><a href="#JDK-下载-amp-安装" class="headerlink" title="JDK 下载 &amp; 安装"></a>JDK 下载 &amp; 安装</h2><p><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="external">点击此处下载 JDK</a>，此处我们下载的是 64 位版本。注意，下载前要点击 <code>Accept License Agreement</code> 才能下载。</p>
 <p><img src="http://dengfuping-blog.oss-cn-hangzhou.aliyuncs.com/java/java-environment-setup/1.png" alt=""></p>
 <p>双击下载的 JDK 安装包，默认安装即可。<a id="more"></a></p>
 <h2 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h2><p>右键 <code>我的电脑</code>，依次选择 <code>属性-&gt;高级系统设置-&gt;环境变量-&gt;系统变量</code>：</p>
