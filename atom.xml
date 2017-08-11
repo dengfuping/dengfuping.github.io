@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dengfuping.com/"/>
-  <updated>2017-07-31T10:27:16.141Z</updated>
+  <updated>2017-07-29T16:59:06.743Z</updated>
   <id>http://www.dengfuping.com/</id>
   
   <author>
@@ -14,53 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Java 基础教程（一）：环境搭建和运行</title>
-    <link href="http://www.dengfuping.com/2017/07/31/java-environment-setup/"/>
-    <id>http://www.dengfuping.com/2017/07/31/java-environment-setup/</id>
-    <published>2017-07-31T09:27:27.000Z</published>
-    <updated>2017-07-31T10:27:16.141Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="JDK-下载-amp-安装"><a href="#JDK-下载-amp-安装" class="headerlink" title="JDK 下载 &amp; 安装"></a>JDK 下载 &amp; 安装</h2><p><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="external">点击此处下载 JDK</a>，此处我们下载的是 64 位版本。注意，下载前要点击 <code>Accept License Agreement</code> 才能下载。</p>
-<p><img src="http://dengfuping-blog.oss-cn-hangzhou.aliyuncs.com/java/java-environment-setup/1.png" alt=""></p>
-<p>双击下载的 JDK 安装包，默认安装即可。<a id="more"></a></p>
-<h2 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h2><p>右键 <code>我的电脑</code>，依次选择 <code>属性-&gt;高级系统设置-&gt;环境变量-&gt;系统变量</code>：</p>
-<p><img src="http://dengfuping-blog.oss-cn-hangzhou.aliyuncs.com/java/java-environment-setup/2.png" alt=""></p>
-<p>新建系统变量 <code>JAVA_HOME</code> 和 <code>CLASSPATH</code>：</p>
-<ul>
-<li>变量名：<code>JAVA_HOME</code> </li>
-<li>变量值：<code>C:\Program Files\Java\jdk1.8.0_144</code>（其中这里的变量值为你自己安装jdk的文件目录，这里要注意）</li>
-<li>变量名：<code>CLASSPATH</code></li>
-<li>变量值：<code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</code>（注意前面有 <code>.</code> 点号）</li>
-</ul>
-<p><img src="http://dengfuping-blog.oss-cn-hangzhou.aliyuncs.com/java/java-environment-setup/3.png" alt=""></p>
-<p><img src="http://dengfuping-blog.oss-cn-hangzhou.aliyuncs.com/java/java-environment-setup/4.png" alt=""></p>
-<p>选择“系统变量”中变量名为 <code>Path</code> 的环境变量，双击该变量，把 <code>JDK</code> 安装路径中 <code>bin</code> 目录的绝对路径，添加到 <code>Path</code> 变量的值中，并使用半角的英文分号和已有的路径进行分隔。</p>
-<ul>
-<li>变量名：<code>Path</code> </li>
-<li>变量值：<code>%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;</code></li>
-</ul>
-<p>然后一路点击确定以保存配置。</p>
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>按快捷键 <code>Windows + R</code>，然后输入 <code>cmd</code>，点击确定或直接回车进行命令行窗口。然后输入 <code>javac -version</code> 命令查看 Java 版本，输出以下版本信息（我这里是 1.8.0_92 版本）则说明 <code>Java</code> 环境配置成功：</p>
-<p><img src="http://dengfuping-blog.oss-cn-hangzhou.aliyuncs.com/java/java-environment-setup/5.png" alt=""></p>
-<p><img src="http://dengfuping-blog.oss-cn-hangzhou.aliyuncs.com/java/java-environment-setup/6.png" alt=""></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;JDK-下载-amp-安装&quot;&gt;&lt;a href=&quot;#JDK-下载-amp-安装&quot; class=&quot;headerlink&quot; title=&quot;JDK 下载 &amp;amp; 安装&quot;&gt;&lt;/a&gt;JDK 下载 &amp;amp; 安装&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html&quot;&gt;点击此处下载 JDK&lt;/a&gt;，此处我们下载的是 64 位版本。注意，下载前要点击 &lt;code&gt;Accept License Agreement&lt;/code&gt; 才能下载。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://dengfuping-blog.oss-cn-hangzhou.aliyuncs.com/java/java-environment-setup/1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;双击下载的 JDK 安装包，默认安装即可。
-    
-    </summary>
-    
-      <category term="Java 基础教程" scheme="http://www.dengfuping.com/categories/Java-%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/"/>
-    
-    
-      <category term="Java" scheme="http://www.dengfuping.com/tags/Java/"/>
-    
-  </entry>
   
   <entry>
     <title>Laravel 学习（一）：Model Factory</title>
@@ -721,6 +674,32 @@
     
       &lt;h2 id=&quot;单行文本&quot;&gt;&lt;a href=&quot;#单行文本&quot; class=&quot;headerlink&quot; title=&quot;单行文本&quot;&gt;&lt;/a&gt;单行文本&lt;/h2&gt;&lt;p&gt;若元素是单行文本, 则可设置 line-height 等于父元素高度&lt;/p&gt;
 &lt;h2 id=&quot;块级元素&quot;&gt;&lt;a href=&quot;
+    
+    </summary>
+    
+      <category term="CSS" scheme="http://www.dengfuping.com/categories/CSS/"/>
+    
+    
+      <category term="CSS" scheme="http://www.dengfuping.com/tags/CSS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CSS（三）：水平居中常用方法</title>
+    <link href="http://www.dengfuping.com/2017/05/06/css-horizontal-align/"/>
+    <id>http://www.dengfuping.com/2017/05/06/css-horizontal-align/</id>
+    <published>2017-05-06T09:49:42.000Z</published>
+    <updated>2017-05-06T10:29:10.281Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="行内元素"><a href="#行内元素" class="headerlink" title="行内元素"></a>行内元素</h2><p>给其 <code>父元素</code> 设置 <code>text-align: center</code> ，即可实现行内元素水平居中。</p>
+<h2 id="块级元素"><a href="#块级元素" class="headerlink" title="块级元素"></a>块级元素</h2><p>（1）给 <code>该元素</code> 设置 <code>margin: 0 auto</code> 即可实现块级元素水平居中。适用于 <code>定宽块状元素</code> 。</p>
+<p>（2）使用 <code>flex</code> 布局，给 <code>父元素</code> 设置如下属性：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.parent</span> &#123;</div><div class="line">    <span class="attribute">display</span>: flex;</div><div class="line">    <span class="attribute">justify-content</span>: center;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;行内元素&quot;&gt;&lt;a href=&quot;#行内元素&quot; class=&quot;headerlink&quot; title=&quot;行内元素&quot;&gt;&lt;/a&gt;行内元素&lt;/h2&gt;&lt;p&gt;给其 &lt;code&gt;父元素&lt;/code&gt; 设置 &lt;code&gt;text-align: center&lt;/code&gt; ，即可实现行内
     
     </summary>
     
