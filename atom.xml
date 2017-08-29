@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dengfuping.com/"/>
-  <updated>2017-08-29T03:40:28.283Z</updated>
+  <updated>2017-08-29T13:39:51.281Z</updated>
   <id>http://www.dengfuping.com/</id>
   
   <author>
@@ -14,6 +14,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript：bind() 函数的使用与实现</title>
+    <link href="http://www.dengfuping.com/2017/08/29/javascript-implement-bind-function/"/>
+    <id>http://www.dengfuping.com/2017/08/29/javascript-implement-bind-function/</id>
+    <published>2017-08-29T13:34:41.000Z</published>
+    <updated>2017-08-29T13:39:51.281Z</updated>
+    
+    <content type="html"><![CDATA[<p>参考文章：</p>
+<ul>
+<li><a href="http://www.cnblogs.com/chenpingzhao/p/4883995.html" target="_blank" rel="external">Javascript中bind()方法的使用与实现</a></li>
+<li><a href="https://segmentfault.com/a/1190000002662251" target="_blank" rel="external">Javascript中bind()方法的使用与实现</a></li>
+<li><a href="http://www.jb51.net/article/83257.htm" target="_blank" rel="external">javascript中利用柯里化函数实现bind方法</a></li>
+</ul>
+<a id="more"></a>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;参考文章：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/chenpingzhao/p/4883995.html&quot;&gt;Javascript中bind()方法的使用与实现&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://segmentfault.com/a/1190000002662251&quot;&gt;Javascript中bind()方法的使用与实现&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.jb51.net/article/83257.htm&quot;&gt;javascript中利用柯里化函数实现bind方法&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://www.dengfuping.com/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="http://www.dengfuping.com/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>JavaScript：== 和 === 运算符比较</title>
@@ -176,21 +210,23 @@
     <link href="http://www.dengfuping.com/2017/07/22/javascript-garbage-collection-and-memory-management/"/>
     <id>http://www.dengfuping.com/2017/07/22/javascript-garbage-collection-and-memory-management/</id>
     <published>2017-07-22T15:33:15.000Z</published>
-    <updated>2017-07-22T15:36:04.781Z</updated>
+    <updated>2017-08-29T13:39:19.306Z</updated>
     
     <content type="html"><![CDATA[<p>参考文章：</p>
 <ul>
 <li><a href="http://www.jb51.net/article/75292.htm" target="_blank" rel="external">跟我学习javascript的垃圾回收机制与内存管理</a></li>
 <li><a href="http://www.cnblogs.com/lcw5945/p/4143050.html" target="_blank" rel="external">JavaScript 的垃圾回收和内存管理</a></li>
 </ul>
+<a id="more"></a>
 ]]></content>
     
     <summary type="html">
     
       &lt;p&gt;参考文章：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.jb51.net/article/75292.htm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;跟我学习javascript的垃圾回收机制与内存管理&lt;/a&gt;&lt;/li&gt;
-&lt;li
+&lt;li&gt;&lt;a href=&quot;http://www.jb51.net/article/75292.htm&quot;&gt;跟我学习javascript的垃圾回收机制与内存管理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/lcw5945/p/4143050.html&quot;&gt;JavaScript 的垃圾回收和内存管理&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
@@ -709,31 +745,6 @@
     
     
       <category term="JavaScript" scheme="http://www.dengfuping.com/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CSS（四）：垂直居中常用方法</title>
-    <link href="http://www.dengfuping.com/2017/05/06/css-vertical-align/"/>
-    <id>http://www.dengfuping.com/2017/05/06/css-vertical-align/</id>
-    <published>2017-05-06T10:11:45.000Z</published>
-    <updated>2017-05-06T10:25:59.697Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="单行文本"><a href="#单行文本" class="headerlink" title="单行文本"></a>单行文本</h2><p>若元素是单行文本, 则可设置 line-height 等于父元素高度</p>
-<h2 id="块级元素"><a href="#块级元素" class="headerlink" title="块级元素"></a>块级元素</h2><p>（1）使用 <code>flex</code> 布局，给 <code>父元素</code> 设置如下属性：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.parent</span> &#123;</div><div class="line">    <span class="attribute">display</span>: flex;</div><div class="line">    <span class="attribute">align-items</span>: center;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;单行文本&quot;&gt;&lt;a href=&quot;#单行文本&quot; class=&quot;headerlink&quot; title=&quot;单行文本&quot;&gt;&lt;/a&gt;单行文本&lt;/h2&gt;&lt;p&gt;若元素是单行文本, 则可设置 line-height 等于父元素高度&lt;/p&gt;
-&lt;h2 id=&quot;块级元素&quot;&gt;&lt;a href=&quot;
-    
-    </summary>
-    
-      <category term="CSS" scheme="http://www.dengfuping.com/categories/CSS/"/>
-    
-    
-      <category term="CSS" scheme="http://www.dengfuping.com/tags/CSS/"/>
     
   </entry>
   

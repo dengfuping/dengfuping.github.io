@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title><![CDATA[JavaScript：bind() 函数的使用与实现]]></title>
+      <url>http://www.dengfuping.com/2017/08/29/javascript-implement-bind-function/</url>
+      <content type="html"><![CDATA[<p>参考文章：</p>
+<ul>
+<li><a href="http://www.cnblogs.com/chenpingzhao/p/4883995.html" target="_blank" rel="external">Javascript中bind()方法的使用与实现</a></li>
+<li><a href="https://segmentfault.com/a/1190000002662251" target="_blank" rel="external">Javascript中bind()方法的使用与实现</a></li>
+<li><a href="http://www.jb51.net/article/83257.htm" target="_blank" rel="external">javascript中利用柯里化函数实现bind方法</a></li>
+</ul>
+<a id="more"></a>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[JavaScript：== 和 === 运算符比较]]></title>
       <url>http://www.dengfuping.com/2017/08/27/javascript-equal-and-strict-equal/</url>
       <content type="html"><![CDATA[<p><code>===</code> 叫做 <code>严格运算符</code>，<code>==</code> 叫做 <code>相等运算符</code>。</p>
@@ -93,6 +106,7 @@
 <li><a href="http://www.jb51.net/article/75292.htm" target="_blank" rel="external">跟我学习javascript的垃圾回收机制与内存管理</a></li>
 <li><a href="http://www.cnblogs.com/lcw5945/p/4143050.html" target="_blank" rel="external">JavaScript 的垃圾回收和内存管理</a></li>
 </ul>
+<a id="more"></a>
 ]]></content>
     </entry>
     
