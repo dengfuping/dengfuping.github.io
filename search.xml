@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title><![CDATA[JavaScript：`==` 和 `===` 运算符比较]]></title>
+      <title><![CDATA[JavaScript：== 和 === 运算符比较]]></title>
       <url>http://www.dengfuping.com/2017/08/27/javascript-equal-and-strict-equal/</url>
       <content type="html"><![CDATA[<p><code>===</code> 叫做 <code>严格运算符</code>，<code>==</code> 叫做 <code>相等运算符</code>。</p>
 <h2 id="严格运算符"><a href="#严格运算符" class="headerlink" title="严格运算符"></a>严格运算符</h2><p>（1）不同类型值</p>

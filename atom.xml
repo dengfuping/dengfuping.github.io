@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dengfuping.com/"/>
-  <updated>2017-08-27T03:42:48.001Z</updated>
+  <updated>2017-08-29T03:40:28.283Z</updated>
   <id>http://www.dengfuping.com/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>JavaScript：`==` 和 `===` 运算符比较</title>
+    <title>JavaScript：== 和 === 运算符比较</title>
     <link href="http://www.dengfuping.com/2017/08/27/javascript-equal-and-strict-equal/"/>
     <id>http://www.dengfuping.com/2017/08/27/javascript-equal-and-strict-equal/</id>
     <published>2017-08-27T03:30:06.000Z</published>
-    <updated>2017-08-27T03:42:48.001Z</updated>
+    <updated>2017-08-29T03:40:28.283Z</updated>
     
     <content type="html"><![CDATA[<p><code>===</code> 叫做 <code>严格运算符</code>，<code>==</code> 叫做 <code>相等运算符</code>。</p>
 <h2 id="严格运算符"><a href="#严格运算符" class="headerlink" title="严格运算符"></a>严格运算符</h2><p>（1）不同类型值</p>
