@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dengfuping.com/"/>
-  <updated>2017-08-29T13:39:51.281Z</updated>
+  <updated>2017-08-30T09:23:48.936Z</updated>
   <id>http://www.dengfuping.com/</id>
   
   <author>
@@ -14,6 +14,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>css-two-columns-layout</title>
+    <link href="http://www.dengfuping.com/2017/08/30/css-two-columns-layout/"/>
+    <id>http://www.dengfuping.com/2017/08/30/css-two-columns-layout/</id>
+    <published>2017-08-30T08:59:55.000Z</published>
+    <updated>2017-08-30T09:23:48.936Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="float-margin"><a href="#float-margin" class="headerlink" title="float + margin"></a>float + margin</h2><p>将定宽的一列进行 float，而自适应的一列则设置对应的 margin：<a id="more"></a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line">    <span class="selector-class">.parent</span> &#123;</div><div class="line">        <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">        <span class="attribute">height</span>: <span class="number">200px</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="selector-class">.left</span> &#123;</div><div class="line">        <span class="attribute">width</span>: <span class="number">300px</span>;</div><div class="line">        <span class="attribute">height</span>: <span class="number">100%</span>;</div><div class="line">        <span class="attribute">background-color</span>: <span class="number">#ff3135</span>;</div><div class="line">        <span class="attribute">float</span>: left;</div><div class="line">    &#125;</div><div class="line">    <span class="selector-class">.right</span> &#123;</div><div class="line">        <span class="attribute">height</span>: <span class="number">100%</span>;</div><div class="line">        <span class="attribute">margin-left</span>: <span class="number">300px</span>;</div><div class="line">        <span class="attribute">background-color</span>: <span class="number">#4336ff</span>;</div><div class="line">    &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"left"</span>&gt;</span>left<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"right"</span>&gt;</span>right<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>参考文章：</p>
+<ul>
+<li><a href="http://www.cnblogs.com/xiaohuochai/p/5452865.html" target="_blank" rel="external">两列布局中单列定宽单列自适应布局的6种思路</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;float-margin&quot;&gt;&lt;a href=&quot;#float-margin&quot; class=&quot;headerlink&quot; title=&quot;float + margin&quot;&gt;&lt;/a&gt;float + margin&lt;/h2&gt;&lt;p&gt;将定宽的一列进行 float，而自适应的一列则设置对应的 margin：
+    
+    </summary>
+    
+      <category term="CSS" scheme="http://www.dengfuping.com/categories/CSS/"/>
+    
+    
+      <category term="CSS" scheme="http://www.dengfuping.com/tags/CSS/"/>
+    
+      <category term="布局" scheme="http://www.dengfuping.com/tags/%E5%B8%83%E5%B1%80/"/>
+    
+  </entry>
   
   <entry>
     <title>JavaScript：bind() 函数的使用与实现</title>
@@ -242,7 +273,7 @@
     <link href="http://www.dengfuping.com/2017/07/14/css-waterfall-layout/"/>
     <id>http://www.dengfuping.com/2017/07/14/css-waterfall-layout/</id>
     <published>2017-07-14T14:08:52.000Z</published>
-    <updated>2017-07-14T14:53:07.975Z</updated>
+    <updated>2017-08-30T09:03:45.806Z</updated>
     
     <content type="html"><![CDATA[<h2 id="1-传统多列浮动"><a href="#1-传统多列浮动" class="headerlink" title="1. 传统多列浮动"></a>1. 传统多列浮动</h2><ol>
 <li>各列固定宽度，并且左浮动；</li>
@@ -299,6 +330,8 @@
     
     
       <category term="CSS" scheme="http://www.dengfuping.com/tags/CSS/"/>
+    
+      <category term="布局" scheme="http://www.dengfuping.com/tags/%E5%B8%83%E5%B1%80/"/>
     
   </entry>
   
@@ -705,39 +738,6 @@
 &lt;p&gt;&lt;a href=&quot;http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_inheritance_continued.html&quot;&gt;阮一峰：非构造函数的继承&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;http://dudodo.cc/2017/04/11/%E7%90%86%E8%A7%A3JS%E4%B8%AD%E7%9A%84%E7%BB%A7%E6%89%BF/&quot;&gt;理解 JS 中的继承&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/24964910?refer=muyichuanqi&quot;&gt;js原型链继承，借用构造函数继承,组合继承，寄生式继承，寄生组合继承&lt;/a&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="http://www.dengfuping.com/categories/JavaScript/"/>
-    
-    
-      <category term="JavaScript" scheme="http://www.dengfuping.com/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JavaScript：闭包</title>
-    <link href="http://www.dengfuping.com/2017/05/06/javascript-closure/"/>
-    <id>http://www.dengfuping.com/2017/05/06/javascript-closure/</id>
-    <published>2017-05-06T10:32:37.000Z</published>
-    <updated>2017-07-10T10:32:45.118Z</updated>
-    
-    <content type="html"><![CDATA[<p>一、什么是闭包？闭包有什么好处？使用闭包要注意什么？</p>
-<p>闭包：函数嵌套函数，内部函数可以引用外部函数的参数和变量，变量和参数不会被垃圾回收机制所回收</p>
-<p>好处：<br>（1）希望一个变量长期驻扎在内存之中</p>
-<p>（2）避免全局变量的污染</p>
-<p>（3）私有成员的存在</p>
-<p>注意：可能会造成内存泄漏。<a id="more"></a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;一、什么是闭包？闭包有什么好处？使用闭包要注意什么？&lt;/p&gt;
-&lt;p&gt;闭包：函数嵌套函数，内部函数可以引用外部函数的参数和变量，变量和参数不会被垃圾回收机制所回收&lt;/p&gt;
-&lt;p&gt;好处：&lt;br&gt;（1）希望一个变量长期驻扎在内存之中&lt;/p&gt;
-&lt;p&gt;（2）避免全局变量的污染&lt;/p&gt;
-&lt;p&gt;（3）私有成员的存在&lt;/p&gt;
-&lt;p&gt;注意：可能会造成内存泄漏。
     
     </summary>
     
